@@ -34,7 +34,7 @@ public class Minimap extends JPanel {
 	public Minimap(HindiBones fenster) {
 		this.fenster = fenster;
 		 //Benutzer Name Eingabe Feld
-		 ChatText = new JTextField(); //Erzeugen eines Textfeldes fŸr Nicknamen
+		 ChatText = new JTextField(); //Erzeugen eines Textfeldes fï¿½r Nicknamen
 		
 
 		 
@@ -71,28 +71,28 @@ public class Minimap extends JPanel {
 		for (int i = 0; i < fenster.WIDTH; i++) {
 			for (int j = 0; j < fenster.HEIGHT; j++) {
 				//if (inRange(i, j)) {
-					if (fenster.level[i][j] instanceof Wand) {
+					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 
-					} else if (fenster.level[i][j] instanceof Boden) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 					} 
 	
-					else if (fenster.level[i][j] instanceof Tuer) {
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// Hier ist die Tuer
 						
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
-						if (((Tuer) fenster.level[i][j]).istOffen())
-							g.drawImage(tuerOffen2, i * 10 , j
-									* 10, null);
-						else
-							g.drawImage(tuerZu2, i * 10, j
-									* 10, null);
+//						if (((Tuer) fenster.level[i][j]).istOffen())
+//							g.drawImage(tuerOffen2, i * 10 , j
+//									* 10, null);
+//						else
+//							g.drawImage(tuerZu2, i * 10, j
+//									* 10, null);
 				} 
 						
 
@@ -101,7 +101,7 @@ public class Minimap extends JPanel {
 
 		}
 		
-		//Roter Punkt- fŸr Hindi Bones
+		//Roter Punkt- fï¿½r Hindi Bones
 		g.drawImage(fenster.spieler2.getImage(), fenster.spieler.getXPos()
 				* fenster.BOX2, fenster.spieler.getYPos() * fenster.BOX2, null);
 
@@ -138,7 +138,7 @@ public class Minimap extends JPanel {
 			
 			
 			}
-		//Item Hintergrund KŠstchen 3x (Falls spŠter noch ein Item hinzugefŸgt wird)
+		//Item Hintergrund Kï¿½stchen 3x (Falls spï¿½ter noch ein Item hinzugefï¿½gt wird)
 		g.setColor(Color.GRAY);
 		g.fillRect(10, 210,40, 40);
 		g.setColor(Color.BLACK);
@@ -183,16 +183,16 @@ public class Minimap extends JPanel {
 		g.setColor(Color.BLACK);
 		if (feld instanceof Schluessel) {
 			g.drawImage(sblase,0,375,null);
-			g.drawString(" Nimm den SchlŸssel", 7, 400);
+			g.drawString(" Nimm den Schlï¿½ssel", 7, 400);
 		} else if (feld instanceof Tuer) {
 			if (!((Tuer) feld).istOffen()) {
 				
 				if (fenster.spieler.hatSchluessel()){
 					g.drawImage(sblase,0,375,null);
-					g.drawString("…ffne die TŸr",7, 400);}
+					g.drawString("ï¿½ffne die Tï¿½r",7, 400);}
 				else{
 					g.drawImage(sblase,0,375,null);
-					g.drawString("TŸr ist verschlossen!", 7, 400);}
+					g.drawString("Tï¿½r ist verschlossen!", 7, 400);}
 			}
 		} else if (feld instanceof Heiltrank) {
 			g.drawImage(sblase,0,375,null);
@@ -210,7 +210,7 @@ public class Minimap extends JPanel {
 
 		
 		this.add(ChatText);
-		 ChatText.setBounds(0,410,230,35);//Grš§e+Koord. wird festgelegt 
+		 ChatText.setBounds(0,410,230,35);//Grï¿½ï¿½e+Koord. wird festgelegt 
 		 ChatText.setFocusable(true);
 		 this.setVisible(true);
 

@@ -1,7 +1,7 @@
 package gui;
 
 
-import java.awt.BorderLayout;     
+import java.awt.BorderLayout;      
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -14,6 +14,7 @@ import javax.accessibility.Accessible;
 import javax.swing.*; 
 
 import Client.Client;
+import Client.LoginNachricht;
 import datenstruktur.Boden;
 import datenstruktur.Heiltrank;
 import datenstruktur.Level;
@@ -45,6 +46,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public Level Level;
 	public Spielelement[][] level;
 	public Client client;
+	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
@@ -65,11 +67,15 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public final int BOX2=10;
 	public final int BOX3=32;
 	
+	String Bn;
+	String Pw;
+	
 
 
 	public HindiBones(int width, int height, String title) {
 		
 		client = new Client(0);
+		
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
 		
@@ -105,6 +111,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// Erstelle das Spielfeld
 		//zeigeSpielfeld();
+
+		
 		zeigeAnmeldung();
 		
 		// Zentriere das Fenster auf dem Bildschirm
@@ -126,6 +134,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 	}
 
+
 	public void zeigeSpielfeld() {
 		
 		// entferne alles
@@ -135,6 +144,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.remove(highscore);
 		this.remove(steuerung);
 		
+		
+//			this.remove(lognachricht);
+
 
 		this.add(spielflaeche, BorderLayout.CENTER);
 		//Versuch auf Scall Panel
@@ -151,6 +163,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	}
 	
+
+
 
 
 	public void zeigeHighscore() {
@@ -171,6 +185,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.pack();
 		highscore.repaint();
 	}
+	
 
 	public void zeigeSteuerung() {
 		// entferne alles
@@ -190,9 +205,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		steuerung.repaint();
 	}
 
-	
+
 	public void zeigeAnmeldung(){
+
 		highscoreAngezeigt=false;
+		
 		
 		this.remove(minimap);
 		this.remove(spielflaeche);
@@ -200,7 +217,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.remove(steuerung);
 		try {
 			Thread.sleep(50);
-			this.add(anmeldung, BorderLayout.CENTER);
+			this.add(anmeldung, BorderLayout.CENTER);		
+		lognachricht= new LoginNachricht("Peace", "12345");
+		Bn="Peace";
+		Pw="12345";
+
+		
+		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -213,6 +236,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 	}
 	
+	public String GetBenutzername(){
+	return Bn;
+}
+public String GetPasswort(){
+	return Pw;
+}
 	
 	//	 Getter fuer die Spielflaeche bzw. Statusleiste
 	public Minimap getMinimap(){
@@ -231,6 +260,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		return anmeldung;
 	}
 	
+	public LoginNachricht getLogNachricht(){
+		return lognachricht;
+	}
 
 	
 	
