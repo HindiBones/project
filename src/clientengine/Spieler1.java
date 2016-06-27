@@ -1,13 +1,13 @@
 package clientengine;
 
 //Der Spieler ist eine Unterklasse der Klasse Figur
-public class Spieler extends Figur {
+public class Spieler1 extends Figur {
 
 	boolean hatSchluessel;
 	int anzHeiltraenke;
 	
 	//Spieler erh�lt bei der Erstellung eine ID
-	public Spieler(int i){
+	public Spieler1(int i){
 		setID(i);
 		setPos(0,0);
 		hatSchluessel=false;

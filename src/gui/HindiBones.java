@@ -13,8 +13,10 @@ import java.util.LinkedList;
 import javax.accessibility.Accessible;
 import javax.swing.*; 
 
+import Client.Client;
 import datenstruktur.Boden;
 import datenstruktur.Heiltrank;
+import datenstruktur.Level;
 import datenstruktur.Monster;
 import datenstruktur.Schluessel;
 import datenstruktur.Spielelement;
@@ -39,9 +41,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public Spieler spieler2;
 	public Monster monster;
 	
-
+	
+	public Level Level;
 	public Spielelement[][] level;
-
+	public Client client;
 	public int currentLevel = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
@@ -56,9 +59,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	
 	public final int MAXLEVEL = 5; 
-	public final int WIDTH = 16; // LABIRITHGR…§E 
+	public final int WIDTH = 16; // LABIRITHGRï¿½ï¿½E 
 	public final int HEIGHT =16 ; 
-	public final int BOX = 72;  // Grš§e der Bild Elemente 
+	public final int BOX = 72;  // Grï¿½ï¿½e der Bild Elemente 
 	public final int BOX2=10;
 	public final int BOX3=32;
 	
@@ -66,6 +69,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
+		client = new Client(0);
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
 		
@@ -93,7 +97,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// Es wird die gewuenschte Groesse angegeben			
 		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
-		minimap.setPreferredSize(new Dimension(width/3, BOX)); //Grš§e meiner Minimap
+		minimap.setPreferredSize(new Dimension(width/3, BOX)); //Grï¿½ï¿½e meiner Minimap
 		steuerung.setPreferredSize(new Dimension(width+50, height-50));
 		highscore.setPreferredSize(new Dimension(width+50, height-50));
 		anmeldung.setPreferredSize(new Dimension(640,400));
@@ -244,9 +248,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
-				if (yPos > 0 && !(level[xPos][yPos - 1] instanceof Wand)){ // Was ist mit Instanceof gemeint??
+				if (yPos > 0 && !(level[xPos][yPos - 1] instanceof Wand)) // Was ist mit Instanceof gemeint??
 					
-//					spieler.hoch();
+				spieler.hoch();
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				if (yPos < HEIGHT - 1
 						&& !(level[xPos][yPos + 1] instanceof Wand))
@@ -259,12 +263,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						&& !(level[xPos + 1][yPos] instanceof Wand))
 					spieler.rechts();
 
-				// B für 'Heiltrank benutzen'
+				// B fï¿½r 'Heiltrank benutzen'
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_B) {
 				int change = spieler.benutzeHeiltrank();
 				// Heilungseffekt wird verbessert, falls neue Monster durch das
-				// Aufheben des Schlüssels ausgelöst wurden
+				// Aufheben des Schlï¿½ssels ausgelï¿½st wurden
 				if (spieler.hatSchluessel())
 					spieler.changeHealth((int) (change * 1.5));
 				else
@@ -303,7 +307,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 				}
 			}
-			}}
+			}
 	}
 
 	public void mouseClicked(MouseEvent e) {
@@ -337,7 +341,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 			if(mausY1< yKoos){
 				if (Distanz1>Distanz2 &&!(level[xPos][yPos - 1] instanceof Wand))
-					spieler.hoch();
+					client.SpielerBewegung(1);
+					//spieler.hoch();
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
@@ -379,18 +384,19 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		try {
 			Thread.sleep(100);		
-		spieler = new Spieler("img//spieler.png", this);
+		spieler = new Spieler(0, this);
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
-		spieler2=new Spieler("img//red_point.png",this);
+		spieler2=new Spieler(1, this);
 		spieler2.setImage(spieler2.getImage().getScaledInstance(10,10,Image.SCALE_DEFAULT)); 
 		monsterListe = new LinkedList<Monster>();
 		level = new Spielelement[WIDTH][HEIGHT];
+		Level = new Level(0, new int[WIDTH][HEIGHT]);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-
+		
 		currentLevel = 0;
 		spielende = false;
 		verloren = false;
@@ -453,7 +459,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void nextLevel() {
 		currentLevel++;
 		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
-		level = leser.getLevel();
+		Level = leser.getLevel();
 
 	}
 

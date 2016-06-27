@@ -4,7 +4,7 @@ import java.awt.Image;
 
 public abstract class Figur {
 
-	private int xPos, yPos;
+	private int xPos, yPos, id;
 	private Image image;
 
 	private int health;
@@ -62,7 +62,13 @@ public abstract class Figur {
 	public int getXPos() {
 		return xPos;
 	}
-
+	
+	public void setID(int id){
+		this.id = id;
+	}
+	public int getID(){
+		return id;
+	}
 	public void hoch() {
 		yPos--;
 	}

@@ -21,7 +21,7 @@ import datenstruktur.Wand;
 public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,
 			feuerball;
 	private HindiBones fenster;
@@ -94,32 +94,32 @@ public class Spielflaeche extends JPanel {
 						
 					}
 					
-					if (fenster.level[i][j] instanceof Wand) {
+					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 
-					} else if (fenster.level[i][j] instanceof Boden) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-					} else if (fenster.level[i][j] instanceof Schluessel) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
-					} else if (fenster.level[i][j] instanceof Tuer) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						if (((Tuer) fenster.level[i][j]).istOffen())
-							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
-									* fenster.BOX-verschiebeny*fenster.BOX, null);
-						else
-							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
-									* fenster.BOX-verschiebeny*fenster.BOX, null);
-					} else if (fenster.level[i][j] instanceof Heiltrank) {
+						//if (((Tuer) fenster.level[i][j]).istOffen())
+						//	g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
+						//			* fenster.BOX-verschiebeny*fenster.BOX, null);
+						//else
+						//	g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
+							//		* fenster.BOX-verschiebeny*fenster.BOX, null);
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);

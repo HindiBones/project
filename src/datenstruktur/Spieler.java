@@ -10,23 +10,21 @@ import javax.imageio.ImageIO;
 public class Spieler extends Figur {
 
 	private String name;
-
+	
 	private boolean hatSchluessel;
 	private int anzahlHeiltraenke;
 	private int heiltrankWirkung;
 
 	private HindiBones fenster;
 
-	public Spieler(String imgDatei, HindiBones fenster) {
-		int i=0;
-		this.fenster = fenster;
-
+	public Spieler(int id, HindiBones fenster) {
+		String imgDatei = "img//spieler.png";
 		setAnzahlHeiltraenke(0);
 		setPos(0, 0);
 		setHealth(100);
 		setMaxHealth(getHealth());
 		setName("Hindi Bones");
-		//setID(i);
+		setID(id);
 
 		// Bild fuer den Spieler laden
 		try {

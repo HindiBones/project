@@ -1,4 +1,4 @@
-package clientengine;
+package datenstruktur;
 
 import java.io.IOException;
 
@@ -12,19 +12,19 @@ public class Level {
 		 levelInhalt = level;
 	 }
 	
-	//kein Setter für die Level-ID benötigt, da diese nicht mehr verändert werden soll
+	//kein Setter fï¿½r die Level-ID benï¿½tigt, da diese nicht mehr verï¿½ndert werden soll
 	
-	//getter-Methode für die Level-ID
+	//getter-Methode fï¿½r die Level-ID
 	public static int getLevelID(){
 		return levelID;
 	}
 	
-	//setter-Methode, um bestimmte Felder im Level zu verändern
+	//setter-Methode, um bestimmte Felder im Level zu verï¿½ndern
 	public static void setLevelInhalt(int x, int y, int inhalt){
 		levelInhalt[x][y] = inhalt;
 	}
 	
-	//Hilfsmethode, später wieder löschen, Array voller 0en füllen
+	//Hilfsmethode, spï¿½ter wieder lï¿½schen, Array voller 0en fï¿½llen
 	public static void setInhaltNull(){
 		for(int i = 0; i<levelInhalt.length;i++){
 			for (int j  = 0;j<levelInhalt[0].length;j++){
@@ -32,7 +32,14 @@ public class Level {
 			}
 		}
 	}
-	
+	/* 0 = Wand
+	 * 1 = Boden
+	 * 2 = Spieler
+	 * 3 = Trank
+	 * 4 = Schluessel
+	 * 5 = Monster
+	 * 6 = TÃ¼r
+	 */
 	//getter-Methode, um das gesamte Level auszulesen
 	public static int [][] getKomplettesLevel(){
 		return levelInhalt;
@@ -53,12 +60,12 @@ public class Level {
 		}
 	}
 	
-	//Länge des Arrays in x-Richtung bestimmen
+	//Lï¿½nge des Arrays in x-Richtung bestimmen
 	public int getLaengeX(){
 		return levelInhalt.length;
 	}
 	
-	//Länge des Arrays in y-Richtung bestimmen
+	//Lï¿½nge des Arrays in y-Richtung bestimmen
 	public int getLaengeY(){
 		return levelInhalt[0].length;
 	}

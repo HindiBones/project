@@ -1,10 +1,12 @@
 package Client;
 
+import datenstruktur.Level;
+
 public class Nachricht {
 	int typ;
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort;
-	Level leveldaten;
+	Level[] leveldaten;
 	Spielelement item;
 	int xKoo;
 	int yKoo;

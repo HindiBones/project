@@ -1,0 +1,10 @@
+38	null
+50	null
+120	null120
+125	null
+134	Julius
+167	Seyma
+664	seyma
+1000	Anonym
+1000	Anonym
+1000	Anonym

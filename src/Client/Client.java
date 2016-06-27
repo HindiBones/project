@@ -1,26 +1,34 @@
 package Client;
 
+import gui.HindiBones;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
+import datenstruktur.Spieler;
+import datenstruktur.Level;
+
 public class Client {
 
+	HindiBones fenster;
 	int id;
+	Spieler spieler;
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	Level aktuellesLevel;
+	Level[] alleLevel;
 	String benutzername, passwort;
 	public Client(int i){
 		this.id=i;
 	}
 	
-	// Sendet eine Nachricht, Fügt sie in die Nachrichten-Queue ein
+	// Sendet eine Nachricht, Fï¿½gt sie in die Nachrichten-Queue ein
 	public void sende(Nachricht m){
 		Nachrichten.add(m);
 	}
 	
 	
-	// Hilfsmethode zum Testen, gibt die Nachrichten aus, die später an den Server gesendet werden
+	// Hilfsmethode zum Testen, gibt die Nachrichten aus, die spï¿½ter an den Server gesendet werden
 	public void ausgabe(){
 		while(!this.Nachrichten.isEmpty()){
 				Nachricht m = Nachrichten.poll();
@@ -40,7 +48,7 @@ public class Client {
 		}
 	}
 	
-	// Überträgt die zu sendenden Nachrichten an einen anderen Client. Nur zu Testzwecken, später wird an einen Server gesendet.
+	// ï¿½bertrï¿½gt die zu sendenden Nachrichten an einen anderen Client. Nur zu Testzwecken, spï¿½ter wird an einen Server gesendet.
 	public void uebertrage(Client empfaenger){
 		while(!Nachrichten.isEmpty()){
 			Nachricht n = Nachrichten.poll();
@@ -64,7 +72,7 @@ public class Client {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
-					case 6: System.out.println("Level wurde geladen!");this.aktuellesLevel=m.leveldaten;break;
+					case 6: this.alleLevel=m.leveldaten;this.aktuellesLevel=m.leveldaten[0];System.out.println("Level " + aktuellesLevel.getLevelID()+ " wurde geladen!");break;
 				}
 			
 		}
@@ -75,8 +83,65 @@ public class Client {
 	 * 1 - Eigene Position
 	 * 2 - Heiltrankposition
 	 * 3 - Level Abgeschlossen
-	 * 4 - Schlüssel aufgenommen
+	 * 4 - Schlï¿½ssel aufgenommen
 	 * 5 - Fehlermeldung
 	 * 6 - Level empfangen
 	 */
+	
+	public void SpielerBewegung(int richtung){
+		switch(richtung){
+		case 0:
+			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 5)
+			{
+				spieler.runter();
+				sende(new BewegungsNachricht(spieler.getID(),spieler.getXPos(),spieler.getYPos()));
+			}
+			break;
+			
+			
+		case 1:
+			if(spieler.getYPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 5)
+			{
+				spieler.hoch();
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
+			}
+			break;
+			
+		case 2:
+			if(spieler.getXPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 5)
+			{
+				spieler.links();
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
+			}
+			break;
+			
+		case 3:
+			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 5)
+			{
+				spieler.rechts();
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
+			}
+			break;
+			
+		}
+	}
+
+	public void benutzeHeiltrank(){
+		spieler.benutzeHeiltrank();
+	}
+	
+	public void nimmSchluessel(){
+		spieler.nimmSchluessel();
+	}
+	
+	public void levelWechseln(){
+		if(aktuellesLevel.getLevelID() < 4)
+		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];
+		else
+		{
+			sende(new Nachricht(3));
+			ausgabe();
+			System.exit(0);
+		}
+	}
 }

@@ -1,5 +1,7 @@
 package clientengine;
 
+import datenstruktur.Level;
+
 public class Nachricht {
 	int typ;
 	boolean aufgenommen;
