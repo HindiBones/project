@@ -3,6 +3,9 @@ package clientengine;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import datenstruktur.Level;
+import datenstruktur.Spieler;
+
 public class Client {
 
 	int id;

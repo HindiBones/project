@@ -340,27 +340,26 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		if (!spielende) {
 		
 			if(mausY1< yKoos){
-				if (Distanz1>Distanz2 &&!(level[xPos][yPos - 1] instanceof Wand))
+				if (Distanz1>Distanz2 &&!(Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) == 0))
 					client.SpielerBewegung(1);
-					//spieler.hoch();
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausY1 > yKoos){	
-				if ( Distanz1>Distanz2 &&!(level[xPos][yPos + 1] instanceof Wand))
-					spieler.runter();
+				if (Distanz1<Distanz2 &&!(Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) == 0))
+					client.SpielerBewegung(0);
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1<xKoos){	
-				if (!(level[xPos - 1][yPos] instanceof Wand))
-					spieler.links();
+				if (!(Level.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) == 0))
+					client.SpielerBewegung(2);
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1> xKoos){
-				if ( !(level[xPos + 1][yPos] instanceof Wand))
-					spieler.rechts();
+				if (!(Level.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) == 0))
+					client.SpielerBewegung(3);
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 7);
@@ -460,7 +459,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		currentLevel++;
 		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
 		Level = leser.getLevel();
-
+		client.aktuellesLevel = Level;
 	}
 
 	

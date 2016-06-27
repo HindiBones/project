@@ -17,7 +17,7 @@ public class Spieler extends Figur {
 
 	private HindiBones fenster;
 
-	public Spieler(int id, HindiBones fenster) {
+	public Spieler(int id, HindiBones f) {
 		String imgDatei = "img//spieler.png";
 		setAnzahlHeiltraenke(0);
 		setPos(0, 0);
@@ -25,7 +25,7 @@ public class Spieler extends Figur {
 		setMaxHealth(getHealth());
 		setName("Hindi Bones");
 		setID(id);
-
+		this.fenster = f;
 		// Bild fuer den Spieler laden
 		try {
 			setImage(ImageIO.read(new File(imgDatei)));

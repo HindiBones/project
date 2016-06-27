@@ -15,7 +15,7 @@ public class Client {
 	Spieler spieler;
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
-	Level aktuellesLevel;
+	public Level aktuellesLevel;
 	Level[] alleLevel;
 	String benutzername, passwort;
 	public Client(int i){
