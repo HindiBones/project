@@ -248,13 +248,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
-				if (yPos > 0 && !(level[xPos][yPos - 1] instanceof Wand)) // Was ist mit Instanceof gemeint??
-					
-				spieler.hoch();
+				if (yPos > 0 && (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)) // Was ist mit Instanceof gemeint??
+					client.SpielerBewegung(1);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				if (yPos < HEIGHT - 1
-						&& !(level[xPos][yPos + 1] instanceof Wand))
-					spieler.runter();
+						&&  (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0))
+					client.SpielerBewegung(0);
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				if (xPos > 0 && !(level[xPos - 1][yPos] instanceof Wand))
 					spieler.links();
