@@ -70,6 +70,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public HindiBones(int width, int height, String title) {
 		
 		client = new Client(0);
+		client.spieler = spieler;
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
 		
@@ -248,12 +249,14 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
-				if (yPos > 0 && (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)) // Was ist mit Instanceof gemeint??
+				// Was ist mit Instanceof gemeint??
+					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
+					Level = client.aktuellesLevel;
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				if (yPos < HEIGHT - 1
-						&&  (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0))
+					client.aktuellesLevel = Level;
 					client.SpielerBewegung(0);
+					Level = client.aktuellesLevel;
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				if (xPos > 0 && !(level[xPos - 1][yPos] instanceof Wand))
 					spieler.links();

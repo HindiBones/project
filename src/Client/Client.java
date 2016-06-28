@@ -12,7 +12,7 @@ public class Client {
 
 	HindiBones fenster;
 	int id;
-	Spieler spieler;
+	public Spieler spieler;
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
