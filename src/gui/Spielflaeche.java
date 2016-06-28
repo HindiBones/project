@@ -99,7 +99,7 @@ public class Spielflaeche extends JPanel {
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
@@ -115,7 +115,7 @@ public class Spielflaeche extends JPanel {
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
