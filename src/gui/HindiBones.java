@@ -352,6 +352,7 @@ public String GetPasswort(){
 						Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 						// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 						spieler.entferneSchluessel();
+						client.ausgabe();
 						if (currentLevel < MAXLEVEL)
 							nextLevel();
 						else {

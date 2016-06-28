@@ -16,7 +16,7 @@ public class Monster extends Figur {
 	private int cooldownWalk;
 
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
-	private int typ; // Von Beginn an anwesend: 0, Erscheint später: 1
+	private int typ; // Von Beginn an anwesend: 0, Erscheint spï¿½ter: 1
 
 	private HindiBones fenster;
 	private Spieler spieler;
@@ -71,7 +71,7 @@ public class Monster extends Figur {
 	public void changeHealth(int change) {
 		super.changeHealth(change);
 		if (getHealth() <= 0) {
-			fenster.level[getXPos()][getYPos()] = new Heiltrank(30);
+			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 3);;
 			fenster.monsterListe.remove(this);
 		}
 	}
@@ -122,21 +122,25 @@ public class Monster extends Figur {
 			return true;
 
 		if (dir == 0 && getYPos() - 1 > 0) {
-			return !(fenster.level[getXPos()][getYPos() - 1] instanceof Wand)
-					&& !(fenster.level[getXPos()][getYPos() - 1] instanceof Tuer)
-					&& !(fenster.level[getXPos()][getYPos() - 1] instanceof Schluessel);
+			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 0)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 6)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 7)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 4);
 		} else if (dir == 1 && getXPos() + 1 < fenster.WIDTH) {
-			return !(fenster.level[getXPos() + 1][getYPos()] instanceof Wand)
-					&& !(fenster.level[getXPos() + 1][getYPos()] instanceof Tuer)
-					&& !(fenster.level[getXPos() + 1][getYPos()] instanceof Schluessel);
+			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 0)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 6)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 7)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 4);
 		} else if (dir == 2 && getYPos() + 1 < fenster.HEIGHT) {
-			return !(fenster.level[getXPos()][getYPos() + 1] instanceof Wand)
-					&& !(fenster.level[getXPos()][getYPos() + 1] instanceof Tuer)
-					&& !(fenster.level[getXPos()][getYPos() + 1] instanceof Schluessel);
-		} else if (dir == 3 && getXPos() > 0) {
-			return !(fenster.level[getXPos() - 1][getYPos()] instanceof Wand)
-					&& !(fenster.level[getXPos() - 1][getYPos()] instanceof Tuer)
-					&& !(fenster.level[getXPos() - 1][getYPos()] instanceof Schluessel);
+			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 0)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 6)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 7)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 4);
+		} else if (dir == 3 && getXPos() -1 > 0) {
+			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 0)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 6)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 7)
+					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 4);
 		} else
 			return false;
 	}

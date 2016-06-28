@@ -46,8 +46,11 @@ public class Spieler extends Figur {
 	}
 
 	public int benutzeHeiltrank() {
-		setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
+		if(anzahlHeiltraenke > 0){
+		//setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
 		return heiltrankWirkung;
+		}
+		else return 0;
 	}
 
 	public void nimmHeiltrank() {
