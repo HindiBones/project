@@ -75,11 +75,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public HindiBones(int width, int height, String title) {
 		
 		client = new Client(0);
-<<<<<<< HEAD
+
 		client.spieler = spieler;
-=======
-		
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
 		
@@ -286,20 +283,25 @@ public String GetPasswort(){
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
 				// Was ist mit Instanceof gemeint??
+					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
 					Level = client.aktuellesLevel;
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(0);
 					Level = client.aktuellesLevel;
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				if (xPos > 0 && !(level[xPos - 1][yPos] instanceof Wand))
-					spieler.links();
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				client.SpielerBewegung(2);
+				Level = client.aktuellesLevel;
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				if (xPos < WIDTH - 1
-						&& !(level[xPos + 1][yPos] instanceof Wand))
-					spieler.rechts();
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				client.SpielerBewegung(3);
+				Level = client.aktuellesLevel;
 
 				// B f�r 'Heiltrank benutzen'
 			} else 
@@ -378,26 +380,35 @@ public String GetPasswort(){
 		if (!spielende) {
 		
 			if(mausY1< yKoos){
-				if (Distanz1>Distanz2 &&!(Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) == 0))
+				if (Distanz1>Distanz2){
+					client.spieler = spieler;
+					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
+					Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
-			}else if(mausY1 > yKoos){	
-				if (Distanz1<Distanz2 &&!(Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) == 0))
-					client.SpielerBewegung(0);
+				}}else if(mausY1 > yKoos){	
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				client.SpielerBewegung(0);
+				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1<xKoos){	
-				if (!(Level.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) == 0))
-					client.SpielerBewegung(2);
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				client.SpielerBewegung(2);
+				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1> xKoos){
-				if (!(Level.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) == 0))
-					client.SpielerBewegung(3);
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				client.SpielerBewegung(3);
+				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 			if (m != null)
 				m.changeHealth(-BOX / 7);

@@ -180,7 +180,6 @@ int i =1;
 			String Text= this.textfeld.getText();
 			System.out.println(Text );
 			textumfeld.insert(Text, 1);
-			this.textumfeld.insertText(Text, 3);
 			
 		}
 		// TODO Auto-generated method stub
