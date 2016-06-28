@@ -21,15 +21,7 @@ public class Nachricht {
 	 * type 5 : Level geladen
 	 * type 6 : Kampfnachricht
 	 */
-	
-	
-	
-	
-	
-	
 
-	
-	
 	
 	
 	// Nachricht, die gesendet wird, wenn das Level geschafft wurde - Nur zum Testen
