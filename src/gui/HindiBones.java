@@ -321,9 +321,9 @@ public String GetPasswort(){
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
-				if (level[spieler.getXPos()][spieler.getYPos()] instanceof Schluessel) {
+				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 4) {
 					spieler.nimmSchluessel();
-					level[spieler.getXPos()][spieler.getYPos()] = new Boden();
+					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
 				else if (level[spieler.getXPos()][spieler.getYPos()] instanceof Heiltrank) {
@@ -332,11 +332,9 @@ public String GetPasswort(){
 					level[spieler.getXPos()][spieler.getYPos()] = new Boden();
 				}
 				// Schluessel benutzen
-				if (level[spieler.getXPos()][spieler.getYPos()] instanceof Tuer) {
-					if (!((Tuer) level[spieler.getXPos()][spieler.getYPos()])
-							.istOffen() && spieler.hatSchluessel()) {
-						((Tuer) level[spieler.getXPos()][spieler.getYPos()])
-								.setOffen();
+				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
+					if (spieler.hatSchluessel()) {
+						Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 						// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 						spieler.entferneSchluessel();
 						if (currentLevel < MAXLEVEL)

@@ -50,13 +50,13 @@ public class Leser {
 							karte[i][j] = 1;
 							break;
 						case '2':
-							karte[i][j] = 2;
+							karte[i][j] = 4;
 							break;
 						case '3':
 							karte[i][j] = 6;
 							break;
 						case '4':
-							karte[i][j] = 6;
+							karte[i][j] = 2;
 							fenster.spieler.setPos(i, j);
 							fenster.spieler2.setPos(i,j);
 							break;
