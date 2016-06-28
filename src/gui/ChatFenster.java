@@ -25,7 +25,7 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	private TextField textfeld=null;
 	private String benutzername= null;
 		Button senden;
-	Button lÃ¶schen;
+	Button löschen;
 	int i =1;
 	
 	
@@ -58,11 +58,11 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 			senden= new Button("senden");
 			senden.addMouseListener(this);
 			senden.addActionListener(this);
-	lÃ¶schen= new Button("lÃ¶schen");
-			lÃ¶schen.addMouseListener(this);
-			lÃ¶schen.addActionListener(this);
+	löschen= new Button("lÃ¶schen");
+			löschen.addMouseListener(this);
+			löschen.addActionListener(this);
 			pane.add(senden);
-			pane.add(lÃ¶schen);
+			pane.add(löschen);
 			this.add(pane,"South");
 			this.setVisible(true);
 			

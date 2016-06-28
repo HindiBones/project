@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*; 
 
 import Client.Client;
+import Client.KampfNachricht;
 import Client.LoginNachricht;
 import datenstruktur.Boden;
 import datenstruktur.Heiltrank;
@@ -46,7 +47,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	
 	public Level Level;
-	public Spielelement[][] level;
 	public Client client;
 	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
@@ -226,7 +226,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			Thread.sleep(50);
 			this.add(anmeldung, BorderLayout.CENTER);	
 		//Verbindung zum Client
-		lognachricht= new LoginNachricht("Peace", "12345");
+		client.sende(new LoginNachricht("Peace", "12345"));
 		Bn="Peace";
 		Pw="12345";
 
@@ -294,43 +294,46 @@ public String GetPasswort(){
 					client.SpielerBewegung(1);
 					Level = client.aktuellesLevel;
 					Monster m = spieler.angriffsMonster();
-					if (m != null)
+					if (m != null){
 						m.changeHealth(-BOX / 4);
+						client.sende(new KampfNachricht(spieler.getID()));
+					}
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(0);
 					Level = client.aktuellesLevel;
 					Monster m = spieler.angriffsMonster();
-					if (m != null)
+					if (m != null){
 						m.changeHealth(-BOX / 4);
+						client.sende(new KampfNachricht(spieler.getID()));
+					}
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(2);
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-				if (m != null)
+				if (m != null){
 					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(3);
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-				if (m != null)
+				if (m != null){
 					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 
 				// B f�r 'Heiltrank benutzen'
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_B) {
-				int change = spieler.benutzeHeiltrank();
-				// Heilungseffekt wird verbessert, falls neue Monster durch das
-				// Aufheben des Schl�ssels ausgel�st wurden
-				if (spieler.hatSchluessel())
-					spieler.changeHealth((int) (change * 1.5));
-				else
-					spieler.changeHealth((int) (change * 0.5));
+				client.benutzeHeiltrank();
+				spieler = client.spieler;
 			} 
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
@@ -340,20 +343,19 @@ public String GetPasswort(){
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 4) {
-					spieler.nimmSchluessel();
+					client.nimmSchluessel();
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
 				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 3) {
-					spieler.nimmHeiltrank();
+					client.nimmHeiltrank();
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Schluessel benutzen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
-					if (spieler.hatSchluessel()) {
-						Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
-						// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
-						spieler.entferneSchluessel();
+						client.aktuellesLevel = Level;
+						client.benutzeSchluessel();
+						Level = client.aktuellesLevel;
 						client.ausgabe();
 						if (currentLevel < MAXLEVEL)
 							nextLevel();
@@ -363,8 +365,8 @@ public String GetPasswort(){
 					}
 				}
 			}
-			}
-	}
+		}
+	
 
 	public void mouseClicked(MouseEvent e) {
 		int xKoos = 3;
@@ -402,34 +404,41 @@ public String GetPasswort(){
 					client.SpielerBewegung(1);
 					Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+				if (m != null){
+					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 				}}else if(mausY1 > yKoos){	
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(0);
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+				if (m != null){
+					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 			}else if(mausX1<xKoos){	
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(2);
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+				if (m != null){
+					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 			}else if(mausX1> xKoos){
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(3);
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 7);
+				if (m != null){
+					m.changeHealth(-BOX / 4);
+					client.sende(new KampfNachricht(spieler.getID()));
+				}
 			}
-	
 		}
 		
 	}
@@ -450,12 +459,10 @@ public String GetPasswort(){
 			Thread.sleep(100);		
 		spieler = new Spieler(0, this);
 		String imgDatei = "img//red_Point.png";
-		
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
 		spieler2=new Spieler(1, this);
 		spieler2.setImage(spieler2.getImage().getScaledInstance(10,10,Image.SCALE_DEFAULT)); 
 		monsterListe = new LinkedList<Monster>();
-		level = new Spielelement[WIDTH][HEIGHT];
 		Level = new Level(0, new int[WIDTH][HEIGHT]);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

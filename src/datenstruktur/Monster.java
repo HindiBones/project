@@ -14,7 +14,7 @@ public class Monster extends Figur {
 	private long lastStep;
 	private int cooldownAttack;
 	private int cooldownWalk;
-
+	private int id;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
 	private int typ; // Von Beginn an anwesend: 0, Erscheint sp�ter: 1
 
@@ -145,4 +145,13 @@ public class Monster extends Figur {
 			return false;
 	}
 
+	
+	public void setID(int id)
+	{
+		this.id = id;
+	}
+	
+	public int getID(){
+		return id;
+	}
 }

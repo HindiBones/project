@@ -7,7 +7,6 @@ public class Nachricht {
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort;
 	Level[] leveldaten;
-	Spielelement item;
 	int xKoo;
 	int yKoo;
 	int spielerID;
