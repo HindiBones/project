@@ -1,8 +1,8 @@
 package Client;
-
-// Nachricht, die ein Level enthält (wird am Anfang vom Server empfangen)
+import datenstruktur.Level;
+// Nachricht, die ein Level enthï¿½lt (wird am Anfang vom Server empfangen)
 public class LevelNachricht extends Nachricht {
-	public LevelNachricht (Level x){
+	public LevelNachricht (Level[] x){
 		super(6);
 		this.leveldaten = x;
 	}

@@ -12,7 +12,7 @@ public class Client {
 
 	HindiBones fenster;
 	int id;
-	Spieler spieler;
+	public Spieler spieler;
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
@@ -91,7 +91,7 @@ public class Client {
 	public void SpielerBewegung(int richtung){
 		switch(richtung){
 		case 0:
-			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 5)
+			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
 			{
 				spieler.runter();
 				sende(new BewegungsNachricht(spieler.getID(),spieler.getXPos(),spieler.getYPos()));
@@ -100,7 +100,7 @@ public class Client {
 			
 			
 		case 1:
-			if(spieler.getYPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 5)
+			if(spieler.getYPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)
 			{
 				spieler.hoch();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -108,7 +108,7 @@ public class Client {
 			break;
 			
 		case 2:
-			if(spieler.getXPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 5)
+			if(spieler.getXPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 0)
 			{
 				spieler.links();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -116,7 +116,7 @@ public class Client {
 			break;
 			
 		case 3:
-			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 5)
+			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 0)
 			{
 				spieler.rechts();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));

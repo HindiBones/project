@@ -6,7 +6,7 @@ public class Spieler extends Figur {
 	boolean hatSchluessel;
 	int anzHeiltraenke;
 	
-	//Spieler erhält bei der Erstellung eine ID
+	//Spieler erhï¿½lt bei der Erstellung eine ID
 	public Spieler(int i){
 		setID(i);
 		setPos(0,0);
@@ -16,12 +16,12 @@ public class Spieler extends Figur {
 		setMaxGesundheit(200);
 	}
 	
-	//Spieler nimmt den Schlüssel auf
+	//Spieler nimmt den Schlï¿½ssel auf
 	public void SchluesselAufnehmen(){
 		this.hatSchluessel=true;
 	}
 	
-	//Spieler legt den Schlüssel ab
+	//Spieler legt den Schlï¿½ssel ab
 	public void SchluesselEntfernen(){
 		this.hatSchluessel=false;
 	}
@@ -35,11 +35,11 @@ public class Spieler extends Figur {
 	}
 	
 	//Spieler hebt einen Heiltrank vom Boden auf
-	public void HeiltrankAufheben(Heiltrank h){
+	public void HeiltrankAufheben(){
 		anzHeiltraenke++;
 	}
 	
-	//Es wird geprüft, ob der Spieler Heiltränke besitzt
+	//Es wird geprï¿½ft, ob der Spieler Heiltrï¿½nke besitzt
 	public boolean hatHeiltraenke(){
 		if(anzHeiltraenke>0){
 			return true;
@@ -47,12 +47,12 @@ public class Spieler extends Figur {
 		return false;
 	}
 	
-	//Es wird geprüft, ob der Schlüssel in Besitz des Spielers ist
+	//Es wird geprï¿½ft, ob der Schlï¿½ssel in Besitz des Spielers ist
 	public boolean SchluesselInBesitz(){
 		return hatSchluessel;
 	}
 	
-	//Anzahl der Tränke wird Zurückgegeben
+	//Anzahl der Trï¿½nke wird Zurï¿½ckgegeben
 	public int AnzahlTrank(){
 		return this.anzHeiltraenke;
 	}

@@ -13,7 +13,7 @@ public class Spieler extends Figur {
 	
 	private boolean hatSchluessel;
 	private int anzahlHeiltraenke;
-	private int heiltrankWirkung;
+	private int heiltrankWirkung = 50;
 
 	private HindiBones fenster;
 
@@ -50,9 +50,8 @@ public class Spieler extends Figur {
 		return heiltrankWirkung;
 	}
 
-	public void nimmHeiltrank(Heiltrank t) {
+	public void nimmHeiltrank() {
 		anzahlHeiltraenke++;
-		heiltrankWirkung = t.getWirkung();
 	}
 
 	public void setAnzahlHeiltraenke(int anzahl) {

@@ -38,7 +38,8 @@ public class Level {
 	 * 3 = Trank
 	 * 4 = Schluessel
 	 * 5 = Monster
-	 * 6 = Tür
+	 * 6 = TürZu
+	 * 7 = TürAuf
 	 */
 	//getter-Methode, um das gesamte Level auszulesen
 	public static int [][] getKomplettesLevel(){
