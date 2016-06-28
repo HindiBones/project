@@ -287,21 +287,33 @@ public String GetPasswort(){
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
 					Level = client.aktuellesLevel;
+					Monster m = spieler.angriffsMonster();
+					if (m != null)
+						m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(0);
 					Level = client.aktuellesLevel;
+					Monster m = spieler.angriffsMonster();
+					if (m != null)
+						m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(2);
 				Level = client.aktuellesLevel;
+				Monster m = spieler.angriffsMonster();
+				if (m != null)
+					m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(3);
 				Level = client.aktuellesLevel;
+				Monster m = spieler.angriffsMonster();
+				if (m != null)
+					m.changeHealth(-BOX / 4);
 
 				// B f�r 'Heiltrank benutzen'
 			} else 
@@ -326,10 +338,9 @@ public String GetPasswort(){
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
-				else if (level[spieler.getXPos()][spieler.getYPos()] instanceof Heiltrank) {
-					spieler.nimmHeiltrank((Heiltrank) level[spieler.getXPos()][spieler
-							.getYPos()]);
-					level[spieler.getXPos()][spieler.getYPos()] = new Boden();
+				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 3) {
+					spieler.nimmHeiltrank();
+					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Schluessel benutzen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
