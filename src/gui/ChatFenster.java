@@ -177,6 +177,7 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==this.senden){ 
+//<<<<<<< HEAD
 			
 			String Text= this.textfeld.getText()+"\n";
 			
@@ -188,6 +189,12 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 			textumfeld.requestFocusInWindow();
 			textumfeld.setCaretPosition(i);
 
+//=======
+//			System.out.println("in in abfrage");
+//			Text= this.textfeld.getText();
+//			System.out.println(Text );
+//			textumfeld.insert(Text, 1);
+//>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			
 		}
 		// TODO Auto-generated method stub

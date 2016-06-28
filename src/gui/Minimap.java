@@ -76,7 +76,7 @@ public class Minimap extends JPanel {
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
