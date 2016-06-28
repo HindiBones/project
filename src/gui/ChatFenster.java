@@ -19,11 +19,15 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
+import Client.ChatNachricht;
+import Client.Client;
+
 public class ChatFenster extends JFrame implements WindowListener, MouseListener, KeyListener,ActionListener {
 
 	private TextArea textumfeld=null;
 	private TextField textfeld=null;
 	private String benutzername= null;
+	public Client client;
 		Button senden;
 	Button löschen;
 	int i =1;
@@ -33,12 +37,13 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	
 	ChatFenster(String s) {
 
-	
+			client = new Client(0);
+			
 			this.addWindowListener(this);
 				this.setSize(490,380);
 				this.setResizable(true);
 				this.setLayout(new BorderLayout());
-				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 	
 			textumfeld=new TextArea();
@@ -64,7 +69,7 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 			pane.add(senden);
 			pane.add(löschen);
 			this.add(pane,"South");
-			this.setVisible(true);
+			this.setVisible(false);
 			
 			textfeld.requestFocus();
 			
@@ -156,8 +161,20 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+			String Text= this.textfeld.getText();
+			
+			
+			
+			textumfeld.append(Text+"\n");
+			client.sende(new ChatNachricht(Text));
+			textfeld.setText(null);
+			
+			textumfeld.requestFocusInWindow();
+			textumfeld.setCaretPosition(i);
+			
+			this.setVisible(false);
+		}
 	}
 
 	@Override
@@ -167,7 +184,6 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	}
 	
 	public static void main(String[] args){
-		ChatFenster c= new ChatFenster("Chat client");
 	}
 
 
@@ -177,24 +193,22 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==this.senden){ 
-//<<<<<<< HEAD
 			
-			String Text= this.textfeld.getText()+"\n";
+			String Text= this.textfeld.getText();
 			
 			
 	
-			textumfeld.append(Text);
+			textumfeld.append(Text+"\n");
+			client.sende(new ChatNachricht(Text));
 			textfeld.setText(null);
 			
 			textumfeld.requestFocusInWindow();
 			textumfeld.setCaretPosition(i);
 
-//=======
 //			System.out.println("in in abfrage");
 //			Text= this.textfeld.getText();
 //			System.out.println(Text );
 //			textumfeld.insert(Text, 1);
-//>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			
 		}
 		// TODO Auto-generated method stub

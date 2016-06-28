@@ -45,6 +45,7 @@ public class Client {
 					case 6: System.out.println("Level wurde geladen!");break;
 					case 7: System.out.println(benutzername + " hat ein Monster angegriffen!");break;
 					case 8: System.out.println(benutzername + " hat einen Trank benutzt!");break;
+					case 9: System.out.println(benutzername + ": " + m.nachricht);
 				}
 			
 		}

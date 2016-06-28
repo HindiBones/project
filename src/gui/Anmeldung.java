@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +16,7 @@ import javax.swing.JTextField;
 
 import Client.LoginNachricht;
 
-public class Anmeldung extends JPanel implements ActionListener{
+public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
 	public JButton anmeldeButton;
 
@@ -133,6 +135,24 @@ public class Anmeldung extends JPanel implements ActionListener{
 		
 			
 		}     
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// Hier soll später mit Enter eingeloggt werden können
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

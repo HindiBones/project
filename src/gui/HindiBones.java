@@ -48,7 +48,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	public Level Level;
 	public Client client;
-	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
@@ -59,7 +58,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public boolean highscoreAngezeigt = false;
 	public boolean anmeldeanzeige=false;
 	
-	
+	private ChatFenster chatfenster;
 	
 	
 	public final int MAXLEVEL = 5; 
@@ -80,16 +79,14 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		client.spieler = spieler;
 
-
-		client.spieler = spieler;
+		chatfenster= new ChatFenster("Chat client");
+		chatfenster.client = client;
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
 		
 		// initialisieren des Fensters 
 		starteNeuesSpiel();
-		
-		
 	}
 
 	public void initialisiereJFrame(int width, int height, String title) {
@@ -266,13 +263,7 @@ public String GetPasswort(){
 	
 	public Anmeldung getAnmeldung(){
 		return anmeldung;
-	}
-	
-	public LoginNachricht getLogNachricht(){
-		return lognachricht;
-	}
-
-	
+	}	
 	
 	// Methoden der Schnittstelle KeyListener
 	public void keyPressed(KeyEvent e) {
@@ -364,6 +355,11 @@ public String GetPasswort(){
 						}
 					}
 				}
+			
+			if(e.getKeyCode() == KeyEvent.VK_ENTER){
+				chatfenster.setVisible(true);
+				chatfenster.toFront();
+			}
 			}
 		}
 	
