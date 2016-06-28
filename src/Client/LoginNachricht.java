@@ -8,4 +8,12 @@ public class LoginNachricht extends Nachricht {
 		this.benutzername = name;
 		this.passwort = pw;
 	}
+	
+//	public String GetBenutzername(){
+//		return benutzername;
+//	}
+//	public String GetPasswort(){
+//		return passwort;
+//	}
+
 }

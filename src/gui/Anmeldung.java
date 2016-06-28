@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Client.LoginNachricht;
+
 public class Anmeldung extends JPanel implements ActionListener{
 	
 	public JButton anmeldeButton;
@@ -22,23 +24,28 @@ public class Anmeldung extends JPanel implements ActionListener{
 	JLabel benutzernameL;
 	JLabel passwortL;
 	
+	String Bn;
+	String Pw;
+	
+//	public LoginNachricht lognachricht;
+	
 	HindiBones fenster;
 	public Anmeldung(HindiBones fenster){
 		this.fenster=fenster;
 		//Bild einbinden
 		 //Passwort Eingabe Feld
-		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lŠnge 15
-		 passwortfeld.setBounds(370,250,230,35); //Grš§e + Koord. wird festgelegt
+		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lï¿½nge 15
+		 passwortfeld.setBounds(370,250,230,35); //Grï¿½ï¿½e + Koord. wird festgelegt
 		 this.add(passwortfeld);
 		 
 		 //Benutzer Name Eingabe Feld
-		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fŸr Nicknamen
-		 textBenutzer.setBounds(370,200,230,35);//Grš§e+Koord. wird festgelegt 
+		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fï¿½r Nicknamen
+		 textBenutzer.setBounds(370,200,230,35);//Grï¿½ï¿½e+Koord. wird festgelegt 
 		 this.add(textBenutzer);
 		 
 		 //Label /Beschriftungen
-		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels hei§t eines Textes
-		 benutzernameL.setBounds(278,190,100,50); //Grš§e+ Koord. wird festgelegt
+		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels heiï¿½t eines Textes
+		 benutzernameL.setBounds(278,190,100,50); //Grï¿½ï¿½e+ Koord. wird festgelegt
 		 this.add(benutzernameL);
 		 
 		 passwortL = new JLabel("Passwort: ");// " das selbe vorgehen wie mit username "
@@ -47,15 +54,15 @@ public class Anmeldung extends JPanel implements ActionListener{
 		 
 		 //Buttons u.a einlogg+ registrierungs Button
 		 anmeldeButton = new JButton("Einloggen"); //Erzeugen eines Buttons "login"
-		 anmeldeButton.setBounds(370,320,100,50);//Grš§e+Koord. wird festgelegt 
+		 anmeldeButton.setBounds(370,320,100,50);//Grï¿½ï¿½e+Koord. wird festgelegt 
 		 this.add(anmeldeButton);
 
 		 registrierButton = new JButton("Registrieren");//Erzeugen eines Buttons "registrieren"
-		 registrierButton.setBounds(500,320,100,50); //Grš§e+Koord. wird festgelegt 
+		 registrierButton.setBounds(500,320,100,50); //Grï¿½ï¿½e+Koord. wird festgelegt 
 		 this.add(registrierButton);
 
-		 //Standard Einstellungen fŸr  das Anmelde Fenster
-		 setSize(640,400); // Grš§e ensprechend an das Bild angepasst
+		 //Standard Einstellungen fï¿½r  das Anmelde Fenster
+		 setSize(640,400); // Grï¿½ï¿½e ensprechend an das Bild angepasst
 		 setLocation(500,280); //Zentrieren 
 		 this.setLayout (null);
 		  
@@ -70,6 +77,8 @@ public class Anmeldung extends JPanel implements ActionListener{
 		 registrierButton.addActionListener(this);
 
 		 //Standardaeinstellung
+		 
+		 
 
 		 setVisible(true);
 
@@ -80,6 +89,11 @@ public class Anmeldung extends JPanel implements ActionListener{
 	 bildLabel.setIcon(new ImageIcon("img/Bild.png")); 
 	 bildLabel.setBounds(0, 0, 640, 400); 
 	 this.add(bildLabel); 
+	 
+//		lognachricht= new LoginNachricht("Peace", "12345");
+//		Bn="Peace";
+//		Pw="12345";
+//	 
 	}
 
 	@Override
@@ -89,10 +103,11 @@ public class Anmeldung extends JPanel implements ActionListener{
 			String nickname=textBenutzer.getText();
 			@SuppressWarnings("deprecation")
 			String pwd= passwortfeld.getText();
-			//Beispiel Versuch wird spŠter mit client erweitert
-			if(nickname.equals("Mann1")&& pwd.equals("12345")){
+//			lognachricht= new LoginNachricht("Peace", "12345");
+			//Beispiel Versuch wird spï¿½ter mit client erweitert
+			if(nickname.equals(fenster.GetBenutzername())&& pwd.equals(fenster.GetPasswort())){
 				try {
-					Thread.sleep(50);
+					Thread.sleep(100);
 					fenster.zeigeSpielfeld();
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
@@ -105,7 +120,7 @@ public class Anmeldung extends JPanel implements ActionListener{
 //				anmeldung1=false;
 				JOptionPane.showMessageDialog(null, "Falsches Passwort oder Falscher Benutzername");
 			}
-		//…ffnen der Registrierung 	
+		//ï¿½ffnen der Registrierung 	
 		}if(e.getSource()==registrierButton)	{
 			try {
 				Thread.sleep(50);	
