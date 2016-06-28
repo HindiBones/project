@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.accessibility.Accessible;
@@ -102,6 +103,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.highscore = new Highscore();
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
+		
 		this.anmeldung = new Anmeldung(this);
 		
 		
@@ -448,11 +450,18 @@ public String GetPasswort(){
 		try {
 			Thread.sleep(100);		
 		spieler = new Spieler(0, this);
-		String imgDatei = "img//red_Point.png";
-		
+
+
+	
+//		
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
 		spieler2=new Spieler(1, this);
-		spieler2.setImage(spieler2.getImage().getScaledInstance(10,10,Image.SCALE_DEFAULT)); 
+		try {
+			spieler2.setImage(ImageIO.read(new File("img//red_point.png")).getScaledInstance(10, 10, Image.SCALE_DEFAULT));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		monsterListe = new LinkedList<Monster>();
 		level = new Spielelement[WIDTH][HEIGHT];
 		Level = new Level(0, new int[WIDTH][HEIGHT]);
