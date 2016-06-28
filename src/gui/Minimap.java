@@ -76,7 +76,8 @@ public class Minimap extends JPanel {
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+					}
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
@@ -89,11 +90,17 @@ public class Minimap extends JPanel {
 								null);
 						
 						
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-							g.drawImage(tuerOffen2, i * 10 , j
+					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+						System.out.println("Sollte Offene Türe zechenen");
+						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+								null);	
+						g.drawImage(tuerOffen2, i * 10 , j
 									* 10, null);
-					}else if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
-							g.drawImage(tuerZu2, i * 10, j
+					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+						System.out.println("Sollte Offene Türe zechenen");
+						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+								null);	
+						g.drawImage(tuerZu2, i * 10, j
 									* 10, null);
 			}
 					

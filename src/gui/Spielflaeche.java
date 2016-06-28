@@ -42,9 +42,7 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
-//			String imgDatei = "img//spieler.png";
-//			spieler=ImageIO.read(new File(imgDatei));
-//			
+
 			
 		} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.");
