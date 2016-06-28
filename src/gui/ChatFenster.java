@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -17,16 +19,21 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
-public class ChatFenster extends JFrame implements WindowListener, MouseListener, KeyListener {
+public class ChatFenster extends JFrame implements WindowListener, MouseListener, KeyListener,ActionListener {
 
 	private TextArea textumfeld=null;
 	private TextField textfeld=null;
 	private String benutzername= null;
+		Button senden;
+	Button löschen;
+	
 	
 	
 	//***Julius*** Bitte anpassen:
 	
 	ChatFenster(String s) {
+
+	
 			this.addWindowListener(this);
 				this.setSize(490,380);
 				this.setResizable(true);
@@ -48,10 +55,12 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 			
 			pane.add(textfeld);
 			pane.setBackground(new Color(222,221,221));
-			Button senden= new Button("senden");
+			senden= new Button("senden");
 			senden.addMouseListener(this);
-			Button löschen= new Button("löschen");
+			senden.addActionListener(this);
+	löschen= new Button("löschen");
 			löschen.addMouseListener(this);
+			löschen.addActionListener(this);
 			pane.add(senden);
 			pane.add(löschen);
 			this.add(pane,"South");
@@ -159,6 +168,23 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	
 	public static void main(String[] args){
 		ChatFenster c= new ChatFenster("Chat client");
+	}
+
+
+
+int i =1;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==this.senden){ 
+			System.out.println("in in abfrage");
+			String Text= this.textfeld.getText();
+			System.out.println(Text );
+			textumfeld.insert(Text, 1);
+			this.textumfeld.insertText(Text, 3);
+			
+		}
+		// TODO Auto-generated method stub
+		
 	}
 	
 
