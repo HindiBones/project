@@ -26,7 +26,7 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 	private String benutzername= null;
 		Button senden;
 	Button löschen;
-	
+	int i =1;
 	
 	
 	//***Julius*** Bitte anpassen:
@@ -172,14 +172,29 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 
 
 
-int i =1;
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource()==this.senden){ 
-			System.out.println("in in abfrage");
-			String Text= this.textfeld.getText();
-			System.out.println(Text );
-			textumfeld.insert(Text, 1);
+//<<<<<<< HEAD
+			
+			String Text= this.textfeld.getText()+"\n";
+			
+			
+	
+			textumfeld.append(Text);
+			textfeld.setText(null);
+			
+			textumfeld.requestFocusInWindow();
+			textumfeld.setCaretPosition(i);
+
+//=======
+//			System.out.println("in in abfrage");
+//			Text= this.textfeld.getText();
+//			System.out.println(Text );
+//			textumfeld.insert(Text, 1);
+//>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			
 		}
 		// TODO Auto-generated method stub
