@@ -5,9 +5,8 @@ import datenstruktur.Level;
 public class Nachricht {
 	int typ;
 	boolean aufgenommen;
-	String fehlermeldung, benutzername, passwort;
+	String fehlermeldung, benutzername, passwort, nachricht;
 	Level[] leveldaten;
-	Spielelement item;
 	int xKoo;
 	int yKoo;
 	int spielerID;

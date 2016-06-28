@@ -185,23 +185,19 @@ public class Minimap extends JPanel {
 		g.drawString(s, 60, 222);
 		g.drawImage(heiltrank2, 63,210, null);
 
-		Spielelement feld = fenster.level[fenster.spieler.getXPos()][fenster.spieler
-				.getYPos()];
+		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
 		g.setColor(Color.BLACK);
-		if (feld instanceof Schluessel) {
+		if (feld == 4) {
 			g.drawImage(sblase,0,375,null);
-			g.drawString(" Nimm den Schl�ssel", 7, 400);
-		} else if (feld instanceof Tuer) {
-			if (!((Tuer) feld).istOffen()) {
-				
+			g.drawString(" Nimm den Schluessel", 7, 400);
+		} else if (feld == 6) {
 				if (fenster.spieler.hatSchluessel()){
 					g.drawImage(sblase,0,375,null);
-					g.drawString("�ffne die T�r",7, 400);}
+					g.drawString("Oeffne die Tuer",7, 400);}
 				else{
 					g.drawImage(sblase,0,375,null);
-					g.drawString("T�r ist verschlossen!", 7, 400);}
-			}
-		} else if (feld instanceof Heiltrank) {
+					g.drawString("Tuer ist verschlossen!", 7, 400);}
+		} else if (feld == 3) {
 			g.drawImage(sblase,0,375,null);
 			g.drawString(" Ein Heiltrank !", 7,400);
 		}

@@ -227,10 +227,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		try {
 			Thread.sleep(50);
 			this.add(anmeldung, BorderLayout.CENTER);	
+		
 		//Verbindung zum Client
 		lognachricht= new LoginNachricht("Peace", "12345");
 		Bn="Peace";
 		Pw="12345";
+		
+		// Registrierung
 
 		
 		

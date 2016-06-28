@@ -4,20 +4,16 @@ package Client;
 public class ItemNachricht extends Nachricht{
 	
 	
-	
-	public ItemNachricht(int a, int b, Schluessel item){
-		super(4);
+	/*
+	 * item = 2: Trank aufgehoben
+	 * item = 4: Schluessel aufgehoben
+	 * item = 8: Trank benutzt
+	 */
+	public ItemNachricht(int a, int b, int item){
+		super(item);
 		this.xKoo=a;
 		this.yKoo=b;
-		this.item = item;
 	}
-	public ItemNachricht(int a, int b, Heiltrank trank){
-		super(2);
-		this.xKoo=a;
-		this.yKoo=b;
-		this.item = trank;
-	}
-
 	public int getxKoo(){
 		return this.xKoo;
 	}

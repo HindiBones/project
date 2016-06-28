@@ -43,6 +43,9 @@ public class Client {
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
 					case 6: System.out.println("Level wurde geladen!");break;
+					case 7: System.out.println(benutzername + " hat ein Monster angegriffen!");break;
+					case 8: System.out.println(benutzername + " hat einen Trank benutzt!");break;
+					case 9: System.out.println(benutzername + ": " + m.nachricht);
 				}
 			
 		}
@@ -127,11 +130,32 @@ public class Client {
 	}
 
 	public void benutzeHeiltrank(){
-		spieler.benutzeHeiltrank();
+		int change = spieler.benutzeHeiltrank();
+		// Heilungseffekt wird verbessert, falls neue Monster durch das
+		// Aufheben des Schl�ssels ausgel�st wurden
+		if (spieler.hatSchluessel())
+			spieler.changeHealth((int) (change * 1.5));
+		else
+			spieler.changeHealth((int) (change * 0.5));
+		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 8));
 	}
 	
 	public void nimmSchluessel(){
 		spieler.nimmSchluessel();
+		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 4));
+	}
+	
+	public void nimmHeiltrank(){
+		spieler.nimmHeiltrank();
+		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 2));
+	}
+	
+	public void benutzeSchluessel(){
+		if (spieler.hatSchluessel()) {
+			aktuellesLevel.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
+			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
+			sende(new Nachricht(3));
+			spieler.entferneSchluessel();}
 	}
 	
 	public void levelWechseln(){
