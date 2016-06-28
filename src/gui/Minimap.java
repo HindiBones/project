@@ -87,15 +87,15 @@ public class Minimap extends JPanel {
 						
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
-//						if (((Tuer) fenster.level[i][j]).istOffen())
-//							g.drawImage(tuerOffen2, i * 10 , j
-//									* 10, null);
-//						else
-//							g.drawImage(tuerZu2, i * 10, j
-//									* 10, null);
-				} 
 						
-
+						
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+							g.drawImage(tuerOffen2, i * 10 , j
+									* 10, null);
+					}else if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+							g.drawImage(tuerZu2, i * 10, j
+									* 10, null);
+			}
 					
 			}
 

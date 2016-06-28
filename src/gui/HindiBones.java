@@ -8,9 +8,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.LinkedList;
 
 import javax.accessibility.Accessible;
+import javax.imageio.ImageIO;
 import javax.swing.*; 
 
 import Client.Client;
@@ -447,6 +449,8 @@ public String GetPasswort(){
 		try {
 			Thread.sleep(100);		
 		spieler = new Spieler(0, this);
+		String imgDatei = "img//red_Point.png";
+		
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
 		spieler2=new Spieler(1, this);
 		spieler2.setImage(spieler2.getImage().getScaledInstance(10,10,Image.SCALE_DEFAULT)); 
