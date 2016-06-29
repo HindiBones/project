@@ -163,12 +163,18 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		// erstelle das Spielfeld 
 		this.add(minimap, BorderLayout.EAST);
+		
+		this.setFocusable(true);
+//		this.se
+		
 		this.add(menuLeiste, BorderLayout.NORTH);
 	
 
 		// aktiviere das fertige Spielfeld
 		this.requestFocus();
 		this.pack();   
+		
+		
 	
 	}
 	
