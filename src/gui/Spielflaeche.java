@@ -55,7 +55,10 @@ public class Spielflaeche extends JPanel {
 	//gezeichnet. Da sich das Bild immer mitbewegt wird durch verschiebenx /y
 	//Das richtige Bild Zentriert
 	
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	int verschiebenx=0;
 	int verschiebeny=0;
 	int grenzPunktX=4;
@@ -194,7 +197,10 @@ public class Spielflaeche extends JPanel {
 		}
 	}
 
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	private void drawMonster(Graphics g, Monster m) {
 		// Monster Health Points
 		if (inRange(m.getXPos(), m.getYPos())) {
@@ -206,7 +212,10 @@ public class Spielflaeche extends JPanel {
 
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	private boolean inRange(int i, int j) {	
 		return (Math.sqrt(Math.pow(fenster.spieler.getXPos() - i, 2)
 				+ Math.pow(fenster.spieler.getYPos() - j, 2)) < 3 || !fenster.nebelAn);

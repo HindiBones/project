@@ -98,7 +98,15 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 //	 
 	}
 
-	@Override
+	
+	/**
+	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vor. richtige eingabe)
+	 * soll das Spielfenster geöffnet werden.
+	 * 
+	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
@@ -140,7 +148,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// Hier soll sp�ter mit Enter eingeloggt werden k�nnen
+		// Hier soll sp�ter mit Enter eingeloggt werden k�nnen
 		
 	}
 

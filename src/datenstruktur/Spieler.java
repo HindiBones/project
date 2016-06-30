@@ -26,8 +26,24 @@ public class Spieler extends Figur {
 		setName("Hindi Bones");
 		setID(id);
 		this.fenster = f;
+		String imgDatei ;
 		// Bild fuer den Spieler laden
-		String imgDatei = "img//spieler.png";
+		if (fenster.zahl==0){
+			imgDatei= "img/John2.png";
+		
+		
+		
+		try {
+			setImage(ImageIO.read(new File(imgDatei)));
+		} catch (IOException e) {
+			System.err.print("Das Bild " + imgDatei
+					+ " konnte nicht geladen werden.");
+		}
+	}else if (fenster.zahl==1){
+		
+			imgDatei= "img/John1.png";
+		
+		
 		
 		try {
 			setImage(ImageIO.read(new File(imgDatei)));
@@ -36,7 +52,7 @@ public class Spieler extends Figur {
 					+ " konnte nicht geladen werden.");
 		}
 	}
-
+}
 	// Methode, um den Schluessel aufzuheben
 	public void nimmSchluessel() {
 		hatSchluessel = true;
