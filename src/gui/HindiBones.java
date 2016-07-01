@@ -67,7 +67,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public final int WIDTH = 16; // LABIRITHGR��E 
 	public final int HEIGHT =16 ; 
 	public final int BOX = 72;  // Gr��e der Bild Elemente 
-	public final int BOX2=10;
+	public final int BOX2=11;
 	public final int BOX3=32;
 	public int zahl=0;
 	
@@ -117,7 +117,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// Es wird die gewuenschte Groesse angegeben			
 		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
-		minimap.setPreferredSize(new Dimension(width/3, BOX)); //Gr��e meiner Minimap
+		minimap.setPreferredSize(new Dimension(width/3+8, BOX)); //Gr��e meiner Minimap
 		steuerung.setPreferredSize(new Dimension(width+50, height-50));
 		highscore.setPreferredSize(new Dimension(width+50, height-50));
 		anmeldung.setPreferredSize(new Dimension(640,400));
