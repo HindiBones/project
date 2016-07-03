@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.LinkedList;
 
-import komClient.Nachricht;
+//import komClient.Nachricht;
 
 public class Client extends Nachricht {
 	LinkedList<Nachricht> ClientList = new LinkedList<Nachricht>();
