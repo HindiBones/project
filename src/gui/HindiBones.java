@@ -67,8 +67,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public final int WIDTH = 16; // LABIRITHGR��E 
 	public final int HEIGHT =16 ; 
 	public final int BOX = 72;  // Gr��e der Bild Elemente 
-	public final int BOX2=10;
+	public final int BOX2=11;
 	public final int BOX3=32;
+	public int zahl=0;
 	
 	String Bn;
 	String Pw;
@@ -92,7 +93,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		
 	}
-
+	/**
+	 * Ergänzt um Minimap/Seitenstatus und der Anmeldung
+	 * Entfernt Alter Statusleiste
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void initialisiereJFrame(int width, int height, String title) {
 		
 		this.setLayout(new BorderLayout());
@@ -103,7 +109,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.highscore = new Highscore();
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
-		
 		this.anmeldung = new Anmeldung(this);
 		
 		
@@ -112,7 +117,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// Es wird die gewuenschte Groesse angegeben			
 		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
-		minimap.setPreferredSize(new Dimension(width/3, BOX)); //Gr��e meiner Minimap
+		minimap.setPreferredSize(new Dimension(width/3+8, BOX)); //Gr��e meiner Minimap
 		steuerung.setPreferredSize(new Dimension(width+50, height-50));
 		highscore.setPreferredSize(new Dimension(width+50, height-50));
 		anmeldung.setPreferredSize(new Dimension(640,400));
@@ -143,7 +148,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 	}
 
-
+	/**
+	 * Ergängt / Verbessert durch mein Seitentool(Minimap) entfernen von früherer Statusleiste
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void zeigeSpielfeld() {
 		
 		// entferne alles
@@ -152,21 +161,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.remove(anmeldung);
 		this.remove(highscore);
 		this.remove(steuerung);
-		
-		
-//			this.remove(lognachricht);
-
-
-		this.add(spielflaeche, BorderLayout.CENTER);
-		//Versuch auf Scall Panel
-						
 
 		// erstelle das Spielfeld 
+		this.add(spielflaeche, BorderLayout.CENTER);
 		this.add(minimap, BorderLayout.EAST);
-		
-		this.setFocusable(true);
-//		this.se
-		
 		this.add(menuLeiste, BorderLayout.NORTH);
 	
 
@@ -179,9 +177,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	}
 	
 
-
-
-
+	/**
+	 * Ergänzt um Minimap 
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void zeigeHighscore() {
 		// entferne alles
 		highscoreAngezeigt = true;
@@ -201,7 +201,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		highscore.repaint();
 	}
 	
-
+	/**
+	 * Ergänzt um Minimap
+	 * @author Seyma Keser
+	 */
 	public void zeigeSteuerung() {
 		// entferne alles
 		highscoreAngezeigt = true;
@@ -220,7 +223,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		steuerung.repaint();
 	}
 
-
+	/**
+	 * Methode zum Anzeigen des Anmelde Panels
+	 * + Verbindung zum Client wird aufgebaut
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void zeigeAnmeldung(){
 
 		highscoreAngezeigt=false;
@@ -234,63 +242,87 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			Thread.sleep(50);
 			this.add(anmeldung, BorderLayout.CENTER);	
 		
-		//Verbindung zum Client
-		lognachricht= new LoginNachricht("Peace", "12345");
-		Bn="Peace";
-		Pw="12345";
+			//Verbindung zum Client
+			lognachricht= new LoginNachricht("Peace", "12345");
+			Bn="Peace";
+			Pw="12345";
 		
-		// Registrierung
-
-		
-		
+			// Registrierung
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
+	
 		this.requestFocus();
 		this.pack();
 		anmeldung.repaint();
 		
 	}
 	
+	/**
+	 * Getter- Methoden zur Anmeldung - Benutzername + Passwort
+	 * @author Seyma Keser
+	 */
 	public String GetBenutzername(){
 	return Bn;
-}
-public String GetPasswort(){
-	return Pw;
-}
+	}
+	public String GetPasswort(){
+		return Pw;
+	}
 	
-	//	 Getter fuer die Spielflaeche bzw. Statusleiste
+	/**
+	 * Getter für Minimap(mein komplettes Seitentool)
+	 * @author Seyma Keser
+	 */
 	public Minimap getMinimap(){
 		return minimap;
 	}
 	
+	/**
+	 * Getter-Methode für Spielfläche
+	 * @author Seyma Keser
+	 */
 	public Spielflaeche getSpielflaeche() {
 		return spielflaeche;
 	}
 
+	/**
+	 * Getter- Methode für Highscore
+	 * @author Seyma Keser
+	 */
 	public Highscore getHighscore() {
 		return highscore;
 	}
 	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public Anmeldung getAnmeldung(){
 		return anmeldung;
 	}
 	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public LoginNachricht getLogNachricht(){
 		return lognachricht;
 	}
 
 	
-	
-	// Methoden der Schnittstelle KeyListener
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void keyPressed(KeyEvent e) {
+		// Methoden der Schnittstelle KeyListener
 		// Aktuelle Position des Spielers
 		int xPos = spieler.getXPos();
 		int yPos = spieler.getYPos();
-
+		
 
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
 		// Es wird geprueft, ob der naechste Schritt zulaessig ist.
@@ -299,7 +331,24 @@ public String GetPasswort(){
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
-				// Was ist mit Instanceof gemeint??
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
+		
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
@@ -308,6 +357,25 @@ public String GetPasswort(){
 					if (m != null)
 						m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
+
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(0);
@@ -316,6 +384,26 @@ public String GetPasswort(){
 					if (m != null)
 						m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+
+				
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
+	
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(2);
@@ -324,6 +412,25 @@ public String GetPasswort(){
 				if (m != null)
 					m.changeHealth(-BOX / 4);
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
+
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(3);
@@ -375,7 +482,12 @@ public String GetPasswort(){
 			}
 			}
 	}
-
+	
+	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void mouseClicked(MouseEvent e) {
 		int xKoos = 3;
 		int yKoos = 3;
@@ -390,6 +502,10 @@ public String GetPasswort(){
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
 		// Wenn ja, ist das naechste Feld begehbar?
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
+		spielflaeche.setFocusable(true);
+		spielflaeche.requestFocusInWindow();
+		this.requestFocus();
+		
 		if(mausX*10>=(mausX1*10+5))
 			mausX1+=1;
 		if(mausY*10>=(mausY1*10+5))
@@ -407,6 +523,23 @@ public String GetPasswort(){
 		
 			if(mausY1< yKoos){
 				if (Distanz1>Distanz2){
+					if(zahl==0){ zahl=1;
+					try {
+						spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					} catch (IOException en) {
+						// TODO Auto-generated catch block
+						en.printStackTrace();
+					} } 
+					else if(zahl==1){ zahl=0;
+					
+					try {
+						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					} catch (IOException en) {
+						// TODO Auto-generated catch block
+						en.printStackTrace();
+					}
+					
+					}
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
@@ -415,6 +548,23 @@ public String GetPasswort(){
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 				}}else if(mausY1 > yKoos){	
+					if(zahl==0){ zahl=1;
+					try {
+						spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					} catch (IOException en) {
+						// TODO Auto-generated catch block
+						en.printStackTrace();
+					} } 
+					else if(zahl==1){ zahl=0;
+					
+					try {
+						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					} catch (IOException en) {
+						// TODO Auto-generated catch block
+						en.printStackTrace();
+					}
+					
+					}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(0);
@@ -423,6 +573,23 @@ public String GetPasswort(){
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1<xKoos){	
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(2);
@@ -431,6 +598,23 @@ public String GetPasswort(){
 			if (m != null)
 				m.changeHealth(-BOX / 4);
 			}else if(mausX1> xKoos){
+				if(zahl==0){ zahl=1;
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				} } 
+				else if(zahl==1){ zahl=0;
+				
+				try {
+					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				} catch (IOException en) {
+					// TODO Auto-generated catch block
+					en.printStackTrace();
+				}
+				
+				}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				client.SpielerBewegung(3);
@@ -452,7 +636,10 @@ public String GetPasswort(){
 	}
 
 	
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void spielZuruecksetzen() {
 
 		
@@ -489,7 +676,10 @@ public String GetPasswort(){
 		startZeit = System.currentTimeMillis();
 	}
 
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	// Spielschleife
 	public void starteNeuesSpiel() {
 		try {
@@ -538,7 +728,10 @@ public String GetPasswort(){
 
 	}
 
-
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void nextLevel() {
 		currentLevel++;
 		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);

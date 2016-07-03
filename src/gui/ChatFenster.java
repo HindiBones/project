@@ -18,6 +18,18 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,6 +38,10 @@ import Client.Client;
 
 public class ChatFenster extends JPanel implements WindowListener, MouseListener, KeyListener,ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
 	public String benutzername= null;
@@ -35,12 +51,12 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 	int i =1;
 	
 	
-	//***Julius*** Bitte anpassen:Minimap m
+
 	Minimap m;
 	
 	ChatFenster(String s, Minimap m ) {
 			this.m= m;
-			this.setBounds(0, 500, 170, 105);
+//			this.setBounds(0, 500, 170, 115);
 //			this.setLocation(900,900);
 
 			client = new Client(0);
@@ -50,24 +66,31 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 //				this.setResizable(true);
 				this.setLayout(new BorderLayout());
 //				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				this.setPreferredSize(new Dimension(170,100));
+				this.setPreferredSize(new Dimension(170,112));
+
 				
 	
 			textumfeld=new TextArea();
-			textumfeld.setEditable(false);
+
+//			this.setBackground(new Color(111,111,111));
 			this.add(textumfeld,"Center");
 			textumfeld.setFont(new Font("Arial", Font.PLAIN,11));
+			textumfeld.setEditable(false);
+//			textumfeld.setSize(150,90);
+//			textumfeld.setBackground(new Color(111,111,111));
+			
 			
 			Panel pane= new Panel();
 			pane.setLayout(new BorderLayout());
 			
-			textfeld= new TextField(18);
+			textfeld= new TextField(10);
 			textfeld.addKeyListener(this);
 			textfeld.setFont(new Font("Arial", Font.PLAIN,11));
+//			textfeld.setBackground(new Color(111,111,111));
 			pane.add(textfeld,BorderLayout.CENTER);
 //			pane.add(textfeld);
 //			this.add(textfeld);
-			pane.setBackground(new Color(111,111,111));
+//			pane.setBackground(new Color(111,111,111));
 			senden= new Button("senden");
 			senden.addMouseListener(this);
 			senden.addActionListener(this);
@@ -78,8 +101,12 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 //			pane.add(loeschen);
 			this.add(pane,"South");
 			this.setVisible(true);
+				
+				textfeld.setForeground(Color.GRAY);
+				 textfeld.setText("Cheats/ Text eingeben");
+				 textfeld.setEditable(true);
 			
-			textfeld.requestFocus();
+				 textfeld.requestFocus();
 			
 			//this.add(m);
 			
@@ -175,12 +202,16 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
 			
+<<<<<<< HEAD
+=======
+			
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			textumfeld.append(Text+"\n");
 			client.sende(new ChatNachricht(Text));
 			textfeld.setText(null);
 			
 			textumfeld.requestFocusInWindow();
-			textumfeld.setCaretPosition(i);
+//			textumfeld.setCaretPosition(i);
 			
 			this.disable();
 		}

@@ -12,6 +12,10 @@ public class Steuerung extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void paint(Graphics g) {
 		Image boden = null;
 

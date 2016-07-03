@@ -60,7 +60,11 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		this.add(hilfe);
 		this.add(ausloggen);
 	}
-
+	
+	/**
+	 * Ergänzt um Auslogg Item
+	 * @author Seyma Keser
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == neuesSpiel) {
 			fenster.spielZuruecksetzen();
