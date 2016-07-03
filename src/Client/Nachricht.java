@@ -32,20 +32,44 @@ public class Nachricht {
 	
 	
 	// Nachricht, die gesendet wird, wenn das Level geschafft wurde - Nur zum Testen
+	/**
+	 * @author Julius
+	 * @param t: Typ der Nachricht
+	 * 
+	 * Erstellt eine Nachricht. Je nach Typ reagieren Server/Client entsprechend.
+	 */
 	public Nachricht (int t){
 		this.typ = t;
 	}
 	
+	/**
+	 * @author Julius
+	 * @return: Gibt den Typ der Nachricht zurueck.
+	 */
 	public int getTyp(){
 		return this.typ;
 	}
 
+	/**
+	 * @author Julius
+	 * @return: Gibt die ID des Spielers zurueck.
+	 */
 	public int getID(){
 		return this.spielerID;
 	}
+	
+	/**
+	 * @author Julius
+	 * @return: Gibt die gespeicherte X-Koordinate zurueck.
+	 */
 	public int getxKoo(){
 		return this.xKoo;
 	}
+	
+	/**
+	 * @author Julius
+	 * @return: Gibt die gespeicherte Y-Koordinate zurueck.
+	 */
 	public int getyKoo(){
 		return this.yKoo;
 	}

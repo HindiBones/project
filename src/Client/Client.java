@@ -18,17 +18,31 @@ public class Client {
 	public Level aktuellesLevel;
 	Level[] alleLevel;
 	String benutzername, passwort;
+	/**
+	 * @author Julius
+	 * @param i: ID des Clients
+	 * 
+	 * Erstellt ein Client-Objekt mit der ID i
+	 */
 	public Client(int i){
 		this.id=i;
 	}
 	
-	// Sendet eine Nachricht, Fï¿½gt sie in die Nachrichten-Queue ein
+	/**
+	 * @author Julius
+	 * @param m: Nachricht, die der Client senden soll
+	 * 
+	 * Sendet eine Nachricht, fuegt sie in die Nachrichten-Queue ein
+	 */
 	public void sende(Nachricht m){
 		Nachrichten.add(m);
 	}
 	
-	
-	// Hilfsmethode zum Testen, gibt die Nachrichten aus, die spï¿½ter an den Server gesendet werden
+	/**
+	 * @author Julius
+	 * 
+	 * Hilfsmethode zum Testen, gibt die Nachrichten aus, die spaeter an den Server gesendet werden
+	 */
 	public void ausgabe(){
 		while(!this.Nachrichten.isEmpty()){
 				Nachricht m = Nachrichten.poll();
@@ -52,6 +66,12 @@ public class Client {
 	}
 	
 	// ï¿½bertrï¿½gt die zu sendenden Nachrichten an einen anderen Client. Nur zu Testzwecken, spï¿½ter wird an einen Server gesendet.
+	/**
+	 * @author Julius
+	 * @param empfaenger: Empfaenger der Nachrichten
+	 * 
+	 * Uebertraegt die zu sendenden Nachrichten an einen anderen Client. Nur zu Testzwecken, spaeter wird an einen Server gesendet.
+	 */
 	public void uebertrage(Client empfaenger){
 		while(!Nachrichten.isEmpty()){
 			Nachricht n = Nachrichten.poll();
@@ -60,6 +80,11 @@ public class Client {
 	}
 	
 	// Verarbeitet die empfangenen Nachrichten
+	/**
+	 * @author Julius
+	 * 
+	 * Verarbeitet die Nachrichten, die in der NachrichtenEmpfangen Queue sind
+	 */
 	public void empfange()
 	{
 		for(int i=0;i<NachrichtenEmpfangen.size();i++){
@@ -91,6 +116,12 @@ public class Client {
 	 * 6 - Level empfangen
 	 */
 	
+	/**
+	 * @author Julius
+	 * @param richtung: Integer, der die Bewegungsrichtung angibt. 0 = runter, 1 = hoch, 2 = links, 3 = rechts
+	 * 
+	 * Bewegt den Spieler wenn möglich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
+	 */
 	public void SpielerBewegung(int richtung){
 		switch(richtung){
 		case 0:
@@ -128,7 +159,12 @@ public class Client {
 			
 		}
 	}
-
+	
+	/**
+	 * @author Julius
+	 * 
+	 * Falls der Spieler einen Heiltrank besitzt, benutzt er diesen. Sendet eine entsprechende Nachricht an den Server.
+	 */
 	public void benutzeHeiltrank(){
 		int change = spieler.benutzeHeiltrank();
 		// Heilungseffekt wird verbessert, falls neue Monster durch das
@@ -140,16 +176,31 @@ public class Client {
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 8));
 	}
 	
+	/**
+	 * @author Julius
+	 * 
+	 * Der Spieler hebt den Schluessel auf, wenn er auf diesem steht. Sendet eine entsprechende Nachricht an den Server.
+	 */
 	public void nimmSchluessel(){
 		spieler.nimmSchluessel();
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 4));
 	}
 	
+	/**
+	 * @author Julius
+	 * 
+	 * Der Spieler hebt einen Heiltrank auf, wenn er auf einem steht. Sendet eine entsprechende Nachricht an den Server.
+	 */
 	public void nimmHeiltrank(){
 		spieler.nimmHeiltrank();
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 2));
 	}
 	
+	/**
+	 * @author Julius
+	 * 
+	 * Falls der Spieler den Schluessel besitzt, benutzt er diesen. Sendet eine entsprechende Nachricht an den Server.
+	 */
 	public void benutzeSchluessel(){
 		if (spieler.hatSchluessel()) {
 			aktuellesLevel.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
@@ -158,14 +209,19 @@ public class Client {
 			spieler.entferneSchluessel();}
 	}
 	
-	public void levelWechseln(){
-		if(aktuellesLevel.getLevelID() < 4)
-		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];
-		else
-		{
-			sende(new Nachricht(3));
-			ausgabe();
-			System.exit(0);
-		}
-	}
+	/**
+	 * @author Julius
+	 * 
+	 * Wechselt das Level. Sendet eine entsprechende Nachricht an den Server.
+	 */
+//	public void levelWechseln(){
+//		if(aktuellesLevel.getLevelID() < 4)
+//		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];
+//		else
+//		{
+//			sende(new Nachricht(3));
+//			ausgabe();
+//			System.exit(0);
+//		}
+//	}
 }
