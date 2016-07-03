@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +16,7 @@ import javax.swing.JTextField;
 
 import Client.LoginNachricht;
 
-public class Anmeldung extends JPanel implements ActionListener{
+public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
 	public JButton anmeldeButton;
 
@@ -96,7 +98,15 @@ public class Anmeldung extends JPanel implements ActionListener{
 //	 
 	}
 
-	@Override
+	
+	/**
+	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vor. richtige eingabe)
+	 * soll das Spielfenster geöffnet werden.
+	 * 
+	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
@@ -133,6 +143,24 @@ public class Anmeldung extends JPanel implements ActionListener{
 		
 			
 		}     
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// Hier soll sp�ter mit Enter eingeloggt werden k�nnen
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

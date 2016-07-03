@@ -1,8 +1,9 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
@@ -17,56 +18,97 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class ChatFenster extends JFrame implements WindowListener, MouseListener, KeyListener,ActionListener {
 
-	private TextArea textumfeld=null;
-	private TextField textfeld=null;
-	private String benutzername= null;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import Client.ChatNachricht;
+import Client.Client;
+
+public class ChatFenster extends JPanel implements WindowListener, MouseListener, KeyListener,ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public TextArea textumfeld=null;
+	public TextField textfeld=null;
+	public String benutzername= null;
+	public Client client;
 		Button senden;
-	Button löschen;
+	Button loeschen;
+	int i =1;
 	
 	
-	
-	//***Julius*** Bitte anpassen:
-	
-	ChatFenster(String s) {
 
+	Minimap m;
 	
-			this.addWindowListener(this);
-				this.setSize(490,380);
-				this.setResizable(true);
-				this.setLayout(new BorderLayout());
-				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	ChatFenster(String s, Minimap m ) {
+			this.m= m;
+//			this.setBounds(0, 500, 170, 115);
+//			this.setLocation(900,900);
+
+			client = new Client(0);
 			
+//			this.addWindowListener(this);
+//				this.setSize(170	,105);
+//				this.setResizable(true);
+				this.setLayout(new BorderLayout());
+//				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				this.setPreferredSize(new Dimension(170,112));
+
+				
 	
 			textumfeld=new TextArea();
-			textumfeld.setEditable(false);
+
+//			this.setBackground(new Color(111,111,111));
 			this.add(textumfeld,"Center");
-			textumfeld.setFont(new Font("Arial", Font.PLAIN,16));
+			textumfeld.setFont(new Font("Arial", Font.PLAIN,11));
+			textumfeld.setEditable(false);
+//			textumfeld.setSize(150,90);
+//			textumfeld.setBackground(new Color(111,111,111));
+			
 			
 			Panel pane= new Panel();
-			pane.setLayout(new FlowLayout());
+			pane.setLayout(new BorderLayout());
 			
-			textfeld= new TextField(30);
+			textfeld= new TextField(10);
 			textfeld.addKeyListener(this);
-			textfeld.setFont(new Font("Arial", Font.PLAIN,16));
-			
-			pane.add(textfeld);
-			pane.setBackground(new Color(222,221,221));
+			textfeld.setFont(new Font("Arial", Font.PLAIN,11));
+//			textfeld.setBackground(new Color(111,111,111));
+			pane.add(textfeld,BorderLayout.CENTER);
+//			pane.add(textfeld);
+//			this.add(textfeld);
+//			pane.setBackground(new Color(111,111,111));
 			senden= new Button("senden");
 			senden.addMouseListener(this);
 			senden.addActionListener(this);
-	löschen= new Button("löschen");
-			löschen.addMouseListener(this);
-			löschen.addActionListener(this);
-			pane.add(senden);
-			pane.add(löschen);
+			loeschen= new Button("löschen");
+			loeschen.addMouseListener(this);
+			loeschen.addActionListener(this);
+//			pane.add(senden);
+//			pane.add(loeschen);
 			this.add(pane,"South");
 			this.setVisible(true);
+				
+				textfeld.setForeground(Color.GRAY);
+				 textfeld.setText("Cheats/ Text eingeben");
+				 textfeld.setEditable(true);
 			
-			textfeld.requestFocus();
+				 textfeld.requestFocus();
+			
+			//this.add(m);
 			
 			
 
@@ -154,37 +196,61 @@ public class ChatFenster extends JFrame implements WindowListener, MouseListener
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+			String Text= this.textfeld.getText();
+			textumfeld.append(Text+"\n");
+			client.sende(new ChatNachricht(Text));
+			textfeld.setText(null);
+			
+			textumfeld.requestFocusInWindow();
+//			textumfeld.setCaretPosition(i);
+			
+			this.disable();
+		}
 	}
+//	public static void main (String [] args){
+//		ChatFenster c= new ChatFenster("Chat");
+//		
+//		
+//		
+//	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public static void main(String[] args){
-		ChatFenster c= new ChatFenster("Chat client");
-	}
 
 
 
-int i =1;
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.senden){ 
-			System.out.println("in in abfrage");
-			String Text= this.textfeld.getText();
-			System.out.println(Text );
-			textumfeld.insert(Text, 1);
-			
-		}
-		// TODO Auto-generated method stub
 		
-	}
+//		if(e.getSource()==this.senden){ 
+//			
+//			String Text= this.textfeld.getText();
+//			
+//			
+//	
+//			textumfeld.append(Text+"\n");
+//			//client.sende(new ChatNachricht(Text));
+//			textfeld.setText(null);
+//			
+//			textumfeld.requestFocusInWindow();
+//			textumfeld.setCaretPosition(i);
+//
+//
+//			
+//		}
+		// TODO Auto-generated method stub
+	}	
+		
+
+		
+	
 	
 
 }

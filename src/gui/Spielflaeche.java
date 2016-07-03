@@ -23,7 +23,7 @@ public class Spielflaeche extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,
-			feuerball;
+			feuerball, spieler;
 	private HindiBones fenster;
 	public int  wechselX=0;
 	public int wechselY=0;
@@ -42,6 +42,8 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
+
+			
 		} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.");
 		}
@@ -53,7 +55,10 @@ public class Spielflaeche extends JPanel {
 	//gezeichnet. Da sich das Bild immer mitbewegt wird durch verschiebenx /y
 	//Das richtige Bild Zentriert
 	
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	int verschiebenx=0;
 	int verschiebeny=0;
 	int grenzPunktX=4;
@@ -94,33 +99,37 @@ public class Spielflaeche extends JPanel {
 						
 					}
 					
-					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) {
+					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) { //WAND
 						// Hier kommt eine Wand hin
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+							//Boden=1  5= Monster
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
+						//4=Schlüssel
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
+						//Geschlossene Tür
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7) {
+							//offene Tür
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
+							//Heiltrank
 					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
@@ -188,7 +197,10 @@ public class Spielflaeche extends JPanel {
 		}
 	}
 
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	private void drawMonster(Graphics g, Monster m) {
 		// Monster Health Points
 		if (inRange(m.getXPos(), m.getYPos())) {
@@ -200,7 +212,10 @@ public class Spielflaeche extends JPanel {
 
 		}
 	}
-	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	private boolean inRange(int i, int j) {	
 		return (Math.sqrt(Math.pow(fenster.spieler.getXPos() - i, 2)
 				+ Math.pow(fenster.spieler.getYPos() - j, 2)) < 3 || !fenster.nebelAn);

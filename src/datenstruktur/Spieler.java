@@ -13,12 +13,12 @@ public class Spieler extends Figur {
 	
 	private boolean hatSchluessel;
 	private int anzahlHeiltraenke;
-	private int heiltrankWirkung;
+	private int heiltrankWirkung = 50;
 
 	private HindiBones fenster;
 
 	public Spieler(int id, HindiBones f) {
-		String imgDatei = "img//spieler.png";
+		
 		setAnzahlHeiltraenke(0);
 		setPos(0, 0);
 		setHealth(100);
@@ -26,7 +26,25 @@ public class Spieler extends Figur {
 		setName("Hindi Bones");
 		setID(id);
 		this.fenster = f;
+		String imgDatei ;
 		// Bild fuer den Spieler laden
+		if (fenster.zahl==0){
+			imgDatei= "img/John2.png";
+		
+		
+		
+		try {
+			setImage(ImageIO.read(new File(imgDatei)));
+		} catch (IOException e) {
+			System.err.print("Das Bild " + imgDatei
+					+ " konnte nicht geladen werden.");
+		}
+	}else if (fenster.zahl==1){
+		
+			imgDatei= "img/John1.png";
+		
+		
+		
 		try {
 			setImage(ImageIO.read(new File(imgDatei)));
 		} catch (IOException e) {
@@ -34,7 +52,7 @@ public class Spieler extends Figur {
 					+ " konnte nicht geladen werden.");
 		}
 	}
-
+}
 	// Methode, um den Schluessel aufzuheben
 	public void nimmSchluessel() {
 		hatSchluessel = true;
@@ -46,13 +64,15 @@ public class Spieler extends Figur {
 	}
 
 	public int benutzeHeiltrank() {
-		setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
+		if(anzahlHeiltraenke > 0){
+		//setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
 		return heiltrankWirkung;
+		}
+		else return 0;
 	}
 
-	public void nimmHeiltrank(Heiltrank t) {
+	public void nimmHeiltrank() {
 		anzahlHeiltraenke++;
-		heiltrankWirkung = t.getWirkung();
 	}
 
 	public void setAnzahlHeiltraenke(int anzahl) {

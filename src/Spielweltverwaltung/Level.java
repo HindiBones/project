@@ -1,13 +1,13 @@
-package Client;
+package Spielweltverwaltung;
 
 import java.io.IOException;
 
 public class Level {
-
+	
 	public static int levelID;
 	public static int [][] levelInhalt;
 
-	public Level(int id, int [][]level) {
+	public Level(int id, int [][]level) throws IOException {
 		 levelID = id;
 		 levelInhalt = level;
 	 }
@@ -24,15 +24,6 @@ public class Level {
 		levelInhalt[x][y] = inhalt;
 	}
 	
-	//Hilfsmethode, später wieder löschen, Array voller 0en füllen
-	public static void setInhaltNull(){
-		for(int i = 0; i<levelInhalt.length;i++){
-			for (int j  = 0;j<levelInhalt[0].length;j++){
-				levelInhalt[j][i]=0;
-			}
-		}
-	}
-	
 	//getter-Methode, um das gesamte Level auszulesen
 	public static int [][] getKomplettesLevel(){
 		return levelInhalt;
@@ -43,23 +34,21 @@ public class Level {
 		return levelInhalt[x][y];
 	}
 	
-	//Methode um Level auf der Konsole auszugeben
-	public void ausgabe(){
-		for(int i=0;i<levelInhalt.length;i++){
-			for(int j = 0;j<levelInhalt[0].length;j++){
-				System.out.print(levelInhalt[j][i]);
-			}
-			System.out.println();
+	//getter Methode für alle x-Werte
+	public static int[] getAlleXWerte(int yKoordinate){
+		int []xWerte = null;
+		for(int i = 0; i<=levelInhalt.length; i++){
+			xWerte[i]= levelInhalt[i][yKoordinate];
 		}
+		return xWerte;
 	}
 	
-	//Länge des Arrays in x-Richtung bestimmen
-	public int getLaengeX(){
-		return levelInhalt.length;
-	}
-	
-	//Länge des Arrays in y-Richtung bestimmen
-	public int getLaengeY(){
-		return levelInhalt[0].length;
+	//getter Methode für alle y-Werte
+	public static int[] getAlleYWerte(int xKoordinate){
+		int []yWerte = null;
+		for(int i = 0; i<=levelInhalt.length; i++){
+			yWerte[i]= levelInhalt[i][xKoordinate];
+		}
+		return yWerte;
 	}
 }

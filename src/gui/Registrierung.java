@@ -36,20 +36,20 @@ public class Registrierung extends JFrame implements ActionListener{
 	 AnmeldePanel = new JPanel();
 	this.getContentPane().add(AnmeldePanel);
 	
-	 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lŠnge 15
-	 passwortfeld.setBounds(200,150,230,35); //Grš§e + Koord. wird festgelegt
+	 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lï¿½nge 15
+	 passwortfeld.setBounds(200,150,230,35); //Grï¿½ï¿½e + Koord. wird festgelegt
 	 AnmeldePanel.add(passwortfeld);
 	 
-	 NeuesPasswortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lŠnge 15
-	 NeuesPasswortfeld.setBounds(200,200,230,35); //Grš§e + Koord. wird festgelegt
+	 NeuesPasswortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes lï¿½nge 15
+	 NeuesPasswortfeld.setBounds(200,200,230,35); //Grï¿½ï¿½e + Koord. wird festgelegt
 	 AnmeldePanel.add(NeuesPasswortfeld);
 	 
-	 textNBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fŸr Nicknamen
-	 textNBenutzer.setBounds(200,100,230,35);//Grš§e+Koord. wird festgelegt 
+	 textNBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fï¿½r Nicknamen
+	 textNBenutzer.setBounds(200,100,230,35);//Grï¿½ï¿½e+Koord. wird festgelegt 
 	 AnmeldePanel.add(textNBenutzer);
 	 
-	 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels hei§t eines Textes
-	 benutzernameL.setBounds(100,90,100,50); //Grš§e+ Koord. wird festgelegt
+	 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels heiï¿½t eines Textes
+	 benutzernameL.setBounds(100,90,100,50); //Grï¿½ï¿½e+ Koord. wird festgelegt
 	 AnmeldePanel.add(benutzernameL);
 	 
 	 passwortL = new JLabel("Neues Passwort: ");// " das selbe vorgehen wie mit username "
@@ -62,14 +62,14 @@ public class Registrierung extends JFrame implements ActionListener{
 	 
 
 	 registrierButton = new JButton("Registrieren");//Erzeugen eines Buttons "registrieren"
-	 registrierButton.setBounds(200,250,230,35); //Grš§e+Koord. wird festgelegt 
+	 registrierButton.setBounds(200,250,230,35); //Grï¿½ï¿½e+Koord. wird festgelegt 
 	 registrierButton.addActionListener(this);
 	 AnmeldePanel.add(registrierButton);
 
 
 
 	 
-	 setSize(640,400); // Grš§e ensprechend an das Bild angepasst
+	 setSize(640,400); // Grï¿½ï¿½e ensprechend an das Bild angepasst
 	 setLocation(550,320); //Zentrieren 
 	 AnmeldePanel.setLayout (null);
 	  
@@ -97,20 +97,24 @@ public class Registrierung extends JFrame implements ActionListener{
 	
 	}
 	
+	/**
+	 * 
+	 * @author Seyma Keser
+	 */
 	public void actionPerformed(ActionEvent e) {
-		//Eingaben sollen spŠter im Client gepspeichert werden
+		//Eingaben sollen spï¿½ter im Client gepspeichert werden
 		//Registrierung vergleich Passwort und Wiederholtes Psw
-		//auf gleichheit und das Ÿberhaupt ein Passwort eingegeben wurde
+		//auf gleichheit und das ï¿½berhaupt ein Passwort eingegeben wurde
 		if(e.getSource()==registrierButton){
 			String nickname=textNBenutzer.getText();
 			@SuppressWarnings("deprecation")
 			String pwd= passwortfeld.getText();
 			@SuppressWarnings("deprecation")
 			String wpwd= NeuesPasswortfeld.getText();
-			//Beispiel Versuch wird spŠter mit client erweitert
+			//Beispiel Versuch wird spï¿½ter mit client erweitert
 			if(pwd.equals(wpwd)&& (pwd.isEmpty()==false )){
 				anmeldung1= true;
-				//Systemnachricht: BestŠtigung
+				//Systemnachricht: Bestï¿½tigung
 				JOptionPane.showMessageDialog(this, "Ihr Benutzername: " + nickname + " ,wurde registriert ");
 			    dispose();
 				
