@@ -31,21 +31,24 @@ import levelgenerator.Labyrinth;
 					System.out.println();
 				}
 			}
+			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
+			
 			//Test: Veränderung  einzelner Mapelemente
 			spiel.setLevelInhalt(0, 0, 0, 4, spiel);
-			levelSpeicherort[0][0][0] = spiel.levelInhalt[0][0];
-			System.out.println(spiel.levelSpeicherort[0][0][0]);
+			spiel.levelSpeicherort[0][0][0] = spiel.levelInhalt[0][0];
+			System.out.println("Veraenderter Ort " + spiel.levelSpeicherort[0][0][0]);
 			
 			//Test, ob ein Level gewechselt werden kann
 			spiel.levelID = spiel.levelID++;
+			System.out.println("Veraendertes Level: ");
 			for (int i = 0; i<spiel.groesse ; i++){
 				for (int j = 0; j<spiel.groesse ; j++){
 					spiel.levelSpeicherort[spiel.levelID][j][i] = spiel.levelInhalt[j][i];
 				}
 			}
 			//Ausgabe des zweiten Levels mit der ID 1
-			for (int i = 0; i<size ; i++){
-				for (int j = 0; j< size; j++){
+			for (int i = 0; i < spiel.levelInhalt.length-1 ; i++){
+				for (int j = 0; j < spiel.levelInhalt.length-1; j++){
 					System.out.print(spiel.levelSpeicherort[1][i][j] + " ");
 				}
 				System.out.println();
