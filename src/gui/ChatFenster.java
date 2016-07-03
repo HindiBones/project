@@ -169,12 +169,11 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
-			
-			
 			
 			textumfeld.append(Text+"\n");
 			client.sende(new ChatNachricht(Text));
@@ -183,7 +182,7 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 			textumfeld.requestFocusInWindow();
 			textumfeld.setCaretPosition(i);
 			
-			this.setVisible(true);
+			this.disable();
 		}
 	}
 //	public static void main (String [] args){
