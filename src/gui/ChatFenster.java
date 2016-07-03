@@ -201,11 +201,6 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
-			
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			textumfeld.append(Text+"\n");
 			client.sende(new ChatNachricht(Text));
 			textfeld.setText(null);
