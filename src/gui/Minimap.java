@@ -108,11 +108,13 @@ public class Minimap extends JPanel {
 						
 						
 					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+						//System.out.println("Sollte Offene Türe zechenen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerOffen2, i * 11 , j
 									* 10, null);
 					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+						//System.out.println("Sollte Offene Türe zechenen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerZu2, i * 11, j

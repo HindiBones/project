@@ -38,7 +38,7 @@ public class Levelverwaltung {
 		levelInhalt = new int [groesse][groesse];
 		//Level anlegen
 		int levelZaehler = 0;
-		//Vom Levelgenerator ankommendes zweidimensionales Integer Array -- Zu Testzwecken ein ein einfaches 2*2 Array
+		//Vom Levelgenerator ankommendes zweidimensionales Integer Array
 		while (levelZaehler < anzahlLevel){
 			Labyrinth map = new Labyrinth();
 			levelInhalt = map.map;
@@ -59,9 +59,9 @@ public class Levelverwaltung {
 		int monsterID = 0;
 		int trankID = 0;
 		//Definierung der Arrays
-		spielerListe = new Charakter[2];
-		gegnerListe = new Monster [2];
-		trankListe = new Trank [5];
+		spielerListe = new Charakter[anzahlLevel];
+		gegnerListe = new Monster [anzahlLevel];
+		trankListe = new Trank [anzahlLevel];
 		
 		//Das Level durchsuchen, um
 		for (int i = 0; i<levelInhalt.length ; i++){
@@ -71,6 +71,8 @@ public class Levelverwaltung {
 					Charakter spieler = new Charakter (spielerID, charakterLebenspunkte, charakterSchaden, charakterTraenke, j, i);
 					spielerListe[spielerID] = spieler;
 					spielerID++;
+					levelInhalt[j][i]=1;
+					levelSpeicherort[this.levelID][j][i] = 1;
 					
 				}else if(levelInhalt[j][i] == 3){
 					//Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank trägt
@@ -130,9 +132,8 @@ public class Levelverwaltung {
 			while(!gefunden){
 				//sucht er nach der SpielerID ; dem Spieler
 				if (spielerListe[spielerID].getPosX() == x && spielerListe[spielerID].getPosY() == y){
-					//wenn er gefunden wird, dann wird seine alte Position als wand gekennzeichnet und die neue Position wird in die Spielerliste übertragen
+					//wenn er gefunden wird, dann wird seine neue Position in die Spielerliste übertragen
 					gefunden = true;
-					spiel.levelInhalt[spielerListe[spielerID].getPosX()][spielerListe[spielerID].getPosY()] = 1;
 					spiel.spielerListe[spielerID].setPosX(x);
 					spiel.spielerListe[spielerID].setPosY(y);
 				}else{
@@ -183,7 +184,7 @@ public class Levelverwaltung {
 					{
 						trankID++;
 					}else{
-						Nachricht Fehlermeldung = new Nachricht (7, "Monster nicht auffindbar");
+						Nachricht Fehlermeldung = new Nachricht (7, "Trank nicht auffindbar");
 						gefunden = true;
 					}
 				}
