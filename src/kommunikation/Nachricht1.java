@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.Serializable;
 //import datenstruktur.level
 
-import Client.Spielelement;
 import datenstruktur.Level;
 
 //Nachricht1 renamen in Nachricht - wurde nur Nachricht1 genannt wegen Doppelbennenung
@@ -19,7 +18,6 @@ public class Nachricht1 implements Serializable {
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort;
 	Level[] leveldaten;
-	Spielelement item;
 	int xKoo;
 	int yKoo;
 	int spielerID;
@@ -86,13 +84,6 @@ public class Nachricht1 implements Serializable {
 
     public void setpasswort(String passwort){
     	this.passwort = passwort;
-    }
-    public Spielelement getitem(){
-    	return this.item;
-    }
-
-    public void setitem(Spielelement item){
-    	this.item = item;
     }
     public Level[] getleveldaten(){
     	return this.leveldaten;
