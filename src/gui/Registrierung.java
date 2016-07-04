@@ -98,6 +98,8 @@ public class Registrierung extends JFrame implements ActionListener{
 	}
 	
 	/**
+	 * Funktioniert im Grunde wie bei der Anmeldung. Unterschied: Für die 
+	 * Sicherheit, wird das Passwort 2 mal abgefragt (Wahl eines Passwort und Wiederholung
 	 * 
 	 * @author Seyma Keser
 	 */

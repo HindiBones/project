@@ -134,7 +134,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 		
 	}
 
-
 	
 
 	@Override
@@ -170,7 +169,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Kein Button mehr vorhanden
+		//Kein Button mehr vorhanden, Optional falls ich noch Buttons reinmache 
 		
 		
 //		if(e.getSource()==this.senden){ 
@@ -189,7 +188,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 //
 //			
 //		}
-		// TODO Auto-generated method stub
+
 	}	
 		
 
