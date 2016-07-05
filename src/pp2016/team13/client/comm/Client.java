@@ -46,6 +46,7 @@ public class Client extends Paket {
 			return serverAntwort;
 		}catch(IOException e){
 			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+			e.printStackTrace();
 			return serverAntwort;
 		} catch (ClassNotFoundException e) {
 			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));

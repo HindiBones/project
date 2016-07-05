@@ -76,7 +76,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new NachrichtenVerwaltung(0);
+		client = new NachrichtenVerwaltung(2345);
 
 		client.spieler = spieler;
 
