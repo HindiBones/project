@@ -36,7 +36,7 @@ public Server(int port){
 		public void run() throws IOException{
 			this.openServer = true;
 			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
-			LevelNachricht sendeLevel = new LevelNachricht(spiel.levelSendePaket);
+			
 			while (this.openServer) {
 				handleconnection();
 			}
