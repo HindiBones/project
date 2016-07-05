@@ -26,7 +26,7 @@ public class NachrichtenVerwaltung {
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
 	public NachrichtenVerwaltung(int i){
-		socket = new Client("localhost", i);
+		socket = new Client("localhost", 13001);
 	}
 	
 	/**

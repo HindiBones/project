@@ -39,7 +39,7 @@ public class Level {
 	public void ausgabe(){
 		for(int i=0;i<levelInhalt.length;i++){
 			for(int j = 0;j<levelInhalt[0].length;j++){
-				System.out.print(levelInhalt[j][i]);
+				System.out.print(levelInhalt[i][j]);
 			}
 			System.out.println();
 		}

@@ -12,12 +12,15 @@ public class Paket implements Serializable{
 		protected long time;
 		public Nachricht inhalt;
 		public Paket(){
-			this.time=System.currentTimeMillis();
+			//this.time=System.currentTimeMillis();
+			this.time = 0;
 		}
 		public Paket(Nachricht n){
-			this.time=System.currentTimeMillis();
+			//this.time=System.currentTimeMillis();
+			this.time = 0;
 			this.inhalt = n;
 		}
+		
 		public Nachricht getMessage(){
 			return inhalt;
 		}
