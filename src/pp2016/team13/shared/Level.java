@@ -1,4 +1,4 @@
-package pp2016.teamXX.shared;
+package pp2016.team13.shared;
 
 import java.io.IOException;
 

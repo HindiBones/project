@@ -5,8 +5,8 @@ import gui.HindiBones;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import pp2016.teamXX.shared.Level;
-import pp2016.teamXX.shared.Spieler;
+import pp2016.team13.shared.Level;
+import pp2016.team13.shared.Spieler;
 
 public class Client {
 

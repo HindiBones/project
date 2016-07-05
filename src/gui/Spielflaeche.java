@@ -10,13 +10,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import pp2016.teamXX.shared.Boden;
-import pp2016.teamXX.shared.Heiltrank;
-import pp2016.teamXX.shared.Monster;
-import pp2016.teamXX.shared.Schluessel;
-import pp2016.teamXX.shared.Spieler;
-import pp2016.teamXX.shared.Tuer;
-import pp2016.teamXX.shared.Wand;
+import pp2016.team13.shared.Boden;
+import pp2016.team13.shared.Heiltrank;
+import pp2016.team13.shared.Monster;
+import pp2016.team13.shared.Schluessel;
+import pp2016.team13.shared.Spieler;
+import pp2016.team13.shared.Tuer;
+import pp2016.team13.shared.Wand;
 
 public class Spielflaeche extends JPanel {
 
