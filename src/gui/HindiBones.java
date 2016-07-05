@@ -1,4 +1,4 @@
-package pp2016.team13.client.gui;
+package gui;
 
 
 import java.awt.BorderLayout;      
@@ -16,17 +16,17 @@ import javax.accessibility.Accessible;
 import javax.imageio.ImageIO;
 import javax.swing.*; 
 
-import pp2016.team13.client.engine.NachrichtenVerwaltung;
-import pp2016.team13.client.engine.LoginNachricht;
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
-import pp2016.team13.shared.Level;
-import pp2016.team13.shared.Monster;
-import pp2016.team13.shared.Schluessel;
-import pp2016.team13.shared.Spielelement;
-import pp2016.team13.shared.Spieler;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+import Client.Client;
+import Client.LoginNachricht;
+import datenstruktur.Boden;
+import datenstruktur.Heiltrank;
+import datenstruktur.Level;
+import datenstruktur.Monster;
+import datenstruktur.Schluessel;
+import datenstruktur.Spielelement;
+import datenstruktur.Spieler;
+import datenstruktur.Tuer;
+import datenstruktur.Wand;
 
 public class HindiBones extends JFrame implements KeyListener,MouseListener,Accessible {
 
@@ -48,7 +48,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	public Level Level;
 	public Spielelement[][] level;
-	public NachrichtenVerwaltung client;
+	public Client client;
 	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
@@ -78,7 +78,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new NachrichtenVerwaltung(0);
+		client = new Client(0);
 
 		client.spieler = spieler;
 
@@ -335,6 +335,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try { //John Rücken  img//John3hinten
 					spieler.setImage(ImageIO.read(new File("img//John3hinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -362,6 +363,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try { // Passt
 					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -370,6 +372,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
@@ -391,6 +394,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -399,6 +403,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
@@ -418,6 +423,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -426,6 +432,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
