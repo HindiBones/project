@@ -1,5 +1,7 @@
 package Spielweltverwaltung;
 
+import datenstruktur.Level;
+
 public class Nachricht {
 	int typ;
 	int ID;

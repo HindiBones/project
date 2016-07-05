@@ -1,8 +1,9 @@
 package Spielweltverwaltung;
 
 import java.io.IOException;
-
+import datenstruktur.Level;
 import levelgenerator.Labyrinth;
+import datenstruktur.Monster;
 
 public class Levelverwaltung {
 	//Level ID
@@ -22,6 +23,8 @@ public class Levelverwaltung {
 	public static int groesse;
 	//Initialisierung des Speicherortes für alle Level
 	public static int [][][] levelSpeicherort;
+	//Initialisierung der Level als Array
+	public Level[] levelSendePaket;
 	//Koordinaten des Schluessels
 	static int SchluesselX;
 	static int SchluesselY;
@@ -42,6 +45,7 @@ public class Levelverwaltung {
 		while (levelZaehler < anzahlLevel){
 			Labyrinth map = new Labyrinth();
 			levelInhalt = map.map;
+			levelSendePaket [levelZaehler] =new Level(levelZaehler, levelInhalt);
 			for (int i = 0; i<groesse; i++){
 				for (int j = 0; j<groesse ; j++){
 					levelSpeicherort[levelZaehler][j][i] = levelInhalt[j][i];
