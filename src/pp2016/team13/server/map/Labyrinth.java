@@ -1,4 +1,4 @@
-package levelgenerator;
+package pp2016.team13.server.map;
 
 public class Labyrinth {
 	private int size = 17;

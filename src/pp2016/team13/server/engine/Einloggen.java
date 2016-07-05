@@ -1,4 +1,4 @@
-package Spielweltverwaltung;
+package pp2016.team13.server.engine;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

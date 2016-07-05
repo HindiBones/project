@@ -1,4 +1,4 @@
-package Spielweltverwaltung;
+package pp2016.team13.server.engine;
 
 public class Nachricht {
 	int typ;

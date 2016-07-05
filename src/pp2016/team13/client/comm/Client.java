@@ -1,4 +1,4 @@
-package kommunikation;
+package pp2016.team13.client.comm;
 
 import java.io.IOException;
 import java.io.InputStream;

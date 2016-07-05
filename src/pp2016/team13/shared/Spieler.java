@@ -1,11 +1,11 @@
 package pp2016.team13.shared;
 
-import gui.HindiBones;
-
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import pp2016.team13.client.gui.HindiBones;
 
 public class Spieler extends Figur {
 

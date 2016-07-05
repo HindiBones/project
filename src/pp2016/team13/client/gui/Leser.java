@@ -1,4 +1,4 @@
-package gui;
+package pp2016.team13.client.gui;
 
 import java.io.FileReader;
 import java.io.IOException;

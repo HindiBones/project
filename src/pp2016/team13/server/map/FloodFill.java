@@ -1,4 +1,4 @@
-package levelgenerator;
+package pp2016.team13.server.map;
 
 import java.awt.Point;
 import java.util.ArrayList;
