@@ -9,10 +9,11 @@ import javax.crypto.spec.SecretKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
  
-
+public String Benutzername="";
 
 public class Verschluesselung {
-
+	    // Das Passwort bzw der Schluesseltext hier kommt der Benutzername rein
+	    String keyStr = benutzername;
 	
 	
 
@@ -20,8 +21,7 @@ public class Verschluesselung {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		  
-	    // Das Passwort bzw der Schluesseltext
-	    String keyStr = "geheim";
+
 	    // byte-Array erzeugen
 	    byte[] key = (keyStr).getBytes("UTF-8");
 	    // aus dem Array einen Hash-Wert erzeugen mit MD5 oder SHA
@@ -34,7 +34,7 @@ public class Verschluesselung {
 	     
 
 	    // der zu verschl. Text
-	    String text = "Das ist der Text";
+	    String text = "SeymasPasswort";
 
 	    // Verschluesseln
 	    Cipher cipher = Cipher.getInstance("AES");
