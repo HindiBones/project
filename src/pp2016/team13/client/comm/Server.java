@@ -2,9 +2,10 @@ package pp2016.team13.client.comm;
 import java.io.*; 
 import java.net.*;
 import java.util.LinkedList;
-
-import pp2016.team13.client.engine.*;
+import pp2016.team13.client.engine.LevelNachricht;
+import pp2016.team13.server.engine.Einloggen;
 import pp2016.team13.server.engine.Levelverwaltung;
+import pp2016.team13.client.engine.Nachricht;
 
 
 public class Server {
@@ -16,20 +17,25 @@ public class Server {
 	ObjectInputStream ois=null;
 	OutputStreamWriter osw=null;
 	InputStreamReader isw=null;
-	Levelverwaltung spiel;
 	LinkedList<Nachricht> ServerList = new LinkedList<Nachricht>();
 	
 public Server(int port){
 		
 		while (true){
+			
 			try {
+			
 			ServerS = new ServerSocket(port);
-			ServerS.setSoTimeout(60000);
-			S = ServerS.accept();
+			
+			ServerS.setSoTimeout(600000);
 			System.out.println("Starte Server");
+//			S = ServerS.accept();
+//			System.out.println("Starte Server");
 			run();
 			
-		}catch(IOException e){}
+		}catch(IOException e){
+			System.out.println("Funkt nicht");
+		}
 		}
 }
 
@@ -37,6 +43,12 @@ public Server(int port){
 		public void run() throws IOException{
 			this.openServer = true;
 			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
+			LevelNachricht sendeLevel = new LevelNachricht(spiel.levelSendePaket);
+//			
+//			Einloggen loggen= new Einloggen();
+			
+			
+			
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -45,30 +57,21 @@ public Server(int port){
 		public void handleconnection(){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
-				Paket temp;
+				Nachricht n = new Nachricht();
 				//System.out.println("eine neue message wird erzeugt");
 				ois = new ObjectInputStream(S.getInputStream());
 				//System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
-				temp = (Paket)ois.readObject();
-				ServerList.add(temp.getMessage());
-				Paket antwort = verarbeiteNachricht(temp.getMessage());
-				//Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
-				oos.writeObject(antwort);
+				n = (Nachricht)ois.readObject();
+				ServerList.add(n);
+				System.out.println(n.getMessage(n));
+				Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
+				oos.writeObject(j);
 				oos.flush();
 				//System.out.println("Server hat eine message zur�ckgeschickt");
 			} catch (IOException | ClassNotFoundException e) {
 			}
 		}
-		
-		public Paket verarbeiteNachricht(Nachricht n){
-			Nachricht antwortNachricht = new FehlerNachricht("Unbekannter Nachrichtentyp!");
-			
-			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket);
-			}
-			Paket antwort = new Paket(antwortNachricht);
-			return antwort;
-		}
+				
 }
 	
