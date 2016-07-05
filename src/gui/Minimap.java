@@ -12,12 +12,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pp2016.teamXX.shared.Boden;
-import pp2016.teamXX.shared.Heiltrank;
-import pp2016.teamXX.shared.Schluessel;
-import pp2016.teamXX.shared.Spielelement;
-import pp2016.teamXX.shared.Tuer;
-import pp2016.teamXX.shared.Wand;
+import pp2016.team13.shared.Boden;
+import pp2016.team13.shared.Heiltrank;
+import pp2016.team13.shared.Schluessel;
+import pp2016.team13.shared.Spielelement;
+import pp2016.team13.shared.Tuer;
+import pp2016.team13.shared.Wand;
 
 
 
