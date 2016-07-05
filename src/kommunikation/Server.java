@@ -2,6 +2,8 @@ package kommunikation;
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
+import Spielweltverwaltung.Levelverwaltung;
+
 
 public class Server {
 	//die einzelnen Streams werden definiert
@@ -29,9 +31,9 @@ public Server(int port){
 }
 
 		
-		public void run() {
+		public void run() throws IOException{
 			this.openServer = true;
-		
+			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
 			while (this.openServer) {
 				handleconnection();
 			}
