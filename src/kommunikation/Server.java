@@ -2,11 +2,10 @@ package kommunikation;
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
-import Spielweltverwaltung.Levelverwaltung;
 
+import pp2016.team13.client.comm.Paket;
 import pp2016.team13.client.engine.ChatNachricht;
 import pp2016.team13.client.engine.Nachricht;
-import Spielweltverwaltung.Levelverwaltung;
 
 
 public class Server {
@@ -37,7 +36,6 @@ public Server(int port){
 		
 		public void run() throws IOException{
 			this.openServer = true;
-			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
 
 			while (this.openServer) {
 				handleconnection();

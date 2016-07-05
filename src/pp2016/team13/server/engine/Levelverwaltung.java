@@ -37,6 +37,7 @@ public class Levelverwaltung {
 	
 	//Konstruktor Levelverwaltung ; Spielwelt
 	public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke, int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException{
+		levelSendePaket = new Level[anzLevel];
 		this.levelID = levelID;
 		anzahlLevel = anzLevel;
 		this.groesse = groesse;

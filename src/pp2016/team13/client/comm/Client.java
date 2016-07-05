@@ -24,35 +24,42 @@ public class Client extends Paket {
 	public Client(String host,int port){
 		try{
 			cs = new Socket(host, port);
-			//System.out.println("connection zum Client steht");
-			
+			if(cs.getPort() == 13000)
+			System.out.println("connection zum Server steht");
 		}catch(IOException e){
-			
+			System.err.println("Konnte keine Verbindung herstellen!");
 		}
 	}
 	public Paket SendeAnServer(Paket msg){
-					
+
+		Paket serverAntwort = new Paket();
 		try{
+			Thread.sleep(100);
 			oos = new ObjectOutputStream(cs.getOutputStream());
-			//System.out.println("ObjectStream steht");
+			System.out.println("ObjectStream steht");
 			oos.writeObject(msg);
+			System.out.println(msg.inhalt.getTyp());
 			oos.flush();
-			//System.out.println("Client sendet an Server");
-			Paket serverAntwort = new Paket();
+			System.out.println("Client sendet an Server");
+			serverAntwort = new Paket();
 			ois=new ObjectInputStream(cs.getInputStream());
-			//System.out.println("ObjectInputStream steht");
+			System.out.println("ObjectInputStream steht");
 			serverAntwort=(Paket)ois.readObject();
-			//ClientList.addLast(testmsg);
-			return serverAntwort;
-		}catch(IOException e){
-			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-			e.printStackTrace();
-			return serverAntwort;
-		} catch (ClassNotFoundException e) {
-			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-			return serverAntwort;
+			ClientList.addLast(serverAntwort);
+			serverAntwort = new Paket(new FehlerNachricht("Funktioniert!"));
 		}
-		
+		catch(IOException e){
+			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+			e.printStackTrace();
+		}
+
+		return serverAntwort;
 	}
 
 }

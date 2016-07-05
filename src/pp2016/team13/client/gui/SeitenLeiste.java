@@ -62,7 +62,7 @@ public class SeitenLeiste extends JPanel {
 			john= ImageIO.read(new File("img//john.png"));
 			sblase= ImageIO.read(new File("img//sprechblase.png"));
 			} catch (IOException e) {
-			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase??");
+			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
 
 		

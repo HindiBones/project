@@ -1,7 +1,7 @@
 package kommunikation;
 
-import kommunikation.Client;
-import kommunikation.Nachricht;
+import pp2016.team13.client.comm.Client;
+import pp2016.team13.client.engine.*;
 
 public class ClientMain {
 public static Nachricht Test = new Nachricht("Hallo Welt");

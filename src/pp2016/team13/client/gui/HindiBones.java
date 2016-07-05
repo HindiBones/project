@@ -76,16 +76,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new NachrichtenVerwaltung(2345);
-
-		client.spieler = spieler;
-
-
-		client.spieler = spieler;
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
-		
+		client = new NachrichtenVerwaltung(12345);
+		client.spieler = spieler;
 		// initialisieren des Fensters 
 		starteNeuesSpiel();
 		
@@ -108,7 +103,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
 		this.anmeldung = new Anmeldung(this);
-		
 		
 		
 		
@@ -740,8 +734,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //		Level = leser.getLevel();
 //		client.aktuellesLevel = Level;
 		
+		System.out.println("Level wird angefordert!");
 		client.levelAnfordern();
 		Level = client.aktuellesLevel;
+		Level.ausgabe();
+		System.out.println("Level geladen!");
 	}
 
 	
