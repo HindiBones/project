@@ -5,7 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,6 +25,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Client.LoginNachricht;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
@@ -110,11 +122,21 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
 			String nickname=textBenutzer.getText();
 			@SuppressWarnings("deprecation")
+			
 			String pwd= passwortfeld.getText();
+	
+			
+			
+			
+		   
+
+			
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
 			if(nickname.equals(fenster.GetBenutzername())&& pwd.equals(fenster.GetPasswort())){
