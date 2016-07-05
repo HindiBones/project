@@ -3,22 +3,24 @@ package kommunikation;
 
 import java.io.IOException;
 import java.io.Serializable;
+import Client.Nachricht;
 
-public class Nachricht implements Serializable{
+public class Paket implements Serializable{
 
 		private static final long serialVersionUID = 1;
 		protected long time;
+		public Nachricht inhalt;
 		public String Test;
-		public Nachricht(){
+		public Paket(){
 			this.time=System.currentTimeMillis();
 			this.Test="Test vom Client";
 		}
-		public Nachricht(String Test){
+		public Paket(Nachricht n){
 			this.time=System.currentTimeMillis();
-			this.Test=Test;
+			this.inhalt = n;
 		}
-		public String getMessage(Nachricht m){
-			return m.Test;
+		public Nachricht getMessage(){
+			return inhalt;
 		}
 	    private void writeObject(java.io.ObjectOutputStream stream) throws IOException {
 	        stream.defaultWriteObject();
