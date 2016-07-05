@@ -13,6 +13,8 @@ import sun.misc.BASE64Encoder;
 
 public class Verschluesselung {
 
+	
+	
 
 
 	public static void main(String[] args) throws Exception {
