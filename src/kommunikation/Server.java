@@ -2,7 +2,7 @@ package kommunikation;
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
-import Spielverwaltung.Levelverwaltung;
+import Spielweltverwaltung.Levelverwaltung;
 
 public class Server {
 	//die einzelnen Streams werden definiert
