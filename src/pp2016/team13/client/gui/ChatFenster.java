@@ -50,9 +50,9 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	
 	
 
-	Minimap m;
+	SeitenLeiste m;
 	
-	ChatFenster(String s, Minimap m ) {
+	ChatFenster(String s, SeitenLeiste m ) {
 			this.m= m;
 			client = new NachrichtenVerwaltung(0);
 			
