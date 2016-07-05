@@ -1,5 +1,7 @@
 package pp2016.team13.server.engine;
 
+import pp2016.team13.shared.Level;
+
 public class Nachricht {
 	int typ;
 	int ID;

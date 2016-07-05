@@ -2,10 +2,9 @@ package pp2016.team13.client.comm;
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
-
-import pp2016.team13.client.engine.ChatNachricht;
-import pp2016.team13.client.engine.Nachricht;
+import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Levelverwaltung;
+import pp2016.team13.client.engine.Nachricht;
 
 
 public class Server {
@@ -17,7 +16,7 @@ public class Server {
 	ObjectInputStream ois=null;
 	OutputStreamWriter osw=null;
 	InputStreamReader isw=null;
-	LinkedList<Paket> ServerList = new LinkedList<Paket>();
+	LinkedList<Nachricht> ServerList = new LinkedList<Nachricht>();
 	
 public Server(int port){
 		
@@ -37,6 +36,7 @@ public Server(int port){
 		public void run() throws IOException{
 			this.openServer = true;
 			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
+			
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -45,16 +45,15 @@ public Server(int port){
 		public void handleconnection(){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
-				Paket n = new Paket();
+				Nachricht n = new Nachricht();
 				//System.out.println("eine neue message wird erzeugt");
 				ois = new ObjectInputStream(S.getInputStream());
 				//System.out.println("Server empfängt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
-				n = (Paket)ois.readObject();
+				n = (Nachricht)ois.readObject();
 				ServerList.add(n);
-				System.out.println(n.getMessage());
-				Nachricht m = new ChatNachricht(" Der Server reagiert auf den Client");
-				Paket j=new Paket(m);
+				System.out.println(n.getMessage(n));
+				Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
 				oos.writeObject(j);
 				oos.flush();
 				//System.out.println("Server hat eine message zurückgeschickt");
