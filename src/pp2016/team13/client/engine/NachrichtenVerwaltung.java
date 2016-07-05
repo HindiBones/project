@@ -10,7 +10,7 @@ import pp2016.team13.client.comm.*;
 
 public class NachrichtenVerwaltung {
 	
-	public Client socket = new Client("Host",1);
+	public Client socket;
 	HindiBones fenster;
 	int id;
 	public Spieler spieler;
@@ -26,7 +26,7 @@ public class NachrichtenVerwaltung {
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
 	public NachrichtenVerwaltung(int i){
-		this.id=i;
+		socket = new Client("Host", i);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class NachrichtenVerwaltung {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
-					case 6: this.alleLevel=m.leveldaten;this.aktuellesLevel=m.leveldaten[0];System.out.println("Level " + aktuellesLevel.getLevelID()+ " wurde geladen!");break;
+					case 6: this.alleLevel=m.leveldaten;this.aktuellesLevel=m.leveldaten[0];System.out.println("Level " + Level.getLevelID()+ " wurde geladen!");break;
 				}
 			
 		}
@@ -128,7 +128,7 @@ public class NachrichtenVerwaltung {
 	public void SpielerBewegung(int richtung){
 		switch(richtung){
 		case 0:
-			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
+			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
 			{
 				spieler.runter();
 				sende(new BewegungsNachricht(spieler.getID(),spieler.getXPos(),spieler.getYPos()));
@@ -137,7 +137,7 @@ public class NachrichtenVerwaltung {
 			
 			
 		case 1:
-			if(spieler.getYPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)
+			if(spieler.getYPos() > 0 && Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)
 			{
 				spieler.hoch();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -145,7 +145,7 @@ public class NachrichtenVerwaltung {
 			break;
 			
 		case 2:
-			if(spieler.getXPos() > 0 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 0)
+			if(spieler.getXPos() > 0 && Level.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 0)
 			{
 				spieler.links();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -153,7 +153,7 @@ public class NachrichtenVerwaltung {
 			break;
 			
 		case 3:
-			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && aktuellesLevel.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 0)
+			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && Level.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 0)
 			{
 				spieler.rechts();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -206,7 +206,7 @@ public class NachrichtenVerwaltung {
 	 */
 	public void benutzeSchluessel(){
 		if (spieler.hatSchluessel()) {
-			aktuellesLevel.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
+			Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 			sende(new Nachricht(3));
 			spieler.entferneSchluessel();}
