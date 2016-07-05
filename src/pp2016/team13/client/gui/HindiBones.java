@@ -76,7 +76,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new NachrichtenVerwaltung(0);
+		client = new NachrichtenVerwaltung(2345);
 
 		client.spieler = spieler;
 
@@ -648,11 +648,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		try {
 			Thread.sleep(100);		
-		spieler = new Spieler(0, this);
-	
+		spieler = new Spieler(0);
+		spieler.setFenster(this);
 //		
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
-		spieler2=new Spieler(1, this);
+		spieler2=new Spieler(1);
+		spieler2.setFenster(this);
 		try {
 			spieler2.setImage(ImageIO.read(new File("img//red_point.png")).getScaledInstance(10, 10, Image.SCALE_DEFAULT));
 		} catch (IOException e) {
@@ -707,7 +708,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				//	getStatusleiste().repaint();
 				
 
-				if (spieler.getHealth() <= 0) {
+				if (spieler.getLebenspunkte() <= 0) {
 					spielende = true;
 					verloren = true;
 				}

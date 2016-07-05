@@ -116,7 +116,7 @@ public class Spielflaeche extends JPanel {
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						//4=Schlüssel
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
@@ -130,7 +130,7 @@ public class Spielflaeche extends JPanel {
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							//offene Tür
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
@@ -215,7 +215,7 @@ public class Spielflaeche extends JPanel {
 					* fenster.BOX-verschiebeny*fenster.BOX, null);
 			g.setColor(Color.GREEN);
 			g.fillRect(m.getXPos() * fenster.BOX-verschiebenx*fenster.BOX +10,
-					m.getYPos() * fenster.BOX -verschiebeny*fenster.BOX- 2, m.getHealth()+20, 2);
+					m.getYPos() * fenster.BOX -verschiebeny*fenster.BOX- 2, m.getLebenspunkte()+20, 2);
 
 		}
 	}

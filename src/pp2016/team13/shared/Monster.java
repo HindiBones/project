@@ -31,8 +31,8 @@ public class Monster extends Figur {
 		this.spieler = fenster.spieler;
 		this.typ = typ;
 		setPos(x, y);
-		setHealth(32);
-		setMaxHealth(getHealth());
+		setLebenspunkte(32);
+		setMaxHealth(getLebenspunkte());
 		lastAttack = System.currentTimeMillis();
 		lastStep = System.currentTimeMillis();
 		cooldownAttack = 500 - 10 * fenster.currentLevel; // ms
@@ -85,7 +85,7 @@ public class Monster extends Figur {
 
 	public void changeHealth(int change) {
 		super.changeHealth(change);
-		if (getHealth() <= 0) {
+		if (getLebenspunkte() <= 0) {
 			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 3);;
 			fenster.monsterListe.remove(this);
 		}

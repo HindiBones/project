@@ -26,7 +26,7 @@ public class NachrichtenVerwaltung {
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
 	public NachrichtenVerwaltung(int i){
-		socket = new Client("Host", i);
+		socket = new Client("localhost", i);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class NachrichtenVerwaltung {
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
+					case 5: System.out.println("Ein Fehler ist aufgetreten!!!!");break;
 					case 6: System.out.println("Level wurde geladen!");break;
 					case 7: System.out.println(benutzername + " hat ein Monster angegriffen!");break;
 					case 8: System.out.println(benutzername + " hat einen Trank benutzt!");break;
@@ -101,8 +101,8 @@ public class NachrichtenVerwaltung {
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
-					case 6: this.alleLevel=m.leveldaten;this.aktuellesLevel=m.leveldaten[0];System.out.println("Level " + Level.getLevelID()+ " wurde geladen!");break;
+					case 5: System.out.println(m.fehlermeldung);break;
+					case 6: this.alleLevel=m.leveldaten;System.out.println("Level " + Level.getLevelID()+ " wurde geladen!");break;
 				}
 	}
 	/*
@@ -218,6 +218,7 @@ public class NachrichtenVerwaltung {
 		Paket levelAnfrage = new Paket(new LevelAnfordernNachricht());
 		Paket serverAntwort = socket.SendeAnServer(levelAnfrage);
 		auslesen(serverAntwort);
+		aktuellesLevel = alleLevel[0];
 	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)
