@@ -32,12 +32,20 @@ public class FloodFill {
 	
 	FloodFill(int size) {
 		this.size = size;
-		
 		Random random = new Random();
-
 		map = new int[size][size];
+		/*
+		int zahl1= (int)Math.random()*(size-6)+3;
+		int zahl2= (int)Math.random()*(size-4)+2;
+		for(int i = 0; i<4; i++){
+			map[zahl1][zahl2+i]=1;
+			map[zahl1+1][zahl2+i]=1;
+			map[zahl1+2][zahl2+i]=1;
+			map[zahl1+3][zahl2+i]=1;
+			map[zahl1+4][zahl2+i]=1;
+		}
+		*/
 		floodFill(new Point(size / 2, size / 2), random);
-		
 		// finde freie Start- und Zielkoordinaten
 		List<Point> free = new ArrayList<Point>();
 		for(int x = 0; x < size; x++)
