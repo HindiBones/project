@@ -218,7 +218,7 @@ public class NachrichtenVerwaltung {
 		Paket levelAnfrage = new Paket(new LevelAnfordernNachricht());
 		Paket serverAntwort = socket.SendeAnServer(levelAnfrage);
 		auslesen(serverAntwort);
-		aktuellesLevel = alleLevel[1];
+		aktuellesLevel = alleLevel[0];
 	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)
