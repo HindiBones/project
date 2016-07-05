@@ -1,4 +1,4 @@
-package gui;
+package pp2016.team13.client.gui;
 
 
 import java.security.MessageDigest;
