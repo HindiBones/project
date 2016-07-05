@@ -88,10 +88,9 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * Verarbeitet die Nachrichten, die in der NachrichtenEmpfangen Queue sind
 	 */
-	public void empfange()
+	public void auslesen(Paket x)
 	{
-		for(int i=0;i<NachrichtenEmpfangen.size();i++){
-			Nachricht m = NachrichtenEmpfangen.poll();
+			Nachricht m = x.getMessage();
 			
 				switch (m.getTyp()){
 				/*
@@ -105,8 +104,6 @@ public class NachrichtenVerwaltung {
 					case 5: System.out.println("Ein Fehler ist aufgetreten!");break;
 					case 6: this.alleLevel=m.leveldaten;this.aktuellesLevel=m.leveldaten[0];System.out.println("Level " + Level.getLevelID()+ " wurde geladen!");break;
 				}
-			
-		}
 	}
 	/*
 	 * Nachrichtentypen
@@ -217,6 +214,11 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * Wechselt das Level. Sendet eine entsprechende Nachricht an den Server.
 	 */
+	public void levelAnfordern(){
+		Paket levelAnfrage = new Paket(new LevelAnfordernNachricht());
+		Paket serverAntwort = socket.SendeAnServer(levelAnfrage);
+		auslesen(serverAntwort);
+	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)
 //		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];
