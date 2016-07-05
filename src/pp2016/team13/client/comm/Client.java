@@ -8,6 +8,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.LinkedList;
 
+import pp2016.team13.client.engine.FehlerNachricht;
+import pp2016.team13.client.engine.Nachricht;
+
 //import komClient.Nachricht;
 
 public class Client extends Paket {
@@ -27,7 +30,7 @@ public class Client extends Paket {
 			
 		}
 	}
-	public void SendeAnServer(Paket msg){
+	public Paket SendeAnServer(Paket msg){
 					
 		try{
 			oos = new ObjectOutputStream(cs.getOutputStream());
@@ -35,16 +38,18 @@ public class Client extends Paket {
 			oos.writeObject(msg);
 			oos.flush();
 			//System.out.println("Client sendet an Server");
-			Paket testmsg = new Paket();
+			Paket serverAntwort = new Paket();
 			ois=new ObjectInputStream(cs.getInputStream());
 			//System.out.println("ObjectInputStream steht");
-			testmsg=(Paket)ois.readObject();
+			serverAntwort=(Paket)ois.readObject();
 			//ClientList.addLast(testmsg);
-			System.out.println("Client empfängt Antwort von Server"+ testmsg.getMessage());
+			return serverAntwort;
 		}catch(IOException e){
-			
+			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+			return serverAntwort;
 		} catch (ClassNotFoundException e) {
-			
+			Paket serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
+			return serverAntwort;
 		}
 		
 	}
