@@ -1,4 +1,4 @@
-package pp2016.team13.client.gui;
+package gui;
 
 
 import java.awt.BorderLayout; 
@@ -12,12 +12,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
-import pp2016.team13.shared.Schluessel;
-import pp2016.team13.shared.Spielelement;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+import datenstruktur.Boden;
+import datenstruktur.Heiltrank;
+import datenstruktur.Schluessel;
+import datenstruktur.Spielelement;
+import datenstruktur.Tuer;
+import datenstruktur.Wand;
 
 
 
@@ -62,7 +62,7 @@ public class SeitenLeiste extends JPanel {
 			john= ImageIO.read(new File("img//john.png"));
 			sblase= ImageIO.read(new File("img//sprechblase.png"));
 			} catch (IOException e) {
-			System.err.println("Ein Bild konnte nicht geladen werden.");
+			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase??");
 		}
 
 		

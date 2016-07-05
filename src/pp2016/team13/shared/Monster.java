@@ -1,12 +1,12 @@
 package pp2016.team13.shared;
 
+import pp2016.team13.client.gui.HindiBones;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-
-import pp2016.team13.client.gui.HindiBones;
 
 public class Monster extends Figur {
 
@@ -15,6 +15,11 @@ public class Monster extends Figur {
 	private int cooldownAttack;
 	private int cooldownWalk;
 	private int id;
+	private int lebenspunkte;
+	private int monsterSchaden;
+	private boolean trankVorhanden;
+	private int posX;
+	private int posY;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
 	private int typ; // Von Beginn an anwesend: 0, Erscheint sp�ter: 1
 
@@ -47,6 +52,16 @@ public class Monster extends Figur {
 					.print("Das Bild drache.png konnte nicht geladen werden.");
 		}
 	}
+	
+	public Monster(int id, int anfangsLebenspunkte, int anfangsSchaden, boolean initialisierungTrankVorhanden, int anfangsX, int anfangsY) throws IOException {
+		 this.id = id;
+		 this.lebenspunkte=anfangsLebenspunkte;
+		 this.monsterSchaden=anfangsSchaden;
+		 trankVorhanden=initialisierungTrankVorhanden;
+		 posX=anfangsX;
+		 posY=anfangsY;
+		 
+	 }
 
 	public boolean attackiereSpieler(boolean hatSchluessel) {
 		// Ist der Spieler im Radius des Monsters?
@@ -153,5 +168,22 @@ public class Monster extends Figur {
 	
 	public int getID(){
 		return id;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public int getPosX() {
+		return posY;
+	}
+
+	public void setPosX(int x) {
+		posX = x;
+		
+	}
+
+	public void setPosY(int y) {
+		posY = y;
 	}
 }

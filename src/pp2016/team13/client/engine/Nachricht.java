@@ -30,10 +30,17 @@ public class Nachricht {
 	 * 
 	 * Erstellt eine Nachricht. Je nach Typ reagieren Server/Client entsprechend.
 	 */
-	public Nachricht (int t){
-		this.typ = t;
+	public Nachricht (String string){
+		nachricht = string;
 	}
 	
+	public Nachricht (int typ){
+		this.typ = typ;
+	}
+	
+	public Nachricht() {
+	}
+
 	/**
 	 * @author Julius
 	 * @return: Gibt den Typ der Nachricht zurueck.
@@ -64,5 +71,9 @@ public class Nachricht {
 	 */
 	public int getyKoo(){
 		return this.yKoo;
+	}
+
+	public char[] getMessage(Nachricht n) {
+		return null;
 	}
 }
