@@ -3,8 +3,8 @@ import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
 
-import Client.ChatNachricht;
-import Client.Nachricht;
+import pp2016.team13.client.engine.ChatNachricht;
+import pp2016.team13.client.engine.Nachricht;
 import Spielweltverwaltung.Levelverwaltung;
 
 

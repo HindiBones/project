@@ -1,4 +1,4 @@
-package Client;
+package pp2016.team13.client.engine;
 
 // Nachricht, die gesendet wird, wenn ein Trank (typ 2) oder der Schluessel (typ 4) aufgenommen wurden
 public class ItemNachricht extends Nachricht{

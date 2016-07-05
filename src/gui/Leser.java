@@ -4,13 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import datenstruktur.Boden;
-import datenstruktur.Level;
-import datenstruktur.Monster;
-import datenstruktur.Schluessel;
-import datenstruktur.Spielelement;
-import datenstruktur.Tuer;
-import datenstruktur.Wand;
+import pp2016.teamXX.shared.Boden;
+import pp2016.teamXX.shared.Level;
+import pp2016.teamXX.shared.Monster;
+import pp2016.teamXX.shared.Schluessel;
+import pp2016.teamXX.shared.Spielelement;
+import pp2016.teamXX.shared.Tuer;
+import pp2016.teamXX.shared.Wand;
 
 public class Leser {
 

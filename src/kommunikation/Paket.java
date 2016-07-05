@@ -3,7 +3,8 @@ package kommunikation;
 
 import java.io.IOException;
 import java.io.Serializable;
-import Client.Nachricht;
+
+import pp2016.team13.client.engine.Nachricht;
 
 public class Paket implements Serializable{
 

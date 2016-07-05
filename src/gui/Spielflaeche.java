@@ -10,13 +10,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import datenstruktur.Boden;
-import datenstruktur.Heiltrank;
-import datenstruktur.Monster;
-import datenstruktur.Schluessel;
-import datenstruktur.Spieler;
-import datenstruktur.Tuer;
-import datenstruktur.Wand;
+import pp2016.teamXX.shared.Boden;
+import pp2016.teamXX.shared.Heiltrank;
+import pp2016.teamXX.shared.Monster;
+import pp2016.teamXX.shared.Schluessel;
+import pp2016.teamXX.shared.Spieler;
+import pp2016.teamXX.shared.Tuer;
+import pp2016.teamXX.shared.Wand;
 
 public class Spielflaeche extends JPanel {
 
