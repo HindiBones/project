@@ -36,7 +36,7 @@ import javax.swing.JPanel;
 import Client.ChatNachricht;
 import Client.Client;
 
-public class ChatFenster extends JPanel implements WindowListener, MouseListener, KeyListener,ActionListener {
+public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
 
 	/**
 	 * 
@@ -56,29 +56,19 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 	
 	ChatFenster(String s, Minimap m ) {
 			this.m= m;
-//			this.setBounds(0, 500, 170, 115);
-//			this.setLocation(900,900);
-
 			client = new Client(0);
 			
-//			this.addWindowListener(this);
-//				this.setSize(170	,105);
-//				this.setResizable(true);
-				this.setLayout(new BorderLayout());
-//				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				this.setPreferredSize(new Dimension(170,112));
+			this.setLayout(new BorderLayout());
+			this.setPreferredSize(new Dimension(170,112));
 
 				
 	
 			textumfeld=new TextArea();
 
-//			this.setBackground(new Color(111,111,111));
+
 			this.add(textumfeld,"Center");
 			textumfeld.setFont(new Font("Arial", Font.PLAIN,11));
 			textumfeld.setEditable(false);
-//			textumfeld.setSize(150,90);
-//			textumfeld.setBackground(new Color(111,111,111));
-			
 			
 			Panel pane= new Panel();
 			pane.setLayout(new BorderLayout());
@@ -86,34 +76,30 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 			textfeld= new TextField(10);
 			textfeld.addKeyListener(this);
 			textfeld.setFont(new Font("Arial", Font.PLAIN,11));
-//			textfeld.setBackground(new Color(111,111,111));
+			
 			pane.add(textfeld,BorderLayout.CENTER);
-//			pane.add(textfeld);
-//			this.add(textfeld);
-//			pane.setBackground(new Color(111,111,111));
+
+			// Eventuell noch einbauen 
 			senden= new Button("senden");
 			senden.addMouseListener(this);
 			senden.addActionListener(this);
-			loeschen= new Button("löschen");
-			loeschen.addMouseListener(this);
-			loeschen.addActionListener(this);
 //			pane.add(senden);
-//			pane.add(loeschen);
+
 			this.add(pane,"South");
 			this.setVisible(true);
-				
-				textfeld.setForeground(Color.GRAY);
-				 textfeld.setText("Cheats/ Text eingeben");
-				 textfeld.setEditable(true);
 			
-				 textfeld.requestFocus();
+			//Provisorische Eingabe
+			textfeld.setForeground(Color.GRAY);
+			textfeld.setText("Cheats/ Text eingeben");
+			textfeld.setEditable(true);			
+			textfeld.requestFocus();
 			
-			//this.add(m);
+
 			
 			
 
 	}
-	//		
+		
 	
 	
 	
@@ -148,47 +134,7 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 		
 	}
 
-	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowClosing(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowActivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -206,17 +152,11 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 			textfeld.setText(null);
 			
 			textumfeld.requestFocusInWindow();
-//			textumfeld.setCaretPosition(i);
+			textumfeld.setCaretPosition(i);
 			
 			this.disable();
 		}
 	}
-//	public static void main (String [] args){
-//		ChatFenster c= new ChatFenster("Chat");
-//		
-//		
-//		
-//	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -228,6 +168,8 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Kein Button mehr vorhanden, Optional falls ich noch Buttons reinmache 
+		
 		
 //		if(e.getSource()==this.senden){ 
 //			
@@ -245,7 +187,7 @@ public class ChatFenster extends JPanel implements WindowListener, MouseListener
 //
 //			
 //		}
-		// TODO Auto-generated method stub
+
 	}	
 		
 

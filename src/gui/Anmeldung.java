@@ -105,6 +105,8 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * 
 	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da
 	 * 
+	 * Verschlüsselungs Algorithmus 
+	 * 
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {

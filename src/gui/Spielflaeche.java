@@ -56,6 +56,13 @@ public class Spielflaeche extends JPanel {
 	//Das richtige Bild Zentriert
 	
 	/**
+	 * (Mitscrollend)
+	 * Meine Figur Zentriert 
+	 * Bei jeder Bewegung und berührung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
+	 * Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
+	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
+	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
+	 * meine Variablen, sie passen sich meiner Spieler Figur an)
 	 * 
 	 * @author Seyma Keser
 	 */

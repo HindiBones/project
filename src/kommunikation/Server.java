@@ -4,6 +4,11 @@ import java.net.*;
 import java.util.LinkedList;
 import Spielweltverwaltung.Levelverwaltung;
 
+import Client.ChatNachricht;
+import Client.Nachricht;
+import Spielweltverwaltung.Levelverwaltung;
+
+
 public class Server {
 	//die einzelnen Streams werden definiert
 	public ServerSocket ServerS;
@@ -13,7 +18,7 @@ public class Server {
 	ObjectInputStream ois=null;
 	OutputStreamWriter osw=null;
 	InputStreamReader isw=null;
-	LinkedList<Nachricht> ServerList = new LinkedList<Nachricht>();
+	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	
 public Server(int port){
 		
@@ -30,10 +35,13 @@ public Server(int port){
 }
 
 		
-		public void run() {
+		public void run() throws IOException{
 			this.openServer = true;
 			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -42,15 +50,16 @@ public Server(int port){
 		public void handleconnection(){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
-				Nachricht n = new Nachricht();
+				Paket n = new Paket();
 				//System.out.println("eine neue message wird erzeugt");
 				ois = new ObjectInputStream(S.getInputStream());
 				//System.out.println("Server empfängt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
-				n = (Nachricht)ois.readObject();
+				n = (Paket)ois.readObject();
 				ServerList.add(n);
-				System.out.println(n.getMessage(n));
-				Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
+				System.out.println(n.getMessage());
+				Nachricht m = new ChatNachricht(" Der Server reagiert auf den Client");
+				Paket j=new Paket(m);
 				oos.writeObject(j);
 				oos.flush();
 				//System.out.println("Server hat eine message zurückgeschickt");
