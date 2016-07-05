@@ -24,23 +24,7 @@ public class Level {
 		levelInhalt[x][y] = inhalt;
 	}
 	
-	//Hilfsmethode, spï¿½ter wieder lï¿½schen, Array voller 0en fï¿½llen
-	public static void setInhaltNull(){
-		for(int i = 0; i<levelInhalt.length;i++){
-			for (int j  = 0;j<levelInhalt[0].length;j++){
-				levelInhalt[j][i]=0;
-			}
-		}
-	}
-	/* 0 = Wand
-	 * 1 = Boden
-	 * 2 = Spieler
-	 * 3 = Trank
-	 * 4 = Schluessel
-	 * 5 = Monster
-	 * 6 = TÃ¼rZu
-	 * 7 = TÃ¼rAuf
-	 */
+	
 	//getter-Methode, um das gesamte Level auszulesen
 	public static int [][] getKomplettesLevel(){
 		return levelInhalt;
@@ -60,6 +44,24 @@ public class Level {
 			System.out.println();
 		}
 	}
+	
+	//getter Methode für alle x-Werte
+		public static int[] getAlleXWerte(int yKoordinate){
+			int []xWerte = null;
+			for(int i = 0; i<=levelInhalt.length; i++){
+				xWerte[i]= levelInhalt[i][yKoordinate];
+			}
+			return xWerte;
+		}
+		
+		//getter Methode für alle y-Werte
+		public static int[] getAlleYWerte(int xKoordinate){
+			int []yWerte = null;
+			for(int i = 0; i<=levelInhalt.length; i++){
+				yWerte[i]= levelInhalt[i][xKoordinate];
+			}
+			return yWerte;
+		}
 	
 	//Lï¿½nge des Arrays in x-Richtung bestimmen
 	public int getLaengeX(){

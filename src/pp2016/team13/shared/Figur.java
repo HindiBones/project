@@ -7,7 +7,7 @@ public abstract class Figur {
 	private int xPos, yPos, id;
 	private Image image;
 
-	private int health;
+	private int lp;
 	private int schaden;
 
 	private int maxHealth;
@@ -31,15 +31,15 @@ public abstract class Figur {
 	}
 
 	public void changeHealth(int change) {
-		health = Math.min(health + change, getMaxHealth());
+		lp = Math.min(lp + change, getMaxHealth());
 	}
 
-	public void setHealth(int health) {
-		this.health = health;
+	public void setLebenspunkte(int lp) {
+		this.lp = lp;
 	}
 
-	public int getHealth() {
-		return health;
+	public int getLebenspunkte() {
+		return lp;
 	}
 
 	public Image getImage() {
@@ -61,6 +61,14 @@ public abstract class Figur {
 
 	public int getXPos() {
 		return xPos;
+	}
+	
+	public void setYPos(int y) {
+		yPos = y;
+	}
+
+	public void setXPos(int x) {
+		xPos = x;
 	}
 	
 	public void setID(int id){
