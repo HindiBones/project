@@ -335,6 +335,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try { //John Rücken  img//John3hinten
 					spieler.setImage(ImageIO.read(new File("img//John3hinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -362,6 +363,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try { // Passt
 					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -370,6 +372,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
@@ -391,6 +394,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -399,6 +403,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
@@ -418,6 +423,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
@@ -426,6 +432,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
+					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
