@@ -16,7 +16,7 @@ import javax.accessibility.Accessible;
 import javax.imageio.ImageIO;
 import javax.swing.*; 
 
-import pp2016.team13.client.engine.Client;
+import pp2016.team13.client.engine.NachrichtenVerwaltung;
 import pp2016.team13.client.engine.LoginNachricht;
 import pp2016.team13.shared.Boden;
 import pp2016.team13.shared.Heiltrank;
@@ -48,7 +48,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	public Level Level;
 	public Spielelement[][] level;
-	public Client client;
+	public NachrichtenVerwaltung client;
 	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
@@ -78,7 +78,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new Client(0);
+		client = new NachrichtenVerwaltung(0);
 
 		client.spieler = spieler;
 

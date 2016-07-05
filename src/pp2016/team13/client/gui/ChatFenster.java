@@ -32,7 +32,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import pp2016.team13.client.engine.ChatNachricht;
-import pp2016.team13.client.engine.Client;
+import pp2016.team13.client.engine.NachrichtenVerwaltung;
 
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
 
@@ -43,7 +43,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
 	public String benutzername= null;
-	public Client client;
+	public NachrichtenVerwaltung client;
 		Button senden;
 	Button loeschen;
 	int i =1;
@@ -54,7 +54,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	
 	ChatFenster(String s, Minimap m ) {
 			this.m= m;
-			client = new Client(0);
+			client = new NachrichtenVerwaltung(0);
 			
 			this.setLayout(new BorderLayout());
 			this.setPreferredSize(new Dimension(170,112));

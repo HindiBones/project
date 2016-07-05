@@ -6,9 +6,11 @@ import java.util.Queue;
 import pp2016.team13.client.gui.HindiBones;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Spieler;
+import pp2016.team13.client.comm.*;
 
-public class Client {
-
+public class NachrichtenVerwaltung {
+	
+	public Client socket = new Client("Host",1);
 	HindiBones fenster;
 	int id;
 	public Spieler spieler;
@@ -23,7 +25,7 @@ public class Client {
 	 * 
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
-	public Client(int i){
+	public NachrichtenVerwaltung(int i){
 		this.id=i;
 	}
 	
@@ -35,6 +37,8 @@ public class Client {
 	 */
 	public void sende(Nachricht m){
 		Nachrichten.add(m);
+		Paket temp = new Paket(m);
+		socket.SendeAnServer(temp);
 	}
 	
 	/**
@@ -71,7 +75,7 @@ public class Client {
 	 * 
 	 * Uebertraegt die zu sendenden Nachrichten an einen anderen Client. Nur zu Testzwecken, spaeter wird an einen Server gesendet.
 	 */
-	public void uebertrage(Client empfaenger){
+	public void uebertrage(NachrichtenVerwaltung empfaenger){
 		while(!Nachrichten.isEmpty()){
 			Nachricht n = Nachrichten.poll();
 			empfaenger.NachrichtenEmpfangen.offer(n);
