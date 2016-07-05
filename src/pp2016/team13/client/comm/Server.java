@@ -44,7 +44,7 @@ public Server(int port){
 		public void run() throws IOException{
 			System.out.println("Läuft");
 			this.openServer = true;
-			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 15, 5);
+			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -61,6 +61,7 @@ public Server(int port){
 				temp = (Paket)ois.readObject();
 				ServerList.add(temp.getMessage());
 				Paket antwort = verarbeiteNachricht(temp.getMessage());
+				System.out.println("Server hat die Message verarbeitet");
 				//Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
 				oos.writeObject(antwort);
 				oos.flush();
@@ -71,9 +72,8 @@ public Server(int port){
 		
 		public Paket verarbeiteNachricht(Nachricht n){
 			Nachricht antwortNachricht = new FehlerNachricht("Unbekannter Nachrichtentyp!");
-			
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket);
+			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
 			return antwort;
