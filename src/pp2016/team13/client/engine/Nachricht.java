@@ -1,6 +1,6 @@
-package Client;
+package pp2016.team13.client.engine;
 
-import datenstruktur.Level;
+import pp2016.teamXX.shared.Level;
 
 public class Nachricht {
 	int typ;

@@ -1,12 +1,12 @@
-package Client;
+package pp2016.team13.client.engine;
 
 import gui.HindiBones;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import datenstruktur.Spieler;
-import datenstruktur.Level;
+import pp2016.teamXX.shared.Level;
+import pp2016.teamXX.shared.Spieler;
 
 public class Client {
 

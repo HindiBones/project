@@ -28,13 +28,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Client.ChatNachricht;
-import Client.Client;
+import pp2016.team13.client.engine.ChatNachricht;
+import pp2016.team13.client.engine.Client;
 
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
 

@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Client.LoginNachricht;
+import pp2016.team13.client.engine.LoginNachricht;
 
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	

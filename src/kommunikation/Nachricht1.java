@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 //import datenstruktur.level
 
-import datenstruktur.Level;
+
+import pp2016.teamXX.shared.Level;
 
 //Nachricht1 renamen in Nachricht - wurde nur Nachricht1 genannt wegen Doppelbennenung
 public class Nachricht1 implements Serializable {

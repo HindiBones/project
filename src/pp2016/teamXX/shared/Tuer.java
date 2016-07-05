@@ -1,4 +1,4 @@
-package datenstruktur;
+package pp2016.teamXX.shared;
 
 public class Tuer extends Spielelement {
 	private boolean offen;

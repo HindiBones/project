@@ -1,4 +1,4 @@
-package Client;
+package pp2016.team13.client.engine;
 
 // Nachricht, die gesendet wird, wenn sich der Spieler bewegt, die Koordinaten sind die neuen Koordinaten
 public class BewegungsNachricht extends Nachricht{
