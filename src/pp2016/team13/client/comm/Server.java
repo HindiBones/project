@@ -33,8 +33,6 @@ public Server(int port){
 		while (true){
 			
 			try {
-			ServerS.setSoTimeout(600000);
-
 			S = ServerS.accept();
 			ServerS.setSoTimeout(60000);
 
