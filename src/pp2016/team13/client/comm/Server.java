@@ -1,5 +1,5 @@
 package pp2016.team13.client.comm;
-import java.io.*;
+import java.io.*; 
 import java.net.*;
 import java.util.LinkedList;
 
@@ -48,7 +48,7 @@ public Server(int port){
 				Paket n = new Paket();
 				//System.out.println("eine neue message wird erzeugt");
 				ois = new ObjectInputStream(S.getInputStream());
-				//System.out.println("Server empfängt message vom Client und versucht zu empfangen");
+				//System.out.println("Server empfï¿½ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
 				n = (Paket)ois.readObject();
 				ServerList.add(n);
@@ -57,7 +57,7 @@ public Server(int port){
 				Paket j=new Paket(m);
 				oos.writeObject(j);
 				oos.flush();
-				//System.out.println("Server hat eine message zurückgeschickt");
+				//System.out.println("Server hat eine message zurï¿½ckgeschickt");
 			} catch (IOException | ClassNotFoundException e) {
 			}
 		}

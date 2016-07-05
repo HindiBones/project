@@ -33,7 +33,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	private static final long serialVersionUID = 1L;
 
 	private Spielflaeche spielflaeche;
-	private Minimap minimap;
+	private SeitenLeiste minimap;
 	private Highscore highscore;
 	private MenuLeiste menuLeiste;
 	private Steuerung steuerung;
@@ -104,7 +104,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.setLayout(new BorderLayout());
 				
 		this.spielflaeche = new Spielflaeche(this);
-		this.minimap= new Minimap(this);
+		this.minimap= new SeitenLeiste(this);
 		this.steuerung = new Steuerung();
 		this.highscore = new Highscore();
 		// Erzeuge Menuleiste
@@ -276,7 +276,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * Getter für Minimap(mein komplettes Seitentool)
 	 * @author Seyma Keser
 	 */
-	public Minimap getMinimap(){
+	public SeitenLeiste getMinimap(){
 		return minimap;
 	}
 	
