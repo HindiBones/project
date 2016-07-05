@@ -22,7 +22,7 @@ import pp2016.team13.shared.Wand;
 
 
 
-public class Minimap extends JPanel {
+public class SeitenLeiste extends JPanel {
 	
 	JTextField ChatText;
 
@@ -31,7 +31,7 @@ public class Minimap extends JPanel {
 	private Image boden2, wand2, tuerOffen2, tuerZu2,hintergrund, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
 	ChatFenster p;
 	private HindiBones fenster;
-	public Minimap(HindiBones fenster) {
+	public SeitenLeiste(HindiBones fenster) {
 		this.fenster = fenster;
 		 //Benutzer Name Eingabe Feld
 		 ChatText = new JTextField(); //Erzeugen eines Textfeldes f�r Nicknamen
