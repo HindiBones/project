@@ -11,10 +11,8 @@ public class Paket implements Serializable{
 		private static final long serialVersionUID = 1;
 		protected long time;
 		public Nachricht inhalt;
-		public String Test;
 		public Paket(){
 			this.time=System.currentTimeMillis();
-			this.Test="Test vom Client";
 		}
 		public Paket(Nachricht n){
 			this.time=System.currentTimeMillis();

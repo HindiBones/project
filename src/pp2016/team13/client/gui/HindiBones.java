@@ -734,10 +734,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void nextLevel() {
-		currentLevel++;
-		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
-		Level = leser.getLevel();
-		client.aktuellesLevel = Level;
+//		currentLevel++;
+//		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
+//		Level = leser.getLevel();
+//		client.aktuellesLevel = Level;
+		
+		client.levelAnfordern();
+		Level = client.aktuellesLevel;
 	}
 
 	
