@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import pp2016.team13.client.engine.LoginNachricht;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
+import pp2016.team13.server.engine.Einloggen;
 
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
@@ -127,7 +129,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 			String nickname=textBenutzer.getText();
 			@SuppressWarnings("deprecation")
 			
-			String pwd= passwortfeld.getText();
+			String pwt= passwortfeld.getText();
 	
 			
 			
@@ -137,7 +139,12 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 			
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
-			if(nickname.equals(fenster.GetBenutzername())&& pwd.equals(fenster.GetPasswort())){
+			
+			Einloggen EinL=new Einloggen();
+			
+			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
+			if(EinL.LogIn(nickname, pwt)==true){
+				
 				try {
 					Thread.sleep(100);
 					fenster.zeigeSpielfeld();
