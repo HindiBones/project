@@ -7,10 +7,15 @@ import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Einloggen;
 import pp2016.team13.server.engine.Levelverwaltung;
+import pp2016.team13.shared.Level;
 import pp2016.team13.client.engine.Nachricht;
 
 
 public class Server implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//die einzelnen Streams werden definiert
 	public ServerSocket ServerS;
 	public Socket S;
@@ -25,9 +30,9 @@ public Server(int port){
 	System.out.println("Starte Server");
 	try {
 		ServerS = new ServerSocket(port);
+		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
 	} catch (IOException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
+		System.out.println("FEHLER");
 	}
 	
 		while (true){
@@ -54,8 +59,6 @@ public Server(int port){
 		public void run() throws IOException{
 			System.out.println("Laeuft");
 			this.openServer = true;
-
-			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -75,12 +78,10 @@ public Server(int port){
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
 				n = (Paket)ois.readObject();
 				ServerList.add(n);
-				System.out.println(n.getMessage().getTyp());
 				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
 				Paket antwort = verarbeiteNachricht(n.getMessage());
 				System.out.println("Server hat die Message verarbeitet");
-				//Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
 				oos.writeObject(antwort);
 
 				oos.flush();
@@ -94,13 +95,13 @@ public Server(int port){
 		
 		public Paket verarbeiteNachricht(Nachricht n){
 			try{
-			Nachricht antwortNachricht = new FehlerNachricht("Unbekannter Nachrichtentyp!");
-			System.out.println(antwortNachricht.getTyp());
+			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket); break;
+			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
 			System.out.println(antwort.getMessage().getTyp());
+			antwort.getMessage().leveldaten[0].ausgabe();
 			return antwort;
 			}
 			catch(NullPointerException e){

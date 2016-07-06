@@ -8,7 +8,7 @@ public class Nachricht implements Serializable {
 	int typ;
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort, nachricht;
-	Level[] leveldaten;
+	public Level[] leveldaten = new Level[5];
 	int xKoo;
 	int yKoo;
 	int spielerID;

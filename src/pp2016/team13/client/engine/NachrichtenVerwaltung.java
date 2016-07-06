@@ -17,7 +17,7 @@ public class NachrichtenVerwaltung {
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
-	Level[] alleLevel;
+	Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
 	 * @author Julius
@@ -91,7 +91,6 @@ public class NachrichtenVerwaltung {
 	public void auslesen(Paket x)
 	{
 			Nachricht m = x.getMessage();
-			
 				switch (m.getTyp()){
 				/*
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
@@ -102,7 +101,7 @@ public class NachrichtenVerwaltung {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println(m.fehlermeldung);break;
-					case 6: this.alleLevel=m.leveldaten;System.out.println("Level " + Level.getLevelID()+ " wurde geladen!");break;
+					case 6: this.alleLevel=m.leveldaten;System.out.println("Level " + m.leveldaten[0].getLevelID()+ " wurde geladen!");break;
 				}
 	}
 	/*

@@ -1,8 +1,9 @@
 package pp2016.team13.shared;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Level {
+public class Level implements Serializable{
 
 	public static int levelID;
 	public static int [][] levelInhalt;
