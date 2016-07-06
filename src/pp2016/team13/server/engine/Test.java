@@ -21,7 +21,7 @@ import pp2016.team13.server.map.Labyrinth;
 			int monsterSchaden = 1;
 				
 			Levelverwaltung spiel = new Levelverwaltung(0, charakterLebenspunkte, charakterSchaden, charakterTraenke, monsterLebenspunkte, monsterSchaden, size, anzahlLevel);
-			//Übertragen aller Level Beim Start -- Zum Testen ausgeben
+			//ï¿½bertragen aller Level Beim Start -- Zum Testen ausgeben
 			for (int k = 0; k<spiel.anzahlLevel ; k++){
 				System.out.println("Level: " + (k+1) );
 				for (int i = 0; i<spiel.groesse; i++){
@@ -31,8 +31,10 @@ import pp2016.team13.server.map.Labyrinth;
 					System.out.println();
 				}
 			}
-			
-			//Test: Veränderung  einzelner Mapelemente
+
+//			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
+
+			//Test: Verï¿½nderung  einzelner Mapelemente
 			spiel.setLevelInhalt(0, 0, 0, 4, spiel);
 			spiel.levelSpeicherort[0][0][0] = spiel.levelInhalt[0][0];
 			System.out.println("Veraenderter Ort " + spiel.levelSpeicherort[0][0][0]);
@@ -57,7 +59,7 @@ import pp2016.team13.server.map.Labyrinth;
 			//Nachrichten Behandlung
 			
 			//Login-Message
-			//Externe Textdatei für Benutzername und Passwort
+			//Externe Textdatei fï¿½r Benutzername und Passwort
 			//PlayerID wird beim Aufruf vergeben. Hier nicht mehr sinnvoll
 			
 			//Spielerbewegung
@@ -92,13 +94,13 @@ import pp2016.team13.server.map.Labyrinth;
 				System.out.println(Chat.chat[i]);
 			}
 			
-			//Spielerüberspringt Level
+			//Spielerï¿½berspringt Level
 			Nachricht ueberspringen = new Nachricht (7);
 			spiel.verarbeiteNachricht(ueberspringen, spiel);
 			
 			//Behandlung Nachrichten Kampfsystem
 			//Abfrage der Lebenspunkte nach jedem Durchlauf der while Schleife
-			//Bei jedem Durchlauf Übermittlung aller Lebenspunkte an Client
+			//Bei jedem Durchlauf ï¿½bermittlung aller Lebenspunkte an Client
 			//als Beispiel:
 			spiel.spielerListe[0].setLebenspunkte(2);
 			System.out.println(spiel.spielerListe[0].getLebenspunkte());
