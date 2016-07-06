@@ -2,9 +2,6 @@ package pp2016.team13.server.engine;
 
 import java.io.IOException;
 
-import pp2016.team13.shared.Level;
-import pp2016.team13.shared.Monster;
-import pp2016.team13.shared.Spieler;
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
 
@@ -16,7 +13,7 @@ public class Levelverwaltung {
 	//speichert alle Gegner, inkl. ihrer Eigenschaften; Zugriff über gegnerID
 	static Monster[]gegnerListe;
 	//speichert alle Traenke; Zugriff ueber TrankID
-	static Trank [] trankListe;
+	static Heiltrank [] trankListe;
 	//Speichert alle Zellen des Levels
 	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer
 	public static int [][] levelInhalt;
@@ -69,7 +66,7 @@ public class Levelverwaltung {
 		//Definierung der Arrays
 		spielerListe = new Spieler[anzahlLevel];
 		gegnerListe = new Monster [anzahlLevel];
-		trankListe = new Trank [anzahlLevel];
+		trankListe = new Heiltrank [anzahlLevel];
 		
 		//Das Level durchsuchen, um
 		for (int i = 0; i<levelInhalt.length ; i++){
@@ -98,7 +95,7 @@ public class Levelverwaltung {
 					
 				}else if(levelInhalt[j][i] == 4){
 					//Tränke zu finden und ihnen ihre ID zuzuordnen
-					Trank trank = new Trank(trankID , j , i);
+					Heiltrank trank = new Heiltrank (trankID , j , i);
 					trankListe [trankID] = trank;
 					trankID ++;
 					
@@ -127,7 +124,7 @@ public class Levelverwaltung {
 		return gegnerListe;
 	}
 	
-	public static Trank [] getTrankListe(){
+	public static Heiltrank [] getTrankListe(){
 		return trankListe;
 	}
 	//setter-Methode, um bestimmte Felder im Level zu verändern

@@ -1,7 +1,6 @@
 package pp2016.team13.server.engine;
 
 import java.io.IOException;
-
 import pp2016.team13.server.map.Labyrinth;
 
 	public class Test {
