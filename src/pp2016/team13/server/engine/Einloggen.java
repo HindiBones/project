@@ -42,7 +42,7 @@ public class Einloggen {
 				String[] Nutzerdaten = new String [10];
 				while(rLine != null)
 				{
-					if (rLine.equals(benutzername+passwort)){
+					if (rLine.equals(benutzername+" " +passwort)){
 						System.out.println("Willkommen zurück");
 						fertig = true;
 						Nutzerdaten [i] = rLine;
@@ -63,7 +63,7 @@ public class Einloggen {
 						buffwriter.write(Nutzerdaten[j]);
 						buffwriter.write(System.getProperty("line.separator"));
 					}
-					buffwriter.write(benutzername+passwort);
+					buffwriter.write(benutzername+" " +passwort);
 					buffwriter.flush();
 		        	buffwriter.close();
 		        	fertig = true;
