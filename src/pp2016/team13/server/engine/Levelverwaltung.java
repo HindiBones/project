@@ -1,7 +1,6 @@
 package pp2016.team13.server.engine;
 
 import java.io.IOException;
-
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
 
@@ -24,7 +23,7 @@ public class Levelverwaltung {
 	//Initialisierung des Speicherortes für alle Level
 	public static int [][][] levelSpeicherort;
 	//Initialisierung der Level als Array
-	public Level[] levelSendePaket;
+	public Level [] levelSendePaket;
 	//Koordinaten des Schluessels
 	static int SchluesselX;
 	static int SchluesselY;
@@ -46,7 +45,7 @@ public class Levelverwaltung {
 		while (levelZaehler < anzahlLevel){
 			Labyrinth map = new Labyrinth();
 			levelInhalt = map.map;
-			levelSendePaket [levelZaehler] =new Level(levelZaehler, levelInhalt);
+			levelSendePaket [levelZaehler] =new Level(levelZaehler, map.map);
 			for (int i = 0; i<groesse; i++){
 				for (int j = 0; j<groesse ; j++){
 					levelSpeicherort[levelZaehler][j][i] = levelInhalt[j][i];
@@ -57,7 +56,9 @@ public class Levelverwaltung {
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<groesse ; j++){
 				 levelInhalt[j][i] = levelSpeicherort[levelID][j][i];
+				 System.out.print(levelSendePaket[levelZaehler].levelInhalt[i][j]+ "Hi");
 			}
+			System.out.println();;
 		}
 		//Initialisierung der IDs
 		int spielerID = 0;

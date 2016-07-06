@@ -31,8 +31,9 @@ import pp2016.team13.server.map.Labyrinth;
 					System.out.println();
 				}
 			}
+
 //			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
-			
+
 			//Test: Ver�nderung  einzelner Mapelemente
 			spiel.setLevelInhalt(0, 0, 0, 4, spiel);
 			spiel.levelSpeicherort[0][0][0] = spiel.levelInhalt[0][0];

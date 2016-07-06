@@ -52,7 +52,7 @@ public Server(int port){
 
 		
 		public void run() throws IOException{
-			System.out.println("L�uft");
+			System.out.println("Laeuft");
 			this.openServer = true;
 
 			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
