@@ -8,16 +8,18 @@ public class Nachricht {
 	Level leveldaten;
 	String nachricht, benutzername, passwort;
 	
-	/* Typen von Messages:
-	 * typ 0 : Login-Message
-	 * typ 1 : Spielerbewegung
-	 * typ 2 : Itemaufnahme
-	 * typ 3 : Level geschafft
-	 * typ 4 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw) -- Schlüsselaufnahme
-	 * typ 5 : Level geladen
-	 * typ 6 : Kampfnachricht -- LebenspunkteVeraendert Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
-	 * typ 7 : Spieler überspringt Level
-	 * typ 8 : Chat Nachricht
+	/* 
+	 * Typen von Messages:
+	 * type 0 : Login-Message
+	 * type 1 : Spielerbewegung
+	 * type 2 : Trankaufnahme
+	 * type 3 : Level geschafft
+	 * type 4 : Schluesselaufnahme
+	 * type 5 : Fehlermeldung
+	 * type 6 : Level empfangen
+	 * type 7 : Spieler überspringt Level
+	 * type 8 : Chat Nachricht
+	 * type 9 : Kampfnachricht
 	 */
 	
 	//Nachricht Login Nachricht
@@ -26,32 +28,31 @@ public class Nachricht {
 		this.benutzername = benutzername;
 		this.passwort = passwort;
 	}
-	//Nachricht Spielerbewegung
-	public Nachricht (int t, int spielerID, int posX, int posY){
+	
+	//Nachricht Spielerbewegung / Trankaufnahme
+	public Nachricht (int t, int ID, int posX, int posY){
 		this.typ = t;
-		this.ID = spielerID;
-		this.xKoo = posX;
-		this.yKoo = posY;
-	}
-	//Nachricht Itemaufnahme
-	public Nachricht (int t, int itemTyp, int trankID, int posX, int posY){ //anstatt trankID wird bei einem Schluessek als ID 0 verwendet
-		this.typ = t;
-		this.itemTyp = itemTyp; //Trank = 0 , Schluessel = 1
-		this.trankID = trankID;
+		this.ID = ID;
 		this.xKoo = posX;
 		this.yKoo = posY;
 	}
 	
-	//Nachricht Level Geschafft
+	//Nachricht Level Geschafft / Schluesselaufnahme
 	public Nachricht (int t, int spielerID){
 		this.typ = t;
 		this.ID = spielerID;
 	}
 	
-	//Fehlermeldung
+	
+	//Fehlermeldung /ChatNachricht
 	public Nachricht (int t, String Fehlernachricht){
 		this.typ = t;
 		this.nachricht = Fehlernachricht;
+	}
+	
+	//Nachricht LevelUeberspringen
+	public Nachricht (int t){
+		this.typ = t;
 	}
 	
 	//Kampfnachricht
