@@ -72,4 +72,8 @@ public class Level {
 	public int getLaengeY(){
 		return levelInhalt[0].length;
 	}
+	
+	public static int[][] getlevelInhalt (){
+		return levelInhalt;
+	}
 }
