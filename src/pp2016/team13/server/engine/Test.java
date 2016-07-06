@@ -33,7 +33,7 @@ import pp2016.team13.server.map.Labyrinth;
 				}
 			}
 
-//			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
+			//			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
 
 			//Test: Ver�nderung  einzelner Mapelemente
 			spiel.setLevelInhalt(0, 0, 0, 4, spiel);
@@ -63,49 +63,7 @@ import pp2016.team13.server.map.Labyrinth;
 			//Externe Textdatei f�r Benutzername und Passwort
 			//PlayerID wird beim Aufruf vergeben. Hier nicht mehr sinnvoll
 			
-			//Spielerbewegung
-			Nachricht Spielerbewegung = new Nachricht (1 , 0, 1, 1);
-			spiel.verarbeiteNachricht(Spielerbewegung, spiel);
 			
-			//Trankaufnahme
-			Nachricht Trankaufnahme = new Nachricht (2, 0, 0, "aufnehmen");
-			spiel.verarbeiteNachricht(Trankaufnahme, spiel);
-
-			//Spielerbewegung
-			Spielerbewegung = new Nachricht (1 , 1, 0);
-			spiel.verarbeiteNachricht(Spielerbewegung, spiel);
-
-			//Trankaufnahme
-			Trankaufnahme = new Nachricht (2);
-			spiel.verarbeiteNachricht(Trankaufnahme, spiel);
-
-			//Level geschafft
-			Nachricht levelGeschafft = new Nachricht (3, 0);
-			spiel.verarbeiteNachricht(levelGeschafft, spiel);
-
-			
-			//Schluesselaufnahme
-			Nachricht schluesselAufnahme = new Nachricht (4, 0);
-			spiel.verarbeiteNachricht(schluesselAufnahme, spiel);
-			
-			//Chat Nachricht
-			Nachricht chatNachricht = new Nachricht (5, "HI");
-			spiel.verarbeiteNachricht(chatNachricht, spiel);
-			for (int i = 0 ; i<Chat.anzahlNachrichten ; i++){
-				System.out.println(Chat.chat[i]);
-			}
-			
-			//Spieler�berspringt Level
-			Nachricht ueberspringen = new Nachricht (7);
-			spiel.verarbeiteNachricht(ueberspringen, spiel);
-			
-			//Behandlung Nachrichten Kampfsystem
-			//Abfrage der Lebenspunkte nach jedem Durchlauf der while Schleife
-			//Bei jedem Durchlauf �bermittlung aller Lebenspunkte an Client
-			//als Beispiel:
-			spiel.spielerListe[0].setLebenspunkte(2);
-			System.out.println(spiel.spielerListe[0].getLebenspunkte());
-			Nachricht lebenspunkteVeraendert = new Nachricht (6, true , spiel.spielerListe[0].getLebenspunkte());
 			
 			Einloggen.LogIn("Hallo", "Welt");
 			Einloggen.LogIn("Tschuess", "Welt");
