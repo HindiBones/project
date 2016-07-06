@@ -56,7 +56,6 @@ public class Levelverwaltung {
 		for (int i = 0; i<groesse ; i++){
 			for (int j = 0; j<groesse ; j++){
 				 levelInhalt[j][i] = levelSpeicherort[levelID][j][i];
-				 System.out.print(levelSendePaket[levelZaehler].levelInhalt[i][j]+ "Hi");
 			}
 			System.out.println();;
 		}
