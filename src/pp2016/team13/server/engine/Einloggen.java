@@ -14,23 +14,6 @@ public class Einloggen {
 
 		private static String [] nutzer = new String [10];
 	
-		public static boolean einloggenErfolgreich(String benutzername, String passwort){
-			boolean erfolgreich = false;
-			for (int i = 0; i< nutzer.length-1 ; i++){
-				if (nutzer[i]!= null && nutzer[i].equals(benutzername+passwort)){
-					System.out.println("Willkommen zurück");
-					return true;
-				}else{
-					if (!(i<nutzer.length-2)){
-						nutzer[0]=benutzername+passwort;
-						System.out.println("Hallo Neuer Nutzer");
-						break;
-					}
-				}
-			}
-			return erfolgreich;
-		}
-	
 		public static boolean LogIn(String benutzername, String passwort){
 			try{
 				boolean fertig = false;
