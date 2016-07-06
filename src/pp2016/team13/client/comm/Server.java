@@ -19,7 +19,7 @@ public class Server implements Serializable{
 	ObjectInputStream ois=null;
 	OutputStreamWriter osw=null;
 	InputStreamReader isw=null;
-	LinkedList<Nachricht> ServerList = new LinkedList<Nachricht>();
+	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	Levelverwaltung spiel;
 public Server(int port){
 	System.out.println("Starte Server");
@@ -65,34 +65,25 @@ public Server(int port){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
 
-				Nachricht n = new Nachricht();
-				//System.out.println("eine neue message wird erzeugt");
+				Paket n = new Paket();
 
-				Paket temp;
 				System.out.println("eine neue message wird erzeugt");
 
 				ois = new ObjectInputStream(S.getInputStream());
 
 				//System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
-				n = (Nachricht)ois.readObject();
+				n = (Paket)ois.readObject();
 				ServerList.add(n);
-				System.out.println(n.getMessage(n));
-				Nachricht j=new Nachricht(4, " Der Server reagiert auf den Client");
-				oos.writeObject(j);
-
+				System.out.println(n.getMessage().getTyp());
 				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
-				temp = (Paket)ois.readObject();
-				ServerList.add(temp.getMessage());
-				Paket antwort = verarbeiteNachricht(temp.getMessage());
+				Paket antwort = verarbeiteNachricht(n.getMessage());
 				System.out.println("Server hat die Message verarbeitet");
 				//Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
 				oos.writeObject(antwort);
 
 				oos.flush();
-
-				//System.out.println("Server hat eine message zur�ckgeschickt");
 
 				System.out.println("Server hat eine message zur�ckgeschickt");
 
@@ -102,12 +93,19 @@ public Server(int port){
 
 		
 		public Paket verarbeiteNachricht(Nachricht n){
+			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Unbekannter Nachrichtentyp!");
+			System.out.println(antwortNachricht.getTyp());
 			switch(n.getTyp()){
 			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
+			System.out.println(antwort.getMessage().getTyp());
 			return antwort;
+			}
+			catch(NullPointerException e){
+				return new Paket(new FehlerNachricht("Marius ist dumm!"));
+			}
 		}
 
 				
