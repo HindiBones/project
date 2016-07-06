@@ -1,6 +1,7 @@
 package pp2016.team13.server.engine;
 
 import java.io.IOException;
+
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
 
@@ -148,7 +149,7 @@ public class Levelverwaltung {
 					{
 						spielerID++;
 					}else{
-						Nachricht Fehlermeldung = new Nachricht (7, "Spieler nicht auffindbar");
+						Nachricht Fehlermeldung = new Nachricht (4, "Spieler nicht auffindbar");
 						gefunden = true;
 					}
 					
@@ -169,7 +170,7 @@ public class Levelverwaltung {
 					{
 						gegnerID++;
 					}else{
-						Nachricht Fehlermeldung = new Nachricht (7, "Monster nicht auffindbar");
+						Nachricht Fehlermeldung = new Nachricht (4, "Monster nicht auffindbar");
 						gefunden = true;
 					}
 				}
@@ -189,7 +190,7 @@ public class Levelverwaltung {
 					{
 						trankID++;
 					}else{
-						Nachricht Fehlermeldung = new Nachricht (7, "Trank nicht auffindbar");
+						Nachricht Fehlermeldung = new Nachricht (4, "Trank nicht auffindbar");
 						gefunden = true;
 					}
 				}
@@ -220,6 +221,7 @@ public class Levelverwaltung {
 	//Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt, so wird sie zum jeweiligen Nachrichten Behandler weiter geleitet.
 	//Dieser gibt dann einen Boolean zurück. Je nachdem wird eine bestimmte Aussage ausgegeben
 	public static void verarbeiteNachricht(Nachricht Nachricht, Levelverwaltung spiel){
+		/*
 		if (Nachricht.typ == 1){
 			if (spiel.behandleSpielerbewegung(Nachricht, spiel)){
 				System.out.println("Spieler darf bewegt werden. Neue Position: " + spiel.spielerListe[Nachricht.getID()].getXPos() + " " + spiel.spielerListe[Nachricht.getID()].getYPos());
@@ -259,8 +261,31 @@ public class Levelverwaltung {
 				System.out.println("Level konnte nicht übersprungen werden");
 			}
 		}
-	}
+		*/
 	
+	switch (Nachricht.getType()){
+	/*
+	 * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
+	 */
+		case 0: Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); break;//Login
+		case 1: behandleSpielerbewegung(Nachricht, spiel);break;//Spielerbewegung
+		case 2: 
+			if(Nachricht.itemTyp == 0){ //Itemaufnahme
+				behandleTrankaufnahme(Nachricht, spiel);
+			}else if (Nachricht.itemTyp == 1){
+				behandleschluesselaufgehoben(Nachricht, spiel);
+			}else{
+				Nachricht Fehlermeldung = new Nachricht (4, "Unbekannter Itemtyp");
+			}
+			break;
+		case 3: behandleLevelGeschafft(Nachricht.ID, spiel); break;//Level geschafft
+		case 4: System.out.println(Nachricht.nachricht);break;//Fehlermeldung
+		case 5: break;//Level geladen
+		case 6: break;//Kampfnachricht
+		case 7: break;//Spieler überspringt Level
+		case 8: break;//Chat Nachricht
+	}
+	}
 	//Behandelt die Nachrichten, die eine Spielerbewegung beinhalten.
 	//Zunächst wird ueberprueft, ob der Spieler an diese Position gehen darf.
 	//danach wird seine Position geändert
@@ -319,10 +344,10 @@ public class Levelverwaltung {
 	//Nachrichtenbehandler fuer einen aufgehobenen Schluessel
 	//zunaechst wird ueberprueft, ob er aufgehoben werden kann
 	//anschließend wird der schluesselstatus auf wahr gesetzt
-	public static boolean behandleschluesselaufgehoben(int id, Levelverwaltung spiel) {
+	public static boolean behandleschluesselaufgehoben(Nachricht schluesselAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
-		if(spiel.spielerListe[id].getXPos() == SchluesselX && spiel.spielerListe[id].getYPos() == SchluesselY){
-			spiel.spielerListe[id].nimmSchluessel();
+		if(spiel.spielerListe[schluesselAufnahme.ID].getXPos() == SchluesselX && spiel.spielerListe[schluesselAufnahme.ID].getYPos() == SchluesselY){
+			spiel.spielerListe[schluesselAufnahme.ID].nimmSchluessel();
 			moeglich = true;
 		}else{
 			moeglich = false;
@@ -343,4 +368,9 @@ public class Levelverwaltung {
 		
 	}
 	
+	//Nachrichtenbehandler fuer Kampfnachrichten
+	//Der Spieler wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
+	public static boolean behandleKampfnachrichten (Levelverwaltung spiel){
+		return true;
+	}
 }
