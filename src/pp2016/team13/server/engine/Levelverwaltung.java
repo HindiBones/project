@@ -57,7 +57,6 @@ public class Levelverwaltung {
 			for (int j = 0; j<groesse ; j++){
 				 levelInhalt[j][i] = levelSpeicherort[levelID][j][i];
 			}
-			System.out.println();;
 		}
 		//Initialisierung der IDs
 		int spielerID = 0;
@@ -261,6 +260,27 @@ public class Levelverwaltung {
 		}
 	}
 	
+<<<<<<< HEAD
+=======
+	switch (Nachricht.getType()){
+	/*
+	 * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
+	 */
+		case 0: Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); break;//Login
+		case 1: behandleSpielerbewegung(Nachricht, spiel);break;//Spielerbewegung
+		case 2: behandleTrankaufnahme(Nachricht, spiel); break;//Trankaufnahme
+		case 3: behandleLevelGeschafft(Nachricht.ID, spiel); break;//Level geschafft
+		case 4: behandleschluesselaufgehoben(Nachricht, spiel);break;//Schluesselaufnahme
+		case 5: System.out.println(Nachricht.nachricht);break;//Fehlermeldung
+		case 6: break;//Level empfangen
+		case 7: behandleLevelUebersprungen(spiel);break;//Spieler überspringt Level
+		case 8: Chat.nachrichtEmpfanden(Nachricht.getNachricht());break;//Chat Nachricht
+		case 9: behandleKampfnachrichten(Nachricht, spiel);break;//Kampnachricht
+	}
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 	//Behandelt die Nachrichten, die eine Spielerbewegung beinhalten.
 	//Zunächst wird ueberprueft, ob der Spieler an diese Position gehen darf.
 	//danach wird seine Position geändert
@@ -343,4 +363,17 @@ public class Levelverwaltung {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	//Nachrichtenbehandler fuer Kampfnachrichten
+	//Je Nachdem wer angegriffen wird werden die Lebenspunkte veraendert
+	public static boolean behandleKampfnachrichten (Nachricht Nachricht, Levelverwaltung spiel){
+		if (Nachricht.angegriffen){
+			spiel.spielerListe[Nachricht.ID].setLebenspunkte(spiel.spielerListe[Nachricht.ID].getLebenspunkte()-1);
+		}else{
+			spiel.gegnerListe[Nachricht.monsterID].setLebenspunkte(spiel.gegnerListe[Nachricht.monsterID].getLebenspunkte()-1);
+		}
+		return true;
+	}
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 }
