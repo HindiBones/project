@@ -101,7 +101,6 @@ public class Levelverwaltung {
 					
 				}else if(levelInhalt[j][i] == 5){
 					//Schluessel zu finden und die Koordinaten zu speichern
-					Schluessel key = new Schluessel(j, i);
 					SchluesselX = j;
 					SchluesselY = i;
 				}else if(levelInhalt[j][i] == 6){
