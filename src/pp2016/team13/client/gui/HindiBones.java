@@ -737,7 +737,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		System.out.println("Level wird angefordert!");
 		client.levelAnfordern();
 		Level = client.aktuellesLevel;
-		Level.ausgabe();
 		System.out.println("Level geladen!");
 	}
 

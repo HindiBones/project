@@ -100,11 +100,10 @@ public Server(int port){
 			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
-			System.out.println(antwort.getMessage().getTyp());
-			antwort.getMessage().leveldaten[0].ausgabe();
 			return antwort;
 			}
 			catch(NullPointerException e){
+				e.printStackTrace();
 				return new Paket(new FehlerNachricht("Marius ist dumm!"));
 			}
 		}
