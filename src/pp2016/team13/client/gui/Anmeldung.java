@@ -122,7 +122,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
+		Einloggen EinL=new Einloggen();
 		
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
@@ -140,7 +140,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
 			
-			Einloggen EinL=new Einloggen();
+			
 			
 			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
 			if(EinL.LogIn(nickname, pwt)==true){
