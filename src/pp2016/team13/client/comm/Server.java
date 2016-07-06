@@ -78,7 +78,7 @@ public Server(int port){
 				n = (Nachricht)ois.readObject();
 				ServerList.add(n);
 				System.out.println(n.getMessage(n));
-				Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
+				Nachricht j=new Nachricht(4, " Der Server reagiert auf den Client");
 				oos.writeObject(j);
 
 				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");

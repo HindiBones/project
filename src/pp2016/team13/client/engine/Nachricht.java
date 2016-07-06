@@ -21,6 +21,8 @@ public class Nachricht implements Serializable {
 	 * type 4 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 5 : Level geladen
 	 * type 6 : Kampfnachricht
+	 * type 7 : Spieler überspringt Level
+	 * type 8 : Chat Nachricht
 	 */
 
 	
@@ -32,7 +34,8 @@ public class Nachricht implements Serializable {
 	 * 
 	 * Erstellt eine Nachricht. Je nach Typ reagieren Server/Client entsprechend.
 	 */
-	public Nachricht (String string){
+	public Nachricht (int typ, String string){
+		this.typ=typ;
 		nachricht = string;
 	}
 	
