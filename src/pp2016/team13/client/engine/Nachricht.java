@@ -16,11 +16,11 @@ public class Nachricht implements Serializable {
 	 * Typen von Messages:
 	 * type 0 : Login-Message
 	 * type 1 : Spielerbewegung
-	 * type 2 : Itemaufnahme
+	 * type 2 : Trankaufnahme -- Itemaufnahme
 	 * type 3 : Level geschafft
-	 * type 4 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
-	 * type 5 : Level geladen
-	 * type 6 : Kampfnachricht
+	 * type 4 : Schluesselaufnahme -- Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
+	 * type 5 : Fehlermeldung -- Level geladen
+	 * type 6 : Level empfangen -- Kampfnachricht
 	 * type 7 : Spieler überspringt Level
 	 * type 8 : Chat Nachricht
 	 */

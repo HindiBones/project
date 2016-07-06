@@ -8,16 +8,17 @@ public class Nachricht {
 	Level leveldaten;
 	String nachricht, benutzername, passwort;
 	
-	/* Typen von Messages:
-	 * typ 0 : Login-Message
-	 * typ 1 : Spielerbewegung
-	 * typ 2 : Itemaufnahme
-	 * typ 3 : Level geschafft
-	 * typ 4 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw) -- Schlüsselaufnahme
-	 * typ 5 : Level geladen
-	 * typ 6 : Kampfnachricht -- LebenspunkteVeraendert Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
-	 * typ 7 : Spieler überspringt Level
-	 * typ 8 : Chat Nachricht
+	/* 
+	 * Typen von Messages:
+	 * type 0 : Login-Message
+	 * type 1 : Spielerbewegung
+	 * type 2 : Trankaufnahme -- Itemaufnahme
+	 * type 3 : Level geschafft
+	 * type 4 : Schluesselaufnahme -- Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
+	 * type 5 : Fehlermeldung -- Level geladen
+	 * type 6 : Level empfangen -- Kampfnachricht
+	 * type 7 : Spieler überspringt Level
+	 * type 8 : Chat Nachricht
 	 */
 	
 	//Nachricht Login Nachricht
