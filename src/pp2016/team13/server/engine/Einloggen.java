@@ -34,7 +34,7 @@ public class Einloggen {
 		public static boolean LogIn(String benutzername, String passwort){
 			try{
 				boolean fertig = false;
-				FileInputStream fileinptstrm = new FileInputStream("./src/Spielweltverwaltung/NutzerDaten.txt");
+				FileInputStream fileinptstrm = new FileInputStream("./src/pp2016/team13/server/engine/NutzerDaten.txt");
 				InputStreamReader inptstrmreader = new InputStreamReader(fileinptstrm);
 				BufferedReader buffreader = new BufferedReader(inptstrmreader);
 				String rLine = buffreader.readLine();
@@ -57,7 +57,7 @@ public class Einloggen {
 				{
 					buffreader.close();  
 					System.out.println("Hallo neuer Spieler");
-					BufferedWriter buffwriter = new BufferedWriter(new FileWriter("./src/Spielweltverwaltung/Nutzerdaten.txt", false));
+					BufferedWriter buffwriter = new BufferedWriter(new FileWriter("./src/pp2016/team13/server/engine/NutzerDaten.txt", false));
 					for(int j = 0; j<i;j++)
 					{
 						buffwriter.write(Nutzerdaten[j]);
