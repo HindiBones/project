@@ -123,6 +123,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Einloggen EinL=new Einloggen();
+		Verschluesselung verschluesseln= new Verschluesselung();
 		
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
@@ -130,10 +131,27 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 			@SuppressWarnings("deprecation")
 			
 			String pwt= passwortfeld.getText();
-	
+			
+//			try {
+//				pwt=verschluesseln.verschluesseln(pwt, nickname);
+//			} catch (Exception e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}
 			
 			
 			
+			System.out.println(nickname+" "+pwt );
+			
+			try {
+				pwt=verschluesseln.erschluesseln(pwt, nickname);
+				
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			System.out.println(nickname+""+pwt );
 		   
 
 			

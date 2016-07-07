@@ -59,6 +59,7 @@ public class Einloggen {
 			String rLine = buffreader.readLine();
 			int i = 0;
 			String[] Nutzerdaten = new String [10];
+			String[] passwort= new String[10];
 			while(rLine!= null)
 			{
 				if (rLine.equals(Benutzername+" " +Passwort)){
@@ -66,16 +67,23 @@ public class Einloggen {
 						System.out.println("Benutzername ist schon Vergeben");
 						fertig = true;
 						Nutzerdaten [i] = rLine;
+						
 						fertig=true;
 						break;
 
-				}else{					
-					Nutzerdaten [i] = rLine;
+				}else{		
+			
+				}
+				Nutzerdaten [i] = rLine;
+				 
+				String[] a= Nutzerdaten[i].split(" "); 
+				passwort[i]= a[1];
+					
 					rLine = buffreader.readLine();
 					i++;
 					fertig= false;
 				}
-			}
+			
 			if (!fertig)
 			{
 				buffreader.close();  
@@ -96,7 +104,48 @@ public class Einloggen {
 		System.out.println("Fehler " + e);
 		return false;
 	}
+			
+			
+
+
+}	
+		
 		
 					
+			
+		public static String gibmirdasPasswort(String passwort){
+			try{
+				boolean fertig = false;
+				FileInputStream fileinptstrm = new FileInputStream("./src/pp2016/team13/server/engine/NutzerDaten.txt");
+				InputStreamReader inptstrmreader = new InputStreamReader(fileinptstrm);
+				BufferedReader buffreader = new BufferedReader(inptstrmreader);
+				String rLine = buffreader.readLine();
+				int i = 0;
+				String[] Nutzerdaten = new String [10];
+				while(rLine != null)
+				{
+					if (rLine.equals(" " +passwort)){
+						System.out.println("Willkommen zur�ck");
+						fertig = true;
+						Nutzerdaten [i] = rLine;
+						
+						break;
+					}else{
+						System.out.println("Falsche eingabe");
+						
+						Nutzerdaten [i] = rLine;
+						rLine = buffreader.readLine();
+						i++; 
+						fertig = false;
+					}
+					
+				}
+
+//	        	return fertig;
+			}catch(IOException e){
+			System.out.println("Fehler " + e);
+			return "OK";
 		}
 		}
+}
+
