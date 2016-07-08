@@ -10,10 +10,10 @@ public class Chat {
 		}
 	}
 	//Nachricht zum Chat hinzufügen
-	public static void nachrichtEmpfanden(String nachricht){
+	public static boolean nachrichtEmpfanden(String nachricht){
 		chat[anzahlNachrichten] = nachricht;
 		anzahlNachrichten++;
-
+		return true;
 	
 	}
 	//Chatverlauf senden
