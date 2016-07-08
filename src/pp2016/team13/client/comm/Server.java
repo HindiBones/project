@@ -7,10 +7,15 @@ import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Einloggen;
 import pp2016.team13.server.engine.Levelverwaltung;
+import pp2016.team13.shared.Level;
 import pp2016.team13.client.engine.Nachricht;
 
 
 public class Server implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//die einzelnen Streams werden definiert
 	public ServerSocket ServerS;
 	public Socket S;
@@ -19,15 +24,15 @@ public class Server implements Serializable{
 	ObjectInputStream ois=null;
 	OutputStreamWriter osw=null;
 	InputStreamReader isw=null;
-	LinkedList<Nachricht> ServerList = new LinkedList<Nachricht>();
+	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	Levelverwaltung spiel;
 public Server(int port){
 	System.out.println("Starte Server");
 	try {
 		ServerS = new ServerSocket(port);
+		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
 	} catch (IOException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
+		System.out.println("FEHLER");
 	}
 	
 		while (true){
@@ -52,10 +57,8 @@ public Server(int port){
 
 		
 		public void run() throws IOException{
-			System.out.println("L�uft");
+			System.out.println("Laeuft");
 			this.openServer = true;
-
-			Levelverwaltung spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 16, 5);
 			while (this.openServer) {
 				handleconnection();
 			}
@@ -65,34 +68,23 @@ public Server(int port){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
 
-				Nachricht n = new Nachricht();
-				//System.out.println("eine neue message wird erzeugt");
+				Paket n = new Paket();
 
-				Paket temp;
 				System.out.println("eine neue message wird erzeugt");
 
 				ois = new ObjectInputStream(S.getInputStream());
 
 				//System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
-				n = (Nachricht)ois.readObject();
+				n = (Paket)ois.readObject();
 				ServerList.add(n);
-				System.out.println(n.getMessage(n));
-				Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
-				oos.writeObject(j);
-
 				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
-				temp = (Paket)ois.readObject();
-				ServerList.add(temp.getMessage());
-				Paket antwort = verarbeiteNachricht(temp.getMessage());
+				Paket antwort = verarbeiteNachricht(n.getMessage());
 				System.out.println("Server hat die Message verarbeitet");
-				//Nachricht j=new Nachricht(" Der Server reagiert auf den Client");
 				oos.writeObject(antwort);
 
 				oos.flush();
-
-				//System.out.println("Server hat eine message zur�ckgeschickt");
 
 				System.out.println("Server hat eine message zur�ckgeschickt");
 
@@ -102,12 +94,18 @@ public Server(int port){
 
 		
 		public Paket verarbeiteNachricht(Nachricht n){
-			Nachricht antwortNachricht = new FehlerNachricht("Unbekannter Nachrichtentyp!");
+			try{
+			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(spiel.levelSendePaket); break;
+			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
 			return antwort;
+			}
+			catch(NullPointerException e){
+				e.printStackTrace();
+				return new Paket(new FehlerNachricht("Marius ist dumm!"));
+			}
 		}
 
 				

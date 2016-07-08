@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import pp2016.team13.client.engine.LoginNachricht;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
+import pp2016.team13.server.engine.Einloggen;
 
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
@@ -120,24 +122,47 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
+		Einloggen EinL=new Einloggen();
+		Verschluesselung verschluesseln= new Verschluesselung();
 		
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
 			String nickname=textBenutzer.getText();
 			@SuppressWarnings("deprecation")
 			
-			String pwd= passwortfeld.getText();
-	
+			String pwt= passwortfeld.getText();
+			
+//			try {
+//				pwt=verschluesseln.verschluesseln(pwt, nickname);
+//			} catch (Exception e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}
 			
 			
 			
+			System.out.println(nickname+" "+pwt );
+			
+			try {
+				pwt=verschluesseln.erschluesseln(pwt, nickname);
+				
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			System.out.println(nickname+""+pwt );
 		   
 
 			
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
-			if(nickname.equals(fenster.GetBenutzername())&& pwd.equals(fenster.GetPasswort())){
+			
+			
+			
+			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
+			if(EinL.LogIn(nickname, pwt)==true){
+				
 				try {
 					Thread.sleep(100);
 					fenster.zeigeSpielfeld();

@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
+import pp2016.team13.server.engine.Einloggen;
+
 import java.awt.event.*;
 
 
@@ -107,14 +109,26 @@ public class Registrierung extends JFrame implements ActionListener{
 		//Eingaben sollen sp�ter im Client gepspeichert werden
 		//Registrierung vergleich Passwort und Wiederholtes Psw
 		//auf gleichheit und das �berhaupt ein Passwort eingegeben wurde
+		
+		Einloggen EinL=new Einloggen();
+		Verschluesselung verschluesseln= new Verschluesselung();
 		if(e.getSource()==registrierButton){
 			String nickname=textNBenutzer.getText();
 			@SuppressWarnings("deprecation")
 			String pwd= passwortfeld.getText();
 			@SuppressWarnings("deprecation")
 			String wpwd= NeuesPasswortfeld.getText();
+			
+			try {
+				pwd=verschluesseln.verschluesseln(pwd, nickname);
+				wpwd=verschluesseln.verschluesseln(wpwd, nickname);
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
 			//Beispiel Versuch wird sp�ter mit client erweitert
-			if(pwd.equals(wpwd)&& (pwd.isEmpty()==false )){
+			if((EinL.RegIn(nickname, pwd)==true) && (pwd.isEmpty()==false ) && (pwd.equals(wpwd))){
 				anmeldung1= true;
 				//Systemnachricht: Best�tigung
 				JOptionPane.showMessageDialog(this, "Ihr Benutzername: " + nickname + " ,wurde registriert ");

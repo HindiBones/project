@@ -1,8 +1,9 @@
 package pp2016.team13.shared;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Level {
+public class Level implements Serializable{
 
 	public static int levelID;
 	public static int [][] levelInhalt;
@@ -71,5 +72,9 @@ public class Level {
 	//L�nge des Arrays in y-Richtung bestimmen
 	public int getLaengeY(){
 		return levelInhalt[0].length;
+	}
+	
+	public static int[][] getlevelInhalt (){
+		return levelInhalt;
 	}
 }

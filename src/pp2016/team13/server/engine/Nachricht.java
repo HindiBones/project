@@ -3,72 +3,66 @@ package pp2016.team13.server.engine;
 import pp2016.team13.shared.Level;
 
 public class Nachricht {
-	int typ;
-	int ID;
-	int xKoo;
-	int yKoo;
-	boolean aufgenommen;
+	int typ, ID, xKoo, yKoo, itemTyp, lebenspunkte, trankID, monsterID;
+	boolean aufgenommen, charakter, angegriffen;
 	Level leveldaten;
-	String nachricht;
-	boolean charakter;
-	int lebenspunkte;
-	int trankID;
+	String nachricht, benutzername, passwort;
 	
-	/* Typen von Messages:
-	 * typ 0 : Login-Message
-	 * typ 1 : Spielerbewegung
-	 * typ 2 : Trankaufnahme
-	 * typ 3 : Level geschafft
-	 * typ 4 : Schlüsselaufnahme
-	 * typ 5 : Chat Nachricht
-	 * typ 6 : LebenspunkteVeraendert
-	 * typ 6 : Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
-	 * typ 7 : Spieler überspringt Level
+	/* 
+	 * Typen von Messages:
+	 * type 0 : Login-Message
+	 * type 1 : Spielerbewegung
+	 * type 2 : Trankaufnahme
+	 * type 3 : Level geschafft
+	 * type 4 : Schluesselaufnahme
+	 * type 5 : Fehlermeldung
+	 * type 6 : Level empfangen
+	 * type 7 : Spieler überspringt Level
+	 * type 8 : Chat Nachricht
+	 * type 9 : Kampfnachricht
 	 */
-	public Nachricht(int t, int p,int x, int y){
-		this.typ=t;
-		this.ID=p;
-		this.xKoo=x;
-		this.yKoo=y;
-	}
 	
-	//Message level Geschafft, typ, SpielerID
-	public Nachricht(int t, int ID){
-		typ = t;
-		this.ID = ID;
-	}
-	
-	public Nachricht(int t,int a, int b){
-		this.typ=t;
-		this.xKoo=a;
-		this.yKoo=b;
-	}
-	
-	public Nachricht (int t, Level x){
+	//Nachricht Login Nachricht
+	public Nachricht (int t, String benutzername, String passwort){
 		this.typ = t;
-		this.leveldaten = x;
-	}
-
-	public Nachricht (int t, String Antwort){
-		nachricht = Antwort;
-		this.typ=t;
+		this.benutzername = benutzername;
+		this.passwort = passwort;
 	}
 	
-	public Nachricht (int t, boolean charakter, int lebenspunkte){
-		typ = t;
-		this.charakter = charakter ;
-		this.lebenspunkte = lebenspunkte;
+	//Nachricht Spielerbewegung / Trankaufnahme
+	public Nachricht (int t, int ID, int posX, int posY){
+		this.typ = t;
+		this.ID = ID;
+		this.xKoo = posX;
+		this.yKoo = posY;
 	}
 	
-	public Nachricht(int t) {
-		this.typ=t;
+	//Nachricht Level Geschafft / Schluesselaufnahme
+	public Nachricht (int t, int spielerID){
+		this.typ = t;
+		this.ID = spielerID;
 	}
-
-	public Nachricht(int t, int p, int x, String string) {
-		typ = t;
-		trankID = p;
-		ID = x;
+	
+	
+	//Fehlermeldung /ChatNachricht
+	public Nachricht (int t, String Fehlernachricht){
+		this.typ = t;
+		this.nachricht = Fehlernachricht;
 	}
+	
+	//Nachricht LevelUeberspringen
+	public Nachricht (int t){
+		this.typ = t;
+	}
+	
+	//Kampfnachricht
+	public Nachricht (int t, boolean spielerAngegriffen, int spielerID, int monsterID){
+		this.typ = t;
+		this.angegriffen = spielerAngegriffen;
+		this.ID = spielerID;
+		this.monsterID = monsterID;
+	}
+	
 
 	public int getType(){
 		return this.typ;

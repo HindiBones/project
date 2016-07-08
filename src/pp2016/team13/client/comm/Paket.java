@@ -10,7 +10,7 @@ public class Paket implements Serializable{
 
 		private static final long serialVersionUID = 1;
 		protected long time;
-		public Nachricht inhalt;
+		public Nachricht inhalt = new Nachricht();
 		public Paket(){
 			//this.time=System.currentTimeMillis();
 			this.time = 0;

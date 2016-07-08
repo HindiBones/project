@@ -1,7 +1,9 @@
 package pp2016.team13.client.engine;
+import java.io.Serializable;
+
 import pp2016.team13.shared.Level;
 // Nachricht, die ein Level enth�lt (wird am Anfang vom Server empfangen)
-public class LevelNachricht extends Nachricht {
+public class LevelNachricht extends Nachricht implements Serializable{
 	/**
 	 * @author Julius
 	 * @param x: Array mit Leveldaten
