@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -42,6 +42,7 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
+//			monster=ImageIO.read(new File("img//drache1.png"));
 
 			
 		} catch (IOException e) {
@@ -110,34 +111,36 @@ public class Spielflaeche extends JPanel {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-							//Boden=1  5= Monster
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+							//Boden=1  5= Monster =(3)
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						//4=Schlüssel
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
+						
+						//4=Schlüssel ==5
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
-						//Geschlossene Tür
+						//Geschlossene Tür =6 // Offene Tür =6
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-							//offene Tür
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
-						// Hier ist die Tuer
-						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-								null);
-							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
-									* fenster.BOX-verschiebeny*fenster.BOX, null);
-							//Heiltrank
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
+							
+					} //offene Tür ==7 
+//					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
+//						// Hier ist die Tuer
+//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+//								null);
+//							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
+//									* fenster.BOX-verschiebeny*fenster.BOX, null);
+//							//Heiltrank ==4   vorher hier ==3
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
@@ -146,7 +149,8 @@ public class Spielflaeche extends JPanel {
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
-					}
+					
+					
 				}
 			}
 		}
