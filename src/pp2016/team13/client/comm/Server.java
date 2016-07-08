@@ -101,7 +101,6 @@ public Server(int port){
 			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
-			int[][] temp = this.spiel.levelSendePaket[0].levelInhalt;
 						return antwort;
 			}
 			catch(NullPointerException e){

@@ -24,8 +24,6 @@ public class Levelverwaltung {
  public static int groesse;
  //Initialisierung des Speicherortes f�r alle Level
  public static int [][][] levelSpeicherort;
- //Initialisierung der Level als Array
- public Level [] levelSendePaket;
  //Koordinaten des Schluessels
  static int SchluesselX;
  static int SchluesselY;
@@ -33,9 +31,20 @@ public class Levelverwaltung {
  static int tuerX;
  static int tuerY;
  
+ /**
+	 * @author Marius
+	 * @param levelID: Identifikationszahl des Levels
+	 * @param charakterLebenspunkte: setzt die Anzahl der Lebenspunkte, die der Charakter am Anfang hat
+	 * @param charakterSchaden: setzt den Schaden, den der Spieler pro Angriff verursacht
+	 * @param monsterLebenspunkte:setzt die Standard Lebenspunkte der Monster
+	 * @param monsterSchaden: setzt den Standard Schaden der Monster
+	 * @param groesse: Legt die Groesse des Spielfelds fest
+	 * @param anzLevel: Legt die Anzahl der Level fest
+	 * 
+	 * Setzt einen Konstruktor, der das Level auf der Server Seite verwaltet
+	 */
  //Konstruktor Levelverwaltung ; Spielwelt
  public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke, int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException{
-  levelSendePaket = new Level[anzLevel];
   this.levelID = levelID;
   anzahlLevel = anzLevel;
   this.groesse = groesse;
@@ -47,7 +56,6 @@ public class Levelverwaltung {
   while (levelZaehler < anzahlLevel){
    Labyrinth map = new Labyrinth();
    levelInhalt = map.map;
-   levelSendePaket [levelZaehler] =new Level(levelZaehler, map.map);
    for (int i = 0; i<groesse; i++){
     for (int j = 0; j<groesse ; j++){
      levelSpeicherort[levelZaehler][j][i] = levelInhalt[j][i];
