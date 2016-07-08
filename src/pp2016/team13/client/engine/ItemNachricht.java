@@ -4,6 +4,11 @@ package pp2016.team13.client.engine;
 public class ItemNachricht extends Nachricht{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/*
 	 * item = 2: Trank aufgehoben
 	 * item = 4: Schluessel aufgehoben

@@ -4,6 +4,11 @@ package pp2016.team13.client.engine;
 public class BewegungsNachricht extends Nachricht{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * @author Julius
 	 * @param p: Spieler ID
 	 * @param x: Spieler x-Koordinate

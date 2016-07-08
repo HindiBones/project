@@ -2,6 +2,11 @@ package	pp2016.team13.client.engine;
 
 public class LoginNachricht extends Nachricht {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// Einlognachricht, sendet eingegebenen Benutzernamen und Passwort an den Server, um zu testen, ob der User mit dem Passwort existiert
 	/**
 	 * @author Julius

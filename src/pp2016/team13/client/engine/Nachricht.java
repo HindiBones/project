@@ -2,9 +2,11 @@ package pp2016.team13.client.engine;
 
 import java.io.Serializable;
 
-import pp2016.team13.shared.Level;
-
 public class Nachricht implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int typ;
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort, nachricht;
