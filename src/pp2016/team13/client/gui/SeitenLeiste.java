@@ -62,7 +62,7 @@ public class SeitenLeiste extends JPanel {
 			john= ImageIO.read(new File("img//john.png"));
 			sblase= ImageIO.read(new File("img//sprechblase.png"));
 			} catch (IOException e) {
-			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase??");
+			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
 
 		
@@ -247,7 +247,7 @@ int Hintergrundpixel= 192;
 				fenster.spieler.getMaxHealth(), 5);
 		g.setColor(Color.GREEN);
 		g.fillRect(50, itemKy+80,
-				fenster.spieler.getHealth(), 5);
+				fenster.spieler.getLebenspunkte(), 5);
 
 		
 		this.add(ChatText);

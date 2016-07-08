@@ -4,13 +4,15 @@ import java.io.IOException;
 
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Monster;
+import pp2016.team13.shared.Spieler;
 import pp2016.team13.server.map.Labyrinth;
+import pp2016.team13.shared.*;
 
 public class Levelverwaltung {
 	//Level ID
 	public static int levelID;
 	//speichert alle Spieler, inkl. ihrer Eigenschaften; Zugriff über spielerID
-	static Charakter []spielerListe;
+	static Spieler []spielerListe;
 	//speichert alle Gegner, inkl. ihrer Eigenschaften; Zugriff über gegnerID
 	static Monster[]gegnerListe;
 	//speichert alle Traenke; Zugriff ueber TrankID
@@ -35,6 +37,7 @@ public class Levelverwaltung {
 	
 	//Konstruktor Levelverwaltung ; Spielwelt
 	public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke, int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException{
+		levelSendePaket = new Level[anzLevel];
 		this.levelID = levelID;
 		anzahlLevel = anzLevel;
 		this.groesse = groesse;
@@ -64,7 +67,7 @@ public class Levelverwaltung {
 		int monsterID = 0;
 		int trankID = 0;
 		//Definierung der Arrays
-		spielerListe = new Charakter[anzahlLevel];
+		spielerListe = new Spieler[anzahlLevel];
 		gegnerListe = new Monster [anzahlLevel];
 		trankListe = new Trank [anzahlLevel];
 		
@@ -73,7 +76,8 @@ public class Levelverwaltung {
 			for (int j = 0; j<levelInhalt.length ; j++){
 				if(levelInhalt[j][i]==2){
 					//Charakter zu finden und die ID zuzuordnen
-					Charakter spieler = new Charakter (spielerID, charakterLebenspunkte, charakterSchaden, charakterTraenke, j, i);
+					Spieler spieler = new Spieler (spielerID);
+					spieler.setPos(i, j);
 					spielerListe[spielerID] = spieler;
 					spielerID++;
 					levelInhalt[j][i]=1;
@@ -114,7 +118,7 @@ public class Levelverwaltung {
 	
 	
 	//Getter Methoden die Spieler Liste
-	public static Charakter [] getSpielerListe(){
+	public static Spieler [] getSpielerListe(){
 		return spielerListe;
 	}
 	
@@ -136,11 +140,11 @@ public class Levelverwaltung {
 			int spielerID = 0;
 			while(!gefunden){
 				//sucht er nach der SpielerID ; dem Spieler
-				if (spielerListe[spielerID].getPosX() == x && spielerListe[spielerID].getPosY() == y){
+				if (spielerListe[spielerID].getXPos() == x && spielerListe[spielerID].getYPos() == y){
 					//wenn er gefunden wird, dann wird seine neue Position in die Spielerliste übertragen
 					gefunden = true;
-					spiel.spielerListe[spielerID].setPosX(x);
-					spiel.spielerListe[spielerID].setPosY(y);
+					spiel.spielerListe[spielerID].setXPos(x);
+					spiel.spielerListe[spielerID].setYPos(y);
 				}else{
 					//wenn der Spieler nicht gefunden wird, so wird der nächste Spieler ausprobiert.
 					//Dies geht solange, bis die ganze Spielerliste durchgegangen wurde
@@ -201,7 +205,7 @@ public class Levelverwaltung {
 	//wird ueberprueft, indem die Anzahl der Traenke ueberprueft wird
 	public static boolean trankBenutzbar(int spielerID){
 		boolean funktioniert;
-		if (spielerListe[spielerID].anzahlTraenke>0){
+		if (spielerListe[spielerID].getAnzahlHeiltraenke()>0){
 			funktioniert = true;
 		}else {
 			funktioniert = false;
@@ -212,7 +216,7 @@ public class Levelverwaltung {
 	//void Methode, um einen Trank zu benutzen. Hierbei werden die Lebenspunkte des Spielers wieder aufgefüllt
 	public static void benutzeTrank(int spielerID){
 		if (trankBenutzbar(spielerID)){
-			spielerListe[spielerID].setAnzahlTraenke(spielerListe[spielerID].getAnzahlTraenke()-1);
+			spielerListe[spielerID].setAnzahlHeiltraenke(spielerListe[spielerID].getAnzahlHeiltraenke()-1);
 			spielerListe[spielerID].setLebenspunkte(10);
 		}
 	}
@@ -222,19 +226,19 @@ public class Levelverwaltung {
 	public static void verarbeiteNachricht(Nachricht Nachricht, Levelverwaltung spiel){
 		if (Nachricht.typ == 1){
 			if (spiel.behandleSpielerbewegung(Nachricht, spiel)){
-				System.out.println("Spieler darf bewegt werden. Neue Position: " + spiel.spielerListe[Nachricht.getID()].getPosX() + " " + spiel.spielerListe[Nachricht.getID()].getPosY());
+				System.out.println("Spieler darf bewegt werden. Neue Position: " + spiel.spielerListe[Nachricht.getID()].getXPos() + " " + spiel.spielerListe[Nachricht.getID()].getYPos());
 			}else{
 				Nachricht Fehlermeldung = new Nachricht (7, "Spieler zu weit vom Feld entfernt, oder Wand im Weg. Bewegung nicht möglich");
 				System.out.println("Spieler darf nicht bewegt werden");
 			}
 		}else if (Nachricht.typ == 2){
-			System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlTraenke());
+			System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
 			if(spiel.behandleTrankaufnahme(Nachricht, spiel)){
 				System.out.println("Spieler beim Trank");
-				System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlTraenke());
+				System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
 			}else{
 				System.out.println("Spieler nicht beim Trank");
-				System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlTraenke());
+				System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
 			}
 		}else if (Nachricht.typ == 3){
 			if(spiel.behandleLevelGeschafft(Nachricht.getID(), spiel)){
@@ -266,8 +270,8 @@ public class Levelverwaltung {
 	//danach wird seine Position geändert
 	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel){
 		boolean moeglich;
-		if (spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 &&spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 3 && ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosX() && (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosY() +1 || Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosY() -1))
-				|| (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosY() && (Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosX() +1 || Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getPosX() -1)))){
+		if (spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 &&spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 3 && ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() && (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() +1 || Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() -1))
+				|| (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() && (Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() +1 || Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() -1)))){
 			spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(), Spielerbewegung.getyKoo(), 2, spiel);
 			moeglich = true;
 		}else {
@@ -282,13 +286,13 @@ public class Levelverwaltung {
 	//danach wird er zum Inventar hinzugefuegt
 	public static boolean behandleTrankaufnahme(Nachricht trankAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
-		if (!(spiel.trankListe[trankAufnahme.getTrankID()].aufgehoben) && spiel.trankListe[trankAufnahme.getTrankID()].getPosX() == spiel.spielerListe[trankAufnahme.getID()].getPosX() && spiel.trankListe[trankAufnahme.getTrankID()].getPosY() == spiel.spielerListe[trankAufnahme.getID()].getPosY()){
+		if (!(spiel.trankListe[trankAufnahme.getTrankID()].aufgehoben) && spiel.trankListe[trankAufnahme.getTrankID()].getPosX() == spiel.spielerListe[trankAufnahme.getID()].getXPos() && spiel.trankListe[trankAufnahme.getTrankID()].getPosY() == spiel.spielerListe[trankAufnahme.getID()].getYPos()){
 			spiel.trankListe[0].aufgehoben = true;
-			spiel.spielerListe[trankAufnahme.getID()].setAnzahlTraenke(spiel.spielerListe[trankAufnahme.getID()].getAnzahlTraenke()+1);
+			spiel.spielerListe[trankAufnahme.getID()].setAnzahlHeiltraenke(spiel.spielerListe[trankAufnahme.getID()].getAnzahlHeiltraenke()+1);
 			moeglich = true;
 		}else{
 			System.out.println(spiel.trankListe[trankAufnahme.getTrankID()].getPosX() + " "+ spiel.trankListe[trankAufnahme.getTrankID()].getPosY());
-			System.out.println(spiel.spielerListe[trankAufnahme.getID()].getPosX() + " " + spiel.spielerListe[trankAufnahme.getID()].getPosY());
+			System.out.println(spiel.spielerListe[trankAufnahme.getID()].getXPos() + " " + spiel.spielerListe[trankAufnahme.getID()].getYPos());
 			moeglich = false;
 		}
 		return moeglich;
@@ -300,7 +304,7 @@ public class Levelverwaltung {
 	//danach wird true zurueck gegeben und das naechste Level kann gestartet werden.
 	public static boolean behandleLevelGeschafft(int spielerID, Levelverwaltung spiel) {
 		boolean moeglich;
-		if(spiel.spielerListe[spielerID].getSchluessel() && spiel.spielerListe[spielerID].getPosX() == tuerX && spiel.spielerListe[spielerID].getPosY() == tuerY){
+		if(spiel.spielerListe[spielerID].hatSchluessel() && spiel.spielerListe[spielerID].getXPos() == tuerX && spiel.spielerListe[spielerID].getYPos() == tuerY){
 			//Level wechseln -- wenn Levelgenerator da ist. Möglichkeit besteht, siehe Test
 			moeglich= true;
 			levelID++;
@@ -321,8 +325,8 @@ public class Levelverwaltung {
 	//anschließend wird der schluesselstatus auf wahr gesetzt
 	public static boolean behandleschluesselaufgehoben(int id, Levelverwaltung spiel) {
 		boolean moeglich;
-		if(spiel.spielerListe[id].getPosX() == SchluesselX && spiel.spielerListe[id].getPosY() == SchluesselY){
-			spiel.spielerListe[id].setSchluessel(true);
+		if(spiel.spielerListe[id].getXPos() == SchluesselX && spiel.spielerListe[id].getYPos() == SchluesselY){
+			spiel.spielerListe[id].nimmSchluessel();
 			moeglich = true;
 		}else{
 			moeglich = false;
@@ -333,11 +337,11 @@ public class Levelverwaltung {
 	//Nachrichtenbehandler fuer das Uebersprungene Level
 	//Der Spieler wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
 	public static boolean behandleLevelUebersprungen (Levelverwaltung spiel){
-		spiel.levelInhalt[spiel.spielerListe[0].getPosX()][spiel.spielerListe[0].getPosY()]=1;
+		spiel.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0].getYPos()]=1;
 		spiel.levelInhalt[tuerX][tuerY] = 2;
-		spiel.spielerListe[0].setPosX(tuerX);
-		spiel.spielerListe[0].setPosY(tuerY);
-		spiel.spielerListe[0].setSchluessel(true);
+		spiel.spielerListe[0].setXPos(tuerX);
+		spiel.spielerListe[0].setYPos(tuerY);
+		spiel.spielerListe[0].nimmSchluessel();
 		behandleLevelGeschafft(0, spiel);
 		return true;
 		

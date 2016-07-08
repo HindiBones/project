@@ -6,16 +6,18 @@ import java.io.Serializable;
 
 
 
+
+import pp2016.team13.client.engine.Nachricht;
 import pp2016.team13.shared.Level;
 
 //Nachricht1 renamen in Nachricht - wurde nur Nachricht1 genannt wegen Doppelbennenung
-public class Nachricht1 implements Serializable {
+public class Paket2 implements Serializable {
 	
 	
 	
 	private static final long serialVersionUID = 1;
 	protected long time;
-	public String Test;
+	public Nachricht inhalt;
 	int typ;
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort;
@@ -25,13 +27,12 @@ public class Nachricht1 implements Serializable {
 	int spielerID;
 	
 	
-	public Nachricht1(){
+	public Paket2(){
 		this.time=System.currentTimeMillis();
-		this.Test="Test vom Client";
 	}
-	public Nachricht1(String Test){
+	public Paket2(Nachricht Test){
 		this.time=System.currentTimeMillis();
-		this.Test=Test;
+		this.inhalt=Test;
 	}
 	
 	
@@ -48,7 +49,7 @@ public class Nachricht1 implements Serializable {
 
 	
 	// Nachricht, die gesendet wird, wenn das Level geschafft wurde - Nur zum Testen
-	public Nachricht1 (int t){
+	public Paket2 (int t){
 		this.typ = t;
 	}
 	

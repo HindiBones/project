@@ -43,7 +43,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
 	public String benutzername= null;
-	public NachrichtenVerwaltung client;
 		Button senden;
 	Button loeschen;
 	int i =1;
@@ -54,7 +53,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	
 	ChatFenster(String s, SeitenLeiste m ) {
 			this.m= m;
-			client = new NachrichtenVerwaltung(0);
 			
 			this.setLayout(new BorderLayout());
 			this.setPreferredSize(new Dimension(170,112));
@@ -146,7 +144,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
 			textumfeld.append(Text+"\n");
-			client.sende(new ChatNachricht(Text));
 			textfeld.setText(null);
 			
 			textumfeld.requestFocusInWindow();

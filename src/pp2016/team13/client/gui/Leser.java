@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.io.FileReader;
+import java.io.FileReader; 
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -11,7 +11,7 @@ import pp2016.team13.shared.Schluessel;
 import pp2016.team13.shared.Spielelement;
 import pp2016.team13.shared.Tuer;
 import pp2016.team13.shared.Wand;
-
+ 
 public class Leser {
 
 	private String dateiname;

@@ -76,16 +76,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	public HindiBones(int width, int height, String title) {
 		
-		client = new NachrichtenVerwaltung(0);
-
-		client.spieler = spieler;
-
-
-		client.spieler = spieler;
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
-		
+		client = new NachrichtenVerwaltung(12345);
+		client.spieler = spieler;
 		// initialisieren des Fensters 
 		starteNeuesSpiel();
 		
@@ -108,7 +103,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
 		this.anmeldung = new Anmeldung(this);
-		
 		
 		
 		
@@ -648,11 +642,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		try {
 			Thread.sleep(100);		
-		spieler = new Spieler(0, this);
-	
+		spieler = new Spieler(0);
+		spieler.setFenster(this);
 //		
 		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
-		spieler2=new Spieler(1, this);
+		spieler2=new Spieler(1);
+		spieler2.setFenster(this);
 		try {
 			spieler2.setImage(ImageIO.read(new File("img//red_point.png")).getScaledInstance(10, 10, Image.SCALE_DEFAULT));
 		} catch (IOException e) {
@@ -707,7 +702,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				//	getStatusleiste().repaint();
 				
 
-				if (spieler.getHealth() <= 0) {
+				if (spieler.getLebenspunkte() <= 0) {
 					spielende = true;
 					verloren = true;
 				}
@@ -734,10 +729,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void nextLevel() {
-		currentLevel++;
-		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
-		Level = leser.getLevel();
-		client.aktuellesLevel = Level;
+//		currentLevel++;
+//		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
+//		Level = leser.getLevel();
+//		client.aktuellesLevel = Level;
+		
+		System.out.println("Level wird angefordert!");
+		client.levelAnfordern();
+		Level = client.aktuellesLevel;
+		Level.ausgabe();
+		System.out.println("Level geladen!");
 	}
 
 	
