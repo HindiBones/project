@@ -56,7 +56,7 @@ public class SeitenLeiste extends JPanel {
 			heiltrank2 = ImageIO.read(new File("img//heiltrank2.png"));
 			heiltrankblau = ImageIO.read(new File("img//heiltrankpanel.png"));
 			boden2 = ImageIO.read(new File("img//boden.png"));
-			wand2 = ImageIO.read(new File("img//wand.png"));
+			wand2 = ImageIO.read(new File("img//wandklein.png"));
 			tuerZu2 = ImageIO.read(new File("img//tuer.png"));
 			tuerOffen2 = ImageIO.read(new File("img//tueroffen.png"));
 			john= ImageIO.read(new File("img//john.png"));
@@ -107,12 +107,12 @@ public class SeitenLeiste extends JPanel {
 								null);
 						
 						
-					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-						//System.out.println("Sollte Offene Türe zechenen");
-						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
-								null);	
-						g.drawImage(tuerOffen2, i * 11 , j
-									* 10, null);
+//					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+//						//System.out.println("Sollte Offene Türe zechenen");
+//						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+//								null);	
+//						g.drawImage(tuerOffen2, i * 11 , j
+//									* 10, null);
 					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
 						//System.out.println("Sollte Offene Türe zechenen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
