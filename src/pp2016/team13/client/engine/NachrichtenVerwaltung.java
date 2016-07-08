@@ -89,7 +89,7 @@ public class NachrichtenVerwaltung {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println(m.fehlermeldung);break;
-					case 6: System.out.println("Level " + m.leveldaten[0].getLevelID()+ " wurde geladen!");this.alleLevel=m.leveldaten;break;
+					case 6: System.out.println( m.leveldaten);break;
 				}
 	}
 	/*
@@ -107,7 +107,7 @@ public class NachrichtenVerwaltung {
 	 * @author Julius
 	 * @param richtung: Integer, der die Bewegungsrichtung angibt. 0 = runter, 1 = hoch, 2 = links, 3 = rechts
 	 * 
-	 * Bewegt den Spieler wenn möglich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
+	 * Bewegt den Spieler wenn mï¿½glich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
 	 */
 	public void SpielerBewegung(int richtung){
 		switch(richtung){

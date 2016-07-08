@@ -121,7 +121,9 @@ public class Registrierung extends JFrame implements ActionListener{
 			
 			try {
 				pwd=verschluesseln.verschluesseln(pwd, nickname);
+				System.out.println(pwd+" "+nickname);
 				wpwd=verschluesseln.verschluesseln(wpwd, nickname);
+				System.out.println(wpwd+" "+nickname);
 			} catch (Exception e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();

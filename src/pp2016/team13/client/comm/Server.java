@@ -81,6 +81,7 @@ public Server(int port){
 				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
 				Paket antwort = verarbeiteNachricht(n.getMessage());
+				System.out.print(antwort.getMessage().leveldaten);
 				System.out.println("Server hat die Message verarbeitet");
 				oos.writeObject(antwort);
 
@@ -97,10 +98,17 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket); break;
+			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket[0].levelInhalt); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
-			return antwort;
+			int[][] temp = this.spiel.levelSendePaket[0].levelInhalt;
+			for(int i = 0; i < temp.length; i++){
+				for(int j = 0; j < temp[0].length; j++){
+					System.out.print(temp[i][j]);
+				}
+				System.out.println();
+			}
+						return antwort;
 			}
 			catch(NullPointerException e){
 				e.printStackTrace();

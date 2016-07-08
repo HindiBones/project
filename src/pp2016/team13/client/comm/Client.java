@@ -44,6 +44,7 @@ public class Client extends Paket {
 			serverAntwort = new Paket();
 			ois=new ObjectInputStream(cs.getInputStream());
 			System.out.println("ObjectInputStream steht");
+			
 			serverAntwort=(Paket)ois.readObject();
 			ClientList.addLast(serverAntwort);
 		}
@@ -57,7 +58,13 @@ public class Client extends Paket {
 			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
 			e.printStackTrace();
 		}
-
+		int[][] temp = serverAntwort.getMessage().leveldaten;
+		for(int i = 0; i < temp.length; i++){
+			for(int j = 0; j < temp[0].length; j++){
+				System.out.print(temp[i][j]);
+			}
+			System.out.println();
+		}
 		return serverAntwort;
 	}
 

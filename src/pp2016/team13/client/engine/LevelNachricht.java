@@ -10,8 +10,8 @@ public class LevelNachricht extends Nachricht implements Serializable{
 	 * 
 	 * Erstellt eine LevelNachricht, die alle Level der Sitzung enthaelt. Wird am Anfang der Sitzung vom Server an den Client geschickt.
 	 */
-	public LevelNachricht (Level[] x){
+	public LevelNachricht (int[][] levelInhalt){
 		super(6);
-		this.leveldaten = x;
+		this.leveldaten = levelInhalt;
 	}
 }

@@ -132,34 +132,30 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 			
 			String pwt= passwortfeld.getText();
 			
-//			try {
-//				pwt=verschluesseln.verschluesseln(pwt, nickname);
-//			} catch (Exception e2) {
-//				// TODO Auto-generated catch block
-//				e2.printStackTrace();
-//			}
-			
-			
-			
-			System.out.println(nickname+" "+pwt );
-			
 			try {
-				pwt=verschluesseln.erschluesseln(pwt, nickname);
-				
+				pwt=verschluesseln.verschluesseln(pwt, nickname);
 			} catch (Exception e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
 			
-			System.out.println(nickname+""+pwt );
+			
+			
+		
+//			try {
+//				pwt=verschluesseln.erschluesseln(pwt, nickname);
+//				
+//			} catch (Exception e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}
+			
+		//	System.out.println(nickname+""+pwt );
 		   
 
-			
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
-			
-			
-			
+
 			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
 			if(EinL.LogIn(nickname, pwt)==true){
 				

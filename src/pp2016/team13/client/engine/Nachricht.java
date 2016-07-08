@@ -8,7 +8,7 @@ public class Nachricht implements Serializable {
 	int typ;
 	boolean aufgenommen;
 	String fehlermeldung, benutzername, passwort, nachricht;
-	public Level[] leveldaten = new Level[5];
+	public int[][] leveldaten;
 	int xKoo;
 	int yKoo;
 	int spielerID;
@@ -21,7 +21,7 @@ public class Nachricht implements Serializable {
 	 * type 4 : Schluesselaufnahme -- Fehler (z.B. falsche Login-Daten, inkonsistente Bewegungen, usw)
 	 * type 5 : Fehlermeldung -- Level geladen
 	 * type 6 : Level empfangen -- Kampfnachricht
-	 * type 7 : Spieler überspringt Level
+	 * type 7 : Spieler ï¿½berspringt Level
 	 * type 8 : Chat Nachricht
 	 */
 
