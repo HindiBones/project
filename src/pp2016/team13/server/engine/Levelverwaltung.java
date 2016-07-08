@@ -220,64 +220,24 @@ public class Levelverwaltung {
  
  //Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt, so wird sie zum jeweiligen Nachrichten Behandler weiter geleitet.
  //Dieser gibt dann einen Boolean zur�ck. Je nachdem wird eine bestimmte Aussage ausgegeben
- public static void verarbeiteNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception{
-  /*
-  if (Nachricht.typ == 1){
-   if (spiel.behandleSpielerbewegung(Nachricht, spiel)){
-    System.out.println("Spieler darf bewegt werden. Neue Position: " + spiel.spielerListe[Nachricht.getID()].getXPos() + " " + spiel.spielerListe[Nachricht.getID()].getYPos());
-   }else{
-    Nachricht Fehlermeldung = new Nachricht (7, "Spieler zu weit vom Feld entfernt, oder Wand im Weg. Bewegung nicht m�glich");
-    System.out.println("Spieler darf nicht bewegt werden");
-   }
-  }else if (Nachricht.typ == 2){
-   System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
-   if(spiel.behandleTrankaufnahme(Nachricht, spiel)){
-    System.out.println("Spieler beim Trank");
-    System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
-   }else{
-    System.out.println("Spieler nicht beim Trank");
-    System.out.println(spiel.spielerListe[Nachricht.getID()].getAnzahlHeiltraenke());
-   }
-  }else if (Nachricht.typ == 3){
-   if(spiel.behandleLevelGeschafft(Nachricht.getID(), spiel)){
-    System.out.println("N�chstes Level");
-   }else{
-    System.out.println("Level konnte nicht beendet werden");
-    Nachricht Fehlermeldung = new Nachricht (7, "level nicht beendet");
-   }
-  }else if (Nachricht.typ == 4){
-   if(spiel.behandleschluesselaufgehoben(Nachricht.getID(), spiel)){
-    System.out.println("Schl�ssel aufgehoben");
-   }else{
-    System.out.println("Schl�ssel nicht aufgehoben");
-    Nachricht Fehlermeldung = new Nachricht (7, "Schl�ssel nicht bei Spieler");
-   }
-  }else if (Nachricht.typ == 5){
-   Chat.nachrichtEmpfanden(Nachricht.getNachricht());
-  }else if (Nachricht.typ == 7){
-   if(spiel.behandleLevelUebersprungen(spiel)){
-    System.out.println("Level �bersprungen");
-   }else{
-    System.out.println("Level konnte nicht �bersprungen werden");
-   }
-  }
-  */
+ public static boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception{
  
  switch (Nachricht.getTyp()){
  /*
   * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
   */
-  case 0: Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); break;//Login
-  case 1: behandleSpielerbewegung(Nachricht, spiel);break;//Spielerbewegung
-  case 2: behandleTrankaufnahme(Nachricht, spiel); break;//Trankaufnahme
-  case 3: behandleLevelGeschafft(Nachricht.getID(), spiel); break;//Level geschafft
-  case 4: behandleschluesselaufgehoben(Nachricht, spiel);break;//Schluesselaufnahme
-  case 5: System.out.println(Nachricht.nachricht);break;//Fehlermeldung
-  case 6: break;//Level empfangen
-  case 7: behandleLevelUebersprungen(spiel);break;//Spieler �berspringt Level
-  case 8: Chat.nachrichtEmpfanden(Nachricht.nachricht);break;//Chat Nachricht
-  case 9: behandleKampfnachrichten(Nachricht, spiel);break;//Kampnachricht
+  case 0: return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); //Login
+  case 1: return behandleSpielerbewegung(Nachricht, spiel);//Spielerbewegung
+  case 2: return behandleTrankaufnahme(Nachricht, spiel); //Trankaufnahme
+  case 3: return behandleLevelGeschafft(Nachricht.getID(), spiel); //Level geschafft
+  case 4: return behandleschluesselaufgehoben(Nachricht, spiel);//Schluesselaufnahme
+  case 5: System.out.println(Nachricht.nachricht); return true;//Fehlermeldung
+  case 6: return true;//Level empfangen
+  case 7: return behandleLevelUebersprungen(spiel);//Spieler �berspringt Level
+  case 8: return Chat.nachrichtEmpfanden(Nachricht.nachricht);//Chat Nachricht
+  case 9: return behandleKampfnachrichten(Nachricht, spiel);//Kampnachricht
  }
+ return false;
  }
  
  
