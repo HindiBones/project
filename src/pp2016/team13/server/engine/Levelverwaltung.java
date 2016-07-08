@@ -2,6 +2,7 @@ package pp2016.team13.server.engine;
 
 import java.io.IOException;
 
+import pp2016.team13.client.engine.*;
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
 
@@ -262,19 +263,19 @@ public class Levelverwaltung {
   }
   */
  
- switch (Nachricht.getType()){
+ switch (Nachricht.getTyp()){
  /*
   * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
   */
   case 0: Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); break;//Login
   case 1: behandleSpielerbewegung(Nachricht, spiel);break;//Spielerbewegung
   case 2: behandleTrankaufnahme(Nachricht, spiel); break;//Trankaufnahme
-  case 3: behandleLevelGeschafft(Nachricht.ID, spiel); break;//Level geschafft
+  case 3: behandleLevelGeschafft(Nachricht.getID(), spiel); break;//Level geschafft
   case 4: behandleschluesselaufgehoben(Nachricht, spiel);break;//Schluesselaufnahme
   case 5: System.out.println(Nachricht.nachricht);break;//Fehlermeldung
   case 6: break;//Level empfangen
   case 7: behandleLevelUebersprungen(spiel);break;//Spieler �berspringt Level
-  case 8: Chat.nachrichtEmpfanden(Nachricht.getNachricht());break;//Chat Nachricht
+  case 8: Chat.nachrichtEmpfanden(Nachricht.nachricht);break;//Chat Nachricht
   case 9: behandleKampfnachrichten(Nachricht, spiel);break;//Kampnachricht
  }
  }
@@ -301,12 +302,12 @@ public class Levelverwaltung {
  //danach wird er zum Inventar hinzugefuegt
  public static boolean behandleTrankaufnahme(Nachricht trankAufnahme, Levelverwaltung spiel) {
   boolean moeglich;
-  if (!(spiel.trankListe[trankAufnahme.getTrankID()].aufgehoben) && spiel.trankListe[trankAufnahme.getTrankID()].getPosX() == spiel.spielerListe[trankAufnahme.getID()].getXPos() && spiel.trankListe[trankAufnahme.getTrankID()].getPosY() == spiel.spielerListe[trankAufnahme.getID()].getYPos()){
+  if (!(spiel.trankListe[trankAufnahme.trankID].aufgehoben) && spiel.trankListe[trankAufnahme.trankID].getPosX() == spiel.spielerListe[trankAufnahme.getID()].getXPos() && spiel.trankListe[trankAufnahme.trankID].getPosY() == spiel.spielerListe[trankAufnahme.getID()].getYPos()){
    spiel.trankListe[0].aufgehoben = true;
    spiel.spielerListe[trankAufnahme.getID()].setAnzahlHeiltraenke(spiel.spielerListe[trankAufnahme.getID()].getAnzahlHeiltraenke()+1);
    moeglich = true;
   }else{
-   System.out.println(spiel.trankListe[trankAufnahme.getTrankID()].getPosX() + " "+ spiel.trankListe[trankAufnahme.getTrankID()].getPosY());
+   System.out.println(spiel.trankListe[trankAufnahme.trankID].getPosX() + " "+ spiel.trankListe[trankAufnahme.trankID].getPosY());
    System.out.println(spiel.spielerListe[trankAufnahme.getID()].getXPos() + " " + spiel.spielerListe[trankAufnahme.getID()].getYPos());
    moeglich = false;
   }
@@ -340,8 +341,8 @@ public class Levelverwaltung {
  //anschlie�end wird der schluesselstatus auf wahr gesetzt
  public static boolean behandleschluesselaufgehoben(Nachricht schluesselAufnahme, Levelverwaltung spiel) {
   boolean moeglich;
-  if(spiel.spielerListe[schluesselAufnahme.ID].getXPos() == SchluesselX && spiel.spielerListe[schluesselAufnahme.ID].getYPos() == SchluesselY){
-   spiel.spielerListe[schluesselAufnahme.ID].nimmSchluessel();
+  if(spiel.spielerListe[schluesselAufnahme.getID()].getXPos() == SchluesselX && spiel.spielerListe[schluesselAufnahme.getID()].getYPos() == SchluesselY){
+   spiel.spielerListe[schluesselAufnahme.getID()].nimmSchluessel();
    moeglich = true;
   }else{
    moeglich = false;
@@ -365,7 +366,7 @@ public class Levelverwaltung {
  //Je Nachdem wer angegriffen wird werden die Lebenspunkte veraendert
  public static boolean behandleKampfnachrichten (Nachricht Nachricht, Levelverwaltung spiel){
   if (Nachricht.angegriffen){
-   spiel.spielerListe[Nachricht.ID].setLebenspunkte(spiel.spielerListe[Nachricht.ID].getLebenspunkte()-1);
+   spiel.spielerListe[Nachricht.getID()].setLebenspunkte(spiel.spielerListe[Nachricht.getID()].getLebenspunkte()-1);
   }else{
    spiel.gegnerListe[Nachricht.monsterID].setLebenspunkte(spiel.gegnerListe[Nachricht.monsterID].getLebenspunkte()-1);
   }
