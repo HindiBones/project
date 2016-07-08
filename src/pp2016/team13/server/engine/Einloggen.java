@@ -1,4 +1,5 @@
 package pp2016.team13.server.engine;
+import pp2016.team13.client.gui.Verschluesselung;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,10 +14,13 @@ import java.util.Comparator;
 public class Einloggen {
 	static String[] passworte;
 	static String[] benutzer;
-
+	
+static String Pwt;
+	
 		private static String [] nutzer = new String [10];
 	
-		public static boolean LogIn(String benutzername, String passwort){
+		public static boolean LogIn(String benutzername, String passwort) throws Exception{
+			Verschluesselung Ver= new Verschluesselung();
 			try{
 				boolean fertig = false;
 				FileInputStream fileinptstrm = new FileInputStream("./src/pp2016/team13/server/engine/NutzerDaten.txt");
@@ -28,15 +32,25 @@ public class Einloggen {
 				passworte= new String[10];
 				benutzer= new String[10];
 				while(rLine != null)
-				{	String[] a= Nutzerdaten[i].split(" "); 
-					benutzer[i]= a[0];
+				{	//Passwort und Bentzername wird getrennt	
 					
-					if (benutzer[i].equals(benutzername)){
+					String[] a= Nutzerdaten[i].split(" "); 
+					passworte[i]=a[1];
+					System.out.println(passworte[i]);
+					System.out.println(passwort);
+					
+					Pwt=passworte[i];
+					
+				
+
+//					benutzer[i]= a[0];
+					
+					if (Ver.erschluesseln(Pwt, benutzername)==passwort){
 						System.out.println("Willkommen zur�ck");
 						fertig = true;
+						
 						Nutzerdaten [i] = rLine;
-						passworte[0]=a[1];
-						System.out.println(passworte[0]);
+
 						break;
 					}else{
 						System.out.println("Falsche eingabe");

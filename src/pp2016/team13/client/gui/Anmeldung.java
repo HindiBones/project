@@ -122,6 +122,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
+		boolean einloggen= false;
 		Einloggen EinL=new Einloggen();
 		Verschluesselung verschluesseln= new Verschluesselung();
 		
@@ -155,9 +156,17 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 //			lognachricht= new LoginNachricht("Peace", "12345");
 			//Beispiel Versuch wird sp�ter mit client erweitert
-
+		try {
+			einloggen=EinL.LogIn(nickname, pwt);
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+					
+					
+			
 			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
-			if(EinL.LogIn(nickname, pwt)==true){
+			if(einloggen==true){
 				
 				try {
 					Thread.sleep(100);

@@ -65,8 +65,8 @@ import pp2016.team13.server.map.Labyrinth;
 			
 			
 			
-			Einloggen.LogIn("Hallo", "Welt");
-			Einloggen.LogIn("Tschuess", "Welt");
+//			Einloggen.LogIn("Hallo", "Welt");
+//			Einloggen.LogIn("Tschuess", "Welt");
 			
 		}
 	}
