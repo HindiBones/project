@@ -14,7 +14,6 @@ public class LevelNachricht extends Nachricht implements Serializable{
 		super(6);
 		for (int k = 0; k<5; k++)
 		{
-			
 			for (int i = 0; i<15; i++){
 				for (int j = 0; j<15 ; j++){
 					this.x[k].levelInhalt[i][j] = levelDaten[k][i][j];
