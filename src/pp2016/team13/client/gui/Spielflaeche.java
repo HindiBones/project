@@ -115,11 +115,13 @@ public class Spielflaeche extends JPanel {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 5){ 
-						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-								null);
-						Monster Gegner = new Monster(i, j, fenster, 0);
-						drawMonster(g, Gegner);
+//					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 5){ 
+//						
+//
+//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+//								null);
+//						Monster Gegner = new Monster(i, j, fenster, 0);
+//						drawMonster(g, Gegner);
 						//4=Schlüssel
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
@@ -154,13 +156,13 @@ public class Spielflaeche extends JPanel {
 					}
 				}
 			}
-		}
+		
 
 		
 		
 		// Male die Monster an ihrer Position
-		for (int i = 0; i < fenster.monsterListe.size(); i++) {
-			Monster m = fenster.monsterListe.get(i);
+		for (int k = 0; k < fenster.monsterListe.size(); k++) {
+			Monster m = fenster.monsterListe.get(k);
 			boolean event = fenster.spieler.hatSchluessel();
 			// Da hier alle Monster aufgerufen werden, wird an dieser
 			// Stelle auch ein Angriffsbefehl fuer die Monster
@@ -206,6 +208,7 @@ public class Spielflaeche extends JPanel {
 				g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 				g.drawString("GEWONNEN", getWidth() / 2 - 120, getHeight() / 2);
 			}
+		}
 		}
 	}
 
