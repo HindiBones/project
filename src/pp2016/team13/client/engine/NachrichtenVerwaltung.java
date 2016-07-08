@@ -89,7 +89,13 @@ public class NachrichtenVerwaltung {
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
 					case 5: System.out.println(m.fehlermeldung);break;
-					case 6: System.out.println( m.leveldaten);break;
+					case 6: 
+					{				
+							for(int i = 0; i < m.leveldaten.length; i++){
+								this.alleLevel[i] = new Level(i, m.leveldaten[i]);
+								System.out.println("Level " + alleLevel[i].levelID + " geladen!");
+							}
+					}
 				}
 	}
 	/*

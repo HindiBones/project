@@ -7,7 +7,7 @@ public class ServerMain {
 
 	public static void main(String[] args){
 
-		new Server(2345);
+		new Server(13001);
 	}
 
 }

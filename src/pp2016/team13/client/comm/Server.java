@@ -102,12 +102,6 @@ public Server(int port){
 			}
 			Paket antwort = new Paket(antwortNachricht);
 			int[][] temp = this.spiel.levelSendePaket[0].levelInhalt;
-			for(int i = 0; i < temp.length; i++){
-				for(int j = 0; j < temp[0].length; j++){
-					System.out.print(temp[i][j]);
-				}
-				System.out.println();
-			}
 						return antwort;
 			}
 			catch(NullPointerException e){
