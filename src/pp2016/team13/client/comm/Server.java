@@ -98,7 +98,7 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSendePaket[0].levelInhalt); break;
+			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort); break;
 			}
 			Paket antwort = new Paket(antwortNachricht);
 			int[][] temp = this.spiel.levelSendePaket[0].levelInhalt;
