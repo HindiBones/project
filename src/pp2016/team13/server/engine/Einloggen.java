@@ -33,23 +33,23 @@ static String Pwt;
 				benutzer= new String[10];
 				while(rLine != null)
 				{	//Passwort und Bentzername wird getrennt	
-					
+					Nutzerdaten [i] = rLine;
 					String[] a= Nutzerdaten[i].split(" "); 
 					passworte[i]=a[1];
-					System.out.println(passworte[i]);
-					System.out.println(passwort);
+					System.out.println("Psw  "+passworte[i]);
+					System.out.println("Eingabe  "+passwort);
 					
 					Pwt=passworte[i];
 					
-				
+					System.out.println("Psw  "+ Ver.verschluesseln(passwort, benutzername));
 
 //					benutzer[i]= a[0];
 					
-					if (Ver.erschluesseln(Pwt, benutzername)==passwort){
+					if (Ver.verschluesseln(passwort, benutzername).equals(Pwt)){
 						System.out.println("Willkommen zur�ck");
 						fertig = true;
 						
-						Nutzerdaten [i] = rLine;
+						//Nutzerdaten [i] = rLine;
 
 						break;
 					}else{

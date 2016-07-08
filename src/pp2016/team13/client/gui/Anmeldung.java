@@ -134,7 +134,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 			String pwt= passwortfeld.getText();
 			
 			try {
-				pwt=verschluesseln.verschluesseln(pwt, nickname);
+//				pwt=verschluesseln.verschluesseln(pwt, nickname);
 			} catch (Exception e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
