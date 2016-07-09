@@ -43,6 +43,9 @@ public class Spieler extends Figur {
 		this.unverwundbar = true;
 	}
 
+	public boolean istUnverwundbar(){
+		return this.unverwundbar;
+	}
 	public int benutzeHeiltrank() {
 		if(anzahlHeiltraenke > 0){
 		//setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
