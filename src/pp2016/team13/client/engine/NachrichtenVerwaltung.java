@@ -93,8 +93,14 @@ public class NachrichtenVerwaltung {
 					{				
 							for(int i = 0; i < m.leveldaten.length; i++){
 								this.alleLevel[i] = new Level(i, m.leveldaten[i]);
-								System.out.println("Level " + alleLevel[i].levelID + " geladen!");
+								System.out.println("Level " + Level.levelID + " geladen!");
 							}
+					}break;
+					case 11: {
+						if(m.inOrdnung)
+							System.out.println("Anfrage akzeptiert!");
+						else
+							System.err.println("Anfrage wurde abgelehnt!");
 					}
 				}
 	}
