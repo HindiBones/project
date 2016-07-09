@@ -32,7 +32,7 @@ public Server(int port){
 	System.out.println("Starte Server");
 	try {
 		ServerS = new ServerSocket(port);
-		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 18, 5);
+		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 20, 5);
 	} catch (IOException e1) {
 		System.out.println("FEHLER");
 	}

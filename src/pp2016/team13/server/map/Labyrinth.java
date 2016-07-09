@@ -7,7 +7,7 @@ import pp2016.team13.server.map.Labyrinth;
  *
  */
 public class Labyrinth {
-	private int size = 18;
+	private int size = 20;
 	public int [][] map = new int [size][size];
 	static Koordinaten [] bodenplatten;
 	static Koordinaten [] monsterplatten;
@@ -42,7 +42,7 @@ public class Labyrinth {
 				}
 			}
 		}
-		// Zufaellige Position für den Charakter
+		// Zufaellige Position fï¿½r den Charakter
 		double zufallsZahl = (Math.random()*zaehler)-1;
 		int zz1 = (int) zufallsZahl;
 		map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
@@ -57,7 +57,7 @@ public class Labyrinth {
 				}
 				map[bodenplatten[zz2].xKoordinate][bodenplatten[zz2].yKoordinate]= 6;
 				
-			// 	Zufaellige Position der Heiltränke
+			// 	Zufaellige Position der Heiltrï¿½nke
 				int zz3 = (int) zufallsZahl;
 				for(int i = 0; i <= AnzHeiltrank; i++){
 					zufallsZahl = (Math.random()*zaehler)-1;
@@ -67,7 +67,7 @@ public class Labyrinth {
 					}
 					map[bodenplatten[zz3].xKoordinate][bodenplatten[zz3].yKoordinate]= 4;
 					}
-			//	Zufaellige Position der Schutztränke
+			//	Zufaellige Position der Schutztrï¿½nke
 					int zz4 = (int) zufallsZahl;
 				for(int i = 0; i <= AnzSchutztrank; i++){
 					zufallsZahl = (Math.random()*zaehler)-1;
@@ -101,7 +101,7 @@ public class Labyrinth {
 							}
 						}
 					}
-				//	Position Schlüssel
+				//	Position Schlï¿½ssel
 						zufallsZahl = (Math.random()*zaehlerMonster)-1;
 						int zz6 = (int) zufallsZahl;
 						map[monsterplatten[zz6].xKoordinate][monsterplatten[zz6].yKoordinate]= 5;
