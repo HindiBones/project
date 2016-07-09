@@ -44,13 +44,13 @@ public class SeitenLeiste extends JPanel {
 		 this.add(p,BorderLayout.SOUTH);
 		 
 		 
-//		 p.add(this);
-//		 
+	 
 
 		 
 
 		try {
-			hintergrund = ImageIO.read(new File("img//status.png"));
+			sblase= ImageIO.read(new File("img//sprechblase.png"));
+
 			hintergrund1= ImageIO.read(new File("img/wall1.png"));
 			schluessel2=ImageIO.read(new File("img//schluessel2.png"));
 			heiltrank2 = ImageIO.read(new File("img//heiltrank2.png"));
@@ -59,8 +59,9 @@ public class SeitenLeiste extends JPanel {
 			wand2 = ImageIO.read(new File("img//wandklein.png"));
 			tuerZu2 = ImageIO.read(new File("img//tuer.png"));
 			tuerOffen2 = ImageIO.read(new File("img//tueroffen.png"));
-			john= ImageIO.read(new File("img//john.png"));
-			sblase= ImageIO.read(new File("img//sprechblase.png"));
+			john= ImageIO.read(new File("img//John1.png"));
+//			john= ImageIO.read(new File("img//john.png"));
+			
 			} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
@@ -183,7 +184,7 @@ int Hintergrundpixel= 192;
 		g.drawRect(itemKx+55+55, itemKy,40, 40);
 
 		//Mini John neben Lebensleiste
-		g.drawImage(fenster.spieler.getImage(),20,itemKy+60 , fenster.BOX3,
+		g.drawImage(john,20,itemKy+60 , fenster.BOX3,
 				fenster.BOX3 , null);
 
 		if (fenster.spieler.hatSchluessel()) {

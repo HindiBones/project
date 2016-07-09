@@ -64,7 +64,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public final int WIDTH = 16; // LABIRITHGR��E 
 	public final int HEIGHT =16 ; 
 	public final int BOX = 72;  // Gr��e der Bild Elemente 
-	public final int BOX2=11;
+	public final int BOX2=9;
 	public final int BOX3=32;
 	public int zahl=0;
 	
