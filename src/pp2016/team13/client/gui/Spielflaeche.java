@@ -22,7 +22,7 @@ public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,
+	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,
 			feuerball, spieler;
 	private HindiBones fenster;
 	public int  wechselX=0;
@@ -42,6 +42,7 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
+			trank=ImageIO.read(new File("img//heiltrankblau.png"));
 
 			
 		} catch (IOException e) {
@@ -129,12 +130,12 @@ public class Spielflaeche extends JPanel {
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);}
 //						drawMonster(g, Gegner);
-						//4=Schlüssel
+						//2== Start 
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX, j
+						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 						//Geschlossene Tür
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
@@ -144,18 +145,22 @@ public class Spielflaeche extends JPanel {
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							//offene Tür
-//					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
-//						// Hier ist die Tuer
-//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-//								null);
-//							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
-//									* fenster.BOX-verschiebeny*fenster.BOX, null);
-//							//Heiltrank
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						// Hier steht ein Heiltrank
+							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
+									* fenster.BOX-verschiebeny*fenster.BOX, null);
+//							//Heiltrank
+							
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+						
+						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+								null);
+						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
+								j * fenster.BOX-verschiebeny*fenster.BOX, null);
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+						
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,

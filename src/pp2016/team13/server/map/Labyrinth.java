@@ -43,8 +43,23 @@ public class Labyrinth {
 		int zz1 = (int) zufallsZahl;
 		map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
 		
+<<<<<<< HEAD
 
 			// Position  Tuer
+=======
+		// Eingangstuer immer ein Feld hinter der Spielerposition
+//				if(map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] == 1){
+//					map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] == 1){
+//					map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] == 1){
+//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] == 1){
+//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] = 6;
+//				}
+				
+				//Position Schlüssel
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 				zufallsZahl = (Math.random()*zaehler)-1;
 				int zz2 = (int) zufallsZahl;
 				while (zz2 == zz1){

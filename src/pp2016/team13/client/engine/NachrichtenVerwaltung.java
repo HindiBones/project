@@ -102,7 +102,7 @@ public class NachrichtenVerwaltung {
 							System.out.println("Anfrage akzeptiert!");
 						else
 							System.err.println("Anfrage wurde abgelehnt!");
-					}
+					}break;
 					case 13: behandleCheat(m);break;
 				}
 	}
@@ -227,6 +227,7 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = sende(new LevelAnfordernNachricht());
 		auslesen(serverAntwort);
 		aktuellesLevel = alleLevel[0];
+		aktuellesLevel.ausgabe();
 	}
 	
 	public boolean einloggen(LoginNachricht login){
