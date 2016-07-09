@@ -302,11 +302,17 @@ public class Levelverwaltung {
   case 7: return behandleLevelUebersprungen(spiel);//Spieler �berspringt Level
   case 8: return chat.nachrichtEmpfangen(Nachricht.nachricht);//Chat Nachricht
   case 9: return behandleKampfnachrichten((KampfNachricht) Nachricht, spiel);//Kampnachricht
+  case 13: behandleCheat(Nachricht);
  }
  return false;
  }
  
- /**
+ private static void behandleCheat(Nachricht nachricht) {
+	// TODO Auto-generated method stub
+	
+}
+
+/**
 	 * @author Marius
 	 * @param Spielerbewegung: Die vom Client empfangene Nachricht, die eine Spielerbewegung beinhaltet
 	 * @param spiel: Die zu verwaltende Levelverwaltung

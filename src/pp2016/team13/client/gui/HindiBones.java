@@ -78,7 +78,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
-		client = new NachrichtenVerwaltung(12345);
+		client = new NachrichtenVerwaltung(this);
 		client.spieler = spieler;
 		// initialisieren des Fensters 
 		starteNeuesSpiel();
