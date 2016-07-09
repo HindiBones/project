@@ -17,7 +17,7 @@ public class NachrichtenVerwaltung {
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
-	public Level[] alleLevel = new Level[5];
+	Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
 	 * @author Julius
@@ -92,10 +92,10 @@ public class NachrichtenVerwaltung {
 					case 5: System.out.println(m.fehlermeldung);break;
 					case 6: 
 					{				
-							for(int i = m.leveldaten.length-1; i >= 0 ; i--){
-								this.alleLevel[i] = new Level(i, m.leveldaten[i]);
-								System.out.println("Level " + Level.levelID + " geladen!");
+							for(int i = 0; i < m.leveldaten.length; i++){
+								alleLevel[i] = new Level(i, m.leveldaten[i]);
 							}
+
 					}break;
 					case 11: {
 						if(m.inOrdnung)
@@ -134,7 +134,7 @@ public class NachrichtenVerwaltung {
 	public void SpielerBewegung(int richtung){
 		switch(richtung){
 		case 0:
-			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
+			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
 			{
 				spieler.runter();
 				sende(new BewegungsNachricht(spieler.getID(),spieler.getXPos(),spieler.getYPos()));
@@ -143,7 +143,7 @@ public class NachrichtenVerwaltung {
 			
 			
 		case 1:
-			if(spieler.getYPos() > 0 && Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)
+			if(spieler.getYPos() > 0 && fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()-1) != 0)
 			{
 				spieler.hoch();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -151,7 +151,7 @@ public class NachrichtenVerwaltung {
 			break;
 			
 		case 2:
-			if(spieler.getXPos() > 0 && Level.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 0)
+			if(spieler.getXPos() > 0 && fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos()-1, spieler.getYPos()) != 0)
 			{
 				spieler.links();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -159,7 +159,7 @@ public class NachrichtenVerwaltung {
 			break;
 			
 		case 3:
-			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && Level.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 0)
+			if(spieler.getXPos() < aktuellesLevel.getLaengeX()-1 && fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos()+1, spieler.getYPos()) != 0)
 			{
 				spieler.rechts();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
@@ -191,7 +191,9 @@ public class NachrichtenVerwaltung {
 	 * Der Spieler hebt den Schluessel auf, wenn er auf diesem steht. Sendet eine entsprechende Nachricht an den Server.
 	 */
 	public void nimmSchluessel(){
+		spieler = fenster.spieler;
 		spieler.nimmSchluessel();
+
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 4));
 	}
 	
@@ -201,18 +203,25 @@ public class NachrichtenVerwaltung {
 	 * Der Spieler hebt einen Heiltrank auf, wenn er auf einem steht. Sendet eine entsprechende Nachricht an den Server.
 	 */
 	public void nimmHeiltrank(){
+		spieler = fenster.spieler;
 		spieler.nimmHeiltrank();
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 2));
 	}
 	
+	public void nimmTrank(){
+		spieler = fenster.spieler;
+		spieler.nimmtrank();
+		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 12));
+	}
 	/**
 	 * @author Julius
 	 * 
 	 * Falls der Spieler den Schluessel besitzt, benutzt er diesen. Sendet eine entsprechende Nachricht an den Server.
 	 */
 	public void benutzeSchluessel(){
+		spieler = fenster.spieler;
 		if (spieler.hatSchluessel()) {
-			Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
+			fenster.Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 			sende(new Nachricht(3));
 			spieler.entferneSchluessel();}
@@ -227,6 +236,7 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = sende(new LevelAnfordernNachricht());
 		auslesen(serverAntwort);
 		aktuellesLevel = alleLevel[0];
+		
 		aktuellesLevel.ausgabe();
 	}
 	
@@ -247,14 +257,19 @@ public class NachrichtenVerwaltung {
 		auslesen(serverAntwort);
 		return serverAntwort.getMessage().inOrdnung;
 	}
-//	public void levelWechseln(){
-//		if(aktuellesLevel.getLevelID() < 4)
-//		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];
-//		else
-//		{
-//			sende(new Nachricht(3));
-//			ausgabe();
-//			System.exit(0);
-//		}
-//	}
+	public Level levelWechseln(){
+		if(fenster.Level.getLevelID() < fenster.MAXLEVEL){
+		aktuellesLevel = alleLevel[aktuellesLevel.levelID+1];
+		fenster.spieler.entferneSchluessel();
+		System.out.println("Wer das liest ist gut im programmieren");
+		aktuellesLevel.ausgabe();
+		return aktuellesLevel;
+		}
+		else
+		{
+			sende(new Nachricht(3));
+			System.exit(0);
+			return null;
+		}
+	}
 }

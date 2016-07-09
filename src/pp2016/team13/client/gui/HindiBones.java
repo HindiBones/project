@@ -56,8 +56,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	private boolean spielerInHighscore = false;
 	public boolean highscoreAngezeigt = false;
 	public boolean anmeldeanzeige=false;
-	
-	
+
 	
 	
 	public final int MAXLEVEL = 5; 
@@ -94,7 +93,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void initialisiereJFrame(int width, int height, String title) {
 		
 		this.setLayout(new BorderLayout());
-				
+			Level = new Level(-1, null);
 		this.spielflaeche = new Spielflaeche(this);
 		this.minimap= new SeitenLeiste(this);
 		this.steuerung = new Steuerung();
@@ -471,32 +470,29 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
-				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 4) {
-					spieler.nimmSchluessel();
+				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 5) {
+					client.nimmSchluessel();
+					System.out.println("Spieler hat den Schluessel!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
-				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 5) {
-					spieler.nimmHeiltrank();
+				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 4) {
+					client.nimmHeiltrank();
+					System.out.println("Spieler hat einen Heiltrank!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				//Blauentrank aufnehmen
 				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 7) {
-					spieler.nimmtrank();
+					client.nimmTrank();
+					System.out.println("Spieler hat einen Trank!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				
 				// Schluessel benutzen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
 					if (spieler.hatSchluessel()) {
-						Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
-						// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
-						spieler.entferneSchluessel();
-						if (currentLevel < MAXLEVEL)
-							nextLevel();
-						else {
-							spielende = true;
-						}
+						System.out.println("Spieler hat den Schluessel benutzt!");
+						nextLevel();
 					}
 				}
 			}
@@ -751,10 +747,19 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
 //		Level = leser.getLevel();
 //		client.aktuellesLevel = Level;
-		
+		if(Level.getLevelID() == -1){
 		System.out.println("Level wird angefordert!");
 		client.levelAnfordern();
+		client.nimmSchluessel();
 		Level = client.aktuellesLevel;
+		}
+		else
+		{
+			System.out.println("Level wird gewechselt!");
+			Level.ausgabe();
+			System.out.println();
+			Level = client.levelWechseln();
+		}
 		System.out.println("Level geladen!");
 	}
 

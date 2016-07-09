@@ -5,8 +5,8 @@ import java.io.Serializable;
 
 public class Level implements Serializable{
 
-	public static int levelID;
-	public static int [][] levelInhalt;
+	public int levelID;
+	public int [][] levelInhalt;
 
 	public Level(int id, int [][]level) {
 		 levelID = id;
@@ -16,23 +16,23 @@ public class Level implements Serializable{
 	//kein Setter fï¿½r die Level-ID benï¿½tigt, da diese nicht mehr verï¿½ndert werden soll
 	
 	//getter-Methode fï¿½r die Level-ID
-	public static int getLevelID(){
+	public int getLevelID(){
 		return levelID;
 	}
 	
 	//setter-Methode, um bestimmte Felder im Level zu verï¿½ndern
-	public static void setLevelInhalt(int x, int y, int inhalt){
+	public  void setLevelInhalt(int x, int y, int inhalt){
 		levelInhalt[x][y] = inhalt;
 	}
 	
 	
 	//getter-Methode, um das gesamte Level auszulesen
-	public static int [][] getKomplettesLevel(){
+	public  int [][] getKomplettesLevel(){
 		return levelInhalt;
 	}
 	
 	//getter-Methode, um ein bestimmtes Feld auszulesen
-	public static int getBestimmtenLevelInhalt(int x, int y){
+	public  int getBestimmtenLevelInhalt(int x, int y){
 		return levelInhalt[x][y];
 	}
 	
@@ -47,7 +47,7 @@ public class Level implements Serializable{
 	}
 	
 	//getter Methode für alle x-Werte
-		public static int[] getAlleXWerte(int yKoordinate){
+		public  int[] getAlleXWerte(int yKoordinate){
 			int []xWerte = null;
 			for(int i = 0; i<=levelInhalt.length; i++){
 				xWerte[i]= levelInhalt[i][yKoordinate];
@@ -56,7 +56,7 @@ public class Level implements Serializable{
 		}
 		
 		//getter Methode für alle y-Werte
-		public static int[] getAlleYWerte(int xKoordinate){
+		public  int[] getAlleYWerte(int xKoordinate){
 			int []yWerte = null;
 			for(int i = 0; i<=levelInhalt.length; i++){
 				yWerte[i]= levelInhalt[i][xKoordinate];
@@ -74,7 +74,7 @@ public class Level implements Serializable{
 		return levelInhalt[0].length;
 	}
 	
-	public static int[][] getlevelInhalt (){
+	public  int[][] getlevelInhalt (){
 		return levelInhalt;
 	}
 }
