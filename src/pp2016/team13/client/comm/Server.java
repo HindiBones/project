@@ -99,7 +99,7 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-<<<<<<< HEAD
+
 			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort);
 			for (int i = 0; i<antwortNachricht.leveldaten[0].length; i++)
 			   {
@@ -111,7 +111,7 @@ public Server(int port){
 			   }
 			break;
 			
-=======
+
 			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
@@ -121,8 +121,8 @@ public Server(int port){
 			case 7: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
-			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
+//			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
+
 			}
 			Paket antwort = new Paket(antwortNachricht);
 						return antwort;
