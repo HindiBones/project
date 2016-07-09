@@ -7,7 +7,7 @@ import pp2016.team13.server.map.Labyrinth;
  *
  */
 public class Labyrinth {
-	private int size = 17;
+	private int size = 18;
 	public int [][] map = new int [size][size];
 	static Koordinaten [] bodenplatten;
 	static Koordinaten [] monsterplatten;
