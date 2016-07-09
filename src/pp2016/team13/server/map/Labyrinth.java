@@ -1,9 +1,13 @@
 package pp2016.team13.server.map;
 
 import pp2016.team13.server.map.Labyrinth;
-
+/**
+ * 
+ * @author Cigdem
+ *
+ */
 public class Labyrinth {
-	private int size = 17;
+	private int size = 19;
 	public int [][] map = new int [size][size];
 	static Koordinaten [] bodenplatten;
 	static Koordinaten [] monsterplatten;
@@ -20,7 +24,7 @@ public class Labyrinth {
 		int AnzMonster = (int)((Math.random()) * 5 + 1);;
 		bodenplatten = new Koordinaten [size*size];
 		
-		FloodFill auffuellen = new FloodFill(size-1);
+		FloodFill auffuellen = new FloodFill(size);
 		for (int i = 0; i < size-1 ; i++){
 			for (int j = 0 ; j< size-1 ; j++){
 				this.map [i][j] = auffuellen.map[i][j];
@@ -38,24 +42,13 @@ public class Labyrinth {
 				}
 			}
 		}
-		// Zufaellige Position für den Charakter
+		// Zufaellige Position fï¿½r den Charakter
 		double zufallsZahl = (Math.random()*zaehler)-1;
 		int zz1 = (int) zufallsZahl;
 		map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
 		
 
 			// Position  Tuer
-		// Eingangstuer immer ein Feld hinter der Spielerposition
-//				if(map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] == 1){
-//					map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] == 1){
-//					map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] == 1){
-//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] == 1){
-//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] = 6;
-//				}
-				//Position Schlüssel
 				zufallsZahl = (Math.random()*zaehler)-1;
 				int zz2 = (int) zufallsZahl;
 				while (zz2 == zz1){
@@ -64,7 +57,7 @@ public class Labyrinth {
 				}
 				map[bodenplatten[zz2].xKoordinate][bodenplatten[zz2].yKoordinate]= 6;
 				
-			// 	Zufaellige Position der Heiltränke
+			// 	Zufaellige Position der Heiltrï¿½nke
 				int zz3 = (int) zufallsZahl;
 				for(int i = 0; i <= AnzHeiltrank; i++){
 					zufallsZahl = (Math.random()*zaehler)-1;
@@ -74,7 +67,7 @@ public class Labyrinth {
 					}
 					map[bodenplatten[zz3].xKoordinate][bodenplatten[zz3].yKoordinate]= 4;
 					}
-			//	Zufaellige Position der Schutztränke
+			//	Zufaellige Position der Schutztrï¿½nke
 					int zz4 = (int) zufallsZahl;
 				for(int i = 0; i <= AnzSchutztrank; i++){
 					zufallsZahl = (Math.random()*zaehler)-1;
@@ -108,7 +101,7 @@ public class Labyrinth {
 							}
 						}
 					}
-				//	Position Schlüssel
+				//	Position Schlï¿½ssel
 						zufallsZahl = (Math.random()*zaehlerMonster)-1;
 						int zz6 = (int) zufallsZahl;
 						map[monsterplatten[zz6].xKoordinate][monsterplatten[zz6].yKoordinate]= 5;
