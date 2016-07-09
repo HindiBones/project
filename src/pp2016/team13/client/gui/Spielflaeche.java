@@ -22,7 +22,7 @@ public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,
+	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,
 			feuerball, spieler;
 	private HindiBones fenster;
 	public int  wechselX=0;
@@ -42,6 +42,7 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
+			trank=ImageIO.read(new File("img//heiltrankblau.png"));
 
 			
 		} catch (IOException e) {
@@ -144,14 +145,21 @@ public class Spielflaeche extends JPanel {
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							//offene Tür
-//					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
-//						// Hier ist die Tuer
-//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-//								null);
-//							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
-//									* fenster.BOX-verschiebeny*fenster.BOX, null);
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) {
+						// Hier ist die Tuer
+						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+								null);
+							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
+									* fenster.BOX-verschiebeny*fenster.BOX, null);
 //							//Heiltrank
+							
 					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+						
+						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+								null);
+						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
+								j * fenster.BOX-verschiebeny*fenster.BOX, null);
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
 						
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
