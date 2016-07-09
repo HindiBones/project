@@ -9,17 +9,32 @@ public class Chat {
 			chat[i] = null;
 		}
 	}
-	//Nachricht zum Chat hinzufügen
+		/**
+		 * @author Marius
+		 * @param nachricht: ankommende Chat Nachricht
+		 * 
+		 * Nachricht zum Chat hinzufügen
+		 */
 	public static boolean nachrichtEmpfanden(String nachricht){
 		chat[anzahlNachrichten] = nachricht;
 		anzahlNachrichten++;
 		return true;
 	
 	}
-	//Chatverlauf senden
+	/**
+	 * @author Marius
+	 * 
+	 * Chatverlauf senden
+	 */
 	public static String [] chat(){
 		return chat;
 	}
+	
+	/**
+	 * @author Marius
+	 * 
+	 * Anzahl der bisher gesendeten Chat Nachrichten wird festgelegt
+	 */
 	public static void setAnzahlNachrichten(int i) {
 		anzahlNachrichten = i;
 		
