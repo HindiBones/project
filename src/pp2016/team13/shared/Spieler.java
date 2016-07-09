@@ -62,6 +62,7 @@ public class Spieler extends Figur {
 		anzahlTrank++;
 	}
 
+	
 	public void setAnzahlHeiltraenke(int anzahl) {
 		if (anzahl >= 0)
 			anzahlHeiltraenke = anzahl;
