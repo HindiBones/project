@@ -300,8 +300,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Aktuelle Position des Spielers
 		int xPos = spieler.getXPos();
 		int yPos = spieler.getYPos();
-		
-
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
 		// Es wird geprueft, ob der naechste Schritt zulaessig ist.
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
