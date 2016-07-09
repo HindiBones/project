@@ -200,6 +200,7 @@ int Hintergrundpixel= 192;
 				 100, 200);
 
 		// Heiltrankanzeige
+		int anzahlTrank=fenster.spieler.getAnzahlTrank();
 		int anzahlHeiltraenke = fenster.spieler.getAnzahlHeiltraenke();
 		String s;
 		
@@ -212,10 +213,10 @@ int Hintergrundpixel= 192;
 		g.drawImage(heiltrank2, itemKx-2,itemKy, null);//63
 		
 		//Blauer Heiltrank
-		if (anzahlHeiltraenke < 10)
-			s = "  " + anzahlHeiltraenke;
+		if (anzahlTrank < 10)
+			s = "  " + anzahlTrank;
 		else
-			s = String.valueOf(anzahlHeiltraenke);
+			s = String.valueOf(anzahlTrank);
 		g.drawString(s, itemKx-5-5+Luecke, itemKy+12);
 		g.drawImage(heiltrankblau, itemKx-7+Luecke,itemKy, null);
 

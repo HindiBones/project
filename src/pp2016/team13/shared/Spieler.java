@@ -13,6 +13,7 @@ public class Spieler extends Figur {
 	
 	private boolean hatSchluessel;
 	private int anzahlHeiltraenke;
+	private int anzahlTrank;
 	private int heiltrankWirkung = 50;
 
 	public HindiBones fenster;
@@ -20,6 +21,7 @@ public class Spieler extends Figur {
 	public Spieler(int id) {
 		
 		setAnzahlHeiltraenke(0);
+		setAnzahlTrank(0);
 		setPos(0, 0);
 		setLebenspunkte(100);
 		setMaxHealth(getLebenspunkte());
@@ -53,9 +55,18 @@ public class Spieler extends Figur {
 		if (anzahl >= 0)
 			anzahlHeiltraenke = anzahl;
 	}
+	public void setAnzahlTrank(int anzahl2){
+		if(anzahl2>=0){
+			anzahlTrank=anzahl2;
+		}
+		
+	}
 
 	public int getAnzahlHeiltraenke() {
 		return anzahlHeiltraenke;
+	}
+	public int getAnzahlTrank(){
+		return anzahlTrank;
 	}
 
 	// Hat der Spieler den Schluessel?
