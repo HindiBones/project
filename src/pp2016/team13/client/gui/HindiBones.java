@@ -435,7 +435,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					spieler.changeHealth((int) (change * 1.5));
 				else
 					spieler.changeHealth((int) (change * 0.5));
-			} 
+			} else 
+				if (e.getKeyCode() == KeyEvent.VK_B) {
+				int change = spieler.benutzeHeiltrank();
+				// Heilungseffekt wird verbessert, falls neue Monster durch das
+				// Aufheben des Schl�ssels ausgel�st wurden
+				if (spieler.hatSchluessel())
+					spieler.changeHealth((int) (change * 1.5));
+				else
+					spieler.changeHealth((int) (change * 0.5));
+			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
 				}
