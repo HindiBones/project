@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.LinkedList;
 
 import pp2016.team13.client.engine.AntwortNachricht;
+import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Einloggen;
@@ -110,6 +111,7 @@ public Server(int port){
 			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
+			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);
 
 			}
 			Paket antwort = new Paket(antwortNachricht);

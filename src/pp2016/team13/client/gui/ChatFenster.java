@@ -143,6 +143,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
+			
 			boolean funktioniert = this.m.fenster.client.chatte(new ChatNachricht(Text));
 			if(funktioniert) {
 				textumfeld.append(Text+"\n");
