@@ -42,15 +42,15 @@ public class Labyrinth {
 		map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
 		
 		// Eingangstuer immer ein Feld hinter der Spielerposition
-				if(map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] == 1){
-					map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] = 6;
-				} else if(map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] == 1){
-					map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] = 6;
-				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] == 1){
-					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] = 6;
-				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] == 1){
-					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] = 6;
-				}
+//				if(map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] == 1){
+//					map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] == 1){
+//					map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] == 1){
+//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] = 6;
+//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] == 1){
+//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] = 6;
+//				}
 				
 				//Position Schlüssel
 				zufallsZahl = (Math.random()*zaehler)-1;
