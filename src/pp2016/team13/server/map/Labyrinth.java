@@ -91,7 +91,7 @@ public class Labyrinth {
 					int zaehlerMonster = 0;
 					for (int i = 0; i< size ; i++){
 						for (int j = 0 ; j< size ; j++){
-							if (map[i][j] == 1){
+							if (map[i][j] == 3){
 								monsterplatten[zaehler] = new Koordinaten (i, j);
 								zaehlerMonster++;
 							}
