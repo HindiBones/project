@@ -46,6 +46,8 @@ public class Levelverwaltung {
  static int tuerX;
  static int tuerY;
  
+ static Chat chat;
+ 
  /**
 	 * @author Marius
 	 * @param levelID: Identifikationszahl des Levels
@@ -61,6 +63,7 @@ public class Levelverwaltung {
  //Konstruktor Levelverwaltung ; Spielwelt
  public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke, int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException{
   this.levelID = levelID;
+  chat = new Chat();
   anzahlLevel = anzLevel;
   this.groesse = groesse;
   levelSpeicherort = new int [anzahlLevel][groesse][groesse];
@@ -297,7 +300,7 @@ public class Levelverwaltung {
   case 5: System.out.println(Nachricht.nachricht); return true;//Fehlermeldung
   case 6: return true;//Level empfangen
   case 7: return behandleLevelUebersprungen(spiel);//Spieler �berspringt Level
-  case 8: return Chat.nachrichtEmpfanden(Nachricht.nachricht);//Chat Nachricht
+  case 8: return chat.nachrichtEmpfangen(Nachricht.nachricht);//Chat Nachricht
   case 9: return behandleKampfnachrichten((KampfNachricht) Nachricht, spiel);//Kampnachricht
  }
  return false;
