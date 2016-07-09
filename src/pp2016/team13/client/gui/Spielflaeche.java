@@ -141,6 +141,7 @@ public class Spielflaeche extends JPanel {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
+						
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 						//Geschlossene Tür

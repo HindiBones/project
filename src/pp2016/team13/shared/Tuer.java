@@ -6,7 +6,18 @@ public class Tuer extends Spielelement {
 	public Tuer(boolean offen) {
 		this.offen = offen;
 	}
-
+	
+	public int getXTuerOffen(){
+		if(offen==true)
+			return 1;
+		else 
+			return 2;
+		
+	}
+	public int getYTuerOffen(){
+		return 1;
+	}
+		
 	public void setOffen() {
 		offen = true;
 	}
