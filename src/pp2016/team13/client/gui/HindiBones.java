@@ -47,7 +47,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public Level Level;
 	public Spielelement[][] level;
 	public NachrichtenVerwaltung client;
-	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
@@ -65,7 +64,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public final int WIDTH = 16; // LABIRITHGR��E 
 	public final int HEIGHT =16 ; 
 	public final int BOX = 72;  // Gr��e der Bild Elemente 
-	public final int BOX2=11;
+	public final int BOX2=9;
 	public final int BOX3=32;
 	public int zahl=0;
 	
@@ -79,7 +78,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
-		client = new NachrichtenVerwaltung(12345);
+		client = new NachrichtenVerwaltung(this);
 		client.spieler = spieler;
 		// initialisieren des Fensters 
 		starteNeuesSpiel();
@@ -234,10 +233,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			Thread.sleep(50);
 			this.add(anmeldung, BorderLayout.CENTER);	
 		
-			//Verbindung zum Client
-			lognachricht= new LoginNachricht("Peace", "12345");
-			Bn="Peace";
-			Pw="12345";
 		
 			// Registrierung
 			
@@ -300,22 +295,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * 
 	 * @author Seyma Keser
 	 */
-	public LoginNachricht getLogNachricht(){
-		return lognachricht;
-	}
-
-	
-	/**
-	 * 
-	 * @author Seyma Keser
-	 */
 	public void keyPressed(KeyEvent e) {
 		// Methoden der Schnittstelle KeyListener
 		// Aktuelle Position des Spielers
 		int xPos = spieler.getXPos();
 		int yPos = spieler.getYPos();
-		
-
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
 		// Es wird geprueft, ob der naechste Schritt zulaessig ist.
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
@@ -325,6 +309,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
 				if(zahl==0){ zahl=1;
 				try { //John Rücken  img//John3hinten
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//Johnblauhinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//John3hinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -353,6 +340,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try { // Passt
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//Johnblauvor1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -362,7 +352,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//Johnblauvor2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
+						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
@@ -384,6 +377,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				
 				if(zahl==0){ zahl=1;
 				try {
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//JohnblauLi1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -393,6 +389,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//JohnblauLi2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -413,6 +412,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try {
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//JohnblauRe1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -422,6 +424,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
+					if(spieler.istUnverwundbar())
+						spieler.setImage(ImageIO.read(new File("img//JohnblauRe2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					else
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 				} catch (IOException en) {
 					System.out.println("Bild Failt");
@@ -449,7 +454,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					spieler.changeHealth((int) (change * 1.5));
 				else
 					spieler.changeHealth((int) (change * 0.5));
-			} 
+			} else 
+				if (e.getKeyCode() == KeyEvent.VK_B) {
+				int change = spieler.benutzeHeiltrank();
+				// Heilungseffekt wird verbessert, falls neue Monster durch das
+				// Aufheben des Schl�ssels ausgel�st wurden
+				if (spieler.hatSchluessel())
+					spieler.changeHealth((int) (change * 1.5));
+				else
+					spieler.changeHealth((int) (change * 0.5));
+			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
 				}
@@ -655,8 +669,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			e.printStackTrace();
 		} 
 		monsterListe = new LinkedList<Monster>();
-		level = new Spielelement[WIDTH][HEIGHT];
-		Level = new Level(0, new int[WIDTH][HEIGHT]);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

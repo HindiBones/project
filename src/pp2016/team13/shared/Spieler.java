@@ -11,8 +11,9 @@ public class Spieler extends Figur {
 
 	private String name;
 	
-	private boolean hatSchluessel;
+	private boolean hatSchluessel, unverwundbar;
 	private int anzahlHeiltraenke;
+	private int anzahlTrank;
 	private int heiltrankWirkung = 50;
 
 	public HindiBones fenster;
@@ -20,6 +21,7 @@ public class Spieler extends Figur {
 	public Spieler(int id) {
 		
 		setAnzahlHeiltraenke(0);
+		setAnzahlTrank(0);
 		setPos(0, 0);
 		setLebenspunkte(100);
 		setMaxHealth(getLebenspunkte());
@@ -36,7 +38,14 @@ public class Spieler extends Figur {
 	public void entferneSchluessel() {
 		hatSchluessel = false;
 	}
+	
+	public void setUnverwundbar(){
+		this.unverwundbar = true;
+	}
 
+	public boolean istUnverwundbar(){
+		return this.unverwundbar;
+	}
 	public int benutzeHeiltrank() {
 		if(anzahlHeiltraenke > 0){
 		//setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
@@ -53,9 +62,18 @@ public class Spieler extends Figur {
 		if (anzahl >= 0)
 			anzahlHeiltraenke = anzahl;
 	}
+	public void setAnzahlTrank(int anzahl2){
+		if(anzahl2>=0){
+			anzahlTrank=anzahl2;
+		}
+		
+	}
 
 	public int getAnzahlHeiltraenke() {
 		return anzahlHeiltraenke;
+	}
+	public int getAnzahlTrank(){
+		return anzahlTrank;
 	}
 
 	// Hat der Spieler den Schluessel?
@@ -120,6 +138,12 @@ public class Spieler extends Figur {
 					+ " konnte nicht geladen werden.");
 		}
 	}
+	}
+	
+	@Override
+	public void changeHealth(int change) {
+		if(!unverwundbar)
+		lp = Math.min(lp + change, getMaxHealth());
 	}
 
 }

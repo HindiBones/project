@@ -17,7 +17,7 @@ public class NachrichtenVerwaltung {
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
-	Level[] alleLevel = new Level[5];
+	public Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
 	 * @author Julius
@@ -25,7 +25,8 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
-	public NachrichtenVerwaltung(int i){
+	public NachrichtenVerwaltung(HindiBones f){
+		this.fenster = f;
 		socket = new Client("localhost", 13001);
 	}
 	
@@ -91,11 +92,18 @@ public class NachrichtenVerwaltung {
 					case 5: System.out.println(m.fehlermeldung);break;
 					case 6: 
 					{				
-							for(int i = 0; i < m.leveldaten.length; i++){
+							for(int i = m.leveldaten.length-1; i >= 0 ; i--){
 								this.alleLevel[i] = new Level(i, m.leveldaten[i]);
-								System.out.println("Level " + alleLevel[i].levelID + " geladen!");
+								System.out.println("Level " + Level.levelID + " geladen!");
 							}
-					}
+					}break;
+					case 11: {
+						if(m.inOrdnung)
+							System.out.println("Anfrage akzeptiert!");
+						else
+							System.err.println("Anfrage wurde abgelehnt!");
+					}break;
+					case 13: behandleCheat(m);break;
 				}
 	}
 	/*
@@ -109,6 +117,14 @@ public class NachrichtenVerwaltung {
 	 * 6 - Level empfangen
 	 */
 	
+	private void behandleCheat(Nachricht cheat) {
+		// TODO Auto-generated method stub
+		switch(cheat.cheattyp){
+			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
+			case 1: fenster.spieler.setUnverwundbar();break;
+		}
+	}
+
 	/**
 	 * @author Julius
 	 * @param richtung: Integer, der die Bewegungsrichtung angibt. 0 = runter, 1 = hoch, 2 = links, 3 = rechts
@@ -211,6 +227,25 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = sende(new LevelAnfordernNachricht());
 		auslesen(serverAntwort);
 		aktuellesLevel = alleLevel[0];
+		aktuellesLevel.ausgabe();
+	}
+	
+	public boolean einloggen(LoginNachricht login){
+		Paket serverAntwort = sende(login);
+		auslesen(serverAntwort);
+		return serverAntwort.getMessage().inOrdnung;
+	}
+	
+	public boolean chatte(ChatNachricht nachricht){
+		Paket serverAntwort = new Paket(new FehlerNachricht("Konnte keine Nachricht senden!"));
+		if(nachricht.istCheat()){
+			serverAntwort = sende(new Cheat(nachricht.getCheat()));
+			serverAntwort.getMessage().inOrdnung = true;
+		}
+		else
+		serverAntwort = sende(nachricht);
+		auslesen(serverAntwort);
+		return serverAntwort.getMessage().inOrdnung;
 	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)

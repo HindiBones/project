@@ -15,7 +15,31 @@ public class ChatNachricht extends Nachricht{
 	 */
 	public ChatNachricht(String Nachricht)
 	{
-		super(9);
+		super(8);
 		this.nachricht = Nachricht;
+	}
+	
+	public boolean istCheat(){
+		boolean istCheat = false;
+		
+		switch(this.nachricht){
+		
+		case ("<#unbesiegbar>"): istCheat = true;
+		}
+		
+		return istCheat;
+	}
+	
+	public int getCheat(){
+		int ergebnis = 0;
+		if(this.istCheat())
+		{
+			switch(this.nachricht)
+			{
+			case ("<#unbesiegbar>"): ergebnis = 1;break;
+			}
+		}
+		
+		return ergebnis;
 	}
 }

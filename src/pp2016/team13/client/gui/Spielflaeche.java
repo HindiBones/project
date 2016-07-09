@@ -22,7 +22,7 @@ public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,
+	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,
 			feuerball, spieler;
 	private HindiBones fenster;
 	public int  wechselX=0;
@@ -42,6 +42,7 @@ public class Spielflaeche extends JPanel {
 			schluessel = ImageIO.read(new File("img//schluessel.png"));
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
+			trank=ImageIO.read(new File("img//heiltrankblau.png"));
 
 			
 		} catch (IOException e) {
@@ -72,8 +73,9 @@ public class Spielflaeche extends JPanel {
 	int grenzPunktY=4;
 	int grenzPunktx=2;
 	int grenzPunkty=2;
+	Monster Gegner=null;
 	public void paint(Graphics g) {
-
+		
 		// Beim neuzeichnen wird zunaechst alles uebermalt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -115,17 +117,25 @@ public class Spielflaeche extends JPanel {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 5){ 
+					}
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ 
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						Monster Gegner = new Monster(i, j, fenster, 0);
-						drawMonster(g, Gegner);
-						//4=Schlüssel
+						if (Gegner ==null){
+						 Gegner = new Monster(i, j, fenster, 0);
+						fenster.monsterListe.add(Gegner);
+//						fenster.monsterListe.add(Gegner);
+//						Monster m = fenster.monsterListe.get(i);
+//						boolean event = fenster.spieler.hatSchluessel();
+						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+								null);}
+//						drawMonster(g, Gegner);
+						//2== Start 
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX, j
+						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 						//Geschlossene Tür
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
@@ -135,18 +145,22 @@ public class Spielflaeche extends JPanel {
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							//offene Tür
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 ) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) {
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-							g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
+							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-							//Heiltrank
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
-						// Hier ist die Tuer
+//							//Heiltrank
+							
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+						
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						// Hier steht ein Heiltrank
+						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
+								j * fenster.BOX-verschiebeny*fenster.BOX, null);
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+						
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
@@ -157,10 +171,10 @@ public class Spielflaeche extends JPanel {
 		}
 
 		
-		
+			
 		// Male die Monster an ihrer Position
-		for (int i = 0; i < fenster.monsterListe.size(); i++) {
-			Monster m = fenster.monsterListe.get(i);
+		for (int k = 0; k < fenster.monsterListe.size(); k++) {
+			Monster m = fenster.monsterListe.get(k);
 			boolean event = fenster.spieler.hatSchluessel();
 			// Da hier alle Monster aufgerufen werden, wird an dieser
 			// Stelle auch ein Angriffsbefehl fuer die Monster
@@ -189,9 +203,8 @@ public class Spielflaeche extends JPanel {
 			// aufheben' erscheint
 			else if (event && m.getTyp() == 1)
 				drawMonster(g, m);
-
-		}
-
+		
+}
 		// Male den Spieler an seiner Position
 		g.drawImage(fenster.spieler.getImage(), fenster.spieler.getXPos()
 				* fenster.BOX-verschiebenx*fenster.BOX, fenster.spieler.getYPos() * fenster.BOX-verschiebeny*fenster.BOX, null);
@@ -207,6 +220,7 @@ public class Spielflaeche extends JPanel {
 				g.drawString("GEWONNEN", getWidth() / 2 - 120, getHeight() / 2);
 			}
 		}
+		
 	}
 
 	/**

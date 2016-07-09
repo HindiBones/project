@@ -18,7 +18,7 @@ public class ItemNachricht extends Nachricht{
 	 * @author Julius
 	 * @param a: X-Koordinate des Items
 	 * @param b: Y-Koordinate des Items
-	 * @param item: Art der Item-Nachricht. 2 = Trank aufgehoben, 4 = Schluessel aufgehoben, 8 = Trank benutzt
+	 * @param item: Art der Item-Nachricht. 2 = Trank aufgehoben, 4 = Schluessel aufgehoben, 12 = Trank benutzt
 	 * 
 	 * Erstellt eine ItemNachricht. 
 	 */

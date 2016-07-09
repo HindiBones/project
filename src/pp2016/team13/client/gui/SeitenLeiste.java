@@ -30,7 +30,7 @@ public class SeitenLeiste extends JPanel {
 
 	private Image boden2, wand2, tuerOffen2, tuerZu2,hintergrund, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
 	ChatFenster p;
-	private HindiBones fenster;
+	HindiBones fenster;
 	public SeitenLeiste(HindiBones fenster) {
 		this.fenster = fenster;
 		 //Benutzer Name Eingabe Feld
@@ -44,23 +44,24 @@ public class SeitenLeiste extends JPanel {
 		 this.add(p,BorderLayout.SOUTH);
 		 
 		 
-//		 p.add(this);
-//		 
+	 
 
 		 
 
 		try {
-			hintergrund = ImageIO.read(new File("img//status.png"));
+			sblase= ImageIO.read(new File("img//sprechblase.png"));
+
 			hintergrund1= ImageIO.read(new File("img/wall1.png"));
 			schluessel2=ImageIO.read(new File("img//schluessel2.png"));
 			heiltrank2 = ImageIO.read(new File("img//heiltrank2.png"));
 			heiltrankblau = ImageIO.read(new File("img//heiltrankpanel.png"));
-			boden2 = ImageIO.read(new File("img//boden.png"));
-			wand2 = ImageIO.read(new File("img//wand.png"));
+			boden2 = ImageIO.read(new File("img//boden11.png"));
+			wand2 = ImageIO.read(new File("img//wandklein.png"));
 			tuerZu2 = ImageIO.read(new File("img//tuer.png"));
 			tuerOffen2 = ImageIO.read(new File("img//tueroffen.png"));
-			john= ImageIO.read(new File("img//john.png"));
-			sblase= ImageIO.read(new File("img//sprechblase.png"));
+			john= ImageIO.read(new File("img//John1.png"));
+//			john= ImageIO.read(new File("img//john.png"));
+			
 			} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
@@ -100,27 +101,26 @@ public class SeitenLeiste extends JPanel {
 								null);
 					} 
 	
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Hier ist die Tuer
 						
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 						
 						
-					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-						//System.out.println("Sollte Offene Türe zechenen");
-						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
-								null);	
-						g.drawImage(tuerOffen2, i * 11 , j
-									* 10, null);
+//					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+//						//System.out.println("Sollte Offene Türe zechenen");
+//						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+//								null);	
+//						g.drawImage(tuerOffen2, i * 11 , j
+//									* 10, null);
 					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
 						//System.out.println("Sollte Offene Türe zechenen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerZu2, i * 11, j
 									* 11, null);
-			}
-					
+			}		
 			}
 
 		}
@@ -184,7 +184,7 @@ int Hintergrundpixel= 192;
 		g.drawRect(itemKx+55+55, itemKy,40, 40);
 
 		//Mini John neben Lebensleiste
-		g.drawImage(fenster.spieler.getImage(),20,itemKy+60 , fenster.BOX3,
+		g.drawImage(john,20,itemKy+60 , fenster.BOX3,
 				fenster.BOX3 , null);
 
 		if (fenster.spieler.hatSchluessel()) {
@@ -201,6 +201,7 @@ int Hintergrundpixel= 192;
 				 100, 200);
 
 		// Heiltrankanzeige
+		int anzahlTrank=fenster.spieler.getAnzahlTrank();
 		int anzahlHeiltraenke = fenster.spieler.getAnzahlHeiltraenke();
 		String s;
 		
@@ -213,10 +214,10 @@ int Hintergrundpixel= 192;
 		g.drawImage(heiltrank2, itemKx-2,itemKy, null);//63
 		
 		//Blauer Heiltrank
-		if (anzahlHeiltraenke < 10)
-			s = "  " + anzahlHeiltraenke;
+		if (anzahlTrank < 10)
+			s = "  " + anzahlTrank;
 		else
-			s = String.valueOf(anzahlHeiltraenke);
+			s = String.valueOf(anzahlTrank);
 		g.drawString(s, itemKx-5-5+Luecke, itemKy+12);
 		g.drawImage(heiltrankblau, itemKx-7+Luecke,itemKy, null);
 

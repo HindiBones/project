@@ -3,6 +3,8 @@ import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
 
+import pp2016.team13.client.engine.AntwortNachricht;
+import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Einloggen;
@@ -39,7 +41,7 @@ public Server(int port){
 			
 			try {
 			S = ServerS.accept();
-			ServerS.setSoTimeout(60000);
+			ServerS.setSoTimeout(1);
 
 			System.out.println("Starte Server");
 //			S = ServerS.accept();
@@ -78,16 +80,15 @@ public Server(int port){
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
 				n = (Paket)ois.readObject();
 				ServerList.add(n);
-				System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
+				System.out.println("Server empfaengt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
 				Paket antwort = verarbeiteNachricht(n.getMessage());
-				System.out.print(antwort.getMessage().leveldaten);
 				System.out.println("Server hat die Message verarbeitet");
 				oos.writeObject(antwort);
-
+				
 				oos.flush();
 
-				System.out.println("Server hat eine message zur�ckgeschickt");
+				System.out.println("Server hat eine message zurueckgeschickt");
 
 			} catch (IOException | ClassNotFoundException e) {
 			}
@@ -98,14 +99,31 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort); break;
+			
+			case 0: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 4: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 5: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 6: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 7: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
+			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
+
 			}
 			Paket antwort = new Paket(antwortNachricht);
 						return antwort;
 			}
 			catch(NullPointerException e){
 				e.printStackTrace();
-				return new Paket(new FehlerNachricht("Marius ist dumm!"));
+				return new Paket(new FehlerNachricht("NullPointerException!"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return new Paket(new FehlerNachricht("Exception!"));
 			}
 		}
 

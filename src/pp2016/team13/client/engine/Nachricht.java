@@ -8,7 +8,8 @@ public class Nachricht implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int typ;
+	int typ, logintyp;
+	public int cheattyp = 0;
 	public boolean aufgenommen, angegriffen;
 	public String fehlermeldung, benutzername, passwort, nachricht;
 	public Level[] Levels = new Level[5];
@@ -16,6 +17,7 @@ public class Nachricht implements Serializable {
 	int xKoo;
 	int yKoo;
 	public int spielerID, monsterID, trankID;
+	public boolean inOrdnung;
 	/* 
 	 * Typen von Messages:
 	 * type 0 : Login-Message
@@ -84,5 +86,9 @@ public class Nachricht implements Serializable {
 
 	public char[] getMessage(Nachricht n) {
 		return null;
+	}
+	
+	public int getLoginTyp(){
+		return logintyp;
 	}
 }

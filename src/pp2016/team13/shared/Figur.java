@@ -7,7 +7,7 @@ public abstract class Figur {
 	private int xPos, yPos, id;
 	private Image image;
 
-	private int lp;
+	protected int lp;
 	private int schaden;
 
 	private int maxHealth;

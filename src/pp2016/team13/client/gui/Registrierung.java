@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
+import pp2016.team13.client.engine.LoginNachricht;
 import pp2016.team13.server.engine.Einloggen;
 
 import java.awt.event.*;
@@ -27,14 +28,16 @@ public class Registrierung extends JFrame implements ActionListener{
 	JLabel benutzernameL;
 	JLabel WiedPasswortL;
 	JLabel passwortL;
+	HindiBones fenster;
 	
 	boolean anmeldung1=false;
 	
 	public static final int BOX = 32;
 	public static final int WIDTH = 16, HEIGHT = 16;
 	
-	public Registrierung(){
+	public Registrierung(HindiBones f){
 	
+	this.fenster = f;
 	 AnmeldePanel = new JPanel();
 	this.getContentPane().add(AnmeldePanel);
 	
@@ -130,10 +133,13 @@ public class Registrierung extends JFrame implements ActionListener{
 			}
 			
 			//Beispiel Versuch wird sp�ter mit client erweitert
-			if((EinL.RegIn(nickname, pwd)==true) && (pwd.isEmpty()==false ) && (pwd.equals(wpwd))){
+			if((pwd.isEmpty()==false ) && (pwd.equals(wpwd))){
 				anmeldung1= true;
 				//Systemnachricht: Best�tigung
-				JOptionPane.showMessageDialog(this, "Ihr Benutzername: " + nickname + " ,wurde registriert ");
+				LoginNachricht registrierung = new LoginNachricht(nickname, pwd, 1);
+				boolean funktioniert = fenster.client.einloggen(registrierung);
+				if(funktioniert) JOptionPane.showMessageDialog(this, "Ihr Benutzername: " + nickname + " ,wurde registriert ");
+				else JOptionPane.showMessageDialog(AnmeldePanel, "Falsches Passwort oder Falscher Benutzername");
 			    dispose();
 				
 			}else { // Vergleiche!!!! zur richtigen Systemnachricht
