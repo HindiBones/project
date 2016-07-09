@@ -100,10 +100,6 @@ public class Labyrinth {
 				//	Position Schlüssel
 						zufallsZahl = (Math.random()*zaehlerMonster)-1;
 						int zz6 = (int) zufallsZahl;
-						while (zz6 == zz1){
-							zufallsZahl = (Math.random()*zaehlerMonster)-1;
-							zz6 = (int) zufallsZahl;
-						}
 						map[bodenplatten[zz6].xKoordinate][bodenplatten[zz6].yKoordinate]= 5;
 						
 		
