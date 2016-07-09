@@ -73,10 +73,10 @@ public class Levelverwaltung {
   //Vom Levelgenerator ankommendes zweidimensionales Integer Array
   while (levelZaehler < anzahlLevel){
    Labyrinth map = new Labyrinth();
-   levelInhalt = map.map;
-   for (int i = 0; i<groesse; i++){
-    for (int j = 0; j<groesse ; j++){
-     levelSpeicherort[levelZaehler][j][i] = levelInhalt[j][i];
+   for (int i = 0; i<groesse-1; i++){
+    for (int j = 0; j<groesse-1; j++){
+     levelSpeicherort[levelZaehler][i][j] = map.map[i][j];
+     levelInhalt[i][j] = map.map[i][j];
     }
    }
    levelZaehler++;

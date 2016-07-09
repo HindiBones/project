@@ -7,7 +7,7 @@ import pp2016.team13.server.map.Labyrinth;
  *
  */
 public class Labyrinth {
-	private int size = 20;
+	private int size = 19;
 	public int [][] map = new int [size][size];
 	static Koordinaten [] bodenplatten;
 	static Koordinaten [] monsterplatten;
@@ -24,7 +24,7 @@ public class Labyrinth {
 		int AnzMonster = (int)((Math.random()) * 5 + 1);;
 		bodenplatten = new Koordinaten [size*size];
 		
-		FloodFill auffuellen = new FloodFill(size-1);
+		FloodFill auffuellen = new FloodFill(size);
 		for (int i = 0; i < size-1 ; i++){
 			for (int j = 0 ; j< size-1 ; j++){
 				this.map [i][j] = auffuellen.map[i][j];

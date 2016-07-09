@@ -19,16 +19,6 @@ public class FloodFill {
 	private static Point currentPosition = null;
 	
 	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer,7 = Trank2
-	public static void main (String[] args){
-		FloodFill Labyrinth = new FloodFill (10);
-		for (int i=0 ; i<Labyrinth.size; i++)
-		{
-			for (int j = 0 ; j<Labyrinth.size ; j++){
-				System.out.print(Labyrinth.map[i][j]);
-			}
-			System.out.println();
-		}
-	}
 	
 	FloodFill(int size) {
 		this.size = size;
