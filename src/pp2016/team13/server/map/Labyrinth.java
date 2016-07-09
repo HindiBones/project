@@ -1,7 +1,11 @@
 package pp2016.team13.server.map;
 
 import pp2016.team13.server.map.Labyrinth;
-
+/**
+ * 
+ * @author Cigdem
+ *
+ */
 public class Labyrinth {
 	private int size = 17;
 	public int [][] map = new int [size][size];
@@ -45,17 +49,6 @@ public class Labyrinth {
 		
 
 			// Position  Tuer
-		// Eingangstuer immer ein Feld hinter der Spielerposition
-//				if(map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] == 1){
-//					map[bodenplatten[zz1].xKoordinate-1][bodenplatten[zz1].yKoordinate] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] == 1){
-//					map[bodenplatten[zz1].xKoordinate+1][bodenplatten[zz1].yKoordinate] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] == 1){
-//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate-1] = 6;
-//				} else if(map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] == 1){
-//					map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate+1] = 6;
-//				}
-				//Position Schlüssel
 				zufallsZahl = (Math.random()*zaehler)-1;
 				int zz2 = (int) zufallsZahl;
 				while (zz2 == zz1){
