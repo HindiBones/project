@@ -476,10 +476,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
-				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 3) {
+				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 5) {
 					spieler.nimmHeiltrank();
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
+				//Blauentrank aufnehmen
+				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 7) {
+					spieler.nimmtrank();
+					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
+				}
+				
 				// Schluessel benutzen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
 					if (spieler.hatSchluessel()) {
