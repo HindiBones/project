@@ -16,7 +16,7 @@ public class BewegungsNachricht extends Nachricht{
 	 * 
 	 * Nachrichten-Objekt, das nach einer Bewegung eines Spielers dessen neue Koordinaten beinhaltet
 	 */
-	public BewegungsNachricht(int p,int x, int y){
+	public BewegungsNachricht(int p, int x, int y){
 		super(1);
 		this.spielerID=p;
 		this.xKoo=x;

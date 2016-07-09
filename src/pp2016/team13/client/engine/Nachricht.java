@@ -16,6 +16,7 @@ public class Nachricht implements Serializable {
 	int xKoo;
 	int yKoo;
 	public int spielerID, monsterID, trankID;
+	public boolean inOrdnung;
 	/* 
 	 * Typen von Messages:
 	 * type 0 : Login-Message

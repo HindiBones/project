@@ -3,6 +3,7 @@ import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
 
+import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
 import pp2016.team13.server.engine.Einloggen;
@@ -98,6 +99,7 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
+<<<<<<< HEAD
 			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort);
 			for (int i = 0; i<antwortNachricht.leveldaten[0].length; i++)
 			   {
@@ -109,11 +111,27 @@ public Server(int port){
 			   }
 			break;
 			
+=======
+			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 4: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 5: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 6: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 7: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			}
 			Paket antwort = new Paket(antwortNachricht);
 						return antwort;
 			}
 			catch(NullPointerException e){
+				e.printStackTrace();
+				return new Paket(new FehlerNachricht("Marius ist dumm!"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return new Paket(new FehlerNachricht("Marius ist dumm!"));
 			}
