@@ -41,7 +41,7 @@ public Server(int port){
 			
 			try {
 			S = ServerS.accept();
-			ServerS.setSoTimeout(60000);
+			ServerS.setSoTimeout(1);
 
 			System.out.println("Starte Server");
 //			S = ServerS.accept();
@@ -111,7 +111,7 @@ public Server(int port){
 			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
-			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);
+			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
 
 			}
 			Paket antwort = new Paket(antwortNachricht);

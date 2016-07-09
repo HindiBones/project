@@ -102,7 +102,7 @@ public class NachrichtenVerwaltung {
 							System.out.println("Anfrage akzeptiert!");
 						else
 							System.err.println("Anfrage wurde abgelehnt!");
-					}
+					}break;
 					case 13: behandleCheat(m);break;
 				}
 	}
