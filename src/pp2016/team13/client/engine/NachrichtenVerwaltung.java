@@ -17,7 +17,7 @@ public class NachrichtenVerwaltung {
 	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
 	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
-	Level[] alleLevel = new Level[5];
+	public Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
 	 * @author Julius

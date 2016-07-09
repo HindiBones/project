@@ -657,6 +657,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		monsterListe = new LinkedList<Monster>();
 		level = new Spielelement[WIDTH][HEIGHT];
 		Level = new Level(0, new int[WIDTH][HEIGHT]);
+		Level.levelInhalt = client.alleLevel[0].levelInhalt;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

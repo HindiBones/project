@@ -84,7 +84,7 @@ public Server(int port){
 				System.out.print(antwort.getMessage().leveldaten);
 				System.out.println("Server hat die Message verarbeitet");
 				oos.writeObject(antwort);
-
+				
 				oos.flush();
 
 				System.out.println("Server hat eine message zur�ckgeschickt");
@@ -98,7 +98,17 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort); break;
+			case 10: antwortNachricht = new LevelNachricht(this.spiel.levelSpeicherort);
+			for (int i = 0; i<antwortNachricht.leveldaten[0].length; i++)
+			   {
+			    for (int j = 0; j<antwortNachricht.leveldaten[0].length; j++)
+			    {
+			     System.out.print(antwortNachricht.leveldaten[0][i][j]);
+			    }
+			    System.out.println();
+			   }
+			break;
+			
 			}
 			Paket antwort = new Paket(antwortNachricht);
 						return antwort;

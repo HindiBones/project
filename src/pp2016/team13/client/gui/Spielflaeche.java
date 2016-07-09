@@ -72,8 +72,9 @@ public class Spielflaeche extends JPanel {
 	int grenzPunktY=4;
 	int grenzPunktx=2;
 	int grenzPunkty=2;
+	Monster Gegner=null;
 	public void paint(Graphics g) {
-
+		
 		// Beim neuzeichnen wird zunaechst alles uebermalt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -117,14 +118,17 @@ public class Spielflaeche extends JPanel {
 								null);
 					}
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ 
-						
-						Monster Gegner = new Monster(i, j, fenster, 0);
-						fenster.monsterListe.add(Gegner);
-						Monster m = fenster.monsterListe.get(i);
-						boolean event = fenster.spieler.hatSchluessel();
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						drawMonster(g, Gegner);
+						if (Gegner ==null){
+						 Gegner = new Monster(i, j, fenster, 0);
+						fenster.monsterListe.add(Gegner);
+//						fenster.monsterListe.add(Gegner);
+//						Monster m = fenster.monsterListe.get(i);
+//						boolean event = fenster.spieler.hatSchluessel();
+						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+								null);}
+//						drawMonster(g, Gegner);
 						//4=Schlüssel
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
@@ -159,10 +163,10 @@ public class Spielflaeche extends JPanel {
 					}
 				}
 			}
-		
+		}
 
 		
-		
+			
 		// Male die Monster an ihrer Position
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			Monster m = fenster.monsterListe.get(k);
@@ -211,7 +215,7 @@ public class Spielflaeche extends JPanel {
 				g.drawString("GEWONNEN", getWidth() / 2 - 120, getHeight() / 2);
 			}
 		}
-		}
+		
 	}
 
 	/**

@@ -55,7 +55,7 @@ public class SeitenLeiste extends JPanel {
 			schluessel2=ImageIO.read(new File("img//schluessel2.png"));
 			heiltrank2 = ImageIO.read(new File("img//heiltrank2.png"));
 			heiltrankblau = ImageIO.read(new File("img//heiltrankpanel.png"));
-			boden2 = ImageIO.read(new File("img//boden.png"));
+			boden2 = ImageIO.read(new File("img//boden11.png"));
 			wand2 = ImageIO.read(new File("img//wandklein.png"));
 			tuerZu2 = ImageIO.read(new File("img//tuer.png"));
 			tuerOffen2 = ImageIO.read(new File("img//tueroffen.png"));
@@ -100,7 +100,7 @@ public class SeitenLeiste extends JPanel {
 								null);
 					} 
 	
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Hier ist die Tuer
 						
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
@@ -119,8 +119,7 @@ public class SeitenLeiste extends JPanel {
 								null);	
 						g.drawImage(tuerZu2, i * 11, j
 									* 11, null);
-			}
-					
+			}		
 			}
 
 		}
