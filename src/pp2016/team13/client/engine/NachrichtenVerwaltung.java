@@ -224,6 +224,12 @@ public class NachrichtenVerwaltung {
 		auslesen(serverAntwort);
 		return serverAntwort.getMessage().inOrdnung;
 	}
+	
+	public boolean chatte(ChatNachricht login){
+		Paket serverAntwort = sende(login);
+		auslesen(serverAntwort);
+		return serverAntwort.getMessage().inOrdnung;
+	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)
 //		aktuellesLevel = alleLevel[aktuellesLevel.getLevelID()+1];

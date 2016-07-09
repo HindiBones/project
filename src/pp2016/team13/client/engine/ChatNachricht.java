@@ -15,7 +15,7 @@ public class ChatNachricht extends Nachricht{
 	 */
 	public ChatNachricht(String Nachricht)
 	{
-		super(9);
+		super(8);
 		this.nachricht = Nachricht;
 	}
 }
