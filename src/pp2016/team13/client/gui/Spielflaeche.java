@@ -22,7 +22,7 @@ public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,
+	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,hintergrund1,
 			feuerball, spieler;
 	private HindiBones fenster;
 	public int  wechselX=0;
@@ -43,6 +43,7 @@ public class Spielflaeche extends JPanel {
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
 			trank=ImageIO.read(new File("img//heiltrankblau.png"));
+			hintergrund1= ImageIO.read(new File("img/wand Kopie.png"));
 
 			
 		} catch (IOException e) {
@@ -79,6 +80,11 @@ public class Spielflaeche extends JPanel {
 		// Beim neuzeichnen wird zunaechst alles uebermalt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+//		for(int j=0; j<16;j++){
+//			for(int i=0; i<=16; i++){
+//			g.drawImage(hintergrund1, j*fenster.BOX, i*fenster.BOX, null);
+//			}
+//		}
 		// Male die einzelnen Felder
 		for (int i =wechselX ; i < fenster.WIDTH; i++) {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
@@ -163,7 +169,7 @@ public class Spielflaeche extends JPanel {
 						
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
+						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
 					}
 				}
