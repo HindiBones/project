@@ -104,8 +104,6 @@ public class Levelverwaltung {
      spieler.setPos(i, j);
      spielerListe[spielerID] = spieler;
      spielerID++;
-     levelInhalt[j][i]=1;
-     levelSpeicherort[this.levelID][j][i] = 1;
      
     }else if(levelInhalt[j][i] == 3){
      //Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank tr�gt
