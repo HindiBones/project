@@ -8,7 +8,7 @@ public class Nachricht implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int typ;
+	int typ, logintyp;
 	public boolean aufgenommen, angegriffen;
 	public String fehlermeldung, benutzername, passwort, nachricht;
 	public Level[] Levels = new Level[5];
@@ -85,5 +85,9 @@ public class Nachricht implements Serializable {
 
 	public char[] getMessage(Nachricht n) {
 		return null;
+	}
+	
+	public int getLoginTyp(){
+		return logintyp;
 	}
 }

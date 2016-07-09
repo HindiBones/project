@@ -288,7 +288,8 @@ public class Levelverwaltung {
  /*
   * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
   */
-  case 0: return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort); //Login
+  case 0: if(Nachricht.getLoginTyp() == 0) return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort);
+  			else return Einloggen.RegIn(Nachricht.benutzername, Nachricht.passwort);//Login
   case 1: return behandleSpielerbewegung(Nachricht, spiel);//Spielerbewegung
   case 2: return behandleTrankaufnahme(Nachricht, spiel); //Trankaufnahme
   case 3: return behandleLevelGeschafft(Nachricht.getID(), spiel); //Level geschafft

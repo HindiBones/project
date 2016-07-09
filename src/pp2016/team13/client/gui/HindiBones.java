@@ -47,7 +47,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public Level Level;
 	public Spielelement[][] level;
 	public NachrichtenVerwaltung client;
-	public LoginNachricht lognachricht;
 	public int currentLevel = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
@@ -234,10 +233,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			Thread.sleep(50);
 			this.add(anmeldung, BorderLayout.CENTER);	
 		
-			//Verbindung zum Client
-			lognachricht= new LoginNachricht("Peace", "12345");
-			Bn="Peace";
-			Pw="12345";
 		
 			// Registrierung
 			
@@ -295,15 +290,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public Anmeldung getAnmeldung(){
 		return anmeldung;
 	}
-	
-	/**
-	 * 
-	 * @author Seyma Keser
-	 */
-	public LoginNachricht getLogNachricht(){
-		return lognachricht;
-	}
-
 	
 	/**
 	 * 
@@ -655,9 +641,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			e.printStackTrace();
 		} 
 		monsterListe = new LinkedList<Monster>();
-		level = new Spielelement[WIDTH][HEIGHT];
-		Level = new Level(0, new int[WIDTH][HEIGHT]);
-		Level.levelInhalt = client.alleLevel[0].levelInhalt;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

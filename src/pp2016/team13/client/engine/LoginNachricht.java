@@ -15,10 +15,11 @@ public class LoginNachricht extends Nachricht {
 	 * 
 	 * Erstellt eine LoginNachricht, die Benutzername und Passwort enthalten.
 	 */
-	public LoginNachricht (String name, String pw){
+	public LoginNachricht (String name, String pw, int typ){
 		super(0);
 		this.benutzername = name;
 		this.passwort = pw;
+		this.logintyp = typ;
 	}
 	
 //	public String GetBenutzername(){

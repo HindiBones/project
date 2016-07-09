@@ -91,7 +91,7 @@ public class NachrichtenVerwaltung {
 					case 5: System.out.println(m.fehlermeldung);break;
 					case 6: 
 					{				
-							for(int i = 0; i < m.leveldaten.length; i++){
+							for(int i = m.leveldaten.length-1; i >= 0 ; i--){
 								this.alleLevel[i] = new Level(i, m.leveldaten[i]);
 								System.out.println("Level " + Level.levelID + " geladen!");
 							}
@@ -217,6 +217,12 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = sende(new LevelAnfordernNachricht());
 		auslesen(serverAntwort);
 		aktuellesLevel = alleLevel[0];
+	}
+	
+	public boolean einloggen(LoginNachricht login){
+		Paket serverAntwort = sende(login);
+		auslesen(serverAntwort);
+		return serverAntwort.getMessage().inOrdnung;
 	}
 //	public void levelWechseln(){
 //		if(aktuellesLevel.getLevelID() < 4)

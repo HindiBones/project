@@ -45,14 +45,6 @@ public class Client extends Paket {
 			ois=new ObjectInputStream(cs.getInputStream());
 			System.out.println("ObjectInputStream steht");
 			serverAntwort=(Paket)ois.readObject();
-			for (int i = 0; i<serverAntwort.inhalt.leveldaten[0].length; i++)
-			   {
-			    for (int j = 0; j<serverAntwort.inhalt.leveldaten[0].length; j++)
-			    {
-			     System.out.print(serverAntwort.inhalt.leveldaten[0][i][j]);
-			    }
-			    System.out.println();
-			   }
 			ClientList.addLast(serverAntwort);
 		}
 		catch(IOException e){
