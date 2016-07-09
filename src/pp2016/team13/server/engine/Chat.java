@@ -1,13 +1,12 @@
 package pp2016.team13.server.engine;
 
+import java.util.ArrayList;
+
 public class Chat {
-	static int anzahlNachrichten;
-	static String chat[];
+	static int anzahlNachrichten = 0;
+	static ArrayList<String> chat;
 	public Chat (){
-		chat = new String [20];
-		for (int i = 0 ; i < chat.length ; i++){
-			chat[i] = null;
-		}
+		chat = new ArrayList<String>();
 	}
 		/**
 		 * @author Marius
@@ -15,9 +14,8 @@ public class Chat {
 		 * 
 		 * Nachricht zum Chat hinzufügen
 		 */
-	public static boolean nachrichtEmpfanden(String nachricht){
-		chat[anzahlNachrichten] = nachricht;
-		anzahlNachrichten++;
+	public static boolean nachrichtEmpfangen(String nachricht){
+		chat.add(anzahlNachrichten, nachricht);
 		return true;
 	
 	}
@@ -27,7 +25,7 @@ public class Chat {
 	 * Chatverlauf senden
 	 */
 	public static String [] chat(){
-		return chat;
+		return (String[]) chat.toArray();
 	}
 	
 	/**

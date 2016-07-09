@@ -25,7 +25,8 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * Erstellt ein Client-Objekt mit der ID i
 	 */
-	public NachrichtenVerwaltung(int i){
+	public NachrichtenVerwaltung(HindiBones f){
+		this.fenster = f;
 		socket = new Client("localhost", 13001);
 	}
 	
@@ -102,6 +103,7 @@ public class NachrichtenVerwaltung {
 						else
 							System.err.println("Anfrage wurde abgelehnt!");
 					}
+					case 13: behandleCheat(m);break;
 				}
 	}
 	/*
@@ -115,6 +117,14 @@ public class NachrichtenVerwaltung {
 	 * 6 - Level empfangen
 	 */
 	
+	private void behandleCheat(Nachricht cheat) {
+		// TODO Auto-generated method stub
+		switch(cheat.cheattyp){
+			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
+			case 1: fenster.spieler.setUnverwundbar();break;
+		}
+	}
+
 	/**
 	 * @author Julius
 	 * @param richtung: Integer, der die Bewegungsrichtung angibt. 0 = runter, 1 = hoch, 2 = links, 3 = rechts
@@ -225,8 +235,14 @@ public class NachrichtenVerwaltung {
 		return serverAntwort.getMessage().inOrdnung;
 	}
 	
-	public boolean chatte(ChatNachricht login){
-		Paket serverAntwort = sende(login);
+	public boolean chatte(ChatNachricht nachricht){
+		Paket serverAntwort = new Paket(new FehlerNachricht("Konnte keine Nachricht senden!"));
+		if(nachricht.istCheat()){
+			serverAntwort = sende(new Cheat(nachricht.getCheat()));
+			serverAntwort.getMessage().inOrdnung = true;
+		}
+		else
+		serverAntwort = sende(nachricht);
 		auslesen(serverAntwort);
 		return serverAntwort.getMessage().inOrdnung;
 	}

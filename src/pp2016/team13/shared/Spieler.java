@@ -11,7 +11,7 @@ public class Spieler extends Figur {
 
 	private String name;
 	
-	private boolean hatSchluessel;
+	private boolean hatSchluessel, unverwundbar;
 	private int anzahlHeiltraenke;
 	private int anzahlTrank;
 	private int heiltrankWirkung = 50;
@@ -37,6 +37,10 @@ public class Spieler extends Figur {
 	// Methode, um den Schluessel zu entfernen
 	public void entferneSchluessel() {
 		hatSchluessel = false;
+	}
+	
+	public void setUnverwundbar(){
+		this.unverwundbar = true;
 	}
 
 	public int benutzeHeiltrank() {
@@ -131,6 +135,12 @@ public class Spieler extends Figur {
 					+ " konnte nicht geladen werden.");
 		}
 	}
+	}
+	
+	@Override
+	public void changeHealth(int change) {
+		if(!unverwundbar)
+		lp = Math.min(lp + change, getMaxHealth());
 	}
 
 }
