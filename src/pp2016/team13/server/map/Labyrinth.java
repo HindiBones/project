@@ -18,17 +18,17 @@ public class Labyrinth {
 		int AnzTrank2 = 2;
 		int AnzMonster = 4;
 		bodenplatten = new Koordinaten [size*size];
-		FloodFill auffuellen = new FloodFill(size);
-		for (int i = 0; i < size ; i++){
-			for (int j = 0 ; j< size ; j++){
+		FloodFill auffuellen = new FloodFill(size-1);
+		for (int i = 0; i < size-1 ; i++){
+			for (int j = 0 ; j< size-1 ; j++){
 				this.map [i][j] = auffuellen.map[i][j];
 			}
 		}
 		
 		// Speichere alle Felder die Boden sind in bodenplatten
 		int zaehler = 0;
-		for (int i = 0; i< size-1 ; i++){
-			for (int j = 0 ; j< size-1 ; j++){
+		for (int i = 0; i< size ; i++){
+			for (int j = 0 ; j< size ; j++){
 				
 				if (map[i][j] == 1){
 					bodenplatten[zaehler] = new Koordinaten (i, j);
