@@ -92,7 +92,7 @@ public class Levelverwaltung {
   int trankID = 0;
   //Definierung der Arrays
   spielerListe = new Spieler[anzahlLevel];
-  gegnerListe = new Monster [anzahlLevel];
+  gegnerListe = new Monster [anzahlLevel+1];
   trankListe = new Heiltrank [anzahlLevel];
   
   //Das Level durchsuchen, um
@@ -107,14 +107,7 @@ public class Levelverwaltung {
      
     }else if(levelInhalt[i][j] == 3){
      //Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank tr�gt
-     boolean trankVorhanden;
-     double zufallszahl = Math.random();
-     if(zufallszahl<=0.5){
-      trankVorhanden = true;
-     }else{
-      trankVorhanden = false;
-     }
-     Monster gegner = new Monster (monsterID, monsterLebenspunkte, monsterSchaden, trankVorhanden, j, i);
+     Monster gegner = new Monster (monsterID, monsterLebenspunkte, monsterSchaden, false, j, i);
      gegnerListe [monsterID] = gegner;
      monsterID++;
      
@@ -126,9 +119,10 @@ public class Levelverwaltung {
      
     }else if(levelInhalt[i][j] == 5){
      //Schluessel zu finden und die Koordinaten zu speichern
-     SchluesselX = j;
-     SchluesselY = i;
-    }else if(levelInhalt[i][j] == 6){
+    	Monster gegner = new Monster (monsterID, monsterLebenspunkte, monsterSchaden, true, j, i);
+        gegnerListe [monsterID] = gegner;
+        monsterID++;    
+        }else if(levelInhalt[i][j] == 6){
      //Tuer zu finden und ihre Koordinaten zu speichern
      tuerX = j;
      tuerY = i;

@@ -512,7 +512,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
-				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 5) {
+				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 8) {
 					client.nimmSchluessel();
 					System.out.println("Spieler hat den Schluessel!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);

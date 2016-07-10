@@ -17,16 +17,24 @@ public class Monster extends Figur {
 	private int id;
 	private int lebenspunkte;
 	private int monsterSchaden;
-	private boolean trankVorhanden;
+	private boolean hatSchluessel;
 	private int posX;
 	private int posY;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
-	private int typ; // Von Beginn an anwesend: 0, Erscheint sp�ter: 1
-
+	private int typ; // Von Beginn an anwesend: 0, Erscheint sp�ter: 
+	
 	private HindiBones fenster;
 	private Spieler spieler;
 
 	public Monster(int x, int y, HindiBones fenster, int typ) {
+		
+		if(typ == 0){
+			hatSchluessel = false;
+		}
+		else
+		{
+			hatSchluessel = true;
+		}
 		this.fenster = fenster;
 		this.spieler = fenster.spieler;
 		this.typ = typ;
@@ -53,11 +61,11 @@ public class Monster extends Figur {
 		}
 	}
 	
-	public Monster(int id, int anfangsLebenspunkte, int anfangsSchaden, boolean initialisierungTrankVorhanden, int anfangsX, int anfangsY) throws IOException {
+	public Monster(int id, int anfangsLebenspunkte, int anfangsSchaden, boolean schluessel, int anfangsX, int anfangsY) throws IOException {
 		 this.id = id;
 		 this.lebenspunkte=anfangsLebenspunkte;
 		 this.monsterSchaden=anfangsSchaden;
-		 trankVorhanden=initialisierungTrankVorhanden;
+		 hatSchluessel=schluessel;
 		 posX=anfangsX;
 		 posY=anfangsY;
 		 
@@ -86,7 +94,8 @@ public class Monster extends Figur {
 	public void changeHealth(int change) {
 		super.changeHealth(change);
 		if (getLebenspunkte() <= 0) {
-			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 3);;
+			if(hatSchluessel)
+			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 8);
 			fenster.monsterListe.remove(this);
 		}
 	}
@@ -185,5 +194,9 @@ public class Monster extends Figur {
 
 	public void setPosY(int y) {
 		posY = y;
+	}
+	
+	public boolean hatSchluessel(){
+		return hatSchluessel;
 	}
 }

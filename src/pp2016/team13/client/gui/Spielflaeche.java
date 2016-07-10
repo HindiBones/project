@@ -105,7 +105,10 @@ public class Spielflaeche extends JPanel {
 					Gegner = new Monster(i, j, fenster, 0);
 					fenster.monsterListe.add(Gegner);
 				}
-				
+				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+					Gegner = new Monster(i, j, fenster, 1);
+					fenster.monsterListe.add(Gegner);
+				}
 			}
 		}
 		
@@ -198,40 +201,45 @@ public class Spielflaeche extends JPanel {
 								null);
 						//Monster werden vor der Paint-Methode in genMonster in eine Lister Getzt ueberall wo Monster==3 ist
 					} 
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere ==2
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 					
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere==6
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere== 6
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 			
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank==7
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank== 7
 						// Hier ist ein Blauer Trank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank==4 
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank== 4 
 						//Hier ist ein Heiltrank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
 				
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluessel ==5
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluesselmonster == 5
 						//HIER LIEGT NOCH EIN SCHLÜSSEL
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
-								j * fenster.BOX-verschiebeny*fenster.BOX, null);
-					}
+						}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 8) { //Schluessel == 8
+							//Hier ist der Schluessel
+							g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+									null);
+							g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
+									j * fenster.BOX-verschiebeny*fenster.BOX, null);
+					
+						}
 				}
 			}
 		}
@@ -287,14 +295,9 @@ public class Spielflaeche extends JPanel {
 			}
 			
 
-			// Male das Monster, falls es von anfang an anwesend ist
-			if (m.getTyp() == 0)
+			// Male die Monstar
+			
 				drawMonster(g, m);
-			// Male das Monster, falls es erst durch das Event 'Schluessel
-			// aufheben' erscheint
-			else if (event && m.getTyp() == 1)
-				drawMonster(g, m);
-		
 }
 		// Male den Spieler an seiner Position
 		g.drawImage(fenster.spieler.getImage(), fenster.spieler.getXPos()
