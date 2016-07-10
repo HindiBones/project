@@ -97,6 +97,10 @@ public class NachrichtenVerwaltung {
 		switch(cheat.cheattyp){
 			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
 			case 1: fenster.spieler.setUnverwundbar(true);break;
+			case 2: fenster.nebelAn = false;break;
+			case 3: fenster.nextLevel(); break;
+			case 4: fenster.spieler.setAnzahlHeiltraenke(fenster.spieler.getAnzahlHeiltraenke() + 10);break;
+			case 5: fenster.spieler.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10); break;
 		}
 	}
 

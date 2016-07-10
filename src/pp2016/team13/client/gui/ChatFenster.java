@@ -125,6 +125,12 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			textumfeld.requestFocusInWindow();
 			textumfeld.setCaretPosition(i);
 			this.disable();
+			
+			m.fenster.spielflaeche.setFocusable(true);
+			m.fenster.spielflaeche.requestFocusInWindow();
+			m.fenster.requestFocus();
+
+			textfeld.setText("Cheats/ Text eingeben");
 		}
 	}
 

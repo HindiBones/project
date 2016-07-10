@@ -21,7 +21,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	private static final long serialVersionUID = 1L;
 
-	private Spielflaeche spielflaeche;
+	Spielflaeche spielflaeche;
 	private SeitenLeiste minimap;
 	private Highscore highscore;
 	private MenuLeiste menuLeiste;
@@ -440,11 +440,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_N) {
+					if(trankTimer == 0)
 				trankTimer = client.benutzeTrank();	
 			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
-				}
+				}else
 			
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -474,6 +475,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						nextLevel();
 					}
 				}
+			}else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+				minimap.p.textfeld.setFocusable(true);
+				minimap.p.textfeld.requestFocusInWindow();
+				minimap.p.textfeld.requestFocus();
+				minimap.p.textfeld.setText("");
 			}
 			}
 	}
@@ -713,6 +719,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						spieler.setUnverwundbar(false);
 						spieler.BildWechseln();
 						spieler.trankAktiv = false;
+						trankTimer = 0;
 					}
 				}
 
