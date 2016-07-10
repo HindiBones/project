@@ -6,6 +6,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import pp2016.team13.client.comm.Paket;
+import pp2016.team13.client.engine.AusloggenNachricht;
+
 
 public class MenuLeiste extends JMenuBar implements ActionListener {
 
@@ -88,6 +91,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 				karteaufdecken.setText("Karte aufdecken");
 			}
 		} else if (e.getSource() == beenden) {
+			fenster.client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
 			System.exit(0);
 		} else if (e.getSource() == steuerung) {
 			fenster.zeigeSteuerung();
