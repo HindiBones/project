@@ -15,6 +15,7 @@ import java.util.LinkedList;
 
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.Nachricht;
+import pp2016.team13.client.engine.ZeitNachricht;
 
 /**
  * 
@@ -31,6 +32,7 @@ public class Client extends Paket {
 	ObjectInputStream ois=null;
 	ObjectOutputStream oos=null;
 	Socket cs;
+	boolean binAmLeben;
 	
 	public Client(String host,int port){
 		try{
@@ -45,7 +47,6 @@ public class Client extends Paket {
 
 		Paket serverAntwort = new Paket();
 		try{
-			Thread.sleep(100);
 			oos = new ObjectOutputStream(cs.getOutputStream());
 			System.out.println("ObjectStream steht");
 			oos.writeObject(msg);
@@ -63,29 +64,25 @@ public class Client extends Paket {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-			e.printStackTrace();
 		}
 		
 		return serverAntwort;
 	}
 
 	// Ich bin noch da periodisch senden
-	
-	public class sendeLebenszeichen extends Thread{
 		public void run(){
 			try{
-			   while(binAmLeben){
-				  sendeNachricht(new Lebenszeichen());
+				  sendeNachricht(new Lebenszeichen(System.currentTimeMillis()));
 				  Thread.sleep(1000);
-				}
 		    }
 			catch(Exception e){
 				e.printStackTrace();
 			}
-	    }
-	
+		}
+		
+		private void sendeNachricht(Lebenszeichen lebenszeichen) throws IOException {
+			ZeitNachricht meldung = new ZeitNachricht (System.currentTimeMillis());
+			oos.writeObject(meldung);
+			oos.flush();
+		}
 	 }
-	}

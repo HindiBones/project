@@ -7,8 +7,9 @@ package pp2016.team13.client.comm;
 
 import java.io.*; 
 import java.net.*;
+import java.util.Date;
 import java.util.LinkedList;
-
+import pp2016.team13.client.comm.Lebenszeichen;
 import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
@@ -27,6 +28,7 @@ public class Server implements Serializable{
 	//die einzelnen Streams werden definiert
 	public ServerSocket ServerS;
 	public Socket S;
+	boolean login = false;
 	boolean openServer;
 	ObjectOutputStream oos=null;
 	ObjectInputStream ois=null;
@@ -34,6 +36,7 @@ public class Server implements Serializable{
 	InputStreamReader isw=null;
 	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	Levelverwaltung spiel;
+	Date letztesLebenszeichen = null;
 	
 	//Server wird gestartet - Verbindung wird hergestellt
 public Server(int port){
@@ -67,10 +70,20 @@ public Server(int port){
 
 		
 		public void run() throws IOException{
+			letztesLebenszeichen = new Date();
+			letztesLebenszeichen.setTime(System.currentTimeMillis());
 			System.out.println("Laeuft");
 			this.openServer = true;
 			while (this.openServer) {
 				handleconnection();
+				if(login && (Lebenszeichen.run(S, letztesLebenszeichen.getTime()))){
+					this.openServer = false;
+					System.out.println("server beendet");
+					ServerS.close();
+					S.close();
+					System.exit(0);
+				}else{
+				}
 			}
 		}
 		// eingehende Verbindung wird verarbeitet
@@ -83,7 +96,7 @@ public Server(int port){
 				System.out.println("eine neue message wird erzeugt");
 
 				ois = new ObjectInputStream(S.getInputStream());
-
+				System.out.println("Nachricht kommt an");
 				//System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
 				n = (Paket)ois.readObject();
@@ -108,7 +121,7 @@ public Server(int port){
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
 			
-			case 0: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true; letztesLebenszeichen.setTime(System.currentTimeMillis());; break;
 			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
@@ -120,6 +133,7 @@ public Server(int port){
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
+			case 14: letztesLebenszeichen.setTime(antwortNachricht.zeit);System.out.println("alive"); break;
 
 			}
 			Paket antwort = new Paket(antwortNachricht);
@@ -135,23 +149,5 @@ public Server(int port){
 			}
 		}
 
-		//Ich bin noch da Nachrichten
-	public class Lebenszeichen extends Thread{
-		public void run(){
-			try{
-				while (true){
-					for(int i=0; i<Spieler.size();i++){
-						if(new Date().getTime()-letztesLebenszeichen.get(Spieler.get(i).id).getTime()>10000)
-							System.out.println("Spieler" + +Spieler.get(i).id + "inaktiv");
-						    entferne(Spieler.get(i).id);
-					}
-				}
-				Thread.sleep(1000);
-		     }catch (Exception e){
-			    e.printStackTrace();
-		 }
-	}
-}
-	
 }
 	
