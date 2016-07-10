@@ -30,8 +30,9 @@ public class Spielflaeche extends JPanel {
   
 	public Spielflaeche(HindiBones fenster) {
 		
-		this.fenster = fenster;
 		
+		this.fenster = fenster;
+	
 
 		// Lade die Bilder
 		try {  
@@ -68,6 +69,7 @@ public class Spielflaeche extends JPanel {
 	 * 
 	 * @author Seyma Keser
 	 */
+	
 	int verschiebenx=0;
 	int verschiebeny=0;
 	int grenzPunktX=4;
@@ -75,8 +77,46 @@ public class Spielflaeche extends JPanel {
 	int grenzPunktx=2;
 	int grenzPunkty=2;
 	Monster Gegner=null;
-	public void paint(Graphics g) {
+	int Px;
+	int Py;
+	int anfangszustand= 0;
+	int MonsterStandpunktx[];
+	int MonsterStandpunkty[];
+	
+	
+	public void genMonster(){
+		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
+			for (int j = wechselY; j < fenster.HEIGHT; j++) {
+				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
+					Gegner = new Monster(i, j, fenster, 0);
+					fenster.monsterListe.add(Gegner);
+				}
+				
+			}
+		}
 		
+	}
+	
+	public void posSpieler(){
+		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
+		for (int j = wechselY; j < fenster.HEIGHT; j++) {
+			if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
+				fenster.spieler.setPos(i, j);
+				fenster.spieler2.setPos(i,j);
+			}
+			
+		}
+	}
+	
+	}
+
+	
+	public void paint(Graphics g) {
+		if (anfangszustand==0){
+			this.posSpieler();
+			this.genMonster();
+			anfangszustand++;
+		}
 		// Beim neuzeichnen wird zunaechst alles uebermalt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -127,23 +167,26 @@ public class Spielflaeche extends JPanel {
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ 
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						if (Gegner ==null){
-						 Gegner = new Monster(i, j, fenster, 0);
-						fenster.monsterListe.add(Gegner);
+//						if (Gegner ==null){
+//						 Gegner = new Monster(i, j, fenster, 0);
 //						fenster.monsterListe.add(Gegner);
-//						Monster m = fenster.monsterListe.get(i);
-//						boolean event = fenster.spieler.hatSchluessel();
-						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-								null);}
+////						fenster.monsterListe.add(Gegner);
+////						Monster m = fenster.monsterListe.get(i);
+////						boolean event = fenster.spieler.hatSchluessel();
+//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+//								null);}
 //						drawMonster(g, Gegner);
 						//2== Start 
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
+					} 
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// Hier liegt ein Schluessel
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
+						
+					
 						//Geschlossene Tür
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// Hier ist die Tuer
@@ -180,8 +223,13 @@ public class Spielflaeche extends JPanel {
 		
 			
 		// Male die Monster an ihrer Position
+	
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
+			
 			Monster m = fenster.monsterListe.get(k);
+			MonsterStandpunktx[k]= m.getPosX();
+			MonsterStandpunkty[k]= m.getPosY();
+			
 			boolean event = fenster.spieler.hatSchluessel();
 			// Da hier alle Monster aufgerufen werden, wird an dieser
 			// Stelle auch ein Angriffsbefehl fuer die Monster

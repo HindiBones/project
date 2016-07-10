@@ -28,7 +28,10 @@ public class Spieler extends Figur {
 		setName("Hindi Bones");
 		setID(id);
 		
+		
 }
+	
+	
 	// Methode, um den Schluessel aufzuheben
 	public void nimmSchluessel() {
 		hatSchluessel = true;
@@ -39,16 +42,22 @@ public class Spieler extends Figur {
 		hatSchluessel = false;
 	}
 	
-	public void setUnverwundbar(){
-		this.unverwundbar = true;
+	public void setUnverwundbar(boolean trank){
+		this.unverwundbar = trank;
 	}
 
 	public boolean istUnverwundbar(){
 		return this.unverwundbar;
 	}
+	
+	public int benutzeTrank(){
+		
+		
+		return 0;
+	}
 	public int benutzeHeiltrank() {
 		if(anzahlHeiltraenke > 0){
-		//setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
+		setAnzahlHeiltraenke(anzahlHeiltraenke - 1);
 		return heiltrankWirkung;
 		}
 		else return 0;

@@ -60,20 +60,20 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	
 	public final int MAXLEVEL = 5; 
-	public final int WIDTH = 20; // LABIRITHGR��E 
-	public final int HEIGHT =20 ; 
+	public final int WIDTH = 19; // LABIRITHGR��E 
+	public final int HEIGHT =19 ; 
 	public final int BOX = 72;  // Gr��e der Bild Elemente 
 	public final int BOX2=9;
 	public final int BOX3=32;
 	public int zahl=0;
+	public int timer=0;
 	
 	String Bn;
 	String Pw;
-	
-
+		
 
 	public HindiBones(int width, int height, String title) {
-		
+
 
 		initialisiereJFrame(width , height, title); 
 //		this.setSize(800,600);
@@ -257,6 +257,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public String GetPasswort(){
 		return Pw;
 	}
+
 	
 	/**
 	 * Getter für Minimap(mein komplettes Seitentool)
@@ -308,11 +309,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
 				if(zahl==0){ zahl=1;
 				try { //John Rücken  img//John3hinten
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()&& timer>0 ){
 						spieler.setImage(ImageIO.read(new File("img//Johnblauhinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+					timer--;
+				}else{
+					spieler.setUnverwundbar(false);
 					spieler.setImage(ImageIO.read(new File("img//John3hinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+				}	} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -339,11 +342,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try { // Passt
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()&& timer>0){
 						spieler.setImage(ImageIO.read(new File("img//Johnblauvor1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+						timer--;
+					}else{
+						spieler.setUnverwundbar(false);
 					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+					}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -351,11 +356,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()&& timer>0){
 						spieler.setImage(ImageIO.read(new File("img//Johnblauvor2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+						timer--;
+					}else{
+						spieler.setUnverwundbar(false);
 						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+					}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -376,11 +383,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				
 				if(zahl==0){ zahl=1;
 				try {
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()){
 						spieler.setImage(ImageIO.read(new File("img//JohnblauLi1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
-					spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+					timer--;
+				}else{
+					spieler.setUnverwundbar(false);
+				spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -388,11 +397,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()&& timer>0){
 						spieler.setImage(ImageIO.read(new File("img//JohnblauLi2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+					timer--;
+					}else{
+					spieler.setUnverwundbar(false);
 					spieler.setImage(ImageIO.read(new File("img//JohnLinks2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+					}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -411,11 +422,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try {
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar() && timer>0 ){
 						spieler.setImage(ImageIO.read(new File("img//JohnblauRe1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+						timer--;}
+					else{
+						spieler.setUnverwundbar(false);
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+				}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -423,11 +436,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar())
+					if(spieler.istUnverwundbar()&& timer>0){
 						spieler.setImage(ImageIO.read(new File("img//JohnblauRe2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					else
+					timer--;
+					}else{
+						spieler.setUnverwundbar(false);
 					spieler.setImage(ImageIO.read(new File("img//JohnSeite2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-				} catch (IOException en) {
+					}} catch (IOException en) {
 					System.out.println("Bild Failt");
 					// TODO Auto-generated catch block
 					en.printStackTrace();
@@ -446,22 +461,29 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				// B f�r 'Heiltrank benutzen'
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_B) {
+					if(spieler.getAnzahlHeiltraenke()>0){
 				int change = spieler.benutzeHeiltrank();
+//				spieler.setAnzahlHeiltraenke(spieler.getAnzahlHeiltraenke()-1);
 				// Heilungseffekt wird verbessert, falls neue Monster durch das
 				// Aufheben des Schl�ssels ausgel�st wurden
-				if (spieler.hatSchluessel())
+				if (spieler.hatSchluessel() )
 					spieler.changeHealth((int) (change * 1.5));
 				else
 					spieler.changeHealth((int) (change * 0.5));
+					}
 			} else 
-				if (e.getKeyCode() == KeyEvent.VK_B) {
+				if (e.getKeyCode() == KeyEvent.VK_N) {
 				int change = spieler.benutzeHeiltrank();
+				spieler.setUnverwundbar(true);
+				timer=10;
+				
 				// Heilungseffekt wird verbessert, falls neue Monster durch das
 				// Aufheben des Schl�ssels ausgel�st wurden
-				if (spieler.hatSchluessel())
-					spieler.changeHealth((int) (change * 1.5));
-				else
-					spieler.changeHealth((int) (change * 0.5));
+				if (spieler.getAnzahlTrank()>0){
+					//JOHN SNOW bilder rein blau
+					
+				}
+						
 			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
@@ -655,6 +677,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void spielZuruecksetzen() {
+		spielflaeche.anfangszustand=0;
 
 		try {
 			Thread.sleep(100);		
@@ -692,6 +715,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 */
 	// Spielschleife
 	public void starteNeuesSpiel() {
+		spielflaeche.anfangszustand=0;
 		try {
 			Thread.sleep(100);
 			spielZuruecksetzen();
@@ -743,6 +767,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void nextLevel() {
+		spielflaeche.anfangszustand=0;
 //		currentLevel++;
 //		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
 //		Level = leser.getLevel();
