@@ -78,7 +78,7 @@ public Server(int port){
 				handleconnection();
 				if(login && (Lebenszeichen.run(S, letztesLebenszeichen.getTime()))){
 					this.openServer = false;
-					System.out.println("server beendet");
+					System.out.println("Server Timeout");
 					ServerS.close();
 					S.close();
 					System.exit(0);
@@ -134,6 +134,7 @@ public Server(int port){
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
 			case 14: letztesLebenszeichen.setTime(antwortNachricht.zeit);System.out.println("alive"); break;
+			case 15: System.out.println("Server Beendet");System.exit(0);break;
 
 			}
 			Paket antwort = new Paket(antwortNachricht);

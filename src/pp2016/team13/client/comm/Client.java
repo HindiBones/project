@@ -85,4 +85,16 @@ public class Client extends Paket {
 			oos.writeObject(meldung);
 			oos.flush();
 		}
+		public void SendeLogout(Paket msg) {
+			try{
+				oos = new ObjectOutputStream(cs.getOutputStream());
+				System.out.println("ObjectStream steht");
+				oos.writeObject(msg);
+				System.out.println(msg.inhalt.getTyp());
+				oos.flush();
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+		}
 	 }
