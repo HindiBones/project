@@ -77,7 +77,6 @@ public class Client extends Paket {
 		try{
 			System.out.println("alive");
 			  sendeNachricht(new Lebenszeichen(System.currentTimeMillis()));
-			  Thread.sleep(1000);
 	    }
 		catch(Exception e){
 			e.printStackTrace();

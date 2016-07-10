@@ -750,7 +750,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //				e2.printStackTrace();
 //			}		
 
-		
+
 		try {
 			Thread.sleep(100);		
 		spieler = new Spieler(0);
@@ -801,13 +801,14 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			if (!spielende) {
 				// Hier wird alle 50ms neu gezeichnet
 				try {
+					
 					Thread.sleep(100);
 					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
-					if(spielfeldSichtbar){
+					if(spielfeldSichtbar)
 						client.socket.run();
-					}
+					
 					
 				} catch (InterruptedException e) {
 				}

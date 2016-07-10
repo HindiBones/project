@@ -75,7 +75,6 @@ public Server(int port){
 			System.out.println("Laeuft");
 			this.openServer = true;
 			while (this.openServer) {
-				handleconnection();
 				if(login && (Lebenszeichen.run(S, letztesLebenszeichen.getTime()))){
 					this.openServer = false;
 					System.out.println("Server Timeout");
@@ -84,8 +83,11 @@ public Server(int port){
 					System.exit(0);
 				}else{
 				}
+				handleconnection();
 			}
 		}
+		
+		
 		// eingehende Verbindung wird verarbeitet
 		public void handleconnection(){
 			try {
