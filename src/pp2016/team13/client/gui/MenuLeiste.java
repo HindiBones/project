@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 
 import pp2016.team13.client.comm.Paket;
 import pp2016.team13.client.engine.AusloggenNachricht;
+import pp2016.team13.shared.Level;
 
 
 public class MenuLeiste extends JMenuBar implements ActionListener {
@@ -101,6 +102,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			try {
 				
 				Thread.sleep(100);
+				fenster.Level = new Level(-1, null);
 				fenster.spielZuruecksetzen();
 				fenster.zeigeAnmeldung();
 				
