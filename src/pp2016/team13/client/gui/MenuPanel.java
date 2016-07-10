@@ -89,6 +89,7 @@ public class MenuPanel extends JPanel {
 		//Auslog- Button
 		ausloggen.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				fenster.spielfeldSichtbar = false;
 				fenster.zeigeAnmeldung();
 				
 			}

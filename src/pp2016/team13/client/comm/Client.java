@@ -32,7 +32,7 @@ public class Client extends Paket {
 	OutputStream os;
 	ObjectInputStream ois=null;
 	ObjectOutputStream oos=null;
-	Socket cs;
+	public Socket cs;
 	boolean binAmLeben;
 	
 	public Client(String host,int port){

@@ -808,8 +808,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					getMinimap().repaint();
 					if(spielfeldSichtbar)
 						client.socket.run();
-					
-					
+					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
+						System.exit(0);
+					}
+
 				} catch (InterruptedException e) {
 				}
 
