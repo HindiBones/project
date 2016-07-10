@@ -98,14 +98,14 @@ public class Levelverwaltung {
   //Das Level durchsuchen, um
   for (int i = 0; i<levelInhalt.length ; i++){
    for (int j = 0; j<levelInhalt.length ; j++){
-    if(levelInhalt[j][i]==2){
+    if(levelInhalt[i][j]==2){
      //Charakter zu finden und die ID zuzuordnen
      Spieler spieler = new Spieler (spielerID);
      spieler.setPos(i, j);
      spielerListe[spielerID] = spieler;
      spielerID++;
      
-    }else if(levelInhalt[j][i] == 3){
+    }else if(levelInhalt[i][j] == 3){
      //Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank tr�gt
      boolean trankVorhanden;
      double zufallszahl = Math.random();
@@ -118,17 +118,17 @@ public class Levelverwaltung {
      gegnerListe [monsterID] = gegner;
      monsterID++;
      
-    }else if(levelInhalt[j][i] == 4){
+    }else if(levelInhalt[i][j] == 4){
      //Tr�nke zu finden und ihnen ihre ID zuzuordnen
      Heiltrank trank = new Heiltrank (trankID , j , i);
      trankListe [trankID] = trank;
      trankID ++;
      
-    }else if(levelInhalt[j][i] == 5){
+    }else if(levelInhalt[i][j] == 5){
      //Schluessel zu finden und die Koordinaten zu speichern
      SchluesselX = j;
      SchluesselY = i;
-    }else if(levelInhalt[j][i] == 6){
+    }else if(levelInhalt[i][j] == 6){
      //Tuer zu finden und ihre Koordinaten zu speichern
      tuerX = j;
      tuerY = i;
@@ -181,26 +181,9 @@ public class Levelverwaltung {
   if(inhalt == 2){
    boolean gefunden = false;
    int spielerID = 0;
-   while(!gefunden){
-    //sucht er nach der SpielerID ; dem Spieler
-    if (spielerListe[spielerID].getXPos() == x && spielerListe[spielerID].getYPos() == y){
-     //wenn er gefunden wird, dann wird seine neue Position in die Spielerliste �bertragen
-     gefunden = true;
+     //wird seine neue Position in die Spielerliste �bertragen
      spiel.spielerListe[spielerID].setXPos(x);
      spiel.spielerListe[spielerID].setYPos(y);
-    }else{
-     //wenn der Spieler nicht gefunden wird, so wird der n�chste Spieler ausprobiert.
-     //Dies geht solange, bis die ganze Spielerliste durchgegangen wurde
-     if (spielerID < spielerListe.length-1)
-     {
-      spielerID++;
-     }else{
-      Nachricht Fehlermeldung = new Nachricht (4, "Spieler nicht auffindbar");
-      gefunden = true;
-     }
-     
-    }
-   }
   }else if (inhalt == 3){
    //Erklaerung f�r die Monstersuche ist identisch zur Erklaerung in der Spielersuche
    boolean gefunden = false;
@@ -321,11 +304,22 @@ public class Levelverwaltung {
 	 */
  public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel){
   boolean moeglich;
-  if (spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 &&spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 3 && ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() && (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() +1 || Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() -1))
-    || (Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos() && (Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() +1 || Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos() -1)))){
-   spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(), Spielerbewegung.getyKoo(), 2, spiel);
+  System.out.print("Spielerbewegung");
+  if (spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 
+		  && ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos())
+		  && (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() +1)) 
+		  || (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() -1)))
+		  || ((Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos())
+		  && (((Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getXPos() +1))
+		  || (Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getXPos() -1)))))){
+  
+	  System.out.println("erlaubt");
+	  spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(), Spielerbewegung.getyKoo(), 2, spiel);
    moeglich = true;
   }else {
+	  System.out.println("verboten");
+	  System.out.println("Spielerposition" + spiel.spielerListe[Spielerbewegung.getID()].getXPos() + " " + spiel.spielerListe[Spielerbewegung.getID()].getYPos());
+	  System.out.println("Nachrichtenbewegung" + Spielerbewegung.getxKoo() + " " + Spielerbewegung.getyKoo());
    moeglich = false;
   }
   return moeglich;

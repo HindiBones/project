@@ -121,7 +121,7 @@ public class NachrichtenVerwaltung {
 		// TODO Auto-generated method stub
 		switch(cheat.cheattyp){
 			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
-			case 1: fenster.spieler.setUnverwundbar(true);fenster.timer=2000000000;break;
+			case 1: fenster.spieler.setUnverwundbar(true);break;
 		}
 	}
 
@@ -132,6 +132,7 @@ public class NachrichtenVerwaltung {
 	 * Bewegt den Spieler wenn m�glich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
 	 */
 	public void SpielerBewegung(int richtung){
+		spieler = fenster.spieler;
 		switch(richtung){
 		case 0:
 			if(spieler.getYPos() < aktuellesLevel.getLaengeY()-1 && fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()+1) != 0)
@@ -227,6 +228,10 @@ public class NachrichtenVerwaltung {
 			spieler.entferneSchluessel();}
 	}
 	
+	public long benutzeTrank(){
+		fenster.spieler.BildWechseln();
+		return fenster.spieler.benutzeTrank();
+	}
 	/**
 	 * @author Julius
 	 * 
@@ -261,7 +266,6 @@ public class NachrichtenVerwaltung {
 		if(fenster.Level.getLevelID() < fenster.MAXLEVEL){
 		aktuellesLevel = alleLevel[aktuellesLevel.levelID+1];
 		fenster.spieler.entferneSchluessel();
-		System.out.println("Wer das liest ist gut im programmieren");
 		aktuellesLevel.ausgabe();
 		return aktuellesLevel;
 		}
