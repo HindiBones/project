@@ -90,6 +90,8 @@ public class Spielflaeche extends JPanel {
 	int MonsterStandpunktx;
 	int MonsterStandpunkty;
 	int keinMonsterinSicht=0;
+	int Monsterx;
+	int Monstery;
 	
 	/**
 	 * @author Seyma 
@@ -103,6 +105,9 @@ public class Spielflaeche extends JPanel {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
 				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 					Gegner = new Monster(i, j, fenster, 0);
+					Monsterx=i;
+					Monstery=j;
+					
 					fenster.monsterListe.add(Gegner);
 				}
 				
@@ -196,6 +201,16 @@ public class Spielflaeche extends JPanel {
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
+						for (int k = 0; k < fenster.monsterListe.size(); k++) {
+							
+							Monster m = fenster.monsterListe.get(k);
+							//System.out.println(m.getXPos() +" und i: "+ i + m.getYPos() +" und j: "+ j);
+							if (m.getXPos()==i && m.getYPos()==j){
+								m.setXPos( i -verschiebenx*fenster.BOX);
+								m.setYPos( j -verschiebeny*fenster.BOX);
+							}
+							
+						}
 						//Monster werden vor der Paint-Methode in genMonster in eine Lister Getzt ueberall wo Monster==3 ist
 					} 
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere ==2
@@ -242,7 +257,8 @@ public class Spielflaeche extends JPanel {
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			
 			Monster m = fenster.monsterListe.get(k);
-
+			System.out.println( m.getXPos());
+			System.out.println( m.getYPos());
 
 			
 			boolean event = fenster.spieler.hatSchluessel();
@@ -250,14 +266,14 @@ public class Spielflaeche extends JPanel {
 			// Stelle auch ein Angriffsbefehl fuer die Monster
 			// abgegeben, falls der Spieler in der Naehe ist.
 			// Ansonsten soll das Monster laufen
-			
+			double p = m.cooldownProzent();
 			if (!m.attackiereSpieler(event)) {
 				m.move();
 			} else {
 				int box = fenster.BOX;
 				Spieler s = fenster.spieler;
 
-				double p = m.cooldownProzent();
+				
 				g.setColor(Color.RED);
 				g.drawImage(
 						feuerball,
@@ -265,18 +281,16 @@ public class Spielflaeche extends JPanel {
 								+ box / 2 -verschiebenx*fenster.BOX, (int) (((1 - p) * m.getYPos() + (p)
 								* s.getYPos()) * box)
 								+ box / 2 -verschiebeny*fenster.BOX, 8, 8, null);
-//				System.out.println( m.getPosX());
-//				System.out.println( m.getPosY());
+		
 				keinMonsterinSicht=1;
-				System.out.println( ((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
-						+ box / 2 -verschiebenx*fenster.BOX)/72);
-				MonsterStandpunktx=((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
-						+ box / 2 -verschiebenx*fenster.BOX)/72;
-				System.out.println(( (int) (((1 - p) * m.getYPos() + (p)
-						* s.getYPos()) * box)
-						+ box / 2 -verschiebeny*fenster.BOX)/72);
-				MonsterStandpunkty=((int) (((1 - p) * m.getYPos() + (p) * s.getYPos()) * box )
-						+ box / 2 -verschiebeny*fenster.BOX)/72;
+//				System.out.println( ((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
+//						+ box / 2 -verschiebenx*fenster.BOX)/72);
+//
+//				System.out.println(( (int) (((1 - p) * m.getYPos() + (p)
+//						* s.getYPos()) * box)
+//						+ box / 2 -verschiebeny*fenster.BOX)/72);
+				MonsterStandpunktx=(m.getXPos()-verschiebenx*fenster.BOX);
+				MonsterStandpunkty=(m.getYPos()-verschiebeny*fenster.BOX);
 //				if(m.getXPos()==0){
 //				}
 //				else {
@@ -285,7 +299,8 @@ public class Spielflaeche extends JPanel {
 			
 					
 			}
-			
+			System.out.println( m.getXPos());
+			System.out.println( m.getYPos());
 
 			// Male das Monster, falls es von anfang an anwesend ist
 			if (m.getTyp() == 0)

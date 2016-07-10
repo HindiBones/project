@@ -328,7 +328,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //					}
 //					else {
 					System.out.println( spielflaeche.MonsterStandpunkty);
-						if( spielflaeche.MonsterStandpunkty==2 || spielflaeche.MonsterStandpunkty==3){
+						if( spielflaeche.MonsterStandpunkty==2 && (spielflaeche.MonsterStandpunktx<=3|| spielflaeche.MonsterStandpunktx>3)){
 						
 						
 					}else {
@@ -377,7 +377,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //				}else {
 					System.out.println(spielflaeche.MonsterStandpunkty);
 					
-					if( spielflaeche.MonsterStandpunkty==4 || spielflaeche.MonsterStandpunkty==3){
+					if( spielflaeche.MonsterStandpunkty==4 && (spielflaeche.MonsterStandpunktx<=3|| spielflaeche.MonsterStandpunktx>3)){
 						
 				
 				}else {
