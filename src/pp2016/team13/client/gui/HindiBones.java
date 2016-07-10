@@ -32,6 +32,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public LinkedList<Monster> monsterListe;
 	public Spieler spieler;
 	public Spieler spieler2;
+	public Spieler testspieler;
 	public Monster monster;
 	
 	
@@ -412,8 +413,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 
 				
-				Spieler testspieler= spieler;
+				testspieler = new Spieler(2);
 				testspieler.setXPos(spieler.getXPos()-1);
+				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
 					System.out.println("vordir ist ein monster");
@@ -430,12 +432,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println("bleibe Rechts");
-//					client.SpielerBewegung(3);
+					client.SpielerBewegung(3);
 				}	else {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println("gehe Links");
-//				client.SpielerBewegung(2);	
+				client.SpielerBewegung(2);	
 				}
 								
 					
@@ -478,8 +480,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				
 				
-				Spieler testspieler= spieler;
+//				Spieler testspieler=new spieler();
+				testspieler = new Spieler(2);
 				testspieler.setXPos(spieler.getXPos()+1);
+				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
 					System.out.println("vordir ist ein monster");
@@ -495,10 +499,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					
 					m.changeHealth(-BOX / 4);
 					System.out.println("Links");
-//					client.SpielerBewegung(2);
+					client.SpielerBewegung(2);
 				}	else {
 					System.out.println("Rechts");
-//				client.SpielerBewegung(3);
+				client.SpielerBewegung(3);
 				}
 					
 					
@@ -733,6 +737,17 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void spielZuruecksetzen() {
 		spielflaeche.anfangszustand=0;
 
+		
+//			try {
+//				Thread.sleep(100);		
+//		
+//		testspieler.setFenster(this);
+//			} catch (InterruptedException e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}		
+
+		
 		try {
 			Thread.sleep(100);		
 		spieler = new Spieler(0);
