@@ -15,7 +15,7 @@ public class NachrichtenVerwaltung {
 	int id;
 	public Spieler spieler;
 	public Level aktuellesLevel;
-	Level[] alleLevel = new Level[5];
+	public Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
 	 * @author Julius
@@ -238,16 +238,16 @@ public class NachrichtenVerwaltung {
 		return serverAntwort.getMessage().inOrdnung;
 	}
 	public Level levelWechseln(){
-		if(fenster.Level.getLevelID() < fenster.MAXLEVEL){
+		if(fenster.Level.getLevelID() < fenster.MAXLEVEL-1){
 		aktuellesLevel = alleLevel[aktuellesLevel.levelID+1];
 		fenster.spieler.entferneSchluessel();
 		aktuellesLevel.ausgabe();
+		fenster.levelnummer = aktuellesLevel.levelID;
 		return aktuellesLevel;
 		}
 		else
 		{
 			sende(new Nachricht(3));
-			System.exit(0);
 			return null;
 		}
 	}

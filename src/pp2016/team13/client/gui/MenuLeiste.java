@@ -67,6 +67,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == neuesSpiel) {
+			fenster.levelNeustarten = true;
 			fenster.spielZuruecksetzen();
 			fenster.zeigeSpielfeld();
 		} else if (e.getSource() == highscore) {

@@ -35,10 +35,10 @@ public class Monster extends Figur {
 		setMaxHealth(getLebenspunkte());
 		lastAttack = System.currentTimeMillis();
 		lastStep = System.currentTimeMillis();
-		cooldownAttack = 500 - 10 * fenster.currentLevel; // ms
+		cooldownAttack = 500 - 10 * fenster.levelnummer; // ms
 		cooldownWalk = 1000;
 
-		setSchaden(5 + fenster.currentLevel * 2);
+		setSchaden(5 + fenster.levelnummer * 2);
 		Random r = new Random();
 		changeDir();
 
