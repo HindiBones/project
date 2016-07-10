@@ -18,7 +18,11 @@ public class FloodFill {
 	private static Point destinationPoint = null;
 	private static Point currentPosition = null;
 	
-	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer,7 = Trank2
+	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Heiltrank, 5=Schluessel, 6 = Tuer,7 = Schutztrank
+	/**
+	 * @author Cigdem
+	 * 
+	 */
 	public static void main (String[] args){
 		FloodFill Labyrinth = new FloodFill (10);
 		for (int i=0 ; i<Labyrinth.size; i++)
@@ -29,22 +33,15 @@ public class FloodFill {
 			System.out.println();
 		}
 	}
-	
+	/**
+	 * @author Cigdem
+	 * @param size 
+	 */
 	FloodFill(int size) {
 		this.size = size;
 		Random random = new Random();
 		map = new int[size][size];
-		/*
-		int zahl1= (int)Math.random()*(size-6)+3;
-		int zahl2= (int)Math.random()*(size-4)+2;
-		for(int i = 0; i<4; i++){
-			map[zahl1][zahl2+i]=1;
-			map[zahl1+1][zahl2+i]=1;
-			map[zahl1+2][zahl2+i]=1;
-			map[zahl1+3][zahl2+i]=1;
-			map[zahl1+4][zahl2+i]=1;
-		}
-		*/
+	
 		floodFill(new Point(size / 2, size / 2), random);
 		// finde freie Start- und Zielkoordinaten
 		List<Point> free = new ArrayList<Point>();
@@ -60,7 +57,10 @@ public class FloodFill {
 		destinationPoint = free.get(random.nextInt(free.size()));
 		currentPosition = startingPoint;
 	}
-	
+	/**
+	 * @author Cigdem
+	 * @return
+	 */
 	public int getMapSize() { return size; }
 	public Point getStartingPoint() { return startingPoint; }
 	public Point getDestinationPoint() { return destinationPoint; }
