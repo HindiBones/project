@@ -187,7 +187,7 @@ public class SeitenLeiste extends JPanel {
 		g.drawString("Zeit: "
 				+ (System.currentTimeMillis() - fenster.startZeit) / 1000,
 				10, 200);
-		g.drawString("Level " + (fenster.Level.levelID+1) + "/" + fenster.MAXLEVEL,
+		g.drawString("Level " + (fenster.levelnummer+1) + "/" + fenster.MAXLEVEL,
 				 100, 200);
 
 		// Heiltrankanzeige
