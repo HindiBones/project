@@ -24,6 +24,13 @@ public class Spielflaeche extends JPanel {
 	public int  wechselX=0;
 	public int wechselY=0;
   
+	/**
+	 * @author Seyma 
+	 * @param fenster : Fenster wird festgelegt fuer das Panel
+	 * 
+	 * Erzeugt ein Panel auf dem die Spielflaeche gezeichnet wird
+	 * 
+	 */
 	public Spielflaeche(HindiBones fenster) {
 		
 		
