@@ -142,7 +142,7 @@ public class Registrierung extends JFrame implements ActionListener{
 				else JOptionPane.showMessageDialog(AnmeldePanel, "Falsches Passwort oder Falscher Benutzername");
 			    dispose();
 				
-			}else { // Vergleiche!!!! zur richtigen Systemnachricht
+			}else { 
 				//Systemnachricht bei ungleichheit
 				anmeldung1=false;
 				JOptionPane.showMessageDialog(AnmeldePanel, "Falsches Passwort oder Falscher Benutzername");
