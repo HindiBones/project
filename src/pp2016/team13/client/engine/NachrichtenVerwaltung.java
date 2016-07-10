@@ -121,7 +121,7 @@ public class NachrichtenVerwaltung {
 		// TODO Auto-generated method stub
 		switch(cheat.cheattyp){
 			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
-			case 1: fenster.spieler.setUnverwundbar(true);fenster.timer=2000000000;break;
+			case 1: fenster.spieler.setUnverwundbar(true);break;
 		}
 	}
 
@@ -227,6 +227,9 @@ public class NachrichtenVerwaltung {
 			spieler.entferneSchluessel();}
 	}
 	
+	public long benutzeTrank(){
+		return fenster.spieler.benutzeTrank();
+	}
 	/**
 	 * @author Julius
 	 * 

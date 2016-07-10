@@ -12,8 +12,9 @@ public class Spieler extends Figur {
 	private String name;
 	
 	private boolean hatSchluessel, unverwundbar;
+	public boolean trankAktiv;
 	private int anzahlHeiltraenke;
-	private int anzahlTrank;
+	public int anzahlTrank;
 	private int heiltrankWirkung = 50;
 
 	public HindiBones fenster;
@@ -50,9 +51,13 @@ public class Spieler extends Figur {
 		return this.unverwundbar;
 	}
 	
-	public int benutzeTrank(){
-		
-		
+	public long benutzeTrank(){
+		if(anzahlTrank > 0){
+			this.setUnverwundbar(true);
+			trankAktiv = true;
+			anzahlTrank--;
+			return System.currentTimeMillis();
+		}
 		return 0;
 	}
 	public int benutzeHeiltrank() {
