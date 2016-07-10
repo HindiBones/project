@@ -101,7 +101,7 @@ public class Labyrinth {
 							}
 						}
 					}
-				//	Position Schl�ssel
+				//	Position Schluessel
 						zufallsZahl = (Math.random()*zaehlerMonster)-1;
 						int zz6 = (int) zufallsZahl;
 						map[monsterplatten[zz6].xKoordinate][monsterplatten[zz6].yKoordinate]= 5;
