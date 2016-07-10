@@ -41,6 +41,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public int levelnummer = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
+	public boolean spielfeldSichtbar = false;
 	public long startZeit;
 	public int benoetigteZeit;
 	public boolean nebelAn = true;
@@ -138,7 +139,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// entferne alles
 		highscoreAngezeigt = false;
-		
+		client.socket.run();
+		spielfeldSichtbar = true;
 		this.remove(anmeldung);
 		this.remove(highscore);
 		this.remove(steuerung);
@@ -803,6 +805,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
+					if(spielfeldSichtbar){
+						client.socket.run();
+					}
 					
 				} catch (InterruptedException e) {
 				}

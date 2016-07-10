@@ -41,6 +41,8 @@ public class Server implements Serializable{
 	//Server wird gestartet - Verbindung wird hergestellt
 public Server(int port){
 	System.out.println("Starte Server");
+	letztesLebenszeichen = new Date();
+	letztesLebenszeichen.setTime(System.currentTimeMillis());
 	try {
 		ServerS = new ServerSocket(port);
 		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 20, 5);
@@ -70,8 +72,6 @@ public Server(int port){
 
 		
 		public void run() throws IOException{
-			letztesLebenszeichen = new Date();
-			letztesLebenszeichen.setTime(System.currentTimeMillis());
 			System.out.println("Laeuft");
 			this.openServer = true;
 			while (this.openServer) {
@@ -133,7 +133,7 @@ public Server(int port){
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
-			case 14: letztesLebenszeichen.setTime(antwortNachricht.zeit);System.out.println("alive"); break;
+			case 14: letztesLebenszeichen.setTime(System.currentTimeMillis());System.out.println("alive"); break;
 			case 15: System.out.println("Spieler Logout");System.out.println("Server Beendet");System.exit(0);break;
 
 			}
