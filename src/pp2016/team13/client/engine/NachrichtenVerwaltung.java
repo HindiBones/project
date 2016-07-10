@@ -14,8 +14,6 @@ public class NachrichtenVerwaltung {
 	HindiBones fenster;
 	int id;
 	public Spieler spieler;
-	Queue<Nachricht> Nachrichten = new LinkedList<Nachricht>();
-	Queue<Nachricht> NachrichtenEmpfangen = new LinkedList<Nachricht>();
 	public Level aktuellesLevel;
 	Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
@@ -38,7 +36,6 @@ public class NachrichtenVerwaltung {
 	 * @return 
 	 */
 	public Paket sende(Nachricht m){
-		Nachrichten.add(m);
 		Paket temp = new Paket(m);
 		return socket.SendeAnServer(temp);
 	}
@@ -48,28 +45,6 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * Hilfsmethode zum Testen, gibt die Nachrichten aus, die spaeter an den Server gesendet werden
 	 */
-	public void ausgabe(){
-		while(!this.Nachrichten.isEmpty()){
-				Nachricht m = Nachrichten.poll();
-				switch (m.getTyp()){
-				/*
-				 * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
-				 */
-					case 0: this.benutzername=m.benutzername;this.passwort=m.passwort; System.out.println("Einloggen von " + benutzername + " erfolgreich!"); break;
-					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
-					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
-					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
-					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println("Ein Fehler ist aufgetreten!!!!");break;
-					case 6: System.out.println("Level wurde geladen!");break;
-					case 7: System.out.println(benutzername + " hat ein Monster angegriffen!");break;
-					case 8: System.out.println(benutzername + " hat einen Trank benutzt!");break;
-					case 9: System.out.println(benutzername + ": " + m.nachricht);
-				}
-			
-		}
-	}
-	
 
 	// Verarbeitet die empfangenen Nachrichten
 	/**

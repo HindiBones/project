@@ -171,7 +171,12 @@ public class Spieler extends Figur {
 	public void setImage(String img) throws IOException
 	{
 		bildpfad = img;
-		this.image = ImageIO.read(new File(img)).getScaledInstance(72,72, Image.SCALE_DEFAULT);
+		this.image = ImageIO.read(new File(img));
+
+		if(img.equals("img//red_point.png"))
+			image = image.getScaledInstance(10,10, Image.SCALE_DEFAULT);
+		else
+			image = image.getScaledInstance(72,72, Image.SCALE_DEFAULT);
 	}
 
 
