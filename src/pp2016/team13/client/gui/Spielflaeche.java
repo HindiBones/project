@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -10,24 +10,27 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
 import pp2016.team13.shared.Monster;
-import pp2016.team13.shared.Schluessel;
 import pp2016.team13.shared.Spieler;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+
 
 public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,hintergrund1,
-			feuerball, spieler;
+	private Image boden, wand, tuerOffen, tuerZu, schluessel, heiltrank,trank,
+			feuerball;
 	private HindiBones fenster;
 	public int  wechselX=0;
 	public int wechselY=0;
   
+	/**
+	 * @author Seyma 
+	 * @param fenster : Fenster wird festgelegt fuer das Panel
+	 * 
+	 * Erzeugt ein Panel auf dem die Spielflaeche gezeichnet wird
+	 * 
+	 */
 	public Spielflaeche(HindiBones fenster) {
 		
 		
@@ -44,7 +47,7 @@ public class Spielflaeche extends JPanel {
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
 			trank=ImageIO.read(new File("img//heiltrankblau.png"));
-			hintergrund1= ImageIO.read(new File("img/wand Kopie.png"));
+
 
 			
 		} catch (IOException e) {
@@ -59,6 +62,11 @@ public class Spielflaeche extends JPanel {
 	//Das richtige Bild Zentriert
 	
 	/**
+	 * 
+	 *  
+	 * @author Seyma Keser
+	 *  
+	 *  
 	 * (Mitscrollend)
 	 * Meine Figur Zentriert 
 	 * Bei jeder Bewegung und berührung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
@@ -67,9 +75,8 @@ public class Spielflaeche extends JPanel {
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an)
 	 * 
-	 * @author Seyma Keser
+	 *
 	 */
-	
 	int verschiebenx=0;
 	int verschiebeny=0;
 	int grenzPunktX=4;
@@ -83,7 +90,13 @@ public class Spielflaeche extends JPanel {
 	int MonsterStandpunktx[];
 	int MonsterStandpunkty[];
 	
-	
+	/**
+	 * @author Seyma 
+	 * 
+	 * Setzt überall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
+	 * (die monsterliste wird dann bei spaeter aufgerufen um die Monster zu zeichnen)
+	 * 
+	 */
 	public void genMonster(){
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
@@ -96,7 +109,14 @@ public class Spielflaeche extends JPanel {
 		}
 		
 	}
-	
+	/**
+	 * @author Seyma
+	 * 
+	 * Die Position der Offenen Türe bei 2 wird als Start Position des Spielers gesetzt
+	 * (muss wie genMonster() außerhalb der paint Mehtode passieren, damit die monster und Spieler nicht immer auf der Selben
+	 * Position gezeichnet werden durch Repaint())
+	 * 
+	 */
 	public void posSpieler(){
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
 		for (int j = wechselY; j < fenster.HEIGHT; j++) {
@@ -109,8 +129,20 @@ public class Spielflaeche extends JPanel {
 	}
 	
 	}
-
-	
+	/**
+	 * @author Seyma 
+	 * 
+	 *Meine Felder Generieren sich im ersten Schritt um meinen Spieler
+	 *Grund: Mein Spieler wird in die Mitte gesetzt (d.h Pos X= 3 Pos Y=3 Aber Bezogen auf die Sichtbare Flaeche)
+	 *		Da sich die Grenzpunkte immer einen Schritt von dem Spieler entfernt befinden
+	 *		Wird bei jedem Schritt mein Spielfeld um 1 Verschoben und die Stelle neu gezeichnet.
+	 *
+	 *Rest ist die Generierung der Spielflaeche durch abfrage ueber den Client welcher inhalt sich auf welcher Koordinate
+	 *Befindet, wird ein Bild gezeichnet. (Grundgeruest vom urspruenglichen Spiel Code)
+	 * 
+	 * 
+	 * 
+	 */
 	public void paint(Graphics g) {
 		if (anfangszustand==0){
 			this.posSpieler();
@@ -120,11 +152,7 @@ public class Spielflaeche extends JPanel {
 		// Beim neuzeichnen wird zunaechst alles uebermalt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-//		for(int j=0; j<16;j++){
-//			for(int i=0; i<=16; i++){
-//			g.drawImage(hintergrund1, j*fenster.BOX, i*fenster.BOX, null);
-//			}
-//		}
+
 		// Male die einzelnen Felder
 		for (int i =wechselX ; i < fenster.WIDTH; i++) {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
@@ -154,63 +182,50 @@ public class Spielflaeche extends JPanel {
 						
 					}
 					
-					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) { //WAND
-						// Hier kommt eine Wand hin
+					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) { //Wand==0
+						// Hier kommt eine Wand hin 
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-							//Boden=1  5= Monster
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) {
+							
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) { //Boden ==1
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 					}
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ 
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-//						if (Gegner ==null){
-//						 Gegner = new Monster(i, j, fenster, 0);
-//						fenster.monsterListe.add(Gegner);
-////						fenster.monsterListe.add(Gegner);
-////						Monster m = fenster.monsterListe.get(i);
-////						boolean event = fenster.spieler.hatSchluessel();
-//						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
-//								null);}
-//						drawMonster(g, Gegner);
-						//2== Start 
+						//Monster werden vor der Paint-Methode in genMonster in eine Lister Getzt ueberall wo Monster==3 ist
 					} 
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
-						// Hier liegt ein Schluessel
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere ==2
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
-						
 					
-						//Geschlossene Tür
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere==6
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-							//offene Tür
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) {
-						// Hier ist die Tuer
+			
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank==7
+						// Hier ist ein Blauer Trank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
-//							//Heiltrank
 							
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
-						
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank==4 
+						//Hier ist ein Heiltrank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
-						
+				
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluessel ==5
+						//HIER LIEGT NOCH EIN SCHLÜSSEL
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
@@ -279,7 +294,10 @@ public class Spielflaeche extends JPanel {
 
 	/**
 	 * 
-	 * @author Seyma Keser
+	 * @author Seyma Keser + (unbekannt)
+	 * Methode vom Urspruenglichen Code uebernommen + Erweiterung durch einbauen der Verschiebungen fuer 
+	 * scrollenden Bildschirm
+	 * 
 	 */
 	private void drawMonster(Graphics g, Monster m) {
 		// Monster Health Points
@@ -293,8 +311,10 @@ public class Spielflaeche extends JPanel {
 		}
 	}
 	/**
+	 * @author Unbekannt 
 	 * 
-	 * @author Seyma Keser
+	 * Methode uebernommen nichts veraendert
+	 * 
 	 */
 	private boolean inRange(int i, int j) {	
 		return (Math.sqrt(Math.pow(fenster.spieler.getXPos() - i, 2)

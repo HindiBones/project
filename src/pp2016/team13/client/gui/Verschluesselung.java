@@ -1,22 +1,20 @@
 package pp2016.team13.client.gui;
 
-import java.security.MessageDigest;
+import java.security.MessageDigest; 
 import java.util.Arrays;
  
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
  
-import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
  
-//public String Benutzername="";
 
 public class Verschluesselung {
 	    // Das Passwort bzw der Schluesseltext hier kommt der Benutzername rein
 
 	
 
-	    public static String verschluesseln(String passwort, String benutzername)throws Exception{
+	    public String verschluesseln(String passwort, String benutzername)throws Exception{
 	    	//mein schlüssel zum entschlüsseln 
 	    	String keyStr = benutzername;
 	    	// byte-Array erzeugen
@@ -43,57 +41,11 @@ public class Verschluesselung {
 		    BASE64Encoder myEncoder = new BASE64Encoder();
 		    String geheim = myEncoder.encode(encrypted);
 		    
-
-		    // Ergebnis
-//		    System.out.println(geheim);
-		     
-		   
-		    // Entschluesseln
-//		    cipher2 = Cipher.getInstance("AES");
-//		    cipher2.init(Cipher.DECRYPT_MODE, secretKeySpec);
-//		    cipherData2 = cipher2.doFinal(crypted2);
-//		    String erg = new String(cipherData2);
-
-		    // Klartext
-//		    System.out.println(erg);
-	    	
 	    	
 	    	 return geheim;
 	    }
 	    
-	    public static String erschluesseln(String geheim, String benutzername)throws Exception{
-	    	String keyStr = benutzername;
-	    	// byte-Array erzeugen
-	    	byte[] key = (keyStr).getBytes("UTF-8");
-	    	
-	    	  // aus dem Array einen Hash-Wert erzeugen mit MD5 oder SHA
-		    MessageDigest sha = MessageDigest.getInstance("SHA-256");
-		    key = sha.digest(key);
-		    // nur die ersten 128 bit nutzen
-		    key = Arrays.copyOf(key, 16); 
-		    // der fertige Schluessel
-		    SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-	    	
-	    	 // BASE64 String zu Byte-Array konvertieren
-		    BASE64Decoder myDecoder2 = new BASE64Decoder();
-		    byte[] crypted2 = myDecoder2.decodeBuffer(geheim);
-
-		 
-		    
-		    
-		    // Entschluesseln
-			Cipher cipher2 = Cipher.getInstance("AES");
-		    cipher2.init(Cipher.DECRYPT_MODE, secretKeySpec);
-		   byte[] cipherData2 = cipher2.doFinal(crypted2);
-		    String erg = new String(cipherData2);
-
-		    // Klartext
-//		    System.out.println(erg);
-	    	
-	    	
-	    	
-	    	return erg;
-	    }
+	   
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub

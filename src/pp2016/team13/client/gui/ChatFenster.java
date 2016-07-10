@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.TextArea;
@@ -15,24 +14,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import pp2016.team13.client.engine.ChatNachricht;
-import pp2016.team13.client.engine.NachrichtenVerwaltung;
+
 
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
 
@@ -43,7 +29,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
 	public String benutzername= null;
-		Button senden;
+	Button senden;
 	Button loeschen;
 	int i =1;
 	
@@ -56,11 +42,8 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			
 			this.setLayout(new BorderLayout());
 			this.setPreferredSize(new Dimension(170,112));
-
-				
 	
 			textumfeld=new TextArea();
-
 
 			this.add(textumfeld,"Center");
 			textumfeld.setFont(new Font("Arial", Font.PLAIN,11));
@@ -75,11 +58,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			
 			pane.add(textfeld,BorderLayout.CENTER);
 
-			// Eventuell noch einbauen 
-			senden= new Button("senden");
-			senden.addMouseListener(this);
-			senden.addActionListener(this);
-//			pane.add(senden);
 
 			this.add(pane,"South");
 			this.setVisible(true);
@@ -91,14 +69,8 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			textfeld.requestFocus();
 			
 
-			
-			
-
 	}
-		
-	
-	
-	
+
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -131,7 +103,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	}
 
 	
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -147,9 +118,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			boolean funktioniert = this.m.fenster.client.chatte(new ChatNachricht(Text));
 			if(funktioniert) {
 				textumfeld.append(Text+"\n");
-				textfeld.setText(null);
-			
-				
+				textfeld.setText(null);	
 			}
 			else
 				textumfeld.append("Konnte Nachricht nicht senden!\n");
@@ -161,39 +130,12 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Kein Button mehr vorhanden, Optional falls ich noch Buttons reinmache 
-		
-		
-//		if(e.getSource()==this.senden){ 
-//			
-//			String Text= this.textfeld.getText();
-//			
-//			
-//	
-//			textumfeld.append(Text+"\n");
-//			//client.sende(new ChatNachricht(Text));
-//			textfeld.setText(null);
-//			
-//			textumfeld.requestFocusInWindow();
-//			textumfeld.setCaretPosition(i);
-//
-//
-//			
-//		}
-
+	
 	}	
 		
-
-		
-	
-	
-
 }

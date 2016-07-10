@@ -18,7 +18,7 @@ public class Highscore extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private LinkedList<HighScoreElement> highScore;//HighScore 
+	private LinkedList<HighScoreElement> highScore;
 
 	public Highscore() {
 
