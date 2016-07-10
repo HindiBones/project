@@ -180,7 +180,7 @@ public class Spieler extends Figur {
 	}
 
 
-	public void BildWechseln() {
+	public void bildWechseln() {
 		
 		try{
 			if(this.bildpfad.equals("img//John2.png")){

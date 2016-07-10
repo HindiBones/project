@@ -46,7 +46,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			textumfeld=new TextArea();
 
 			this.add(textumfeld,"Center");
-			textumfeld.setFont(new Font("Arial", Font.PLAIN,11));
+			textumfeld.setFont(new Font("Arial", Font.PLAIN,9));
 			textumfeld.setEditable(false);
 			
 			Panel pane= new Panel();
@@ -114,17 +114,23 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String Text= this.textfeld.getText();
-			
-			boolean funktioniert = this.m.fenster.client.chatte(new ChatNachricht(Text));
-			if(funktioniert) {
+			ChatNachricht nachricht = new ChatNachricht(Text);
+			boolean funktioniert = this.m.fenster.client.chatte(nachricht);
+			if(funktioniert && !nachricht.istCheat()) {
 				textumfeld.append(Text+"\n");
 				textfeld.setText(null);	
 			}
-			else
+			else if(!nachricht.istCheat())
 				textumfeld.append("Konnte Nachricht nicht senden!\n");
 			textumfeld.requestFocusInWindow();
 			textumfeld.setCaretPosition(i);
 			this.disable();
+			
+			m.fenster.spielflaeche.setFocusable(true);
+			m.fenster.spielflaeche.requestFocusInWindow();
+			m.fenster.requestFocus();
+
+			textfeld.setText("Cheats/ Text eingeben");
 		}
 	}
 

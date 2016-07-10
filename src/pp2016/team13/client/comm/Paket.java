@@ -1,4 +1,9 @@
 package pp2016.team13.client.comm;
+/**
+ * @author Kirthika Jeyakumar
+ * Paket, das gesendet wird
+ * 
+ */
 
 
 import java.io.IOException;
