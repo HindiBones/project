@@ -5,8 +5,7 @@ import java.awt.Image;
 public abstract class Figur {
 
 	private int xPos, yPos, id;
-	private Image image;
-
+	Image image;
 	protected int lp;
 	private int schaden;
 

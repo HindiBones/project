@@ -1,5 +1,6 @@
 package pp2016.team13.shared;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
@@ -10,6 +11,8 @@ import pp2016.team13.client.gui.*;
 public class Spieler extends Figur {
 
 	private String name;
+
+	public String bildpfad;
 	
 	private boolean hatSchluessel, unverwundbar;
 	public boolean trankAktiv;
@@ -139,7 +142,7 @@ public class Spieler extends Figur {
 		
 		
 		try {
-			setImage(ImageIO.read(new File(imgDatei)));
+			setImage(imgDatei);
 		} catch (IOException e) {
 			System.err.print("Das Bild " + imgDatei
 					+ " konnte nicht geladen werden.");
@@ -151,7 +154,7 @@ public class Spieler extends Figur {
 		
 		
 		try {
-			setImage(ImageIO.read(new File(imgDatei)));
+			setImage(imgDatei);
 		} catch (IOException e) {
 			System.err.print("Das Bild " + imgDatei
 					+ " konnte nicht geladen werden.");
@@ -163,6 +166,71 @@ public class Spieler extends Figur {
 	public void changeHealth(int change) {
 		if(!unverwundbar)
 		lp = Math.min(lp + change, getMaxHealth());
+	}
+
+	public void setImage(String img) throws IOException
+	{
+		bildpfad = img;
+		this.image = ImageIO.read(new File(img)).getScaledInstance(72,72, Image.SCALE_DEFAULT);
+	}
+
+
+	public void BildWechseln() {
+		
+		try{
+			if(this.bildpfad.equals("img//John2.png")){
+				this.setImage("img//Johnblauvor1.png");			
+			}
+			else if(this.bildpfad.equals("img//John3.png")){
+				this.setImage("img//Johnblauvor1.png");
+			}
+			else if(this.bildpfad.equals("img//John4.png")){
+				this.setImage("img//Johnblauvor2.png");
+			}
+			else if(this.bildpfad.equals("img//JohnLinks.png")){
+				this.setImage("img//JohnblauLi1.png");
+			}
+			else if(this.bildpfad.equals("img//JohnLinks2.png")){
+				this.setImage("img//JohnblauLi2.png");
+			}
+			else if(this.bildpfad.equals("img//JohnSeite.png")){
+				this.setImage("img//JohnblauRe1.png");
+			}
+			else if(this.bildpfad.equals("img//JohnSeite2.png")){
+				this.setImage("img//JohnblauRe2.png");
+			}
+			else if(this.bildpfad.equals("img//John3hinten.png")){
+				this.setImage("img//Johnblauhinten.png");
+			}
+			else if(this.bildpfad.equals("img//Johnblauvor1.png")){
+				this.setImage("img//John3.png");
+			}
+			else if(this.bildpfad.equals("img//Johnblauvor2.png")){
+				this.setImage("img//John4.png");
+			}
+			else if(this.bildpfad.equals("img//Johnblauhinten.png")){
+				this.setImage("img//John3hinten.png");
+			}
+			else if(this.bildpfad.equals("img//JohnblauRe1.png")){
+				this.setImage("img//JohnSeite.png");
+			}
+			else if(this.bildpfad.equals("img//JohnblauRe2.png")){
+				this.setImage("img//JohnSeite2.png");
+			}
+			else if(this.bildpfad.equals("img//JohnblauLi1.png")){
+				this.setImage("img//JohnLinks.png");
+			}
+			else if(this.bildpfad.equals("img//JohnblauLi2.png")){
+				this.setImage("img//JohnLinks2.png");
+			}
+			else {
+				System.err.println("Du hast ein Bild vergessen!");
+			}
+		}catch(IOException ioe)
+		{
+			System.err.println("Bildwechsel fehlgeschlagen!");
+		}
+		
 	}
 
 }
