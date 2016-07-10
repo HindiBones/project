@@ -1,5 +1,10 @@
 package pp2016.team13.client.comm;
 
+/**
+ *@author Kirthika Jeyakumar 
+ *Kommunikation
+ */
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -11,10 +16,16 @@ import java.util.LinkedList;
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.Nachricht;
 
-//import komClient.Nachricht;
-
+/**
+ * 
+ * @author Kiki Jeyakumar
+ * Klasse Client - Stellt die Verbindung zum Server da und sendet Nachrichten
+ *
+ */
 public class Client extends Paket {
+	// Liste wird genriert für die Nachrichten
 	LinkedList<Paket> ClientList = new LinkedList<Paket>();
+	// einzelne Streams werden erzeugt
 	InputStream is;
 	OutputStream os;
 	ObjectInputStream ois=null;
@@ -61,4 +72,20 @@ public class Client extends Paket {
 		return serverAntwort;
 	}
 
-}
+	// Ich bin noch da periodisch senden
+	
+	public class sendeLebenszeichen extends Thread{
+		public void run(){
+			try{
+			   while(binAmLeben){
+				  sendeNachricht(new Lebenszeichen());
+				  Thread.sleep(1000);
+				}
+		    }
+			catch(Exception e){
+				e.printStackTrace();
+			}
+	    }
+	
+	 }
+	}
