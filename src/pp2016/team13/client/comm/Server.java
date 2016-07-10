@@ -134,7 +134,7 @@ public Server(int port){
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
 			case 14: letztesLebenszeichen.setTime(antwortNachricht.zeit);System.out.println("alive"); break;
-			case 15: System.out.println("Server Beendet");System.exit(0);break;
+			case 15: System.out.println("Spieler Logout");System.out.println("Server Beendet");System.exit(0);break;
 
 			}
 			Paket antwort = new Paket(antwortNachricht);
