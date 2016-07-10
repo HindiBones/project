@@ -414,6 +414,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				
 				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
 				testspieler.setXPos(spieler.getXPos()-1);
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
@@ -423,22 +424,21 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}else {
 					monsterda=0;
 				}
-				testspieler=null;
 				m=null;
-				m = spieler.angriffsMonster();
+				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
 					m.changeHealth(-BOX / 4);
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println("bleibe Rechts");
-					client.SpielerBewegung(3);
+//					client.SpielerBewegung(3);
 				}	else {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println("gehe Links");
 				client.SpielerBewegung(2);	
-				}
+				testspieler = null;
 								
 					
 //								Level = client.aktuellesLevel;
@@ -449,7 +449,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //				
 //				client.SpielerBewegung(2);
 //				}
-			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) { 
+			}} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) { 
 				monsterda=0;
 
 				if(zahl==0){ zahl=1;
@@ -482,6 +482,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				
 //				Spieler testspieler=new spieler();
 				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
 				testspieler.setXPos(spieler.getXPos()+1);
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
@@ -494,12 +495,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				Level = client.aktuellesLevel;
-				m = spieler.angriffsMonster();
+				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
 					m.changeHealth(-BOX / 4);
 					System.out.println("Links");
-					client.SpielerBewegung(2);
+//					client.SpielerBewegung(2);
 				}	else {
 					System.out.println("Rechts");
 				client.SpielerBewegung(3);

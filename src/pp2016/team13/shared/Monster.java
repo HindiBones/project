@@ -84,7 +84,7 @@ public class Monster extends Figur {
 		if (typ == 1)
 			kannAngreifen = (hatSchluessel && ((System.currentTimeMillis() - lastAttack) >= cooldownAttack));
 
-		if (spielerImRadius && kannAngreifen &&spieler.getLebenspunkte() > 0) {
+		if (spielerImRadius && kannAngreifen && !spieler.istUnverwundbar() &&spieler.getLebenspunkte() > 0) {
 			lastAttack = System.currentTimeMillis();
 			spieler.changeHealth(-getSchaden());
 		}

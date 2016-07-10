@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.LinkedList;
 
 import pp2016.team13.client.engine.FehlerNachricht;
@@ -58,6 +59,8 @@ public class Client extends Paket {
 			System.out.println("ObjectInputStream steht");
 			serverAntwort=(Paket)ois.readObject();
 			ClientList.addLast(serverAntwort);
+		}catch(SocketException se){
+			serverAntwort = new Paket(new FehlerNachricht("Server antwortet nicht!"));
 		}
 		catch(IOException e){
 			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
