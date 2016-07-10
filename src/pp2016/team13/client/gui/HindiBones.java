@@ -422,7 +422,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println(spielflaeche.MonsterStandpunktx);
-				if( spielflaeche.MonsterStandpunktx==2 || spielflaeche.MonsterStandpunktx==3){
+				if( spielflaeche.MonsterStandpunktx==2 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
 					
 					
 			}else {
@@ -473,7 +473,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 				System.out.println(spielflaeche.MonsterStandpunktx);
-				if( spielflaeche.MonsterStandpunktx==4 || spielflaeche.MonsterStandpunktx==3){
+				if( spielflaeche.MonsterStandpunktx==4 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
 					
 					
 			}else {
