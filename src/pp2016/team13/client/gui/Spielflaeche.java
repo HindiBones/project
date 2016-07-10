@@ -227,8 +227,8 @@ public class Spielflaeche extends JPanel {
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			
 			Monster m = fenster.monsterListe.get(k);
-			MonsterStandpunktx[k]= m.getPosX();
-			MonsterStandpunkty[k]= m.getPosY();
+//			MonsterStandpunktx[k]= m.getPosX();
+//			MonsterStandpunkty[k]= m.getPosY();
 			
 			boolean event = fenster.spieler.hatSchluessel();
 			// Da hier alle Monster aufgerufen werden, wird an dieser
