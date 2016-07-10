@@ -223,7 +223,6 @@ public class Spielflaeche extends JPanel {
 		
 			
 		// Male die Monster an ihrer Position
-	
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			
 			Monster m = fenster.monsterListe.get(k);

@@ -36,7 +36,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	private MenuLeiste menuLeiste;
 	private Steuerung steuerung;
 	private Anmeldung anmeldung;
-
+	private long trankTimer;
 	
 	public LinkedList<Monster> monsterListe;
 	public Spieler spieler;
@@ -473,17 +473,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_N) {
-				int change = spieler.benutzeHeiltrank();
-				spieler.setUnverwundbar(true);
-				timer=10;
-				
-				// Heilungseffekt wird verbessert, falls neue Monster durch das
-				// Aufheben des Schl�ssels ausgel�st wurden
-				if (spieler.getAnzahlTrank()>0){
-					//JOHN SNOW bilder rein blau
-					
-				}
-						
+				trankTimer = client.benutzeTrank();				
 			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
@@ -738,7 +728,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				
 				//	getStatusleiste().repaint();
-				
+				if(spieler.trankAktiv){
+					if((System.currentTimeMillis() - trankTimer) / 1000 > 5)
+					{
+						spieler.setUnverwundbar(false);
+					}
+				}
 
 				if (spieler.getLebenspunkte() <= 0) {
 					spielende = true;
