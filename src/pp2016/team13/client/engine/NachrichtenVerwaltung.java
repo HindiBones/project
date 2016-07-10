@@ -59,7 +59,7 @@ public class NachrichtenVerwaltung {
 				/*
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
 				 */
-					case 0: System.out.println("Einloggen erfolgreich!"); break;
+					case 0: systemnachricht("Einloggen erfolgreich!"); break;
 					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
@@ -96,7 +96,11 @@ public class NachrichtenVerwaltung {
 		// TODO Auto-generated method stub
 		switch(cheat.cheattyp){
 			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
-			case 1: fenster.spieler.setUnverwundbar(true);break;
+			case 1: fenster.spieler.setUnverwundbar(true);fenster.spieler.bildWechseln();systemnachricht("Spieler ist unverwundbar!");break;
+			case 2: fenster.nebelAn = false;systemnachricht("Nebel gelichtet!");break;
+			case 3: fenster.nextLevel();systemnachricht("Level \u00fcbersprungen!"); break;
+			case 4: fenster.spieler.setAnzahlHeiltraenke(fenster.spieler.getAnzahlHeiltraenke() + 10);systemnachricht("10 Heiltr\u00e4nke!");break;
+			case 5: fenster.spieler.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10); systemnachricht("10 Tr\u00e4nke!");break;
 		}
 	}
 
@@ -204,7 +208,7 @@ public class NachrichtenVerwaltung {
 	}
 	
 	public long benutzeTrank(){
-		fenster.spieler.BildWechseln();
+		fenster.spieler.bildWechseln();
 		return fenster.spieler.benutzeTrank();
 	}
 	/**
@@ -235,6 +239,7 @@ public class NachrichtenVerwaltung {
 		else
 		serverAntwort = sende(nachricht);
 		auslesen(serverAntwort);
+		
 		return serverAntwort.getMessage().inOrdnung;
 	}
 	public Level levelWechseln(){
@@ -243,6 +248,7 @@ public class NachrichtenVerwaltung {
 		fenster.spieler.entferneSchluessel();
 		aktuellesLevel.ausgabe();
 		fenster.levelnummer = aktuellesLevel.levelID;
+		systemnachricht("Level wurde gewechselt!");
 		return aktuellesLevel;
 		}
 		else
@@ -250,5 +256,10 @@ public class NachrichtenVerwaltung {
 			sende(new Nachricht(3));
 			return null;
 		}
+	}
+	
+	public void systemnachricht(String Text){
+
+		fenster.getMinimap().getChatFenster().textumfeld.append("<System>: " + Text + "\n");
 	}
 }

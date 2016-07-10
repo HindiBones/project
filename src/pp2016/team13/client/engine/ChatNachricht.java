@@ -24,9 +24,11 @@ public class ChatNachricht extends Nachricht{
 		
 		switch(this.nachricht){
 		
-		case ("<#unbesiegbar>"): istCheat = true;
-		case ("<#durchsicht>"): istCheat = true;
-		case ("<#levelskip>"): istCheat = true;
+		case ("<#unbesiegbar>"): istCheat = true;break;
+		case ("<#durchsicht>"): istCheat = true;break;
+		case ("<#levelskip>"): istCheat = true;break;
+		case ("<#heiltrank>"): istCheat = true;break;
+		case ("<#trank>"): istCheat = true;break;
 		}
 		
 		return istCheat;
@@ -41,6 +43,8 @@ public class ChatNachricht extends Nachricht{
 			case ("<#unbesiegbar>"): ergebnis = 1;break;
 			case ("<#durchsicht>"): ergebnis = 2; break;
 			case ("<#levelskip>"): ergebnis = 3;break;
+			case ("<#heiltrank>"): ergebnis = 4;break;
+			case ("<#trank>"): ergebnis = 5;break;
 			}
 		}
 		

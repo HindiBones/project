@@ -87,8 +87,9 @@ public class Spielflaeche extends JPanel {
 	int Px;
 	int Py;
 	int anfangszustand= 0;
-	int MonsterStandpunktx[];
-	int MonsterStandpunkty[];
+	int MonsterStandpunktx;
+	int MonsterStandpunkty;
+	int keinMonsterinSicht=0;
 	
 	/**
 	 * @author Seyma 
@@ -241,14 +242,15 @@ public class Spielflaeche extends JPanel {
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			
 			Monster m = fenster.monsterListe.get(k);
-//			MonsterStandpunktx[k]= m.getPosX();
-//			MonsterStandpunkty[k]= m.getPosY();
+
+
 			
 			boolean event = fenster.spieler.hatSchluessel();
 			// Da hier alle Monster aufgerufen werden, wird an dieser
 			// Stelle auch ein Angriffsbefehl fuer die Monster
 			// abgegeben, falls der Spieler in der Naehe ist.
 			// Ansonsten soll das Monster laufen
+			
 			if (!m.attackiereSpieler(event)) {
 				m.move();
 			} else {
@@ -263,7 +265,27 @@ public class Spielflaeche extends JPanel {
 								+ box / 2 -verschiebenx*fenster.BOX, (int) (((1 - p) * m.getYPos() + (p)
 								* s.getYPos()) * box)
 								+ box / 2 -verschiebeny*fenster.BOX, 8, 8, null);
+//				System.out.println( m.getPosX());
+//				System.out.println( m.getPosY());
+				keinMonsterinSicht=1;
+				System.out.println( ((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
+						+ box / 2 -verschiebenx*fenster.BOX)/72);
+				MonsterStandpunktx=((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
+						+ box / 2 -verschiebenx*fenster.BOX)/72;
+				System.out.println(( (int) (((1 - p) * m.getYPos() + (p)
+						* s.getYPos()) * box)
+						+ box / 2 -verschiebeny*fenster.BOX)/72);
+				MonsterStandpunkty=((int) (((1 - p) * m.getYPos() + (p) * s.getYPos()) * box )
+						+ box / 2 -verschiebeny*fenster.BOX)/72;
+//				if(m.getXPos()==0){
+//				}
+//				else {
+//					keinMonsterinSicht=0;
+//				}		
+			
+					
 			}
+			
 
 			// Male das Monster, falls es von anfang an anwesend ist
 			if (m.getTyp() == 0)

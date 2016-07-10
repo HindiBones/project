@@ -21,7 +21,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	private static final long serialVersionUID = 1L;
 
-	private Spielflaeche spielflaeche;
+	Spielflaeche spielflaeche;
 	private SeitenLeiste minimap;
 	private Highscore highscore;
 	private MenuLeiste menuLeiste;
@@ -294,6 +294,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 		if (!spielende) {
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
+	
+				
 				if(zahl==0){ zahl=1;
 				try { //John Rücken  img//John3hinten
 					if(spieler.istUnverwundbar()){
@@ -314,14 +316,30 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //				}
 				
 				}
-		
-					client.spieler = spieler;
+				Monster m = spieler.angriffsMonster();
+				if (m != null)
+					m.changeHealth(-BOX / 4);	
+				client.spieler = spieler;
 					client.aktuellesLevel = Level;
-					client.SpielerBewegung(1);
-					Level = client.aktuellesLevel;
-					Monster m = spieler.angriffsMonster();
-					if (m != null)
-						m.changeHealth(-BOX / 4);
+					
+					
+//					if(spielflaeche.keinMonsterinSicht==0){
+//						client.SpielerBewegung(1);
+//					}
+//					else {
+					System.out.println( spielflaeche.MonsterStandpunkty);
+						if( spielflaeche.MonsterStandpunkty==2 || spielflaeche.MonsterStandpunkty==3){
+						
+						
+					}else {
+						client.SpielerBewegung(1);
+						
+					System.out.println("Drache!");
+					
+					}
+//					}
+				Level = client.aktuellesLevel;
+
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 
 				if(zahl==0){ zahl=1;
@@ -347,14 +365,32 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 				
 				}
-
-					client.spieler = spieler;
+				Monster m = spieler.angriffsMonster();				
+				client.spieler = spieler;
 					client.aktuellesLevel = Level;
+				if (m != null)
+				m.changeHealth(-BOX / 4);
+			
+				
+//				if(spielflaeche.keinMonsterinSicht==0){
+//					client.SpielerBewegung(0);
+//				}else {
+					System.out.println(spielflaeche.MonsterStandpunkty);
+					
+					if( spielflaeche.MonsterStandpunkty==4 || spielflaeche.MonsterStandpunkty==3){
+						
+				
+				}else {
 					client.SpielerBewegung(0);
-					Level = client.aktuellesLevel;
-					Monster m = spieler.angriffsMonster();
-					if (m != null)
-						m.changeHealth(-BOX / 4);
+					System.out.println("Drache!");
+				
+				}
+//			}
+			
+
+				
+				Level = client.aktuellesLevel;
+				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					//Mein John seite img//JohnSeite.png
 				
@@ -385,7 +421,24 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
+				System.out.println(spielflaeche.MonsterStandpunktx);
+				if( spielflaeche.MonsterStandpunktx==2 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
+					
+					
+			}else {
 				client.SpielerBewegung(2);
+		
+				System.out.println("Drache!");
+			
+			}
+			
+//				if(spielflaeche.MonsterStandpunktx<3&& spielflaeche.MonsterStandpunkty==3){
+					
+					
+//				}else {
+//					
+//				
+//				}
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 				if (m != null)
@@ -419,7 +472,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
+				System.out.println(spielflaeche.MonsterStandpunktx);
+				if( spielflaeche.MonsterStandpunktx==4 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
+					
+					
+			}else {
 				client.SpielerBewegung(3);
+				System.out.println("Drache!");
+			
+			}
+				
 				Level = client.aktuellesLevel;
 				Monster m = spieler.angriffsMonster();
 				if (m != null)
@@ -440,11 +502,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_N) {
+					if(trankTimer == 0)
 				trankTimer = client.benutzeTrank();	
 			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
-				}
+				}else
 			
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -474,6 +537,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						nextLevel();
 					}
 				}
+			}else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+				minimap.p.textfeld.setFocusable(true);
+				minimap.p.textfeld.requestFocusInWindow();
+				minimap.p.textfeld.requestFocus();
+				minimap.p.textfeld.setText("");
 			}
 			}
 	}
@@ -711,8 +779,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					if((System.currentTimeMillis() - trankTimer) / 1000 > 5)
 					{
 						spieler.setUnverwundbar(false);
-						spieler.BildWechseln();
+						spieler.bildWechseln();
 						spieler.trankAktiv = false;
+						trankTimer = 0;
 					}
 				}
 
