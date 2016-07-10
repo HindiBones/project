@@ -3,28 +3,19 @@ package pp2016.team13.client.gui;
 
 import java.awt.BorderLayout;      
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.accessibility.Accessible;
-import javax.imageio.ImageIO;
 import javax.swing.*; 
 import pp2016.team13.client.engine.NachrichtenVerwaltung;
-import pp2016.team13.client.engine.LoginNachricht;
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Monster;
-import pp2016.team13.shared.Schluessel;
-import pp2016.team13.shared.Spielelement;
 import pp2016.team13.shared.Spieler;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+
 
 public class HindiBones extends JFrame implements KeyListener,MouseListener,Accessible {
 

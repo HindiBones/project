@@ -47,18 +47,18 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		this.fenster=fenster;
 		
 		 //Passwort Eingabe Feld
-		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes l�nge 15
-		 passwortfeld.setBounds(370,250,230,35); //Gr��e + Koord. wird festgelegt
+		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes laenge 15
+		 passwortfeld.setBounds(370,250,230,35); //Grosse + Koord. wird festgelegt
 		 this.add(passwortfeld);
 		 
 		 //Benutzer Name Eingabe Feld
 		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes f�r Nicknamen
-		 textBenutzer.setBounds(370,200,230,35);//Gr��e+Koord. wird festgelegt 
+		 textBenutzer.setBounds(370,200,230,35);//Grosse+Koord. wird festgelegt 
 		 this.add(textBenutzer);
 		 
 		 //Label /Beschriftungen
-		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels hei�t eines Textes
-		 benutzernameL.setBounds(278,190,100,50); //Gr��e+ Koord. wird festgelegt
+		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels heisst eines Textes
+		 benutzernameL.setBounds(278,190,100,50); //Grosse+ Koord. wird festgelegt
 		 this.add(benutzernameL);
 		 
 		 passwortL = new JLabel("Passwort: ");// " das selbe vorgehen wie mit username "
@@ -67,11 +67,11 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 
 		 //Buttons u.a einlogg+ registrierungs Button
 		 anmeldeButton = new JButton("Einloggen"); //Erzeugen eines Buttons "login"
-		 anmeldeButton.setBounds(370,320,100,50);//Gr��e+Koord. wird festgelegt 
+		 anmeldeButton.setBounds(370,320,100,50);//Grosse+Koord. wird festgelegt 
 		 this.add(anmeldeButton);
 
 		 registrierButton = new JButton("Registrieren");//Erzeugen eines Buttons "registrieren"
-		 registrierButton.setBounds(500,320,100,50); //Gr��e+Koord. wird festgelegt 
+		 registrierButton.setBounds(500,320,100,50); //Grosse+Koord. wird festgelegt 
 		 this.add(registrierButton);
 
 		 //Standard Einstellungen fuer  das Anmelde Fenster
@@ -105,12 +105,13 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	/**
 	 * @author Seyma Keser
 	 * 
-	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vor. richtige eingabe)
+	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vorr. richtige eingabe)
 	 * soll das Spielfenster geöffnet werden.
 	 * 
-	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da
+	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da kommt auch die Verschluesselung zum Einsatz.
+	 * Hier wird die Eingabe im Server Verschlüsselt und verglichen mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
 	 * 
-	 * Verschlüsselungs Algorithmus 
+	 * 
 	 * 
 	 * 
 	 */

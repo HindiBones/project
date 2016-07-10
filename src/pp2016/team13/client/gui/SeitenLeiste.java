@@ -12,12 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
-import pp2016.team13.shared.Schluessel;
-import pp2016.team13.shared.Spielelement;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+
 
 
 
@@ -28,7 +23,7 @@ public class SeitenLeiste extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private Image boden2, wand2, tuerOffen2, tuerZu2,hintergrund, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
+	private Image boden2, wand2, tuerOffen2, tuerZu2, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
 	ChatFenster p;
 	HindiBones fenster;
 	public SeitenLeiste(HindiBones fenster) {
@@ -36,12 +31,8 @@ public class SeitenLeiste extends JPanel {
 		 //Benutzer Name Eingabe Feld
 		 ChatText = new JTextField(); //Erzeugen eines Textfeldes f�r Nicknamen
 		p= new ChatFenster("Chat", this);
-//		p.setBounds(100, 500, 40, 40);
-//		JPanel Center= new JPanel();
-//		Center.setVisible(false);
-		//this.add(Center, BorderLayout.CENTER);
 		this.setLayout(new BorderLayout());
-		 this.add(p,BorderLayout.SOUTH);
+		this.add(p,BorderLayout.SOUTH);
 		 
 		 
 	 
@@ -50,7 +41,6 @@ public class SeitenLeiste extends JPanel {
 
 		try {
 			sblase= ImageIO.read(new File("img//sprechblase.png"));
-
 			hintergrund1= ImageIO.read(new File("img/wall1.png"));
 			schluessel2=ImageIO.read(new File("img//schluessel2.png"));
 			heiltrank2 = ImageIO.read(new File("img//heiltrank2.png"));
@@ -60,7 +50,7 @@ public class SeitenLeiste extends JPanel {
 			tuerZu2 = ImageIO.read(new File("img//tuer.png"));
 			tuerOffen2 = ImageIO.read(new File("img//tueroffen.png"));
 			john= ImageIO.read(new File("img//John1.png"));
-//			john= ImageIO.read(new File("img//john.png"));
+
 			
 			} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
@@ -131,11 +121,7 @@ public class SeitenLeiste extends JPanel {
 
 		//Alles unter der Statusleiste
 		g.setColor(Color.LIGHT_GRAY);
-//		g.fillRect(0, 360, 180, 300);
-//		g.drawImage(john,35,410,null);
-		
-//		 p.setBounds(0, 500, 170, 105);
-//		 this.add(p);
+
 		 
 		
 		try {
@@ -169,7 +155,7 @@ public class SeitenLeiste extends JPanel {
 		int itemKx= 10;
 		int Luecke=60;
 		
-		//Item Hintergrund K�stchen 3x (Falls sp�ter noch ein Item hinzugef�gt wird)
+		//Item Hintergrund Kaestchen 3x (Falls sp�ter noch ein Item hinzugef�gt wird)
 		g.setColor(Color.GRAY);
 		g.fillRect(itemKx, itemKy,40, 40);
 		g.setColor(Color.BLACK);
@@ -256,12 +242,6 @@ public class SeitenLeiste extends JPanel {
 		 ChatText.setFocusable(true);
 		 this.setVisible(true);
 		 
-		// this.add(p);
-
-//		 p.setBounds(0,500,10,10);
-//		 p.add(Chatfenster);
-//		 
-		 //Mini John und seine sprechblase
 
 
 		}
@@ -270,12 +250,7 @@ public class SeitenLeiste extends JPanel {
 	}
 	
 	
-//(Hier, noch unentschlossen ob wir als Team auf Neben in der Minimap oder nicht)
 
-//	private boolean inRange(int i, int j) {
-//		return (Math.sqrt(Math.pow(fenster.spieler2.getXPos() - i, 2)
-//				+ Math.pow(fenster.spieler2.getYPos() - j, 2)) < 3 || !fenster.nebelAn);
-//	}
 	
 
 }
