@@ -61,6 +61,10 @@ public class SeitenLeiste extends JPanel {
 
 	}
 	
+	public ChatFenster getChatFenster(){
+		return p;
+	}
+	
 	/**
 	 * 
 	 * @author Seyma Keser

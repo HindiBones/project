@@ -717,7 +717,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					if((System.currentTimeMillis() - trankTimer) / 1000 > 5)
 					{
 						spieler.setUnverwundbar(false);
-						spieler.BildWechseln();
+						spieler.bildWechseln();
 						spieler.trankAktiv = false;
 						trankTimer = 0;
 					}
