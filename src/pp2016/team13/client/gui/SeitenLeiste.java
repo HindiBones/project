@@ -95,7 +95,7 @@ public class SeitenLeiste extends JPanel {
 								null);
 
 					}
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) {
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1  || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 || fenster.Level.getBestimmtenLevelInhalt(i, j)==7) {
 						// Dieses Feld ist begehbar
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
@@ -108,18 +108,18 @@ public class SeitenLeiste extends JPanel {
 								null);
 						
 						
-//					}if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-//						//System.out.println("Sollte Offene Türe zechenen");
-//						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
-//								null);	
-//						g.drawImage(tuerOffen2, i * 11 , j
-//									* 10, null);
+					}if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+						//System.out.println("Sollte Offene Türe zechenen");
+						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+								null);	
+						g.drawImage(tuerOffen2, i * (fenster.BOX2) , j
+									* (fenster.BOX2), null);
 					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
 						//System.out.println("Sollte Offene Türe zechenen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
-						g.drawImage(tuerZu2, i * 11, j
-									* 11, null);
+						g.drawImage(tuerZu2, i * (fenster.BOX2), j
+									* (fenster.BOX2), null);
 			}		
 			}
 
@@ -155,7 +155,7 @@ public class SeitenLeiste extends JPanel {
 		//Hier beginnt der des Statuspanels
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 180, 180, 180);
-int Hintergrundpixel= 192;
+		int Hintergrundpixel= 192;
 		for (int i = 0; i < fenster.WIDTH; i++) {
 			for(int j=0; j<8;j++){
 			g.drawImage(hintergrund1, i * Hintergrundpixel, 180+j*Hintergrundpixel, null);
@@ -225,7 +225,7 @@ int Hintergrundpixel= 192;
 		//Sprechblase + Text
 		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
 		g.setColor(Color.BLACK);
-		if (feld == 4) {
+		if (feld == 5) {
 			
 			g.drawImage(sblase,0,itemKy*2-130,null);
 			g.drawString(" Nimm den Schluessel", itemKx, itemKy*2-130+40);
@@ -236,9 +236,9 @@ int Hintergrundpixel= 192;
 				else{
 					g.drawImage(sblase,0,itemKy*2-130,null);
 					g.drawString("Tuer ist verschlossen!", itemKx, itemKy*2-130+40);}
-		} else if (feld == 3) {
+		} else if (feld == 4 || feld ==7) {
 			g.drawImage(sblase,0,itemKy*2-130,null);
-			g.drawString(" Ein Heiltrank !", itemKx,itemKy*2-130+40);
+			g.drawString(" Ein Trank !", itemKx,itemKy*2-130+40);
 		}
 
 		

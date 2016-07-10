@@ -37,6 +37,9 @@ public class FloodFill {
 	 * @author Cigdem
 	 * @param size 
 	 */
+
+	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer,7 = Trank2
+	
 	FloodFill(int size) {
 		this.size = size;
 		Random random = new Random();
