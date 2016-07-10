@@ -1,20 +1,10 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,13 +13,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import pp2016.team13.client.engine.LoginNachricht;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
-import pp2016.team13.server.engine.Einloggen;
 
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public JButton anmeldeButton;
 
 	JTextField textBenutzer;
@@ -41,25 +33,32 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	String Bn;
 	String Pw;
 	
-//	public LoginNachricht lognachricht;
-	
+
+	/**
+	 * @author Seyma 
+	 * @param fenster: Setzt das fenster fest, auf dem das Panel gezeichnet wird
+	 * 
+	 * Erstellt das Panel mit ihren Buttons, Textfeldern, Hintergrund und macht die Buttons Benutzbar
+	 * 
+	 * 
+	 */
 	HindiBones fenster;
 	public Anmeldung(HindiBones fenster){
 		this.fenster=fenster;
-		//Bild einbinden
+		
 		 //Passwort Eingabe Feld
-		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes l�nge 15
-		 passwortfeld.setBounds(370,250,230,35); //Gr��e + Koord. wird festgelegt
+		 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes laenge 15
+		 passwortfeld.setBounds(370,250,230,35); //Grosse + Koord. wird festgelegt
 		 this.add(passwortfeld);
 		 
 		 //Benutzer Name Eingabe Feld
 		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes f�r Nicknamen
-		 textBenutzer.setBounds(370,200,230,35);//Gr��e+Koord. wird festgelegt 
+		 textBenutzer.setBounds(370,200,230,35);//Grosse+Koord. wird festgelegt 
 		 this.add(textBenutzer);
 		 
 		 //Label /Beschriftungen
-		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels hei�t eines Textes
-		 benutzernameL.setBounds(278,190,100,50); //Gr��e+ Koord. wird festgelegt
+		 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels heisst eines Textes
+		 benutzernameL.setBounds(278,190,100,50); //Grosse+ Koord. wird festgelegt
 		 this.add(benutzernameL);
 		 
 		 passwortL = new JLabel("Passwort: ");// " das selbe vorgehen wie mit username "
@@ -68,15 +67,15 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 
 		 //Buttons u.a einlogg+ registrierungs Button
 		 anmeldeButton = new JButton("Einloggen"); //Erzeugen eines Buttons "login"
-		 anmeldeButton.setBounds(370,320,100,50);//Gr��e+Koord. wird festgelegt 
+		 anmeldeButton.setBounds(370,320,100,50);//Grosse+Koord. wird festgelegt 
 		 this.add(anmeldeButton);
 
 		 registrierButton = new JButton("Registrieren");//Erzeugen eines Buttons "registrieren"
-		 registrierButton.setBounds(500,320,100,50); //Gr��e+Koord. wird festgelegt 
+		 registrierButton.setBounds(500,320,100,50); //Grosse+Koord. wird festgelegt 
 		 this.add(registrierButton);
 
-		 //Standard Einstellungen f�r  das Anmelde Fenster
-		 setSize(640,400); // Gr��e ensprechend an das Bild angepasst
+		 //Standard Einstellungen fuer  das Anmelde Fenster
+		 setSize(640,400); // Grosse ensprechend an das Bild angepasst
 		 setLocation(500,280); //Zentrieren 
 		 this.setLayout (null);
 		  
@@ -86,40 +85,35 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 textBenutzer.setForeground(Color.GRAY);
 		 textBenutzer.setText("Username");
 		 
-			//Anbindung an ActionListener
+		 //Anbindung an ActionListener
 		 anmeldeButton.addActionListener(this);
 		 registrierButton.addActionListener(this);
 
 		 //Standardaeinstellung
-		 
-		 
-
 		 setVisible(true);
 
-
 		
 		
-	JLabel bildLabel = new JLabel(); 
-	 bildLabel.setIcon(new ImageIcon("img/Bild.png")); 
-	 bildLabel.setBounds(0, 0, 640, 400); 
-	 this.add(bildLabel); 
-	 
-//		lognachricht= new LoginNachricht("Peace", "12345");
-//		Bn="Peace";
-//		Pw="12345";
-//	 
+		JLabel bildLabel = new JLabel(); 
+		 bildLabel.setIcon(new ImageIcon("img/Bild.png")); 
+		 bildLabel.setBounds(0, 0, 640, 400); 
+		 this.add(bildLabel); 
+	 	 
 	}
 
 	
 	/**
-	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vor. richtige eingabe)
+	 * @author Seyma Keser
+	 * 
+	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vorr. richtige eingabe)
 	 * soll das Spielfenster geöffnet werden.
 	 * 
-	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da
+	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da kommt auch die Verschluesselung zum Einsatz.
+	 * Hier wird die Eingabe im Server Verschlüsselt und verglichen mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
 	 * 
-	 * Verschlüsselungs Algorithmus 
 	 * 
-	 * @author Seyma Keser
+	 * 
+	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
 		boolean einloggen= false;
@@ -128,32 +122,8 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		if(e.getSource()==anmeldeButton){
 			String nickname=textBenutzer.getText();
 			@SuppressWarnings("deprecation")
-			
 			String pwt= passwortfeld.getText();
-			
-			try {
-//				pwt=verschluesseln.verschluesseln(pwt, nickname);
-			} catch (Exception e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-			
-			
-			
 		
-//			try {
-//				pwt=verschluesseln.erschluesseln(pwt, nickname);
-//				
-//			} catch (Exception e2) {
-//				// TODO Auto-generated catch block
-//				e2.printStackTrace();
-//			}
-			
-		//	System.out.println(nickname+""+pwt );
-		   
-
-//			lognachricht= new LoginNachricht("Peace", "12345");
-			//Beispiel Versuch wird sp�ter mit client erweitert
 		try {
 			LoginNachricht registrierung = new LoginNachricht(nickname, pwt, 0);
 			einloggen = fenster.client.einloggen(registrierung);
@@ -163,25 +133,19 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		}
 					
 					
-			
-			//nickname.equals(fenster.GetBenutzername())&& pwt.equals(fenster.GetPasswort())
-			if(einloggen==true){
-				
-				try {
-					Thread.sleep(100);
-					fenster.zeigeSpielfeld();
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-//					
-			}else {
-				
-//				anmeldung1=false;
-				JOptionPane.showMessageDialog(null, "Falsches Passwort oder Falscher Benutzername");
+		if(einloggen==true){
+			try {
+				Thread.sleep(100);
+				fenster.zeigeSpielfeld();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-		//�ffnen der Registrierung 	
+		}else {
+			JOptionPane.showMessageDialog(null, "Falsches Passwort oder Falscher Benutzername");
+		}
+			
+		//Oeffnen der Registrierung 	
 		}if(e.getSource()==registrierButton)	{
 			try {
 				Thread.sleep(50);	
@@ -199,7 +163,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// Hier soll sp�ter mit Enter eingeloggt werden k�nnen
+		// Hier soll spaeter mit Enter eingeloggt werden koennen
 		
 	}
 

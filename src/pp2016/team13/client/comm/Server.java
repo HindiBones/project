@@ -1,4 +1,10 @@
 package pp2016.team13.client.comm;
+
+/**
+ * @author Kirthika Jeyakumar
+ * 
+ */
+
 import java.io.*; 
 import java.net.*;
 import java.util.LinkedList;
@@ -28,6 +34,8 @@ public class Server implements Serializable{
 	InputStreamReader isw=null;
 	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	Levelverwaltung spiel;
+	
+	//Server wird gestartet - Verbindung wird hergestellt
 public Server(int port){
 	System.out.println("Starte Server");
 	try {
@@ -40,6 +48,7 @@ public Server(int port){
 		while (true){
 			
 			try {
+			//Server wartet auf eingehende Verbindungen
 			S = ServerS.accept();
 			ServerS.setSoTimeout(1);
 
@@ -56,7 +65,6 @@ public Server(int port){
 	
 		
 
-
 		
 		public void run() throws IOException{
 			System.out.println("Laeuft");
@@ -65,7 +73,7 @@ public Server(int port){
 				handleconnection();
 			}
 		}
-		
+		// eingehende Verbindung wird verarbeitet
 		public void handleconnection(){
 			try {
 				oos = new ObjectOutputStream(S.getOutputStream());
@@ -127,6 +135,23 @@ public Server(int port){
 			}
 		}
 
-				
+		//Ich bin noch da Nachrichten
+	public class Lebenszeichen extends Thread{
+		public void run(){
+			try{
+				while (true){
+					for(int i=0; i<Spieler.size();i++){
+						if(new Date().getTime()-letztesLebenszeichen.get(Spieler.get(i).id).getTime()>10000)
+							System.out.println("Spieler" + +Spieler.get(i).id + "inaktiv");
+						    entferne(Spieler.get(i).id);
+					}
+				}
+				Thread.sleep(1000);
+		     }catch (Exception e){
+			    e.printStackTrace();
+		 }
+	}
+}
+	
 }
 	

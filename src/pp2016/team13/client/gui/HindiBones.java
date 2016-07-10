@@ -3,28 +3,19 @@ package pp2016.team13.client.gui;
 
 import java.awt.BorderLayout;      
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.accessibility.Accessible;
-import javax.imageio.ImageIO;
 import javax.swing.*; 
 import pp2016.team13.client.engine.NachrichtenVerwaltung;
-import pp2016.team13.client.engine.LoginNachricht;
-import pp2016.team13.shared.Boden;
-import pp2016.team13.shared.Heiltrank;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Monster;
-import pp2016.team13.shared.Schluessel;
-import pp2016.team13.shared.Spielelement;
 import pp2016.team13.shared.Spieler;
-import pp2016.team13.shared.Tuer;
-import pp2016.team13.shared.Wand;
+
 
 public class HindiBones extends JFrame implements KeyListener,MouseListener,Accessible {
 
@@ -45,9 +36,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	
 	public Level Level;
-	public Spielelement[][] level;
 	public NachrichtenVerwaltung client;
-	public int currentLevel = 0;
+	public int levelnummer = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
 	public long startZeit;
@@ -56,7 +46,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	private boolean spielerInHighscore = false;
 	public boolean highscoreAngezeigt = false;
 	public boolean anmeldeanzeige=false;
-
+	public boolean levelNeustarten = false;
 	
 	
 	public final int MAXLEVEL = 5; 
@@ -236,7 +226,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			// Registrierung
 			
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -298,8 +287,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void keyPressed(KeyEvent e) {
 		// Methoden der Schnittstelle KeyListener
 		// Aktuelle Position des Spielers
-		int xPos = spieler.getXPos();
-		int yPos = spieler.getYPos();
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
 		// Es wird geprueft, ob der naechste Schritt zulaessig ist.
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
@@ -309,15 +296,13 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			if (e.getKeyCode()== KeyEvent.VK_UP) {
 				if(zahl==0){ zahl=1;
 				try { //John Rücken  img//John3hinten
-					if(spieler.istUnverwundbar()&& timer>0 ){
-						spieler.setImage(ImageIO.read(new File("img//Johnblauhinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					timer--;
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//Johnblauhinten.png");
 				}else{
-					spieler.setUnverwundbar(false);
-					spieler.setImage(ImageIO.read(new File("img//John3hinten.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					spieler.setImage("img//John3hinten.png");
 				}	} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
+
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
@@ -325,7 +310,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //				try {
 //					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
 //				} catch (IOException en) {
-//					// TODO Auto-generated catch block
 //					en.printStackTrace();
 //				}
 				
@@ -342,29 +326,23 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try { // Passt
-					if(spieler.istUnverwundbar()&& timer>0){
-						spieler.setImage(ImageIO.read(new File("img//Johnblauvor1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-						timer--;
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//Johnblauvor1.png");
 					}else{
-						spieler.setUnverwundbar(false);
-					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					spieler.setImage("img//John3.png");
 					}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar()&& timer>0){
-						spieler.setImage(ImageIO.read(new File("img//Johnblauvor2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-						timer--;
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//Johnblauvor2.png");
 					}else{
-						spieler.setUnverwundbar(false);
-						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+						spieler.setImage("img//John4.png");
 					}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
 				
@@ -384,28 +362,22 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				if(zahl==0){ zahl=1;
 				try {
 					if(spieler.istUnverwundbar()){
-						spieler.setImage(ImageIO.read(new File("img//JohnblauLi1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					timer--;
+						spieler.setImage("img//JohnblauLi1.png");
 				}else{
-					spieler.setUnverwundbar(false);
-				spieler.setImage(ImageIO.read(new File("img//JohnLinks.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+				spieler.setImage("img//JohnLinks.png");
 				}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar()&& timer>0){
-						spieler.setImage(ImageIO.read(new File("img//JohnblauLi2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					timer--;
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauLi2.png");
 					}else{
-					spieler.setUnverwundbar(false);
-					spieler.setImage(ImageIO.read(new File("img//JohnLinks2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					spieler.setImage("img//JohnLinks2.png");
 					}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
 				
@@ -422,29 +394,24 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				if(zahl==0){ zahl=1;
 				try {
-					if(spieler.istUnverwundbar() && timer>0 ){
-						spieler.setImage(ImageIO.read(new File("img//JohnblauRe1.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-						timer--;}
+					if(spieler.istUnverwundbar() ){
+						spieler.setImage("img//JohnblauRe1.png");
+						}
 					else{
-						spieler.setUnverwundbar(false);
-					spieler.setImage(ImageIO.read(new File("img//JohnSeite.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					spieler.setImage("img//JohnSeite.png");
 				}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					if(spieler.istUnverwundbar()&& timer>0){
-						spieler.setImage(ImageIO.read(new File("img//JohnblauRe2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					timer--;
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauRe2.png");
 					}else{
-						spieler.setUnverwundbar(false);
-					spieler.setImage(ImageIO.read(new File("img//JohnSeite2.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					spieler.setImage("img//JohnSeite2.png");
 					}} catch (IOException en) {
 					System.out.println("Bild Failt");
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
 				
@@ -473,7 +440,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 			} else 
 				if (e.getKeyCode() == KeyEvent.VK_N) {
-				trankTimer = client.benutzeTrank();				
+				trankTimer = client.benutzeTrank();	
 			}
 				else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.exit(0);
@@ -549,23 +516,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 			if(mausY1< yKoos){
 				if (Distanz1>Distanz2){
-					if(zahl==0){ zahl=1;
 					try {
-						spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+						if(spieler.istUnverwundbar()){
+							spieler.setImage("img//Johnblauhinten.png");
+					}else{
+						spieler.setImage("img//John3hinten.png");
+					}
 					} catch (IOException en) {
-						// TODO Auto-generated catch block
-						en.printStackTrace();
-					} } 
-					else if(zahl==1){ zahl=0;
-					
-					try {
-						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-					} catch (IOException en) {
-						// TODO Auto-generated catch block
 						en.printStackTrace();
 					}
 					
-					}
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					client.SpielerBewegung(1);
@@ -576,17 +536,23 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}}else if(mausY1 > yKoos){	
 					if(zahl==0){ zahl=1;
 					try {
-						spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+						if(spieler.istUnverwundbar()){
+							spieler.setImage("img//Johnblauvor1.png");
+						}else{
+						spieler.setImage("img//John3.png");
+						}
 					} catch (IOException en) {
-						// TODO Auto-generated catch block
 						en.printStackTrace();
 					} } 
 					else if(zahl==1){ zahl=0;
 					
 					try {
-						spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+						if(spieler.istUnverwundbar()){
+						spieler.setImage("img//Johnblauvor2.png");
+					}else{
+					spieler.setImage("img//John4.png");
+					}
 					} catch (IOException en) {
-						// TODO Auto-generated catch block
 						en.printStackTrace();
 					}
 					
@@ -601,17 +567,23 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			}else if(mausX1<xKoos){	
 				if(zahl==0){ zahl=1;
 				try {
-					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauLi1.png");
+					}else{
+					spieler.setImage("img//JohnLinks.png");
+					}
 				} catch (IOException en) {
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauLi2.png");
+					}else{
+					spieler.setImage("img//JohnLinks2.png");
+					}
 				} catch (IOException en) {
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
 				
@@ -626,17 +598,23 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			}else if(mausX1> xKoos){
 				if(zahl==0){ zahl=1;
 				try {
-					spieler.setImage(ImageIO.read(new File("img//John3.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauRe1.png");
+					}else{
+					spieler.setImage("img//JohnSeite.png");
+					}
 				} catch (IOException en) {
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ zahl=0;
 				
 				try {
-					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
+					if(spieler.istUnverwundbar()){
+						spieler.setImage("img//JohnblauRe2.png");
+					}else{
+					spieler.setImage("img//JohnSeite2.png");
+					}
 				} catch (IOException en) {
-					// TODO Auto-generated catch block
 					en.printStackTrace();
 				}
 				
@@ -674,23 +652,24 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		spieler = new Spieler(0);
 		spieler.setFenster(this);
 //		
-		spieler.setImage(spieler.getImage().getScaledInstance(72,72,Image.SCALE_DEFAULT)); 
+		try {
+			spieler.setImage(spieler.bildpfad);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
 		spieler2=new Spieler(1);
 		spieler2.setFenster(this);
 		try {
-			spieler2.setImage(ImageIO.read(new File("img//red_point.png")).getScaledInstance(10, 10, Image.SCALE_DEFAULT));
+			spieler2.setImage("img//red_point.png");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		monsterListe = new LinkedList<Monster>();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		
-		currentLevel = 0;
 		spielende = false;
 		verloren = false;
 		nebelAn = true;
@@ -710,7 +689,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			Thread.sleep(100);
 			spielZuruecksetzen();
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -720,6 +698,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				// Hier wird alle 50ms neu gezeichnet
 				try {
 					Thread.sleep(100);
+					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
 					
@@ -732,6 +711,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					if((System.currentTimeMillis() - trankTimer) / 1000 > 5)
 					{
 						spieler.setUnverwundbar(false);
+						spieler.BildWechseln();
+						spieler.trankAktiv = false;
 					}
 				}
 
@@ -763,15 +744,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 */
 	public void nextLevel() {
 		spielflaeche.anfangszustand=0;
-//		currentLevel++;
-//		Leser leser = new Leser("lvl//level" + currentLevel + ".txt", this);
-//		Level = leser.getLevel();
-//		client.aktuellesLevel = Level;
 		if(Level.getLevelID() == -1){
 		System.out.println("Level wird angefordert!");
 		client.levelAnfordern();
-		client.nimmSchluessel();
 		Level = client.aktuellesLevel;
+		}
+		else if(levelNeustarten)
+		{
+			Level = client.alleLevel[0];
+			levelnummer = 0;
+			levelNeustarten = false;
 		}
 		else
 		{
@@ -789,25 +771,21 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}	
 
