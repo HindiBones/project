@@ -902,11 +902,17 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
+<<<<<<< HEAD
 //					if(spielfeldSichtbar)
 //						client.socket.run();
 //					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
 //						System.exit(0);
 //					}
+=======
+					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
+						System.exit(0);
+					}
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 				} catch (InterruptedException e) {
 				}
