@@ -108,13 +108,6 @@ public class Client extends Paket {
 		System.out.println("Client sendet an Server");
 	}
 	
-//	Marius: Paket meldung = new Paket(new ZeitNachricht (System.currentTimeMillis()));
-//oos = new ObjectOutputStream(cs.getOutputStream());
-//System.out.println("ObjectStream steht");
-//oos.writeObject(meldung);
-//System.out.println("Nachrichtentyp " + meldung.inhalt.getTyp());
-//oos.flush();
-//System.out.println("Client sendet an Server");
 	
 		public void SendeLogout(Paket msg) {
 			try{
