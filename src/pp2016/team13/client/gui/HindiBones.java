@@ -313,37 +313,42 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				} } 
 				else if(zahl==1){ zahl=0;
 				
-//				try {
-//					spieler.setImage(ImageIO.read(new File("img//John4.png")).getScaledInstance(72,72, Image.SCALE_DEFAULT));
-//				} catch (IOException en) {
-//					en.printStackTrace();
-//				}
+
 				
 				}
-				Monster m = spieler.angriffsMonster();
-				if (m != null)
-					m.changeHealth(-BOX / 4);	
+				
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos());
+				testspieler.setYPos(spieler.getYPos()-1);
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
 				client.spieler = spieler;
-					client.aktuellesLevel = Level;
-					
-					
-//					if(spielflaeche.keinMonsterinSicht==0){
-//						client.SpielerBewegung(1);
-//					}
-//					else {
-//					System.out.println( spielflaeche.MonsterStandpunkty);
-//						if( spielflaeche.MonsterStandpunkty==2 && (spielflaeche.MonsterStandpunktx<=3|| spielflaeche.MonsterStandpunktx>3)){
-						
-						
-//					}else {
-						client.SpielerBewegung(1);
-						
-//					System.out.println("Drache!");
-//					
-//					}
-//					}
+				client.aktuellesLevel = Level;
 				Level = client.aktuellesLevel;
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
+					m.changeHealth(-BOX / 4);
+					System.out.println("Links");
 
+				}	else {
+					System.out.println("Rechts");
+
+					client.SpielerBewegung(1);
+				}
+					
+					
+					
+
+
+						
+					
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 
 				if(zahl==0){ zahl=1;
@@ -369,20 +374,43 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 				
 				}
-				Monster m = spieler.angriffsMonster();				
+			
+				
+
+				
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos());
+				testspieler.setYPos(spieler.getYPos()+1);
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
 				client.spieler = spieler;
-					client.aktuellesLevel = Level;
-				if (m != null)
-				m.changeHealth(-BOX / 4);
-			
-				
-
-				client.SpielerBewegung(0);
-
-			
-
-				
+				client.aktuellesLevel = Level;
 				Level = client.aktuellesLevel;
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
+					m.changeHealth(-BOX / 4);
+					System.out.println("Links");
+//					client.SpielerBewegung(2);
+				}	else {
+					System.out.println("Rechts");
+
+					client.SpielerBewegung(0);
+				}
+					
+					
+					
+
+			
+
+				
+			
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				monsterda=0;
@@ -443,14 +471,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler = null;
 								
 					
-//								Level = client.aktuellesLevel;
-//				if (m != null){
-//					client.SpielerBewegung(3);
-//					m.changeHealth(-BOX / 4);}
-//				else{
-//				
-//				client.SpielerBewegung(2);
-//				}
+
 			}} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) { 
 				monsterda=0;
 
@@ -619,13 +640,34 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						en.printStackTrace();
 					}
 					
+	
+					testspieler = new Spieler(2);
+					testspieler.setFenster(this);
+					testspieler.setXPos(spieler.getXPos());
+					testspieler.setYPos(spieler.getYPos()-1);
+					Monster m = testspieler.angriffsMonster();
+					if (m != null){
+						System.out.println("vordir ist ein monster");
+						monsterda=1;
+					}else {
+						monsterda=0;
+					}
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
-					client.SpielerBewegung(1);
 					Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+					m = testspieler.angriffsMonster();
+					if(monsterda==1){
+						
+						m.changeHealth(-BOX / 4);
+						System.out.println("Links");
+
+					}	else {
+						System.out.println("Rechts");
+
+						client.SpielerBewegung(1);
+					}
+						
+			
 				}}else if(mausY1 > yKoos){	
 					if(zahl==0){ zahl=1;
 					try {
@@ -650,13 +692,32 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}
 					
 					}
-				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				client.SpielerBewegung(0);
-				Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+					testspieler = new Spieler(2);
+					testspieler.setFenster(this);
+					testspieler.setXPos(spieler.getXPos());
+					testspieler.setYPos(spieler.getYPos()+1);
+					Monster m = testspieler.angriffsMonster();
+					if (m != null){
+						System.out.println("vordir ist ein monster");
+						monsterda=1;
+					}else {
+						monsterda=0;
+					}
+					client.spieler = spieler;
+					client.aktuellesLevel = Level;
+					Level = client.aktuellesLevel;
+					m = testspieler.angriffsMonster();
+					if(monsterda==1){
+						
+						m.changeHealth(-BOX / 4);
+						System.out.println("Links");
+
+					}	else {
+						System.out.println("Rechts");
+
+						client.SpielerBewegung(0);
+					}
+				
 			}else if(mausX1<xKoos){	
 				if(zahl==0){ zahl=1;
 				try {
@@ -681,13 +742,31 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 				
 				}
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos()-1);
+				testspieler.setYPos(spieler.getYPos());
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				client.SpielerBewegung(2);
 				Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 4);
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
+					m.changeHealth(-BOX / 4);
+					System.out.println("Links");
+
+				}	else {
+					System.out.println("Rechts");
+
+					client.SpielerBewegung(2);
+				}
 			}else if(mausX1> xKoos){
 				if(zahl==0){ zahl=1;
 				try {
@@ -712,13 +791,31 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 				
 				}
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos());
+				testspieler.setYPos(spieler.getYPos()+1);
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				client.SpielerBewegung(3);
 				Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-			if (m != null)
-				m.changeHealth(-BOX / 7);
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
+					m.changeHealth(-BOX / 4);
+					System.out.println("Links");
+
+				}	else {
+					System.out.println("Rechts");
+
+					client.SpielerBewegung(3);
+				}
 			}
 	
 		}
