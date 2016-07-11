@@ -9,7 +9,6 @@ import java.io.*;
 import java.net.*;
 import java.util.Date;
 import java.util.LinkedList;
-import pp2016.team13.client.comm.Lebenszeichen;
 import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
@@ -35,13 +34,10 @@ public class Server implements Serializable{
 	InputStreamReader isw=null;
 	LinkedList<Paket> ServerList = new LinkedList<Paket>();
 	Levelverwaltung spiel;
-	Date letztesLebenszeichen = null;
 	
 	//Server wird gestartet - Verbindung wird hergestellt
 public Server(int port){
 	System.out.println("Starte Server");
-	letztesLebenszeichen = new Date();
-	letztesLebenszeichen.setTime(System.currentTimeMillis());
 	try {
 		ServerS = new ServerSocket(port);
 		spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 20, 5);
@@ -72,14 +68,10 @@ public Server(int port){
 		
 		public void run() throws IOException{
 			System.out.println("Laeuft");
-			Lebenszeichen L= new Lebenszeichen(System.currentTimeMillis());
 			
 			this.openServer = true;
 			while (this.openServer) {
-				if(login ){
-					
-					L.run(S, letztesLebenszeichen);
-					
+				if(login){
 					this.openServer = false;
 					System.out.println("Server Timeout");
 					ServerS.close();
@@ -127,7 +119,7 @@ public Server(int port){
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
 			
-			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true; letztesLebenszeichen.setTime(System.currentTimeMillis()); break;
+			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true;break;
 			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
@@ -139,9 +131,7 @@ public Server(int port){
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
-			case 14: letztesLebenszeichen.setTime(System.currentTimeMillis());System.out.println("alive"); break;
 			case 15: System.out.println("Spieler Logout");System.out.println("Server Beendet");System.exit(0);break;
-
 			}
 			Paket antwort = new Paket(antwortNachricht);
 						return antwort;
