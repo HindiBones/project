@@ -1,10 +1,14 @@
 package pp2016.team13.shared;
 
-import java.io.IOException;
+
 import java.io.Serializable;
 
 public class Level implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int levelID;
 	public int [][] levelInhalt;
 
@@ -46,7 +50,8 @@ public class Level implements Serializable{
 		}
 	}
 	
-	//getter Methode für alle x-Werte
+	//getter Methode fï¿½r alle x-Werte
+		@SuppressWarnings("null")
 		public  int[] getAlleXWerte(int yKoordinate){
 			int []xWerte = null;
 			for(int i = 0; i<=levelInhalt.length; i++){
@@ -55,7 +60,8 @@ public class Level implements Serializable{
 			return xWerte;
 		}
 		
-		//getter Methode für alle y-Werte
+		//getter Methode fï¿½r alle y-Werte
+		@SuppressWarnings("null")
 		public  int[] getAlleYWerte(int xKoordinate){
 			int []yWerte = null;
 			for(int i = 0; i<=levelInhalt.length; i++){

@@ -5,7 +5,7 @@ package pp2016.team13.client.comm;
  *Kommunikation
  */
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,7 +15,6 @@ import java.net.SocketException;
 import java.util.LinkedList;
 
 import pp2016.team13.client.engine.FehlerNachricht;
-import pp2016.team13.client.engine.Nachricht;
 import pp2016.team13.client.engine.ZeitNachricht;
 
 /**
@@ -25,7 +24,7 @@ import pp2016.team13.client.engine.ZeitNachricht;
  *
  */
 public class Client extends Paket {
-	// Liste wird genriert für die Nachrichten
+	// Liste wird genriert fï¿½r die Nachrichten
 	LinkedList<Paket> ClientList = new LinkedList<Paket>();
 	// einzelne Streams werden erzeugt
 	InputStream is;

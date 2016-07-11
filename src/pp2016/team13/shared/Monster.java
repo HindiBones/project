@@ -15,10 +15,10 @@ public class Monster extends Figur {
 	private int cooldownAttack;
 	private int cooldownWalk;
 	private int id;
-	private int lebenspunkte;
-	private int monsterSchaden;
+	public int lebenspunkte;
+	public int monsterSchaden;
 	private boolean hatSchluessel;
-	private int posX;
+	public int posX;
 	private int posY;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
 	private int typ; // Von Beginn an anwesend: 0, Erscheint sp�ter: 
@@ -82,7 +82,7 @@ public class Monster extends Figur {
 		if (typ == 0)
 			kannAngreifen = ((System.currentTimeMillis() - lastAttack) >= cooldownAttack);
 		if (typ == 1)
-			kannAngreifen = (hatSchluessel && ((System.currentTimeMillis() - lastAttack) >= cooldownAttack));
+			kannAngreifen = ((System.currentTimeMillis() - lastAttack) >= cooldownAttack);
 
 		if (spielerImRadius && kannAngreifen && !spieler.istUnverwundbar() &&spieler.getLebenspunkte() > 0) {
 			lastAttack = System.currentTimeMillis();

@@ -8,7 +8,7 @@ public class Trank2 {
 		 public static int posY;
 		 public static boolean aufgehoben;
 		 public static boolean gedroppt;
-		 public static int trankID;
+		 public int trankID;
 
 		public Trank2(int wirkung) {
 			this.wirkung = wirkung;
@@ -16,7 +16,7 @@ public class Trank2 {
 
 		//Konstruktor fuer die Server Engine
 			public Trank2(int trankID, int j, int i) {
-				trankID = trankID;
+				this.trankID = trankID;
 				setGedroppt(false);
 				setAufgehoben(false);
 				setPosX(j);
@@ -27,7 +27,7 @@ public class Trank2 {
 			//Keine setter-Methode fuer die Trank-ID, da diese nicht veraendert werden soll
 							 
 			//getter-Methode fuer die Trank-ID;
-			public static int getTrankID(){
+			public int getTrankID(){
 				return trankID;
 			}
 							 

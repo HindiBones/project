@@ -3,12 +3,12 @@ package pp2016.team13.shared;
 public class Heiltrank extends Spielelement {
 	private int wirkung;
 	
-	//Fuer die Server Engine ; für die Trankliste
+	//Fuer die Server Engine ; fï¿½r die Trankliste
 	 public static int posX;
 	 public static int posY;
 	 public static boolean aufgehoben;
 	 public static boolean gedroppt;
-	 public static int trankID;
+	 public int trankID;
 
 	public Heiltrank(int wirkung) {
 		this.wirkung = wirkung;
@@ -16,18 +16,18 @@ public class Heiltrank extends Spielelement {
 
 	//Konstruktor fuer die Server Engine
 		public Heiltrank(int trankID, int j, int i) {
-			trankID = trankID;
+			this.trankID = trankID;
 			setGedroppt(false);
 			setAufgehoben(false);
 			setPosX(j);
 			setPosY(i);
 		}
 
-		// Methoden für die Server Engine
+		// Methoden fï¿½r die Server Engine
 		//Keine setter-Methode fuer die Trank-ID, da diese nicht veraendert werden soll
 						 
 		//getter-Methode fuer die Trank-ID;
-		public static int getTrankID(){
+		public int getTrankID(){
 			return trankID;
 		}
 						 

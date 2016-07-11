@@ -1,8 +1,7 @@
 package pp2016.team13.client.comm;
 
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
+
 
 public class Lebenszeichen extends Thread{
 	static long jetzigeZeit;

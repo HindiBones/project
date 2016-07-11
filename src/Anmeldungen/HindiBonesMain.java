@@ -10,7 +10,13 @@ public class HindiBonesMain {
 
 	
 	public static void main(String[] args) {
-
-		new HindiBones(BOX * WIDTH, BOX * HEIGHT, "Hindi Bones");
+		try {
+			Thread.sleep(1000);
+			new HindiBones(BOX * WIDTH, BOX * HEIGHT, "Hindi Bones");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

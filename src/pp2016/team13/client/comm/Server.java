@@ -5,7 +5,7 @@ package pp2016.team13.client.comm;
  * 
  */
 
-import java.io.*; 
+import java.io.*;  
 import java.net.*;
 import java.util.Date;
 import java.util.LinkedList;
@@ -14,9 +14,7 @@ import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.LevelNachricht;
-import pp2016.team13.server.engine.Einloggen;
 import pp2016.team13.server.engine.Levelverwaltung;
-import pp2016.team13.shared.Level;
 import pp2016.team13.client.engine.Nachricht;
 
 

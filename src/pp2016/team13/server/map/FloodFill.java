@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Cigdem
  * @param size: Spielfeldgroesse
  * @param map: speichert integer
- * @param kDirUp, kDirDown, kDirRight, kDirLeft: Integerzuordnungen für Vergleiche in welche Richtung
+ * @param kDirUp, kDirDown, kDirRight, kDirLeft: Integerzuordnungen fï¿½r Vergleiche in welche Richtung
  * @param kDirFirst, kDirLast: Erste und Letzte Richtung
  * @param startingPoint: Startpunkt nicht gesetzt
  * @param destinationPoint: Zielpunkt nicht gesetzt
@@ -23,8 +23,6 @@ public class FloodFill {
 	private static final int kDirDown = 1;
 	private static final int kDirRight = 2;
 	private static final int kDirLeft = 3;
-	private static final int kDirFirst = 0;
-	private static final int kDirLast = 3;
 	private static Point startingPoint = null;
 	private static Point destinationPoint = null;
 	private static Point currentPosition = null;
