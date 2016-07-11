@@ -32,6 +32,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public LinkedList<Monster> monsterListe;
 	public Spieler spieler;
 	public Spieler spieler2;
+	public Spieler testspieler;
 	public Monster monster;
 	
 	
@@ -40,6 +41,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public int levelnummer = 0;
 	public boolean spielende = false;
 	public boolean verloren = false;
+	public boolean spielfeldSichtbar = false;
 	public long startZeit;
 	public int benoetigteZeit;
 	public boolean nebelAn = true;
@@ -137,7 +139,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// entferne alles
 		highscoreAngezeigt = false;
-		
+		client.socket.run();
+		spielfeldSichtbar = true;
 		this.remove(anmeldung);
 		this.remove(highscore);
 		this.remove(steuerung);
@@ -284,6 +287,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * 
 	 * @author Seyma Keser
 	 */
+	int monsterda=0;
 	public void keyPressed(KeyEvent e) {
 		// Methoden der Schnittstelle KeyListener
 		// Aktuelle Position des Spielers
@@ -327,16 +331,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 //						client.SpielerBewegung(1);
 //					}
 //					else {
-					System.out.println( spielflaeche.MonsterStandpunkty);
-						if( spielflaeche.MonsterStandpunkty==2 || spielflaeche.MonsterStandpunkty==3){
+//					System.out.println( spielflaeche.MonsterStandpunkty);
+//						if( spielflaeche.MonsterStandpunkty==2 && (spielflaeche.MonsterStandpunktx<=3|| spielflaeche.MonsterStandpunktx>3)){
 						
 						
-					}else {
+//					}else {
 						client.SpielerBewegung(1);
 						
-					System.out.println("Drache!");
-					
-					}
+//					System.out.println("Drache!");
+//					
+//					}
 //					}
 				Level = client.aktuellesLevel;
 
@@ -372,26 +376,16 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m.changeHealth(-BOX / 4);
 			
 				
-//				if(spielflaeche.keinMonsterinSicht==0){
-//					client.SpielerBewegung(0);
-//				}else {
-					System.out.println(spielflaeche.MonsterStandpunkty);
-					
-					if( spielflaeche.MonsterStandpunkty==4 || spielflaeche.MonsterStandpunkty==3){
-						
-				
-				}else {
-					client.SpielerBewegung(0);
-					System.out.println("Drache!");
-				
-				}
-//			}
+
+				client.SpielerBewegung(0);
+
 			
 
 				
 				Level = client.aktuellesLevel;
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				monsterda=0;
 					//Mein John seite img//JohnSeite.png
 				
 				
@@ -405,7 +399,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					System.out.println("Bild Failt");
 					en.printStackTrace();
 				} } 
-				else if(zahl==1){ zahl=0;
+				else if(zahl==1){ 
+					zahl=0;
 				
 				try {
 					if(spieler.istUnverwundbar()){
@@ -418,32 +413,46 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}
 				
 				}
-	
+
+				
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos()-1);
+				testspieler.setYPos(spieler.getYPos());
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
+				m=null;
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
+					m.changeHealth(-BOX / 4);
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				System.out.println(spielflaeche.MonsterStandpunktx);
-				if( spielflaeche.MonsterStandpunktx==2 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
+				System.out.println("bleibe Rechts");
+//					client.SpielerBewegung(3);
+				}	else {
+				client.spieler = spieler;
+				client.aktuellesLevel = Level;
+				System.out.println("gehe Links");
+				client.SpielerBewegung(2);	
+				testspieler = null;
+								
 					
-					
-			}else {
-				client.SpielerBewegung(2);
-		
-				System.out.println("Drache!");
-			
-			}
-			
-//				if(spielflaeche.MonsterStandpunktx<3&& spielflaeche.MonsterStandpunkty==3){
-					
-					
-//				}else {
-//					
+//								Level = client.aktuellesLevel;
+//				if (m != null){
+//					client.SpielerBewegung(3);
+//					m.changeHealth(-BOX / 4);}
+//				else{
 //				
+//				client.SpielerBewegung(2);
 //				}
-				Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-				if (m != null)
-					m.changeHealth(-BOX / 4);
-			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			}} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) { 
+				monsterda=0;
 
 				if(zahl==0){ zahl=1;
 				try {
@@ -470,22 +479,38 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				
 				}
 
+
+				
+				
+//				Spieler testspieler=new spieler();
+				testspieler = new Spieler(2);
+				testspieler.setFenster(this);
+				testspieler.setXPos(spieler.getXPos()+1);
+				testspieler.setYPos(spieler.getYPos());
+				Monster m = testspieler.angriffsMonster();
+				if (m != null){
+					System.out.println("vordir ist ein monster");
+					monsterda=1;
+				}else {
+					monsterda=0;
+				}
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				System.out.println(spielflaeche.MonsterStandpunktx);
-				if( spielflaeche.MonsterStandpunktx==4 && (spielflaeche.MonsterStandpunkty<=3|| spielflaeche.MonsterStandpunkty>3)){
-					
-					
-			}else {
-				client.SpielerBewegung(3);
-				System.out.println("Drache!");
-			
-			}
-				
 				Level = client.aktuellesLevel;
-				Monster m = spieler.angriffsMonster();
-				if (m != null)
+				m = testspieler.angriffsMonster();
+				if(monsterda==1){
+					
 					m.changeHealth(-BOX / 4);
+					System.out.println("Links");
+//					client.SpielerBewegung(2);
+				}	else {
+					System.out.println("Rechts");
+				client.SpielerBewegung(3);
+				}
+					
+					
+					
+					
 
 				// B f�r 'Heiltrank benutzen'
 			} else 
@@ -512,7 +537,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
-				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 5) {
+				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 8) {
 					client.nimmSchluessel();
 					System.out.println("Spieler hat den Schluessel!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
@@ -715,6 +740,17 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void spielZuruecksetzen() {
 		spielflaeche.anfangszustand=0;
 
+		
+//			try {
+//				Thread.sleep(100);		
+//		
+//		testspieler.setFenster(this);
+//			} catch (InterruptedException e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}		
+
+
 		try {
 			Thread.sleep(100);		
 		spieler = new Spieler(0);
@@ -765,11 +801,17 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			if (!spielende) {
 				// Hier wird alle 50ms neu gezeichnet
 				try {
+					
 					Thread.sleep(100);
 					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
-					
+					if(spielfeldSichtbar)
+						client.socket.run();
+					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
+						System.exit(0);
+					}
+
 				} catch (InterruptedException e) {
 				}
 

@@ -11,10 +11,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.LinkedList;
 
 import pp2016.team13.client.engine.FehlerNachricht;
 import pp2016.team13.client.engine.Nachricht;
+import pp2016.team13.client.engine.ZeitNachricht;
 
 /**
  * 
@@ -30,7 +32,8 @@ public class Client extends Paket {
 	OutputStream os;
 	ObjectInputStream ois=null;
 	ObjectOutputStream oos=null;
-	Socket cs;
+	public Socket cs;
+	boolean binAmLeben;
 	
 	public Client(String host,int port){
 		try{
@@ -45,7 +48,6 @@ public class Client extends Paket {
 
 		Paket serverAntwort = new Paket();
 		try{
-			Thread.sleep(100);
 			oos = new ObjectOutputStream(cs.getOutputStream());
 			System.out.println("ObjectStream steht");
 			oos.writeObject(msg);
@@ -57,35 +59,50 @@ public class Client extends Paket {
 			System.out.println("ObjectInputStream steht");
 			serverAntwort=(Paket)ois.readObject();
 			ClientList.addLast(serverAntwort);
+		}catch(SocketException se){
+			serverAntwort = new Paket(new FehlerNachricht("Server antwortet nicht!"));
 		}
 		catch(IOException e){
 			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			 serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
-			e.printStackTrace();
 		}
 		
 		return serverAntwort;
 	}
 
 	// Ich bin noch da periodisch senden
+	public void run(){
+		try{
+			System.out.println("alive");
+			  sendeNachricht(new Lebenszeichen(System.currentTimeMillis()));
+	    }
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
-	public class sendeLebenszeichen extends Thread{
-		public void run(){
+	private void sendeNachricht(Lebenszeichen lebenszeichen) throws IOException {
+		Paket meldung = new Paket(new ZeitNachricht (System.currentTimeMillis()));
+		oos = new ObjectOutputStream(cs.getOutputStream());
+		System.out.println("ObjectStream steht");
+		oos.writeObject(meldung);
+		System.out.println("Nachrichtentyp " + meldung.inhalt.getTyp());
+		oos.flush();
+		System.out.println("Client sendet an Server");
+	}
+	
+		public void SendeLogout(Paket msg) {
 			try{
-			   while(binAmLeben){
-				  sendeNachricht(new Lebenszeichen());
-				  Thread.sleep(1000);
-				}
-		    }
-			catch(Exception e){
+				oos = new ObjectOutputStream(cs.getOutputStream());
+				System.out.println("ObjectStream steht");
+				oos.writeObject(msg);
+				System.out.println(msg.inhalt.getTyp());
+				oos.flush();
+			}
+			catch(IOException e){
 				e.printStackTrace();
 			}
-	    }
-	
+		}
 	 }
-	}

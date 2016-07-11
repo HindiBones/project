@@ -187,7 +187,7 @@ public class SeitenLeiste extends JPanel {
 		g.drawString("Zeit: "
 				+ (System.currentTimeMillis() - fenster.startZeit) / 1000,
 				10, 200);
-		g.drawString("Level " + (fenster.Level.levelID+1) + "/" + fenster.MAXLEVEL,
+		g.drawString("Level " + (fenster.levelnummer+1) + "/" + fenster.MAXLEVEL,
 				 100, 200);
 
 		// Heiltrankanzeige
@@ -215,7 +215,7 @@ public class SeitenLeiste extends JPanel {
 		//Sprechblase + Text
 		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
 		g.setColor(Color.BLACK);
-		if (feld == 5) {
+		if (feld == 8) {
 			
 			g.drawImage(sblase,0,itemKy*2-130,null);
 			g.drawString(" Nimm den Schluessel", itemKx, itemKy*2-130+40);

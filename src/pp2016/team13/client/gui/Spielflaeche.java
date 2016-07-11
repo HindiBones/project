@@ -90,6 +90,8 @@ public class Spielflaeche extends JPanel {
 	int MonsterStandpunktx;
 	int MonsterStandpunkty;
 	int keinMonsterinSicht=0;
+	int Monsterx;
+	int Monstery;
 	
 	/**
 	 * @author Seyma 
@@ -103,9 +105,16 @@ public class Spielflaeche extends JPanel {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
 				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
 					Gegner = new Monster(i, j, fenster, 0);
+//					Monsterx=i;
+//					Monstery=j;
+//					System.out.println("Monster 1: i= "+ i + "j:  "+j);
+					fenster.monsterListe.add(Gegner);
+					
+				}
+				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+					Gegner = new Monster(i, j, fenster, 1);
 					fenster.monsterListe.add(Gegner);
 				}
-				
 			}
 		}
 		
@@ -196,42 +205,57 @@ public class Spielflaeche extends JPanel {
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
+//						for (int k = 0; k < fenster.monsterListe.size(); k++) {
+//							
+//							Monster m = fenster.monsterListe.get(k);
+//							//System.out.println(m.getXPos() +" und i: "+ i + m.getYPos() +" und j: "+ j);
+//							if (m.getXPos()==i && m.getYPos()==j){
+//								m.setXPos( i -verschiebenx*fenster.BOX);
+//								m.setYPos( j -verschiebeny*fenster.BOX);
+//							}
+//							
+//						}
 						//Monster werden vor der Paint-Methode in genMonster in eine Lister Getzt ueberall wo Monster==3 ist
 					} 
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere ==2
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 					
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere==6
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere== 6
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 			
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank==7
+					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank== 7
 						// Hier ist ein Blauer Trank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank==4 
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank== 4 
 						//Hier ist ein Heiltrank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
 				
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluessel ==5
+					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluesselmonster == 5
 						//HIER LIEGT NOCH EIN SCHLÜSSEL
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
-								j * fenster.BOX-verschiebeny*fenster.BOX, null);
-					}
+						}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 8) { //Schluessel == 8
+							//Hier ist der Schluessel
+							g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
+									null);
+							g.drawImage(schluessel, i * fenster.BOX-verschiebenx*fenster.BOX,
+									j * fenster.BOX-verschiebeny*fenster.BOX, null);
+					
+						}
 				}
 			}
 		}
@@ -242,7 +266,8 @@ public class Spielflaeche extends JPanel {
 		for (int k = 0; k < fenster.monsterListe.size(); k++) {
 			
 			Monster m = fenster.monsterListe.get(k);
-
+//			System.out.println( m.getXPos());
+//			System.out.println( m.getYPos());
 
 			
 			boolean event = fenster.spieler.hatSchluessel();
@@ -250,14 +275,14 @@ public class Spielflaeche extends JPanel {
 			// Stelle auch ein Angriffsbefehl fuer die Monster
 			// abgegeben, falls der Spieler in der Naehe ist.
 			// Ansonsten soll das Monster laufen
-			
+			double p = m.cooldownProzent();
 			if (!m.attackiereSpieler(event)) {
 				m.move();
 			} else {
 				int box = fenster.BOX;
 				Spieler s = fenster.spieler;
 
-				double p = m.cooldownProzent();
+				
 				g.setColor(Color.RED);
 				g.drawImage(
 						feuerball,
@@ -265,18 +290,16 @@ public class Spielflaeche extends JPanel {
 								+ box / 2 -verschiebenx*fenster.BOX, (int) (((1 - p) * m.getYPos() + (p)
 								* s.getYPos()) * box)
 								+ box / 2 -verschiebeny*fenster.BOX, 8, 8, null);
-//				System.out.println( m.getPosX());
-//				System.out.println( m.getPosY());
+		
 				keinMonsterinSicht=1;
-				System.out.println( ((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
-						+ box / 2 -verschiebenx*fenster.BOX)/72);
-				MonsterStandpunktx=((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
-						+ box / 2 -verschiebenx*fenster.BOX)/72;
-				System.out.println(( (int) (((1 - p) * m.getYPos() + (p)
-						* s.getYPos()) * box)
-						+ box / 2 -verschiebeny*fenster.BOX)/72);
-				MonsterStandpunkty=((int) (((1 - p) * m.getYPos() + (p) * s.getYPos()) * box )
-						+ box / 2 -verschiebeny*fenster.BOX)/72;
+//				System.out.println( ((int) (((1 - p) * m.getXPos() + (p) * s.getXPos()) * box )
+//						+ box / 2 -verschiebenx*fenster.BOX)/72);
+//
+//				System.out.println(( (int) (((1 - p) * m.getYPos() + (p)
+//						* s.getYPos()) * box)
+//						+ box / 2 -verschiebeny*fenster.BOX)/72);
+//				MonsterStandpunktx=(m.getXPos()-verschiebenx*fenster.BOX);
+//				MonsterStandpunkty=(m.getYPos()-verschiebeny*fenster.BOX);
 //				if(m.getXPos()==0){
 //				}
 //				else {
@@ -285,16 +308,12 @@ public class Spielflaeche extends JPanel {
 			
 					
 			}
-			
+//			System.out.println( m.getXPos());
+//			System.out.println( m.getYPos());
 
-			// Male das Monster, falls es von anfang an anwesend ist
-			if (m.getTyp() == 0)
+			// Male die Monstar
+			
 				drawMonster(g, m);
-			// Male das Monster, falls es erst durch das Event 'Schluessel
-			// aufheben' erscheint
-			else if (event && m.getTyp() == 1)
-				drawMonster(g, m);
-		
 }
 		// Male den Spieler an seiner Position
 		g.drawImage(fenster.spieler.getImage(), fenster.spieler.getXPos()

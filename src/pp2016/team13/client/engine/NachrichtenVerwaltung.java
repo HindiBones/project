@@ -64,7 +64,7 @@ public class NachrichtenVerwaltung {
 					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
 					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
 					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println(m.fehlermeldung);break;
+					case 5: System.out.println(m.fehlermeldung);System.out.println(m.getTyp());break;
 					case 6: 
 					{				
 							for(int i = 0; i < m.leveldaten.length; i++){

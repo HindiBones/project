@@ -116,15 +116,8 @@ public class Spieler extends Figur {
 			Monster m = fenster.monsterListe.get(i);
 
 			// Kann der Spieler angreifen?
-			boolean kannAngreifen = false;
-			if (m.getTyp() == 0)
-				kannAngreifen = true;
-			if (m.getTyp() == 1)
-				kannAngreifen = hatSchluessel;
-
 			if ((Math.sqrt(Math.pow(getXPos() - m.getXPos(), 2)
-					+ Math.pow(getYPos() - m.getYPos(), 2)) < 1)
-					&& kannAngreifen) {
+					+ Math.pow(getYPos() - m.getYPos(), 2)) < 1)) {
 				return m;
 			}
 		}

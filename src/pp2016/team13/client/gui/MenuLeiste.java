@@ -6,6 +6,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import pp2016.team13.client.comm.Paket;
+import pp2016.team13.client.engine.AusloggenNachricht;
+import pp2016.team13.shared.Level;
+
 
 public class MenuLeiste extends JMenuBar implements ActionListener {
 
@@ -88,15 +92,18 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 				karteaufdecken.setText("Karte aufdecken");
 			}
 		} else if (e.getSource() == beenden) {
+			fenster.client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
 			System.exit(0);
 		} else if (e.getSource() == steuerung) {
 			fenster.zeigeSteuerung();
 		}else if (e.getSource()== ausloggen){
+			fenster.spielfeldSichtbar = false; 
 			
 			
 			try {
 				
 				Thread.sleep(100);
+				fenster.Level = new Level(-1, null);
 				fenster.spielZuruecksetzen();
 				fenster.zeigeAnmeldung();
 				

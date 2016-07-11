@@ -9,6 +9,7 @@ public class Nachricht implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	int typ, logintyp;
+	public long zeit;
 	public int cheattyp = 0, punktzahl;
 	public boolean aufgenommen, angegriffen;
 	public String fehlermeldung, benutzername, passwort, nachricht;
