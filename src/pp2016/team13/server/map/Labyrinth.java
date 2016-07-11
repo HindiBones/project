@@ -2,9 +2,9 @@ package pp2016.team13.server.map;
 
 import pp2016.team13.server.map.Labyrinth;
 /**
- * 
- * @author Cigdem
  * Groesse der Map festlegen
+ * @author Cigdem
+ * 
  */
 public class Labyrinth {
 	private int size = 19;
@@ -12,10 +12,10 @@ public class Labyrinth {
 	static Koordinaten [] bodenplatten;
 
 /**
- * @author Cigdem
+ * 
  * bestimmt Anzahl Heiltränke, Schutztränke und Monster.
  * Anzahl Monster werden zufällig bestimmt zwischen 1 und 5.
- * 
+ * @author Cigdem
  * 
  */
 	public Labyrinth (){
@@ -24,8 +24,9 @@ public class Labyrinth {
 		int AnzMonster = (int)((Math.random()) * 5 + 1);;
 		bodenplatten = new Koordinaten [size*size];
 /**
- * @author Cigdem
+ * 
  * FloodFill füllt die map auf
+ * @author Cigdem
  */
 		FloodFill auffuellen = new FloodFill(size);
 		for (int i = 0; i < size-1 ; i++){
@@ -34,8 +35,9 @@ public class Labyrinth {
 			}
 		}
 /**
- * @author Cigdem
+ * 
  * speichere alle Bodenelemente in bodenplatten
+ * @author Cigdem
  */
 		// Speichere alle Felder die Boden sind in bodenplatten
 		int zaehler = 0;
@@ -48,10 +50,9 @@ public class Labyrinth {
 			}
 		}
 /**
- * @author Cigdem
- * finde Zufällige Position für Spieler, Tuer, Heiltraenke,Schutztraenke und Monster
- * um die Postion des Schlussels festzulegen werden die Monsterelemente in monsterplatten gespeichert
- * und für die Postion des Schluessels wird zufallig ein Monster ausgewaehlt
+ * 
+ * finde Zufällige Position für Spieler, Tuer, Heiltraenke,Schutztraenke, Monster und ein Schlessel
+ *@author Cigdem
  */
 		// Zufaellige Position fï¿½r den Charakter
 		double zufallsZahl = (Math.random()*zaehler)-1;
