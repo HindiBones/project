@@ -74,6 +74,7 @@ public class Client extends Paket {
 	// Ich bin noch da periodisch senden
 	public void run(){
 		try{
+			Thread.sleep(100);
 			System.out.println("alive");
 			  sendeNachricht(new Lebenszeichen(System.currentTimeMillis()));
 	    }

@@ -23,30 +23,30 @@ public class Levelverwaltung {
 		 * @param tuerY: Y-Koordinate der Tuer
 		 */
  //Level ID
- public static int levelID;
+ public static  int levelID;
  //speichert alle Spieler, inkl. ihrer Eigenschaften; Zugriff ueber spielerID
- static Spieler []spielerListe;
+  Spieler []spielerListe;
  //speichert alle Gegner, inkl. ihrer Eigenschaften; Zugriff ueber gegnerID
- static Monster[]gegnerListe;
+  Monster[]gegnerListe;
  //speichert alle Traenke; Zugriff ueber TrankID
- static Heiltrank [] trankListe;
+  Heiltrank [] trankListe;
  //Speichert alle Zellen des Levels
  //Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer
- public static int [][] levelInhalt;
+ public static  int [][] levelInhalt;
  //Die Anzahl der Level wird festgelegt
- public static int anzahlLevel;
+ public  int anzahlLevel;
  //Die Groesse der Level wird festgelegt
- public static int groesse;
+ public static  int groesse;
  //Initialisierung des Speicherortes fuer alle Level
- public static int [][][] levelSpeicherort;
+ public static  int [][][] levelSpeicherort;
  //Koordinaten des Schluessels
- static int SchluesselX;
- static int SchluesselY;
+  static int SchluesselX;
+  static int SchluesselY;
  //Koordinaten der Tuer
- static int tuerX;
- static int tuerY;
+  static int tuerX;
+  static int tuerY;
  
- static Chat chat;
+  static Chat chat;
  
  /**
 	 * @author Marius
@@ -62,10 +62,10 @@ public class Levelverwaltung {
 	 */
  //Konstruktor Levelverwaltung ; Spielwelt
  public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke, int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException{
-  this.levelID = levelID;
+  Levelverwaltung.levelID = levelID;
   chat = new Chat();
   anzahlLevel = anzLevel;
-  this.groesse = groesse;
+  Levelverwaltung.groesse = groesse;
   levelSpeicherort = new int [anzahlLevel][groesse][groesse];
   levelInhalt = new int [groesse][groesse];
   //Level anlegen
@@ -136,7 +136,7 @@ public class Levelverwaltung {
 	 * 
 	 * Getter Methoden die Spieler Liste
 	 */
- public static Spieler [] getSpielerListe(){
+ public  Spieler [] getSpielerListe(){
   return spielerListe;
  }
  
@@ -145,7 +145,7 @@ public class Levelverwaltung {
 	 * 
 	 * Getter Methode fuer die Gegner Liste
 	 */
- public static Monster [] getGegnerListe(){
+ public  Monster [] getGegnerListe(){
   return gegnerListe;
  }
  
@@ -154,7 +154,7 @@ public class Levelverwaltung {
 	 * 
 	 * Getter Methode fuer die Trank Liste
 	 */
- public static Heiltrank [] getTrankListe(){
+ public  Heiltrank [] getTrankListe(){
   return trankListe;
  }
  
@@ -168,12 +168,11 @@ public class Levelverwaltung {
 	 * 
 	 * setter-Methode, um bestimmte Felder im Level zu veraendern
 	 */
- public static void setLevelInhalt(int levelID, int x, int y, int inhalt, Levelverwaltung spiel){
+ public  void setLevelInhalt(int levelID, int x, int y, int inhalt, Levelverwaltung spiel){
   levelInhalt[x][y] = inhalt;
   
   //Wenn es um den Charakter geht ; der inhalt = 2 ist, dann
   if(inhalt == 2){
-   boolean gefunden = false;
    int spielerID = 0;
      //wird seine neue Position in die Spielerliste �bertragen
      spiel.spielerListe[spielerID].setXPos(x);
@@ -183,9 +182,9 @@ public class Levelverwaltung {
    boolean gefunden = false;
    int gegnerID = 0;
    while(!gefunden){
-    if (spiel.levelInhalt[x][y] != 0 && gegnerListe[gegnerID].getPosX() == x && gegnerListe[gegnerID].getPosY() == y){
+    if (Levelverwaltung.levelInhalt[x][y] != 0 && gegnerListe[gegnerID].getPosX() == x && gegnerListe[gegnerID].getPosY() == y){
      gefunden = true;
-     spiel.levelInhalt[gegnerListe[gegnerID].getPosX()][gegnerListe[gegnerID].getPosY()] = 1;
+     Levelverwaltung.levelInhalt[gegnerListe[gegnerID].getPosX()][gegnerListe[gegnerID].getPosY()] = 1;
      spiel.gegnerListe[gegnerID].setPosX(x);
      spiel.gegnerListe[gegnerID].setPosY(y);
     }else{
@@ -193,7 +192,6 @@ public class Levelverwaltung {
      {
       gegnerID++;
      }else{
-      Nachricht Fehlermeldung = new Nachricht (4, "Monster nicht auffindbar");
       gefunden = true;
      }
     }
@@ -213,7 +211,6 @@ public class Levelverwaltung {
      {
       trankID++;
      }else{
-      Nachricht Fehlermeldung = new Nachricht (4, "Trank nicht auffindbar");
       gefunden = true;
      }
     }
@@ -229,7 +226,7 @@ public class Levelverwaltung {
 	 * ueberprueft, ob der Spieler mit der SpielerID einen Trank benutzen kann
 	 * wird ueberprueft, indem die Anzahl der Traenke ueberprueft wird
 	 */
- public static boolean trankBenutzbar(int spielerID){
+ public  boolean trankBenutzbar(int spielerID){
   boolean funktioniert;
   if (spielerListe[spielerID].getAnzahlHeiltraenke()>0){
    funktioniert = true;
@@ -245,7 +242,7 @@ public class Levelverwaltung {
 	 * 
 	 * void Methode, um einen Trank zu benutzen. Hierbei werden die Lebenspunkte des Spielers wieder aufgefuellt
 	 */
- public static void benutzeTrank(int spielerID){
+ public  void benutzeTrank(int spielerID){
   if (trankBenutzbar(spielerID)){
    spielerListe[spielerID].setAnzahlHeiltraenke(spielerListe[spielerID].getAnzahlHeiltraenke()-1);
    spielerListe[spielerID].setLebenspunkte(10);
@@ -260,7 +257,7 @@ public class Levelverwaltung {
 	 * Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt, so wird sie zum jeweiligen Nachrichten Behandler weiter geleitet.
 	 * Dieser gibt dann einen Boolean zur�ck. Je nachdem wird eine bestimmte Aussage ausgegeben
 	 */
- public static boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception{
+ public static  boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception{
  
  switch (Nachricht.getTyp()){
  /*
@@ -282,7 +279,7 @@ public class Levelverwaltung {
  return false;
  }
  
- private static void behandleCheat(Nachricht nachricht) {
+ private static  void behandleCheat(Nachricht nachricht) {
 	// TODO Auto-generated method stub
 	
 }
@@ -299,7 +296,7 @@ public class Levelverwaltung {
  public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel){
   boolean moeglich;
   System.out.print("Spielerbewegung");
-  if (spiel.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 
+  if (Levelverwaltung.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0 
 		  && ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos())
 		  && (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() +1)) 
 		  || (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() -1)))
@@ -396,8 +393,8 @@ public class Levelverwaltung {
 	 * Der Spieler wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
 	 */
  public static boolean behandleLevelUebersprungen (Levelverwaltung spiel){
-  spiel.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0].getYPos()]=1;
-  spiel.levelInhalt[tuerX][tuerY] = 2;
+  Levelverwaltung.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0].getYPos()]=1;
+  Levelverwaltung.levelInhalt[tuerX][tuerY] = 2;
   spiel.spielerListe[0].setXPos(tuerX);
   spiel.spielerListe[0].setYPos(tuerY);
   spiel.spielerListe[0].nimmSchluessel();

@@ -7,17 +7,12 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.Collator;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Einloggen {
-	static String[] passworte;
-	static String[] benutzer;
+	 static String[] passworte;
+	 static String[] benutzer;
 	
-static String Pwt;
-	
-		private static String [] nutzer = new String [10];
+ static String Pwt;
 	
 		public static boolean LogIn(String benutzername, String passwort) throws Exception{
 			Verschluesselung Ver= new Verschluesselung();
@@ -63,7 +58,7 @@ static String Pwt;
 					}
 					
 				}
-
+				buffreader.close();
 	        	return fertig;
 			}catch(IOException e){
 			System.out.println("Fehler " + e);

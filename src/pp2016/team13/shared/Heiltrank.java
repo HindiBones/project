@@ -4,10 +4,10 @@ public class Heiltrank extends Spielelement {
 	private int wirkung;
 	
 	//Fuer die Server Engine ; f�r die Trankliste
-	 public static int posX;
-	 public static int posY;
-	 public static boolean aufgehoben;
-	 public static boolean gedroppt;
+	 public int posX;
+	 public int posY;
+	 public boolean aufgehoben;
+	 public boolean gedroppt;
 	 public int trankID;
 
 	public Heiltrank(int wirkung) {
@@ -32,42 +32,42 @@ public class Heiltrank extends Spielelement {
 		}
 						 
 		//setter-Methode, die festlegt, ob der Trank bereits gedroppt wurde
-		public static void setGedroppt(boolean neuGedroppt){
+		public void setGedroppt(boolean neuGedroppt){
 			gedroppt = neuGedroppt;
 		}
 						 
 		//getter-Methode, die anzeigt, ob der Trank bereits gedroppt wurde
-		public static boolean getGedroppt(){
+		public boolean getGedroppt(){
 			return gedroppt;
 		}
 						 
 		//setter-Methode, die den Zustand des Tranks aendert
-		public static void setAufgehoben(boolean neuAufgehoben){
+		public void setAufgehoben(boolean neuAufgehoben){
 			aufgehoben=neuAufgehoben;
 		}
 				 
 		//getter-Methode fuer den Zustand des Tranks
-		 public static boolean getAufgehoben(){
+		 public boolean getAufgehoben(){
 			 return aufgehoben;
 		 }
 				 
 		 //setter-Methode fuer die x-Koordinate des Tranks
-		 public static void setPosX(int neuPosX){
+		 public void setPosX(int neuPosX){
 			 posX=neuPosX;
 		 }
 		 
 		 //getter-Methode fuer die x-Koordinate des Tranks
-		 public static int getPosX(){
+		 public int getPosX(){
 		  return posX;
 		 }
 		 
 		 //setter-Methode fuer die y-Koordinate des Tranks
-		 public static void setPosY(int neuPosY){
+		 public void setPosY(int neuPosY){
 		  posY=neuPosY;
 		 }
 		 
 		 //getter-Methode fuer die y-Koordinate des Tranks
-		 public static  int getPosY(){
+		 public int getPosY(){
 		  return posY;
 		 }
 	
