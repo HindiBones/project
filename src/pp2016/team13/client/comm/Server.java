@@ -85,7 +85,11 @@ public Server(int port){
 
     ois = new ObjectInputStream(S.getInputStream());
     System.out.println("Nachricht kommt an");
+<<<<<<< HEAD
     //System.out.println("Server empfï¿½ngt message vom Client und versucht zu empfangen");
+=======
+    //System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
     //System.out.println("Server versucht message vom Client zu verarbeiten");
     n = (Paket)ois.readObject();
     //ServerList.add(n);
@@ -138,5 +142,6 @@ public Server(int port){
     return new Paket(new FehlerNachricht("Exception!"));
    }
   }
+  
 
 }
