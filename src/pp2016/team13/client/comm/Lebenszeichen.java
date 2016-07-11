@@ -4,20 +4,20 @@ import java.net.Socket;
 
 
 public class Lebenszeichen extends Thread{
-	static long jetzigeZeit;
-		public static boolean run(Socket S, long letztesLebenszeichen){
+	 long jetzigeZeit;
+		public void run(Socket S, long letztesLebenszeichen){
 			try{
 					jetzigeZeit = System.currentTimeMillis();
 						if(jetzigeZeit- letztesLebenszeichen>10000)
 						{
 							System.out.println("Spieler 0 inaktiv");
-						    return true;
+//						    return true;
 						}else{
-							return false;
+//							return false;
 						}
 		     }catch (Exception e){
 			    e.printStackTrace();
-			    return false;
+//			    return false;
 		 }
 	}
 		Lebenszeichen(long Meldung){
