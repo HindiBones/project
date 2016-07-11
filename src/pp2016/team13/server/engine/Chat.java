@@ -15,10 +15,11 @@ public class Chat {
 		 * Nachricht zum Chat hinzufügen
 		 */
 	public  boolean nachrichtEmpfangen(String nachricht){
-		chat.add(anzahlNachrichten, nachricht);
+		chat.add(nachricht);
 		return true;
 	
 	}
+	
 	/**
 	 * @author Marius
 	 * 

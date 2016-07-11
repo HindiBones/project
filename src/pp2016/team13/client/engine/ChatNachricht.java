@@ -29,6 +29,7 @@ public class ChatNachricht extends Nachricht{
 		case ("<#levelskip>"): istCheat = true;break;
 		case ("<#heiltrank>"): istCheat = true;break;
 		case ("<#trank>"): istCheat = true;break;
+		case ("<#schluessel>"): istCheat = true;break;
 		}
 		
 		return istCheat;
@@ -45,6 +46,7 @@ public class ChatNachricht extends Nachricht{
 			case ("<#levelskip>"): ergebnis = 3;break;
 			case ("<#heiltrank>"): ergebnis = 4;break;
 			case ("<#trank>"): ergebnis = 5;break;
+			case ("<#schluessel>"): ergebnis = 6;break;
 			}
 		}
 		

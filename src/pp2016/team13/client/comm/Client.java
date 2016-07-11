@@ -72,27 +72,7 @@ public class Client extends Paket {
 	}
 
 	// Ich bin noch da periodisch senden
-	public void run(){
-		try{
-			Thread.sleep(100);
-			System.out.println("alive");
-			  sendeNachricht(new Lebenszeichen(System.currentTimeMillis()));
-	    }
-		catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-	
-	private void sendeNachricht(Lebenszeichen lebenszeichen) throws IOException {
-		Paket meldung = new Paket(new ZeitNachricht (System.currentTimeMillis()));
-		oos = new ObjectOutputStream(cs.getOutputStream());
-		System.out.println("ObjectStream steht");
-		oos.writeObject(meldung);
-		System.out.println("Nachrichtentyp " + meldung.inhalt.getTyp());
-		oos.flush();
-		System.out.println("Client sendet an Server");
-	}
-	
+
 		public void SendeLogout(Paket msg) {
 			try{
 				oos = new ObjectOutputStream(cs.getOutputStream());

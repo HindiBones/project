@@ -9,7 +9,7 @@ import java.io.*;
 import java.net.*;
 import java.util.Date;
 import java.util.LinkedList;
-import pp2016.team13.client.comm.Lebenszeichen;
+
 import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.Cheat;
 import pp2016.team13.client.engine.FehlerNachricht;
@@ -73,14 +73,6 @@ public Server(int port){
 			System.out.println("Laeuft");
 			this.openServer = true;
 			while (this.openServer) {
-				if(login && (Lebenszeichen.run(S, letztesLebenszeichen.getTime()))){
-					this.openServer = false;
-					System.out.println("Server Timeout");
-					ServerS.close();
-					S.close();
-					System.exit(0);
-				}else{
-				}
 				handleconnection();
 			}
 		}
@@ -100,7 +92,7 @@ public Server(int port){
 				//System.out.println("Server empf�ngt message vom Client und versucht zu empfangen");
 				//System.out.println("Server versucht message vom Client zu verarbeiten");
 				n = (Paket)ois.readObject();
-				ServerList.add(n);
+				//ServerList.add(n);
 				System.out.println("Server empfaengt message vom Client und versucht zu empfangen");
 				System.out.println("Server versucht message vom Client zu verarbeiten");
 				Paket antwort = verarbeiteNachricht(n.getMessage());
@@ -116,6 +108,7 @@ public Server(int port){
 		}
 
 		
+		@SuppressWarnings("static-access")
 		public Paket verarbeiteNachricht(Nachricht n){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
@@ -129,7 +122,7 @@ public Server(int port){
 			case 5: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 6: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 7: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
-			case 8: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
+			case 8: antwortNachricht = new AntwortNachricht(spiel.verarbeiteClientNachricht(n, spiel));System.out.println(antwortNachricht.inOrdnung);break;
 			case 9: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
 			case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
@@ -138,6 +131,7 @@ public Server(int port){
 
 			}
 			Paket antwort = new Paket(antwortNachricht);
+				System.out.println(antwort.getMessage().getTyp());
 						return antwort;
 			}
 			catch(NullPointerException e){

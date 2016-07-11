@@ -104,6 +104,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 				
 				Thread.sleep(100);
 				fenster.Level = new Level(-1, null);
+				fenster.getMinimap().getChatFenster().textumfeld.setText("");
 				fenster.spielZuruecksetzen();
 				fenster.zeigeAnmeldung();
 				

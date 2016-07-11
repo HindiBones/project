@@ -28,10 +28,10 @@ public class NachrichtenVerwaltung {
 	}
 	
 	/**
+	 * Sendet eine Nachricht, fuegt sie in die Nachrichten-Queue ein
 	 * @author Julius
 	 * @param m: Nachricht, die der Client senden soll
 	 * 
-	 * Sendet eine Nachricht, fuegt sie in die Nachrichten-Queue ein
 	 * @return 
 	 */
 	public Paket sende(Nachricht m){
@@ -100,6 +100,7 @@ public class NachrichtenVerwaltung {
 			case 3: fenster.nextLevel();systemnachricht("Level \u00fcbersprungen!"); break;
 			case 4: fenster.spieler.setAnzahlHeiltraenke(fenster.spieler.getAnzahlHeiltraenke() + 10);systemnachricht("10 Heiltr\u00e4nke!");break;
 			case 5: fenster.spieler.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10); systemnachricht("10 Tr\u00e4nke!");break;
+			case 6: this.nimmSchluessel();systemnachricht("Schl\u00fcssel erhalten!");break;
 		}
 	}
 
@@ -233,10 +234,10 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = new Paket(new FehlerNachricht("Konnte keine Nachricht senden!"));
 		if(nachricht.istCheat()){
 			serverAntwort = sende(new Cheat(nachricht.getCheat()));
-			serverAntwort.getMessage().inOrdnung = true;
 		}
-		else
-		serverAntwort = sende(nachricht);
+		else{
+			serverAntwort = sende(nachricht);
+		}
 		auslesen(serverAntwort);
 		
 		return serverAntwort.getMessage().inOrdnung;
@@ -253,7 +254,7 @@ public class NachrichtenVerwaltung {
 		else
 		{
 			sende(new Nachricht(3));
-			return null;
+			return new Level(6, aktuellesLevel.levelInhalt);
 		}
 	}
 	

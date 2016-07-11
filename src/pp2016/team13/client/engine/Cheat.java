@@ -10,5 +10,6 @@ public class Cheat extends Nachricht {
 	public Cheat(int typ){
 		super(13);
 		this.cheattyp = typ;
+		this.inOrdnung = true;
 	}
 }

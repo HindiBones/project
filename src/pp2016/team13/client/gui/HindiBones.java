@@ -139,7 +139,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// entferne alles
 		highscoreAngezeigt = false;
-		client.socket.run();
 		spielfeldSichtbar = true;
 		this.remove(anmeldung);
 		this.remove(highscore);
@@ -903,11 +902,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
-					if(spielfeldSichtbar)
-						client.socket.run();
-					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
-						System.exit(0);
-					}
+//					if(spielfeldSichtbar)
+//						client.socket.run();
+//					if(!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)){
+//						System.exit(0);
+//					}
 
 				} catch (InterruptedException e) {
 				}
@@ -936,8 +935,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					getHighscore().repaint();
 					spielerInHighscore = true;
 				} else {
-					getSpielflaeche().repaint();
-					getMinimap().repaint();
+//					getSpielflaeche().repaint();
+//					getMinimap().repaint();
 				}
 			}
 
@@ -970,6 +969,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			System.out.println();
 			Level = client.levelWechseln();
 		}
+		if(Level.getLevelID() == 6)
+			spielende = true;
 		System.out.println("Level geladen!");
 	}
 
