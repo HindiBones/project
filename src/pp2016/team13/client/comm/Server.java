@@ -72,14 +72,9 @@ public Server(int port){
 		
 		public void run() throws IOException{
 			System.out.println("Laeuft");
-			Lebenszeichen L= new Lebenszeichen(System.currentTimeMillis());
-			
 			this.openServer = true;
 			while (this.openServer) {
-				if(login ){
-					
-					L.run(S, letztesLebenszeichen);
-					
+				if(login && (Lebenszeichen.run(S, letztesLebenszeichen.getTime()))){
 					this.openServer = false;
 					System.out.println("Server Timeout");
 					ServerS.close();
@@ -127,7 +122,7 @@ public Server(int port){
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
 			
-			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true; letztesLebenszeichen.setTime(System.currentTimeMillis()); break;
+			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true; letztesLebenszeichen.setTime(System.currentTimeMillis());; break;
 			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
