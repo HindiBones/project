@@ -4,6 +4,17 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+/**
+ * 
+ * @author Cigdem
+ * @param size: Spielfeldgroesse
+ * @param map: speichert integer
+ * @param kDirUp, kDirDown, kDirRight, kDirLeft: Integerzuordnungen für Vergleiche in welche Richtung
+ * @param kDirFirst, kDirLast: Erste und Letzte Richtung
+ * @param startingPoint: Startpunkt nicht gesetzt
+ * @param destinationPoint: Zielpunkt nicht gesetzt
+ * @param currentPosition: wird gebraucht wenn die Karte durchlaufen wird
+ */
 
 public class FloodFill {
 	private int size;
@@ -19,10 +30,7 @@ public class FloodFill {
 	private static Point currentPosition = null;
 	
 	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Heiltrank, 5=Schluessel, 6 = Tuer,7 = Schutztrank
-	/**
-	 * @author Cigdem
-	 * 
-	 */
+
 	public static void main (String[] args){
 		FloodFill Labyrinth = new FloodFill (10);
 		for (int i=0 ; i<Labyrinth.size; i++)
@@ -35,7 +43,7 @@ public class FloodFill {
 	}
 	/**
 	 * @author Cigdem
-	 * @param size 
+	 * @param size: legt die Groesse des Labyrinths fest 
 	 */
 
 	//Level Inhalt : 0=Wand, 1 = Boden, 2 = Charakter, 3 = Monster, 4 = Trank, 5=Schluessel, 6 = Tuer,7 = Trank2

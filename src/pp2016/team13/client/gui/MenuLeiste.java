@@ -97,6 +97,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		} else if (e.getSource() == steuerung) {
 			fenster.zeigeSteuerung();
 		}else if (e.getSource()== ausloggen){
+			fenster.spielfeldSichtbar = false; 
 			
 			
 			try {

@@ -25,11 +25,11 @@ public class Spielflaeche extends JPanel {
 	public int wechselY=0;
   
 	/**
-	 * @author Seyma 
-	 * @param fenster : Fenster wird festgelegt fuer das Panel
+	 *
 	 * 
 	 * Erzeugt ein Panel auf dem die Spielflaeche gezeichnet wird
-	 * 
+	 * @author Seyma 
+	 * @param fenster : Fenster wird festgelegt fuer das Panel
 	 */
 	public Spielflaeche(HindiBones fenster) {
 		
@@ -64,18 +64,18 @@ public class Spielflaeche extends JPanel {
 	/**
 	 * 
 	 *  
-	 * @author Seyma Keser
+	 * 
 	 *  
 	 *  
 	 * (Mitscrollend)
 	 * Meine Figur Zentriert 
-	 * Bei jeder Bewegung und berührung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
+	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
 	 * Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
 	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an)
 	 * 
-	 *
+	 * @author Seyma Keser
 	 */
 	int verschiebenx=0;
 	int verschiebeny=0;
@@ -96,7 +96,7 @@ public class Spielflaeche extends JPanel {
 	/**
 	 * @author Seyma 
 	 * 
-	 * Setzt überall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
+	 * Setzt �berall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
 	 * (die monsterliste wird dann bei spaeter aufgerufen um die Monster zu zeichnen)
 	 * 
 	 */
@@ -122,8 +122,8 @@ public class Spielflaeche extends JPanel {
 	/**
 	 * @author Seyma
 	 * 
-	 * Die Position der Offenen Türe bei 2 wird als Start Position des Spielers gesetzt
-	 * (muss wie genMonster() außerhalb der paint Mehtode passieren, damit die monster und Spieler nicht immer auf der Selben
+	 * Die Position der Offenen T�re bei 2 wird als Start Position des Spielers gesetzt
+	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die monster und Spieler nicht immer auf der Selben
 	 * Position gezeichnet werden durch Repaint())
 	 * 
 	 */
@@ -149,7 +149,14 @@ public class Spielflaeche extends JPanel {
 	 *
 	 *Rest ist die Generierung der Spielflaeche durch abfrage ueber den Client welcher inhalt sich auf welcher Koordinate
 	 *Befindet, wird ein Bild gezeichnet. (Grundgeruest vom urspruenglichen Spiel Code)
-	 * 
+	 *
+	 * (Mitscrollend)
+	 * Meine Figur Zentriert 
+	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
+	 * Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
+	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
+	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
+	 * meine Variablen, sie passen sich meiner Spieler Figur an) 
 	 * 
 	 * 
 	 */
