@@ -73,7 +73,6 @@ public class Client extends Paket {
   return serverAntwort;
  }
 
-<<<<<<< HEAD
 	// Ich bin noch da periodisch senden
 
 		public void SendeLogout(Paket msg) {
@@ -89,20 +88,3 @@ public class Client extends Paket {
 			}
 		}
 	 }
-=======
- 
-  public void SendeLogout(Paket msg) {
-   try{
-    oos = new ObjectOutputStream(cs.getOutputStream());
-    System.out.println("ObjectStream steht");
-    oos.writeObject(msg);
-    System.out.println(msg.inhalt.getTyp());
-    oos.flush();
-   }
-   catch(IOException e){
-    e.printStackTrace();
-   }
-  }
-
-  }
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
