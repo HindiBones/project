@@ -55,33 +55,12 @@ public Server(int port){
 			System.out.println("Starte Server");
 //			S = ServerS.accept();
 //			System.out.println("Starte Server");
-			run();
 			
 
 		}catch(IOException e){
 			System.out.println("Funkt nicht");
 		}}}
 
-	
-		
-
-		
-		public void run() throws IOException{
-			System.out.println("Laeuft");
-			
-			this.openServer = true;
-			while (this.openServer) {
-				if(login){
-					this.openServer = false;
-					System.out.println("Server Timeout");
-					ServerS.close();
-					S.close();
-					System.exit(0);
-				}else{
-				}
-				handleconnection();
-			}
-		}
 		
 		
 		// eingehende Verbindung wird verarbeitet
@@ -118,7 +97,6 @@ public Server(int port){
 			try{
 			Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
 			switch(n.getTyp()){
-			
 			case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true;break;
 			case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
 			case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
