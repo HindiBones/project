@@ -10,7 +10,7 @@ public class Labyrinth {
 	private int size = 19;
 	public int [][] map = new int [size][size];
 	static Koordinaten [] bodenplatten;
-	static Koordinaten [] monsterplatten;
+
 /**
  * @author Cigdem
  * bestimmt Anzahl Heiltränke, Schutztränke und Monster.
@@ -98,22 +98,16 @@ public class Labyrinth {
 			map[bodenplatten[zz5].xKoordinate][bodenplatten[zz5].yKoordinate]= 3;
 			}
 					
-		// Speichere alle Felder die Monster sind in Monsterplatten
-		monsterplatten = new Koordinaten [size*size];
-		int zaehlerMonster = 0;
-			for (int i = 0; i< size ; i++){
-				for (int j = 0 ; j< size ; j++){
-					if (map[i][j] == 3){
-						monsterplatten[zaehlerMonster] = new Koordinaten (i, j);
-								zaehlerMonster++;
-							}
-						}
+
+//	 	Zufaellige Position des Schluessels
+			int zz6 = (int)(Math.random()*zaehler)-1;;
+				for(int i = 0; i <= AnzMonster; i++){
+					zufallsZahl = (Math.random()*zaehler)-1;
+					while (zz6 == zz1 ||zz6 == zz2 || zz6 == zz3|| zz6 == zz4|| zz6 == zz5){
+						zufallsZahl = (Math.random()*zaehler)-1;
 					}
-		//	Position Schluessel
-		zufallsZahl = (Math.random()*zaehlerMonster)-1;
-			int zz6 = (int) zufallsZahl;
-		map[monsterplatten[zz6].xKoordinate][monsterplatten[zz6].yKoordinate]= 5;
-						
+				map[bodenplatten[zz6].xKoordinate][bodenplatten[zz6].yKoordinate]= 5;
+				}				
 		
 		
 	
