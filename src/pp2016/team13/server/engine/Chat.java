@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Klasse, die den Chat verwaltet Einzelne Nachrichten werden als Listenelemente
  * gespeichert
  * 
- * @author Marius
+ * @author <Fiehn, Marius, 6024602>
  *
  */
 public class Chat {
@@ -18,11 +18,9 @@ public class Chat {
 	}
 
 	/**
-	 * 
-	 * 
 	 * Nachricht zum Chat hinzufuegen
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * @param nachricht:
 	 *            ankommende Chat Nachricht
 	 */
@@ -32,21 +30,18 @@ public class Chat {
 	}
 
 	/**
-	 *
-	 * 
 	 * Chatverlauf senden
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public String[] chat() {
 		return (String[]) chat.toArray();
 	}
 
 	/**
-	 * 
 	 * Anzahl der bisher gesendeten Chat Nachrichten wird festgelegt
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public static void setAnzahlNachrichten(int i) {
 		anzahlNachrichten = i;
