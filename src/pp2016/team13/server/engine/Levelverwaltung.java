@@ -69,13 +69,13 @@ public class Levelverwaltung {
   levelSpeicherort = new int [anzahlLevel][groesse][groesse];
   levelInhalt = new int [groesse][groesse];
   //Level anlegen
-  int levelZaehler = 0;
+  int levelZaehler = 1;
   //Vom Levelgenerator ankommendes zweidimensionales Integer Array
-  while (levelZaehler < anzahlLevel){
-   Labyrinth map = new Labyrinth();
+  while (levelZaehler < anzahlLevel+1){
+   Labyrinth map = new Labyrinth(levelZaehler);
    for (int i = 0; i<groesse-1; i++){
     for (int j = 0; j<groesse-1; j++){
-     levelSpeicherort[levelZaehler][i][j] = map.map[i][j];
+     levelSpeicherort[levelZaehler-1][i][j] = map.map[i][j];
      levelInhalt[i][j] = map.map[i][j];
     }
    }
@@ -92,7 +92,7 @@ public class Levelverwaltung {
   int trankID = 0;
   //Definierung der Arrays
   spielerListe = new Spieler[anzahlLevel];
-  gegnerListe = new Monster [anzahlLevel+1];
+  gegnerListe = new Monster [anzahlLevel*3];
   trankListe = new Heiltrank [anzahlLevel];
   
   //Das Level durchsuchen, um

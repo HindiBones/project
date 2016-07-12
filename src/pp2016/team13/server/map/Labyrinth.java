@@ -18,10 +18,10 @@ public class Labyrinth {
  * @author Cigdem
  * 
  */
-	public Labyrinth (){
+	public Labyrinth (int levelnummer){
 		int AnzHeiltrank = 2;
 		int AnzSchutztrank = 1;
-		int AnzMonster = (int)((Math.random()) * 5 + 1);;
+		int AnzMonster = (int)((Math.random()) * 2 * levelnummer + 1);;
 		bodenplatten = new Koordinaten [size*size];
 /**
  * 
@@ -102,13 +102,14 @@ public class Labyrinth {
 
 //	 	Zufaellige Position des Schluessels
 			int zz6 = (int)(Math.random()*zaehler)-1;;
-				for(int i = 0; i <= AnzMonster; i++){
 					zufallsZahl = (Math.random()*zaehler)-1;
 					while (zz6 == zz1 ||zz6 == zz2 || zz6 == zz3|| zz6 == zz4|| zz6 == zz5){
 						zufallsZahl = (Math.random()*zaehler)-1;
-					}
+						zz6 = (int) ((Math.random()*zaehler)-1);
+						}
+					
 				map[bodenplatten[zz6].xKoordinate][bodenplatten[zz6].yKoordinate]= 5;
-				}				
+							
 		
 		
 	
