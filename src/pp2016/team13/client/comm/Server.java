@@ -117,6 +117,7 @@ public Server(int port){
 
   /**
    * Nachricht wird verarbeitet
+   * @author Kirthika Jeyakumar
    * @param n : Nachricht
    * @return gibt die Antwort zurück
    */

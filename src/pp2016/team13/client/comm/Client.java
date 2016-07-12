@@ -50,7 +50,8 @@ public class Client extends Paket {
  }
  
  /**
-  * 
+  * Nachricht wird an Server gesendet
+  * @author Kirthika Jeyakumar
   * @param msg Message, das gesendet wird
   * @return Serverantwort wird zurueckgegeben
   */
