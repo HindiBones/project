@@ -16,8 +16,7 @@ public class Paket implements Serializable {
 	public Nachricht inhalt;
 
 	/**
-	 * Erstellt ein Objekt der Klasse Paket.
-	 * Setzt die Zeit auf 0.
+	 * Erstellt ein Objekt der Klasse Paket. Setzt die Zeit auf 0.
 	 * 
 	 * @author Kirthika Jeyakumar
 	 */
@@ -26,11 +25,11 @@ public class Paket implements Serializable {
 	}
 
 	/**
-	 * Erstellt ein Objekt der Klasse Paket.
-	 * Setzt die Zeit auf 0 und die Nachricht des Pakets auf nachricht
+	 * Erstellt ein Objekt der Klasse Paket. Setzt die Zeit auf 0 und die
+	 * Nachricht des Pakets auf nachricht
 	 * 
 	 * @param nachricht
-	 * 				  : Nachricht, die an das Paket uebergeben wird
+	 *            : Nachricht, die an das Paket uebergeben wird
 	 * 
 	 * @author Kirthika Jeyakumar
 	 */
