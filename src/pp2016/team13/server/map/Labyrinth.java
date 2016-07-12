@@ -29,10 +29,12 @@ public class Labyrinth {
  * FloodFill fuellt die map auf
  * @author Cigdem
  */
+
 		FloodFill auffuellen = new FloodFill(groesse);
 		for (int i = 0; i < groesse-1 ; i++){
 			for (int j = 0 ; j< groesse-1 ; j++){
 				this.karte [i][j] = auffuellen.karte[i][j];
+
 			}
 		}
 /**
