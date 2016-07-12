@@ -27,6 +27,8 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  *
  */
 public class Client extends Paket {
+
+	private static final long serialVersionUID = 1L;
 	// Liste wird genriert fuer die Nachrichten
 	LinkedList<Paket> clientListe = new LinkedList<Paket>();
 	// einzelne Streams werden erzeugt
