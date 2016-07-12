@@ -1,7 +1,6 @@
 package pp2016.team13.server.engine;
 
 import java.io.IOException;
-
 import pp2016.team13.client.engine.*;
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
@@ -68,7 +67,6 @@ public class Levelverwaltung {
 	// Koordinaten der Tuer
 	static int tuerX;
 	static int tuerY;
-
 	static Chat chat;
 
 	/**
@@ -215,7 +213,6 @@ public class Levelverwaltung {
 	 */
 	public void setLevelInhalt(int levelID, int x, int y, int inhalt, Levelverwaltung spiel) {
 		levelInhalt[x][y] = inhalt;
-
 		// Wenn es um den Charakter geht ; der inhalt = 2 ist, dann
 		if (inhalt == 2) {
 			int spielerID = 0;
@@ -310,7 +307,6 @@ public class Levelverwaltung {
 	 *            zur�ck. Je nachdem wird eine bestimmte Aussage ausgegeben
 	 */
 	public static boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception {
-
 		switch (Nachricht.getTyp()) {
 		/*
 		 * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu
@@ -327,8 +323,7 @@ public class Levelverwaltung {
 		case 2:
 			return behandleTrankaufnahme(Nachricht, spiel); // Trankaufnahme
 		case 3:
-			return behandleLevelGeschafft(Nachricht.getID(), spiel); // Level
-																		// geschafft
+			return behandleLevelGeschafft(Nachricht.getID(), spiel); // Level geschafft																
 		case 4:
 			return behandleschluesselaufgehoben(Nachricht, spiel);// Schluesselaufnahme
 		case 5:
@@ -337,11 +332,9 @@ public class Levelverwaltung {
 		case 6:
 			return true;// Level empfangen
 		case 7:
-			return behandleLevelUebersprungen(spiel);// Spieler �berspringt
-														// Level
+			return behandleLevelUebersprungen(spiel);// Spieler ueberspringt Level
 		case 8:
-			return chat.nachrichtEmpfangen(Nachricht.nachricht);// Chat
-																// Nachricht
+			return chat.nachrichtEmpfangen(Nachricht.nachricht);// Chat Nachricht																
 		case 9:
 			return behandleKampfnachrichten((KampfNachricht) Nachricht, spiel);// Kampnachricht
 		case 13:
@@ -350,9 +343,13 @@ public class Levelverwaltung {
 		return false;
 	}
 
+	/**
+	 * Abwicklung der Cheats ueber den Client
+	 * Auswirkungen der Cheats werden ueber andere Nachrichten versendet
+	 * 
+	 * @param nachricht
+	 */
 	private static void behandleCheat(Nachricht nachricht) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -363,10 +360,8 @@ public class Levelverwaltung {
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
 	 * 
-	 *            Behandelt die Nachrichten, die eine Spielerbewegung
-	 *            beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
-	 *            diese Position gehen darf. danach wird seine Position
-	 *            geaendert
+	 *Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
+	 *diese Position gehen darf. danach wird seine Position geaendert
 	 */
 	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -442,8 +437,7 @@ public class Levelverwaltung {
 		boolean moeglich;
 		if (spiel.spielerListe[spielerID].hatSchluessel() && spiel.spielerListe[spielerID].getXPos() == tuerX
 				&& spiel.spielerListe[spielerID].getYPos() == tuerY) {
-			// Level wechseln -- wenn Levelgenerator da ist. Moeglichkeit
-			// besteht, siehe Test
+			// Level wechseln
 			moeglich = true;
 			levelID++;
 			for (int i = 0; i < groesse; i++) {

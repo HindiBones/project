@@ -1,5 +1,10 @@
 package pp2016.team13.shared;
 
+/**
+ * 
+ * @author Marius, Rest war gegeben
+ *
+ */
 public class Heiltrank extends Spielelement {
 	private int wirkung;
 	
