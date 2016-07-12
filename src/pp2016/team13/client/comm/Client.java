@@ -18,7 +18,7 @@ import pp2016.team13.client.engine.ZeitNachricht;
 
 /**
  * 
- * Klasse Client - Stellt die Verbindung zum Server da und sendet Nachrichten
+ * Klasse Client: Stellt die Verbindung zum Server da und sendet Nachrichten
  * @author Kirthika Jeyakumar
  * @param cs: Socket
  * @param binAmLeben: Ich bin noch da Nachricht - nicht implementiert

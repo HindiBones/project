@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 import pp2016.team13.client.engine.Nachricht;
 /**
- * Paket, das gesendet wird 
+ * Paket, das gesendet wird
  * @author Kirthika Jeyakumar
  * 
  */

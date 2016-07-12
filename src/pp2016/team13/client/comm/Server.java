@@ -1,7 +1,7 @@
 package pp2016.team13.client.comm;
 
 /**
- * Server für die Verbindung
+ * Server wird erzeugt, Verbindungen werden verarbeitet
  * @author Kirthika Jeyakumar
  * 
  */
