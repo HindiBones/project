@@ -54,7 +54,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public Paket sende(Nachricht nachricht) {
-		return socket.SendeAnServer(new Paket(nachricht));
+		return socket.sendeAnServer(new Paket(nachricht));
 	}
 
 	/**

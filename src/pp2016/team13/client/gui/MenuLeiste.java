@@ -107,7 +107,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			
 		
 		} else if (e.getSource() == beenden) {
-			fenster.client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
+			fenster.client.socket.sendeLogout(new Paket(new AusloggenNachricht()));
 			System.exit(0);
 		
 			

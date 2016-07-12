@@ -172,7 +172,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	    public void windowClosing(WindowEvent e) {
 	    	if(client.socket.cs.isBound())
 	    	{
-	    		client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
+	    		client.socket.sendeLogout(new Paket(new AusloggenNachricht()));
 	    	}
 	        System.exit(0);
 	    }

@@ -14,15 +14,15 @@ import pp2016.team13.shared.Nachrichten.Nachricht;
 public class Paket implements Serializable{
 
 		private static final long serialVersionUID = 1;
-		protected long time;
+		protected long zeit;
 		public Nachricht inhalt;
 		public Paket(){
 			//this.time=System.currentTimeMillis();
-			this.time = 0;
+			this.zeit = 0;
 		}
 		public Paket(Nachricht n){
 			//this.time=System.currentTimeMillis();
-			this.time = 0;
+			this.zeit = 0;
 			this.inhalt = n;
 		}
 		
