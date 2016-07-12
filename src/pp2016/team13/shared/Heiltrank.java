@@ -3,7 +3,7 @@ package pp2016.team13.shared;
 public class Heiltrank extends Spielelement {
 	private int wirkung;
 	
-	//Fuer die Server Engine ; f�r die Trankliste
+	//Fuer die Server Engine ; fuer die Trankliste
 	 public int posX;
 	 public int posY;
 	 public boolean aufgehoben;
@@ -23,7 +23,7 @@ public class Heiltrank extends Spielelement {
 			setPosY(i);
 		}
 
-		// Methoden f�r die Server Engine
+		// Methoden fuer die Server Engine
 		//Keine setter-Methode fuer die Trank-ID, da diese nicht veraendert werden soll
 						 
 		//getter-Methode fuer die Trank-ID;

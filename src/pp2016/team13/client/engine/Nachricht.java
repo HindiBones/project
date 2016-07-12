@@ -36,10 +36,12 @@ public class Nachricht implements Serializable {
 	
 	// Nachricht, die gesendet wird, wenn das Level geschafft wurde - Nur zum Testen
 	/**
+	 *
+	 * Erstellt eine Nachricht. Je nach Typ reagieren Server/Client entsprechend.
+	 * 
 	 * @author Julius
 	 * @param t: Typ der Nachricht
 	 * 
-	 * Erstellt eine Nachricht. Je nach Typ reagieren Server/Client entsprechend.
 	 */
 	public Nachricht (int typ, String string){
 		this.typ=typ;

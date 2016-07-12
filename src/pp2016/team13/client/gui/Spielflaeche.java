@@ -94,11 +94,11 @@ public class Spielflaeche extends JPanel {
 	int Monstery;
 	
 	/**
-	 * @author Seyma 
 	 * 
-	 * Setzt �berall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
+	 * Setzt ueberall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
 	 * (die monsterliste wird dann bei spaeter aufgerufen um die Monster zu zeichnen)
 	 * 
+	 * @author Seyma 
 	 */
 	public void genMonster(){
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
@@ -117,11 +117,12 @@ public class Spielflaeche extends JPanel {
 		
 	}
 	/**
-	 * @author Seyma
 	 * 
-	 * Die Position der Offenen T�re bei 2 wird als Start Position des Spielers gesetzt
-	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die monster und Spieler nicht immer auf der Selben
+	 * Die Position der Offenen Tuer bei 2 wird als Start Position des Spielers gesetzt
+	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die Monster und Spieler nicht immer auf der Selben
 	 * Position gezeichnet werden durch Repaint())
+	 * 
+	 * @author Seyma
 	 * 
 	 */
 	public void posSpieler(){
@@ -137,7 +138,7 @@ public class Spielflaeche extends JPanel {
 	
 	}
 	/**
-	 * @author Seyma 
+	 * 
 	 * 
 	 *Meine Felder Generieren sich im ersten Schritt um meinen Spieler
 	 *Grund: Mein Spieler wird in die Mitte gesetzt (d.h Pos X= 3 Pos Y=3 Aber Bezogen auf die Sichtbare Flaeche)
@@ -155,7 +156,7 @@ public class Spielflaeche extends JPanel {
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an) 
 	 * 
-	 * 
+	 * @author Seyma 
 	 */
 	public void paint(Graphics g) {
 		if (anfangszustand==0){
@@ -309,10 +310,11 @@ public class Spielflaeche extends JPanel {
 
 	/**
 	 * 
-	 * @author Seyma Keser + (unbekannt)
 	 * Methode vom Urspruenglichen Code uebernommen + Erweiterung durch einbauen der Verschiebungen fuer 
 	 * scrollenden Bildschirm
 	 * 
+	 * 
+	 * @author Seyma Keser + (unbekannt)
 	 */
 	private void drawMonster(Graphics g, Monster m) {
 		// Monster Health Points
@@ -326,9 +328,10 @@ public class Spielflaeche extends JPanel {
 		}
 	}
 	/**
-	 * @author Unbekannt 
 	 * 
 	 * Methode uebernommen nichts veraendert
+	 * 
+	 * @author Unbekannt 
 	 * 
 	 */
 	private boolean inRange(int i, int j) {	

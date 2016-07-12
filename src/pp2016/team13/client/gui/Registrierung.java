@@ -102,15 +102,15 @@ public class Registrierung extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Funktioniert im Grunde wie bei der Anmeldung. Unterschied: Für die 
+	 * Funktioniert im Grunde wie bei der Anmeldung. Unterschied: Fuer die 
 	 * Sicherheit, wird das Passwort 2 mal abgefragt (Wahl eines Passwort und Wiederholung
 	 * 
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
-		//Eingaben sollen sp�ter im Client gepspeichert werden
+		//Eingaben sollen spaeter im Client gepspeichert werden
 		//Registrierung vergleich Passwort und Wiederholtes Psw
-		//auf gleichheit und das �berhaupt ein Passwort eingegeben wurde
+		//auf gleichheit und das ueberhaupt ein Passwort eingegeben wurde
 		
 		Verschluesselung verschluesseln= new Verschluesselung();
 		if(e.getSource()==registrierButton){
@@ -130,10 +130,10 @@ public class Registrierung extends JFrame implements ActionListener{
 				e2.printStackTrace();
 			}
 			
-			//Beispiel Versuch wird sp�ter mit client erweitert
+			//Beispiel Versuch wird spaeter mit client erweitert
 			if((pwd.isEmpty()==false ) && (pwd.equals(wpwd))){
 				anmeldung1= true;
-				//Systemnachricht: Best�tigung
+				//Systemnachricht: Bestaetigung
 				LoginNachricht registrierung = new LoginNachricht(nickname, pwd, 1);
 				boolean funktioniert = fenster.client.einloggen(registrierung);
 				if(funktioniert) JOptionPane.showMessageDialog(this, "Ihr Benutzername: " + nickname + " ,wurde registriert ");

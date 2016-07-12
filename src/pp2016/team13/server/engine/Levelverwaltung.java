@@ -106,13 +106,13 @@ public class Levelverwaltung {
      spielerID++;
      
     }else if(levelInhalt[i][j] == 3){
-     //Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank tr�gt
+     //Monster zu finden und ihnen eine ID zuzuordnen ; festlegen, ob Monster Trank traegt
      Monster gegner = new Monster (monsterID, monsterLebenspunkte, monsterSchaden, false, j, i);
      gegnerListe [monsterID] = gegner;
      monsterID++;
      
     }else if(levelInhalt[i][j] == 4){
-     //Tr�nke zu finden und ihnen ihre ID zuzuordnen
+     //Traenke zu finden und ihnen ihre ID zuzuordnen
      Heiltrank trank = new Heiltrank (trankID , j , i);
      trankListe [trankID] = trank;
      trankID ++;
@@ -132,33 +132,40 @@ public class Levelverwaltung {
  }
  
  /**
-	 * @author Marius
-	 * 
+	 *
 	 * Getter Methoden die Spieler Liste
+	 * 
+	 * @author Marius
 	 */
  public  Spieler [] getSpielerListe(){
   return spielerListe;
  }
  
  /**
-	 * @author Marius
+	 * 
 	 * 
 	 * Getter Methode fuer die Gegner Liste
+	 * 
+	 * @author Marius
 	 */
  public  Monster [] getGegnerListe(){
   return gegnerListe;
  }
  
  /**
-	 * @author Marius
+	 * 
 	 * 
 	 * Getter Methode fuer die Trank Liste
+	 * 
+	 * @author Marius
 	 */
  public  Heiltrank [] getTrankListe(){
   return trankListe;
  }
  
  /**
+	 * setter-Methode, um bestimmte Felder im Level zu veraendern
+	 * 
 	 * @author Marius
 	 * @param levelID: Identifikationszahl des Levels
 	 * @param x: x-Koordinate fuer die Position im Level
@@ -166,7 +173,7 @@ public class Levelverwaltung {
 	 * @param inhalt: Zelle, die an diesem Punkt im Labyrinth ist (Wand = 0, Boden = 1, ...)
 	 * @param spiel: Die zu verwaltende Levelverwaltung
 	 * 
-	 * setter-Methode, um bestimmte Felder im Level zu veraendern
+	 * 
 	 */
  public  void setLevelInhalt(int levelID, int x, int y, int inhalt, Levelverwaltung spiel){
   levelInhalt[x][y] = inhalt;
@@ -174,11 +181,11 @@ public class Levelverwaltung {
   //Wenn es um den Charakter geht ; der inhalt = 2 ist, dann
   if(inhalt == 2){
    int spielerID = 0;
-     //wird seine neue Position in die Spielerliste �bertragen
+     //wird seine neue Position in die Spielerliste uebertragen
      spiel.spielerListe[spielerID].setXPos(x);
      spiel.spielerListe[spielerID].setYPos(y);
   }else if (inhalt == 3){
-   //Erklaerung f�r die Monstersuche ist identisch zur Erklaerung in der Spielersuche
+   //Erklaerung fuer die Monstersuche ist identisch zur Erklaerung in der Spielersuche
    boolean gefunden = false;
    int gegnerID = 0;
    while(!gefunden){

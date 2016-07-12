@@ -29,7 +29,7 @@ public class SeitenLeiste extends JPanel {
 	public SeitenLeiste(HindiBones fenster) {
 		this.fenster = fenster;
 		 //Benutzer Name Eingabe Feld
-		 ChatText = new JTextField(); //Erzeugen eines Textfeldes f�r Nicknamen
+		 ChatText = new JTextField(); //Erzeugen eines Textfeldes fuer Nicknamen
 		p= new ChatFenster("Chat", this);
 		this.setLayout(new BorderLayout());
 		this.add(p,BorderLayout.SOUTH);
@@ -103,13 +103,13 @@ public class SeitenLeiste extends JPanel {
 						
 						
 					}if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-						//System.out.println("Sollte Offene Türe zechenen");
+						//System.out.println("Sollte Offene Tuere zeichnen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerOffen2, i * (fenster.BOX2) , j
 									* (fenster.BOX2), null);
 					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
-						//System.out.println("Sollte Offene Türe zechenen");
+						//System.out.println("Sollte Offene Tuere zeichnen");
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerZu2, i * (fenster.BOX2), j
@@ -119,7 +119,7 @@ public class SeitenLeiste extends JPanel {
 
 		}
 		
-		//Roter Punkt- f�r Hindi Bones
+		//Roter Punkt- fuer Hindi Bones
 		g.drawImage(fenster.spieler2.getImage(), fenster.spieler.getXPos()
 				* fenster.BOX2, fenster.spieler.getYPos() * fenster.BOX2, null);
 
@@ -159,7 +159,7 @@ public class SeitenLeiste extends JPanel {
 		int itemKx= 10;
 		int Luecke=60;
 		
-		//Item Hintergrund Kaestchen 3x (Falls sp�ter noch ein Item hinzugef�gt wird)
+		//Item Hintergrund Kaestchen 3x (Falls spaeter noch ein Item hinzugefuegt wird)
 		g.setColor(Color.GRAY);
 		g.fillRect(itemKx, itemKy,40, 40);
 		g.setColor(Color.BLACK);
@@ -195,7 +195,7 @@ public class SeitenLeiste extends JPanel {
 		int anzahlHeiltraenke = fenster.spieler.getAnzahlHeiltraenke();
 		String s;
 		
-		//Grüner Heiltrank
+		//Gruener Heiltrank
 		if (anzahlHeiltraenke < 10)
 			s = "  " + anzahlHeiltraenke;
 		else
@@ -203,7 +203,7 @@ public class SeitenLeiste extends JPanel {
 		g.drawString(s, itemKx-5, itemKy+12);
 		g.drawImage(heiltrank2, itemKx-2,itemKy, null);//63
 		
-		//Blauer Heiltrank
+		//Blauer Schutztrank
 		if (anzahlTrank < 10)
 			s = "  " + anzahlTrank;
 		else
@@ -242,7 +242,7 @@ public class SeitenLeiste extends JPanel {
 
 		
 		this.add(ChatText);
-		 ChatText.setBounds(0,410,210,35);//Gr��e+Koord. wird festgelegt 
+		 ChatText.setBounds(0,410,210,35);//Groesse+Koord. wird festgelegt 
 		 ChatText.setFocusable(true);
 		 this.setVisible(true);
 		 

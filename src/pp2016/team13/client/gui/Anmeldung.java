@@ -105,16 +105,16 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 	
 	/**
+	 * 
+	 * 
+	 * Beim druecken auf den Button anmelden, sollen eingaben verglichen werden, anschliessend (vorr. richtige eingabe)
+	 * soll das Spielfenster geoeffnet werden.
+	 * 
+	 * Alternativ Button Registrierung soll Register Klasse oeffnen siehe rest da kommt auch die Verschluesselung zum Einsatz.
+	 * Hier wird die Eingabe im Server verschluesselt und verglichen mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
+	 * 
+	 * 
 	 * @author Seyma Keser
-	 * 
-	 * Beim Drücken auf den Button anmelden, sollen eingaben verglichen werden, anschließend (vorr. richtige eingabe)
-	 * soll das Spielfenster geöffnet werden.
-	 * 
-	 * Alternativ Button Registrierung soll Register Klasse öffnen siehe rest da kommt auch die Verschluesselung zum Einsatz.
-	 * Hier wird die Eingabe im Server Verschlüsselt und verglichen mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
-	 * 
-	 * 
-	 * 
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {

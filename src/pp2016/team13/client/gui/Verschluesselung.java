@@ -15,7 +15,7 @@ public class Verschluesselung {
 	
 
 	    public String verschluesseln(String passwort, String benutzername)throws Exception{
-	    	//mein schlüssel zum entschlüsseln 
+	    	//mein schluessel zum entschluesseln 
 	    	String keyStr = benutzername;
 	    	// byte-Array erzeugen
 	    	byte[] key = (keyStr).getBytes("UTF-8");

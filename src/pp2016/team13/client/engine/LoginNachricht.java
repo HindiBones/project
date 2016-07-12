@@ -9,11 +9,11 @@ public class LoginNachricht extends Nachricht {
 
 	// Einlognachricht, sendet eingegebenen Benutzernamen und Passwort an den Server, um zu testen, ob der User mit dem Passwort existiert
 	/**
+	 * Erstellt eine LoginNachricht, die Benutzername und Passwort enthalten.
+	 * 
 	 * @author Julius
 	 * @param name: Benutzername
 	 * @param pw: Passwort
-	 * 
-	 * Erstellt eine LoginNachricht, die Benutzername und Passwort enthalten.
 	 */
 	public LoginNachricht (String name, String pw, int typ){
 		super(0);
