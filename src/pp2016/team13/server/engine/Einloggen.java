@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 /**
  * Klasse, die den einlogprozess auf serverseite verwaltet
  * 
- * @author Marius
+ * @author <Fiehn, Marius, 6024602>
  *
  */
 public class Einloggen {
@@ -24,7 +24,7 @@ public class Einloggen {
 	 * Login Methode liest die in der externen Datei gespeicherten Nutzerdaten
 	 * ein und vergleicht dann die Nutzerdaten mit den eingespeicherten Werten
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param benutzername:
 	 *            String mit dem Benutzernamen als Inhalt
@@ -75,6 +75,8 @@ public class Einloggen {
 
 	/**
 	 * Registrierungs Methode auf Server Seite
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param benutzername:
 	 *            String mit dem Benutzernamen als Inhalt
