@@ -343,9 +343,13 @@ public class Levelverwaltung {
 		return false;
 	}
 
+	/**
+	 * Abwicklung der Cheats ueber den Client
+	 * Auswirkungen der Cheats werden ueber andere Nachrichten versendet
+	 * 
+	 * @param nachricht
+	 */
 	private static void behandleCheat(Nachricht nachricht) {
-		
-
 	}
 
 	/**
@@ -356,10 +360,8 @@ public class Levelverwaltung {
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
 	 * 
-	 *            Behandelt die Nachrichten, die eine Spielerbewegung
-	 *            beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
-	 *            diese Position gehen darf. danach wird seine Position
-	 *            geaendert
+	 *Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
+	 *diese Position gehen darf. danach wird seine Position geaendert
 	 */
 	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -435,8 +437,7 @@ public class Levelverwaltung {
 		boolean moeglich;
 		if (spiel.spielerListe[spielerID].hatSchluessel() && spiel.spielerListe[spielerID].getXPos() == tuerX
 				&& spiel.spielerListe[spielerID].getYPos() == tuerY) {
-			// Level wechseln -- wenn Levelgenerator da ist. Moeglichkeit
-			// besteht, siehe Test
+			// Level wechseln
 			moeglich = true;
 			levelID++;
 			for (int i = 0; i < groesse; i++) {
