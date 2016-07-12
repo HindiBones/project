@@ -322,7 +322,6 @@ public class Levelverwaltung {
 		case 4:
 			return behandleschluesselaufgehoben(Nachricht, spiel);// Schluesselaufnahme
 		case 5:
-			System.out.println(Nachricht.nachricht);
 			return true;// Fehlermeldung
 		case 6:
 			return true;// Level empfangen
