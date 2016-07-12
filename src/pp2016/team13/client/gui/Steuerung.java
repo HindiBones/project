@@ -13,7 +13,7 @@ public class Steuerung extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 	Bild fuer Steuerungs Erklaerungen erstellt, wird bei Paint gezeichnet
+	 * Bild fuer Steuerungs Erklaerungen erstellt, wird bei Paint gezeichnet
 	 * 
 	 * @author Seyma Keser
 	 */
@@ -25,8 +25,7 @@ public class Steuerung extends JPanel {
 		} catch (IOException e) {
 		}
 
-				g.drawImage(boden, -14, 0, null);
-
+		g.drawImage(boden, -14, 0, null);
 
 	}
 

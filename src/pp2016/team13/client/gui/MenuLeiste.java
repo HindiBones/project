@@ -35,9 +35,9 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		spiel = new JMenu("Spiel");
 		anzeige = new JMenu("Anzeige");
 		hilfe = new JMenu("Hilfe");
-		ausloggen=new JMenuItem("Ausloggen");
-		
-		//Unter Punkte der Menue Elemente
+		ausloggen = new JMenuItem("Ausloggen");
+
+		// Unter Punkte der Menue Elemente
 		ausloggen = new JMenuItem("Ausloggen");
 		neuesSpiel = new JMenuItem("Neues Spiel starten");
 		highscore = new JMenuItem("Highscore anzeigen");
@@ -67,11 +67,10 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * Ergaenzt um Auslog Item
-	 * Einige Elemente ausgelagert
+	 * Ergaenzt um Auslog Item Einige Elemente ausgelagert
 	 * 
 	 * 
-	 * @author <Keser, Seyma, 5979919> 
+	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -90,9 +89,6 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			}
 		} else if (e.getSource() == steuerung) {
 			if (fenster.steuerungAngezeigt) {
-
-				// fenster.zeigeSpielfeld();
-
 				karteaufdecken.setText("Karte aufdecken");
 			} else {
 
@@ -114,8 +110,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			}
 
 		} else if (e.getSource() == beenden) {
-			fenster.client.socket.sendeLogout(new Paket(
-					new AusloggenNachricht()));
+			fenster.client.socket.sendeLogout(new Paket(new AusloggenNachricht()));
 			System.exit(0);
 
 		} else if (e.getSource() == ausloggen) {
@@ -124,9 +119,8 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			try {
 
 				Thread.sleep(100);
-				fenster.Level = new Level(-1, null);
-				fenster.getSeitenleiste().getChatFenster().textumfeld
-						.setText("");
+				fenster.level = new Level(-1, null);
+				fenster.getSeitenleiste().getChatFenster().textumfeld.setText("");
 				fenster.spielZuruecksetzen();
 				fenster.zeigeAnmeldung();
 
@@ -138,6 +132,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * Vorgegebenen Code uebernommen
 	 * 

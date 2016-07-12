@@ -169,7 +169,7 @@ public class NachrichtenVerwaltung {
 			 * an den Server
 			 */
 			if (spieler.getYPos() < aktuellesLevel.getLaengeY() - 1
-					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() + 1) != 0) {
+					&& fenster.level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() + 1) != 0) {
 				spieler.runter();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
@@ -180,7 +180,7 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getYPos() > 0
-					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() - 1) != 0) {
+					&& fenster.level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() - 1) != 0) {
 				spieler.hoch();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
@@ -191,7 +191,7 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getXPos() > 0
-					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos() - 1, spieler.getYPos()) != 0) {
+					&& fenster.level.getBestimmtenLevelInhalt(spieler.getXPos() - 1, spieler.getYPos()) != 0) {
 				spieler.links();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
@@ -202,7 +202,7 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getXPos() < aktuellesLevel.getLaengeX() - 1
-					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos() + 1, spieler.getYPos()) != 0) {
+					&& fenster.level.getBestimmtenLevelInhalt(spieler.getXPos() + 1, spieler.getYPos()) != 0) {
 				spieler.rechts();
 				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
@@ -278,7 +278,7 @@ public class NachrichtenVerwaltung {
 	public void benutzeSchluessel() {
 		spieler = fenster.spieler;
 		if (spieler.hatSchluessel()) {
-			fenster.Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
+			fenster.level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 			spieler.entferneSchluessel();
 		}
@@ -359,7 +359,7 @@ public class NachrichtenVerwaltung {
 	 */
 	public Level levelWechseln() {
 		// Wenn das Level nicht das letzte war, wird das Level um eins erhoeht.
-		if (fenster.Level.getLevelID() < fenster.MAXLEVEL - 1) {
+		if (fenster.level.getLevelID() < fenster.MAXLEVEL - 1) {
 			aktuellesLevel = alleLevel[aktuellesLevel.levelID + 1];
 			// Dem Spieler wird der Schluessel abgenommen
 			fenster.spieler.entferneSchluessel();

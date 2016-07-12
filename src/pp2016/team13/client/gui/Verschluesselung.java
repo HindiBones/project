@@ -39,7 +39,6 @@ public class Verschluesselung {
 		    // der fertige Schluessel
 		    SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
 		     
-
 		    // der zu verschl. Text
 		    String text = passwort;
 
@@ -51,19 +50,7 @@ public class Verschluesselung {
 		    // bytes zu Base64-String konvertieren (dient der Lesbarkeit)
 		    BASE64Encoder myEncoder = new BASE64Encoder();
 		    String geheim = myEncoder.encode(encrypted);
-		    
-	    	
+		    	    	
 	    	 return geheim;
 	    }
-	    
-	   
-
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		  
-
-	    
-	  
-	}
-
 }

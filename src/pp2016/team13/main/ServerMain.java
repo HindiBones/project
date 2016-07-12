@@ -1,7 +1,7 @@
 package pp2016.team13.main;
 
-
 import pp2016.team13.server.comm.Server;
+
 /**
  * ServerMain, Server wird gestartet
  * 
@@ -10,7 +10,7 @@ import pp2016.team13.server.comm.Server;
 
 public class ServerMain {
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 
 		new Server(13001);
 	}
