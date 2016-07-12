@@ -320,8 +320,6 @@ public class NachrichtenVerwaltung {
 		Paket serverAntwort = sende(new LevelAnfordernNachricht());
 		auslesen(serverAntwort);
 		aktuellesLevel = alleLevel[0];
-
-		aktuellesLevel.ausgabe();
 	}
 
 	/**

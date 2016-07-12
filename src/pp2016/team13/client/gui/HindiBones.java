@@ -1045,8 +1045,6 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 			levelnummer = 0;
 			levelNeustarten = false;
 		} else {
-			Level.ausgabe();
-			System.out.println();
 			Level = client.levelWechseln();
 		}
 		// 6 = Ende der level
