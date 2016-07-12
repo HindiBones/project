@@ -86,38 +86,32 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -136,7 +130,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			ChatNachricht nachricht = new ChatNachricht(Text);
 			boolean funktioniert = this.m.fenster.client.chatte(nachricht);
 			
-			//Prüfen von Cheats 
+			//Pruefen von Cheats 
 			if(funktioniert && !nachricht.istCheat()) {
 				textumfeld.append(Text+"\n");
 				textfeld.setText(null);	
@@ -159,7 +153,6 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub	
 	}
 
 	@Override
