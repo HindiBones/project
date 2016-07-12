@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * Wurde grossenteils uebernommen vom urspruenglichen code einige ergaenzungen 
  * wurden hinzugefuegt
  * 
- * @author Keser, Seyma, 5979919 
+ * @author <Keser, Seyma, 5979919 >
  * @author <unbekannt>
  *
  */
@@ -33,7 +33,7 @@ public class Highscore extends JPanel {
 	/**
 	 * Liste wird erzeugt mit Highscore elementen 
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
 	 */
 	public Highscore() {
@@ -75,7 +75,7 @@ public class Highscore extends JPanel {
 	 * Ergaeunzt um eine Variable letztername die die Position in 
 	 * der Hightscore Listte des Letzten Spielers speichern soll
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
 	 * @param zeit: Zeit sind Punkte des Spielers
 	 * @param name: Benutzername der eingelogt wird, dessen name wird uebernommen
@@ -115,7 +115,7 @@ public class Highscore extends JPanel {
 	 * Zeichnet die Ganze Highscore Ansicht 
 	 * Methode wurde nur ergaenzt um einige Zeile um den letzten Eintrag Rot zu markieren
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
 	 * 
 	 */

@@ -327,7 +327,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						spieler.setImage("img//John3hinten.png");
 					}	
 				} catch (IOException en) {
-					System.out.println("Bild Failt");
 					en.printStackTrace();
 				} 
 			} 
@@ -344,7 +343,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler.setYPos(spieler.getYPos()-1);
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
-					System.out.println("vordir ist ein monster");
 					monsterda=1;
 				}else {
 					monsterda=0;
@@ -377,10 +375,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}else{
 					//Wechselt das Bilder der Spielfigur 
 					spieler.setImage("img//John3.png");
-				}} catch (IOException en) {
-					System.out.println("Bild Failt");
+				}
+				} catch (IOException en) {
 					en.printStackTrace();
-				} } 
+				} 
+				} 
 				else if(zahl==1){ zahl=0;
 				
 				try {
@@ -390,8 +389,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					}else{
 						//Wechselt das Bild der Spielfigur 
 						spieler.setImage("img//John4.png");
-					}} catch (IOException en) {
-					System.out.println("Bild Failt");
+					}
+					} catch (IOException en) {
+
 					en.printStackTrace();
 				}
 				
@@ -406,7 +406,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler.setYPos(spieler.getYPos()+1);
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
-					System.out.println("vordir ist ein monster");
+
 					monsterda=1;
 				}else {
 					monsterda=0;
@@ -446,10 +446,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}else{
 					//Wechselt das Bilder der Spielfigur 
 				spieler.setImage("img//JohnLinks.png");
-				}} catch (IOException en) {
-					System.out.println("Bild Failt");
+				}
+					} catch (IOException en) {
+	
 					en.printStackTrace();
-				} } 
+				} 
+				} 
 				else if(zahl==1){ 
 					zahl=0;
 				
@@ -461,7 +463,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						//Wechselt das Bilder der Spielfigur 
 					spieler.setImage("img//JohnLinks2.png");
 					}} catch (IOException en) {
-					System.out.println("Bild Failt");
+	
 					en.printStackTrace();
 				}
 				
@@ -476,7 +478,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
-					System.out.println("vordir ist ein monster");
+
 					monsterda=1;
 				}else {
 					monsterda=0;
@@ -492,7 +494,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				}	else {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				
+				//2= Bewegung nach Links
 				client.SpielerBewegung(2);	
 				testspieler = null;
 								
@@ -512,7 +514,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						//Wechselt das Bilder der Spielfigur 
 					spieler.setImage("img//JohnSeite.png");
 				}} catch (IOException en) {
-					System.out.println("Bild Failt");
+	
 					en.printStackTrace();
 				} } 
 				else if(zahl==1){ 
@@ -526,7 +528,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 						//Wechselt das Bilder der Spielfigur 
 					spieler.setImage("img//JohnSeite2.png");
 					}} catch (IOException en) {
-					System.out.println("Bild Failt");
+
 					en.printStackTrace();
 				}
 				
@@ -556,7 +558,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					m.changeHealth(-BOX / (monsterstaerke*mult));
 					
 				}	else {
-					
+					//3= Bewegung nach rechts
 				client.SpielerBewegung(3);
 				}
 					
@@ -592,26 +594,22 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				// Schluessel aufnehmen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),spieler.getYPos()) == 8) {
 					client.nimmSchluessel();
-					System.out.println("Spieler hat den Schluessel!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
 				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 4) {
 					client.nimmHeiltrank();
-					System.out.println("Spieler hat einen Heiltrank!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				//Blauentrank aufnehmen
 				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 7) {
 					client.nimmTrank();
-					System.out.println("Spieler hat einen Trank!");
 					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				
 				// Schluessel benutzen
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
 					if (spieler.hatSchluessel()) {
-						System.out.println("Spieler hat den Schluessel benutzt!");
 						benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
 
 						nextLevel();
@@ -688,7 +686,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					testspieler.setYPos(spieler.getYPos()-1);
 					Monster m = testspieler.angriffsMonster();
 					if (m != null){
-						System.out.println("vordir ist ein monster");
 						monsterda=1;
 					}else {
 						monsterda=0;
@@ -803,7 +800,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
-					System.out.println("vordir ist ein monster");
+
 					monsterda=1;
 				}else {
 					monsterda=0;
@@ -833,7 +830,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				} catch (IOException en) {
 					en.printStackTrace();
 				} } 
-				else if(zahl==1){ zahl=0;
+				else if(zahl==1){
+					zahl=0;
 				
 				try {
 					//Wechselt zum den Blauen Spielfigur bildern wenn unzerstoerber
@@ -857,7 +855,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				testspieler.setYPos(spieler.getYPos()+1);
 				Monster m = testspieler.angriffsMonster();
 				if (m != null){
-					System.out.println("vordir ist ein monster");
 					monsterda=1;
 				}else {
 					monsterda=0;
@@ -873,7 +870,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 				}	else {
 			
-
+					//
 					client.SpielerBewegung(3);
 				}
 			}
@@ -891,8 +888,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 
 	
 	/**
+	 * Spiel wird auf den Anfangszustand zurueckgesetzt
 	 * 
-	 * @author Seyma Keser
+	 * 
+	 * @author <unbekannt>
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void spielZuruecksetzen() {
 		spielende=false;
@@ -930,11 +930,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	}
 
 	/**
+	 * Spielschleife
+	 * wurde ergaenzt
 	 * 
-	 * @author Seyma Keser
+	 * @author <Keser, Seyma, 5979919>
+	 * @author <unbekannt>
 	 */
-	
-	// Spielschleife
 	public void starteNeuesSpiel() {
 		spielende=false;
 		spielflaeche.anfangszustand=0;
@@ -952,7 +953,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				try {
 					
 					Thread.sleep(100);
-					
+					//Spieleflaeche und Seitenleiste
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
 
@@ -981,24 +982,25 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
 
 				if (!verloren && !spielerInHighscore) {
+					//Das Hinzufuegen des Spielers in die Highscore Liste
 					getHighscore().addSpielerToHighScore(benoetigteZeit, anmeldung.benutzername);
 					getHighscore().repaint();
 					try {
 						Thread.sleep(1000);
 						this.zeigeHighscore();
+						//Loechen der Monster Liste
 						for (int n=0; n<=monsterListe.size();n++ ){
 							this.monsterListe.remove();
 						}
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
+					//
 					this.spielZuruecksetzen();
 					
 					spielerInHighscore = true;
 				} else {
-					
+					//Spielflaeche und SeitenLeiste
 					getSpielflaeche().repaint();
 					getMinimap().repaint();
 				}

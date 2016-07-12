@@ -41,7 +41,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	SeitenLeiste m;
 	
 	/**
-	 * 
+	 * Chatfenster wird konstruiert
 	 * 
 	 * 
 	 * @author Keser, Seyma, 5979919
@@ -123,7 +123,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	/**
 	 * Die Chat Fenster Funktion zum absenden von Nachrichten
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
