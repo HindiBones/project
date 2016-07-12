@@ -97,29 +97,29 @@ public class SeitenLeiste extends JPanel {
 		for (int i = 0; i < fenster.WIDTH; i++) {
 			for (int j = 0; j < fenster.HEIGHT; j++) {
 				//if (inRange(i, j)) {
-					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) {
+					if (fenster.level.getBestimmtenLevelInhalt(i, j) == 0) {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 					}
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1  || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 || fenster.Level.getBestimmtenLevelInhalt(i, j)==7) {
+					else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 1  || fenster.level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.level.getBestimmtenLevelInhalt(i, j) == 4 || fenster.level.getBestimmtenLevelInhalt(i, j)==7) {
 						// Die Begehbaren Elemente 
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 					} 
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
+					else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 3) {
 						// Auf Monster Pos. kommen Boden Elemente
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 					}
-					if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+					if ( fenster.level.getBestimmtenLevelInhalt(i, j) == 2 ){
 						//Anfangs Punkt + wird eine offene Tuer gesetzt
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerOffen2, i * (fenster.BOX2) , j
 									* (fenster.BOX2), null);
 					}
-					if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+					if(fenster.level.getBestimmtenLevelInhalt(i, j) == 6){
 						//Geschlossene Tuer gesetzt
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
@@ -222,7 +222,7 @@ public class SeitenLeiste extends JPanel {
 
 		
 		//Sprechblase + Text bei Aktionen
-		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
+		int feld = fenster.level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
 		g.setColor(Color.BLACK);
 		if (feld == 8) {
 			g.drawImage(sblase,0,itemKy*2-130,null);

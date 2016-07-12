@@ -124,7 +124,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			try {
 
 				Thread.sleep(100);
-				fenster.Level = new Level(-1, null);
+				fenster.level = new Level(-1, null);
 				fenster.getSeitenleiste().getChatFenster().textumfeld
 						.setText("");
 				fenster.spielZuruecksetzen();

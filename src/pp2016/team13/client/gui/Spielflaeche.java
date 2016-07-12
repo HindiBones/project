@@ -94,12 +94,12 @@ public class Spielflaeche extends JPanel {
 		}
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
-				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
+				if (fenster.level.getBestimmtenLevelInhalt(i, j) == 3) {
 					Gegner = new Monster(i, j, fenster, 0);
 					fenster.monsterListe.add(Gegner);
 					
 				}
-				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) {
+				if (fenster.level.getBestimmtenLevelInhalt(i, j) == 5) {
 					Gegner = new Monster(i, j, fenster, 1);
 					fenster.monsterListe.add(Gegner);
 				}
@@ -119,7 +119,7 @@ public class Spielflaeche extends JPanel {
 	public void posSpieler(){
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
 		for (int j = wechselY; j < fenster.HEIGHT; j++) {
-			if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
+			if (fenster.level.getBestimmtenLevelInhalt(i, j) == 2) {
 				fenster.spieler.setPos(i, j);
 				fenster.spieler2.setPos(i,j);
 			}
@@ -191,54 +191,54 @@ public class Spielflaeche extends JPanel {
 						
 					}
 					
-					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) { //Wand==0
+					if (fenster.level.getBestimmtenLevelInhalt(i, j) == 0) { //Wand==0
 						// Hier kommt eine Wand hin 
 						g.drawImage(wand, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1) { //Boden ==1
+					} else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 1) { //Boden ==1
 						// Dieses Feld ist begehbar
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 					}
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
+					else if (fenster.level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
 
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 
 					} 
-					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
+					else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
 						//Hier ist eine offene Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
 								* fenster.BOX-verschiebeny*fenster.BOX, null);
 					
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere== 6
+					} else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 6) { //Geschlossene Tuere== 6
 						// Hier ist die Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(tuerZu, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 			
-					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank== 7
+					} else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 7 ) { //Blauer Trank== 7
 						// Hier ist ein Blauer Trank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 							g.drawImage(trank, i * fenster.BOX-verschiebenx*fenster.BOX, j
 									* fenster.BOX-verschiebeny*fenster.BOX, null);
 							
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank== 4 
+					}else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 4) { //Heiltrank== 4 
 						//Hier ist ein Heiltrank
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(heiltrank, i * fenster.BOX-verschiebenx*fenster.BOX,
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
 				
-					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluesselmonster == 5
+					}else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluesselmonster == 5
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
-						}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 8) { //Schluessel == 8
+						}else if (fenster.level.getBestimmtenLevelInhalt(i, j) == 8) { //Schluessel == 8
 							//Hier ist der Schluessel
 							g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 									null);
