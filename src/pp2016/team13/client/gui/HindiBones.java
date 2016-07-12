@@ -751,7 +751,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					spieler.setImage("img//JohnLinks.png");
 					}
 				} catch (IOException en) {
-					en.printStackTrace();
+					en.printStackTrace(); 
 				} } 
 				else if(zahl==1){ zahl=0;
 				
