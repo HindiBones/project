@@ -1,16 +1,16 @@
 package pp2016.team13.client.comm;
-/**
- * @author Kirthika Jeyakumar
- * Paket, das gesendet wird
- * 
- */
+
 
 
 import java.io.IOException;
 import java.io.Serializable;
 
 import pp2016.team13.client.engine.Nachricht;
-
+/**
+ * Paket, das gesendet wird 
+ * @author Kirthika Jeyakumar
+ * 
+ */
 public class Paket implements Serializable{
 
 		private static final long serialVersionUID = 1;

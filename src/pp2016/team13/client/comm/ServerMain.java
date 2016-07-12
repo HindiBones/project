@@ -1,10 +1,10 @@
 package pp2016.team13.client.comm;
+
+
+import pp2016.team13.client.comm.Server;
 /**
  * @author Kirthika Jeyakumar
  */
-
-import pp2016.team13.client.comm.Server;
-
 
 public class ServerMain {
 

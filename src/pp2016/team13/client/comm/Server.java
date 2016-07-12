@@ -1,6 +1,7 @@
 package pp2016.team13.client.comm;
 
 /**
+ * Server für die Verbindung
  * @author Kirthika Jeyakumar
  * 
  */
@@ -17,9 +18,7 @@ import pp2016.team13.client.engine.Nachricht;
 
 
 public class Server implements Serializable{
- /**
-  * 
-  */
+ 
  private static final long serialVersionUID = 1L;
  //die einzelnen Streams werden definiert
  public ServerSocket ServerS;
@@ -34,6 +33,11 @@ public class Server implements Serializable{
  Levelverwaltung spiel;
  
  //Server wird gestartet - Verbindung wird hergestellt
+ /**
+  * Server wird gestartet
+  * @author Kirthika Jeyakumar
+  * @param port
+  */
 public Server(int port){
  System.out.println("Starte Server");
  try {
@@ -64,7 +68,11 @@ public Server(int port){
 
  
   
-
+/**
+ * Server laeuft und wendet die Methode handleconnection an
+ * @author Kirthika Jeyakumar
+ * 
+ */
   
   public void run() throws IOException{
    System.out.println("Laeuft");
@@ -74,7 +82,10 @@ public Server(int port){
    }
   }
   
-  
+  /**
+   * Verbindung wird verarbeitet
+   * @author Kirthika Jeyakumar
+   */
   // eingehende Verbindung wird verarbeitet
   public void handleconnection(){
    try {
@@ -104,6 +115,11 @@ public Server(int port){
    }
   }
 
+  /**
+   * Nachricht wird verarbeitet
+   * @param n : Nachricht
+   * @return gibt die Antwort zurück
+   */
   
   @SuppressWarnings("static-access")
   public Paket verarbeiteNachricht(Nachricht n){

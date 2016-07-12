@@ -2,10 +2,7 @@
 
 package pp2016.team13.client.comm;
 
-/**
- *@author Kirthika Jeyakumar 
- *Kommunikation
- */
+
 
 import java.io.IOException; 
 import java.io.InputStream;
@@ -21,8 +18,12 @@ import pp2016.team13.client.engine.ZeitNachricht;
 
 /**
  * 
- * @author Kiki Jeyakumar
  * Klasse Client - Stellt die Verbindung zum Server da und sendet Nachrichten
+ * @author Kirthika Jeyakumar
+ * @param cs: Socket
+ * @param binAmLeben: Ich bin noch da Nachricht - nicht implementiert
+ * @param host: host für die Verbindung
+ * @param port: port für die Verbindung
  *
  */
 public class Client extends Paket {
@@ -36,6 +37,8 @@ public class Client extends Paket {
  public Socket cs;
  boolean binAmLeben;
  
+
+ 
  public Client(String host,int port){
   try{
    cs = new Socket(host, port);
@@ -45,6 +48,12 @@ public class Client extends Paket {
    System.err.println("Konnte keine Verbindung herstellen!");
   }
  }
+ 
+ /**
+  * 
+  * @param msg Message, das gesendet wird
+  * @return Serverantwort wird zurueckgegeben
+  */
  public Paket SendeAnServer(Paket msg){
 
   Paket serverAntwort = new Paket();
@@ -73,8 +82,10 @@ public class Client extends Paket {
   return serverAntwort;
  }
 
-	// Ich bin noch da periodisch senden
-
+/**
+ * @author Kirthika Jeyakumar
+ * @param msg: Sendepaket
+ */
 		public void SendeLogout(Paket msg) {
 			try{
 				oos = new ObjectOutputStream(cs.getOutputStream());
