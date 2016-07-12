@@ -166,7 +166,7 @@ public class Spielflaeche extends JPanel {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
 				if (inRange(i, j)) {
 
-					//Mitscorllend
+					//Mitscorllend mit Grenzpunkte fuer das scrollen werden verglichen mit XPos
 					if(fenster.spieler.getXPos()>=grenzPunktX ){
 						verschiebenx+=1;
 						grenzPunktX+=1;
@@ -202,11 +202,13 @@ public class Spielflaeche extends JPanel {
 								null);
 					}
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j)== 3){ //Monster ==3
+
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 
 					} 
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
+						//Hier ist eine offene Tuer
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						g.drawImage(tuerOffen, i * fenster.BOX-verschiebenx*fenster.BOX, j
@@ -234,7 +236,6 @@ public class Spielflaeche extends JPanel {
 								j * fenster.BOX-verschiebeny*fenster.BOX, null);
 				
 					}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 5) { //Schluesselmonster == 5
-						//HIER LIEGT NOCH EIN SCHLÜSSEL
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 						}else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 8) { //Schluessel == 8
