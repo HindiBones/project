@@ -14,6 +14,7 @@ import pp2016.team13.client.gui.*;
  * 
  * @author <unbekannt>
  * @author <Braun, Jan Julius, 6000100>
+ * @author Keser, Seyma, 5979919
  *
  */
 public class Spieler extends Figur {
