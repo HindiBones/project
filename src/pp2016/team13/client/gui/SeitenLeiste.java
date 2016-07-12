@@ -31,6 +31,7 @@ public class SeitenLeiste extends JPanel {
 		 //Benutzer Name Eingabe Feld
 		 ChatText = new JTextField(); //Erzeugen eines Textfeldes fuer Nicknamen
 		p= new ChatFenster("Chat", this);
+		
 		this.setLayout(new BorderLayout());
 		this.add(p,BorderLayout.SOUTH);
 		 

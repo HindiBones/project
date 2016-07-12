@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class Highscore extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	public int letztername=-1;
 	private LinkedList<HighScoreElement> highScore;
 
 	public Highscore() {
@@ -54,12 +54,15 @@ public class Highscore extends JPanel {
 		
 	}
 
-	public void addSpielerToHighScore(int zeit) {
-		String name = JOptionPane
-				.showInputDialog("Bitte geben Sie Ihren Namen ein:");
+	public void addSpielerToHighScore(int zeit,String name) {
+			
+		//		String name = JOptionPane
+//				.showInputDialog("Bitte geben Sie Ihren Namen ein:");
+		
 		for (int i = 0; i < highScore.size(); i++) {
 			if (highScore.get(i).zeit > zeit) {
 				highScore.add(i, new HighScoreElement(zeit, name));
+				letztername=i;
 				i = highScore.size();
 			}
 		}
@@ -100,12 +103,28 @@ public class Highscore extends JPanel {
 		g.setColor(Color.WHITE);
 
 		for (int i = 0; i < 10; i++) {
+
 			String name = highScore.get(i).name;
 			int zeit = highScore.get(i).zeit;
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+			if(letztername>0){
+				if(letztername==i){
+				g.setColor(Color.RED);
+				g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
+				g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
+
+				
+				}else{
+					g.setColor(Color.WHITE);
+					g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
+					g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
+				}
+				
+			}else {
 			g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
 			g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
+			}
 		}
 	}
 }

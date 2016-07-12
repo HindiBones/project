@@ -13,19 +13,19 @@ public class Labyrinth {
 
 /**
  * 
- * bestimmt Anzahl Heiltränke, Schutztränke und Monster.
- * Anzahl Monster werden zufällig bestimmt zwischen 1 und 5.
+ * bestimmt Anzahl Heiltrï¿½nke, Schutztrï¿½nke und Monster.
+ * Anzahl Monster werden zufï¿½llig bestimmt zwischen 1 und 5.
  * @author Cigdem
  * 
  */
 	public Labyrinth (int levelnummer){
 		int AnzHeiltrank = 2;
 		int AnzSchutztrank = 1;
-		int AnzMonster = (int)((Math.random()) * 2 * levelnummer + 1);;
+		int AnzMonster = (int)((Math.random()) * 2 * levelnummer + 1);
 		bodenplatten = new Koordinaten [size*size];
 /**
  * 
- * FloodFill füllt die map auf
+ * FloodFill fï¿½llt die map auf
  * @author Cigdem
  */
 		FloodFill auffuellen = new FloodFill(size);
@@ -51,7 +51,7 @@ public class Labyrinth {
 		}
 /**
  * 
- * finde Zufällige Position für Spieler, Tuer, Heiltraenke,Schutztraenke, Monster und ein Schlessel
+ * finde Zufï¿½llige Position fï¿½r Spieler, Tuer, Heiltraenke,Schutztraenke, Monster und ein Schlessel
  *@author Cigdem
  */
 		// Zufaellige Position fï¿½r den Charakter

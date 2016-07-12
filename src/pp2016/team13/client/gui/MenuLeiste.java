@@ -70,6 +70,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
+
 		if (e.getSource() == neuesSpiel) {
 			fenster.levelNeustarten = true;
 			fenster.spielZuruecksetzen();
@@ -80,22 +81,36 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 				highscore.setText("Highscore anzeigen");
 			} else {
 				fenster.zeigeHighscore();
-				highscore.setText("Spielfeld anzeigen");
+				karteaufdecken.setText("Spielfeld anzeigen");
+			}
+		} else if (e.getSource() == steuerung) {
+			if (fenster.steuerungAngezeigt) {
+//				fenster.zeigeSpielfeld();
+				karteaufdecken.setText("Karte aufdecken");
+			} else {
+				
+				fenster.zeigeSteuerung();
+				karteaufdecken.setText("Spielfeld anzeigen");
+
 			}
 
 		} else if (e.getSource() == karteaufdecken) {
-			if (fenster.nebelAn) {
+			if(karteaufdecken.getText().equals("Spielfeld anzeigen"))
+				fenster.zeigeSpielfeld();
+			else {if (fenster.nebelAn) {
 				fenster.nebelAn = false;
 				karteaufdecken.setText("Karte verdecken");
 			} else {
 				fenster.nebelAn = true;
 				karteaufdecken.setText("Karte aufdecken");
-			}
+			}}
+			
+		
 		} else if (e.getSource() == beenden) {
 			fenster.client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
 			System.exit(0);
-		} else if (e.getSource() == steuerung) {
-			fenster.zeigeSteuerung();
+		
+			
 		}else if (e.getSource()== ausloggen){
 			fenster.spielfeldSichtbar = false; 
 			

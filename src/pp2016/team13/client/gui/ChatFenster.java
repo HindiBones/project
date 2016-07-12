@@ -116,6 +116,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			String Text= this.textfeld.getText();
 			ChatNachricht nachricht = new ChatNachricht(Text);
 			boolean funktioniert = this.m.fenster.client.chatte(nachricht);
+				
 			if(funktioniert && !nachricht.istCheat()) {
 				textumfeld.append(Text+"\n");
 				textfeld.setText(null);	

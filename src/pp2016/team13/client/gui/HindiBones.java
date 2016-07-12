@@ -53,6 +53,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public boolean nebelAn = true;
 	private boolean spielerInHighscore = false;
 	public boolean highscoreAngezeigt = false;
+	public boolean steuerungAngezeigt= false;
 	public boolean anmeldeanzeige=false;
 	public boolean levelNeustarten = false;
 	
@@ -145,10 +146,12 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// entferne alles
 		highscoreAngezeigt = false;
+		steuerungAngezeigt=false;
 		spielfeldSichtbar = true;
+		this.remove(steuerung);
 		this.remove(anmeldung);
 		this.remove(highscore);
-		this.remove(steuerung);
+		
 
 		// erstelle das Spielfeld 
 		this.add(spielflaeche, BorderLayout.CENTER);
@@ -184,6 +187,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	public void zeigeHighscore() {
 		// entferne alles
 		highscoreAngezeigt = true;
+		steuerungAngezeigt=false;
 		this.remove(spielflaeche);
 		this.remove(minimap);
 		this.remove(steuerung);
@@ -206,7 +210,8 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 */
 	public void zeigeSteuerung() {
 		// entferne alles
-		highscoreAngezeigt = true;
+		steuerungAngezeigt=true;
+		highscoreAngezeigt = false;
 		
 		this.remove(minimap);
 		this.remove(spielflaeche);
@@ -229,7 +234,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void zeigeAnmeldung(){
-
+		steuerungAngezeigt=false;
 		highscoreAngezeigt=false;
 		
 		
@@ -605,25 +610,26 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					if (spieler.hatSchluessel()) {
 						System.out.println("Spieler hat den Schluessel benutzt!");
 						benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
-						if(Level.getLevelID()==4){
-							getHighscore().addSpielerToHighScore(benoetigteZeit);
-							
-							getHighscore().repaint();
-							try {
-								Thread.sleep(1000);
-								this.zeigeHighscore();
-								for (int n=0; n<=monsterListe.size();n++ ){
-									this.monsterListe.remove();
-								}
-							} catch (InterruptedException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						
-
-						}else{
+//						if(Level.getLevelID()==4){
+//
+//							try {
+//								Thread.sleep(5000);							
+//							getHighscore().addSpielerToHighScore(benoetigteZeit, anmeldung.benutzername);
+//							
+//							getHighscore().repaint();
+//								this.zeigeHighscore();
+//								for (int n=0; n<=monsterListe.size();n++ ){
+//									this.monsterListe.remove();
+//								}
+//							} catch (InterruptedException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//							}
+//						
+//
+//						}else{
 						nextLevel();
-						}
+//						}
 					}
 				}
 			}else if(e.getKeyCode() == KeyEvent.VK_ENTER){
@@ -652,9 +658,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
 		// Wenn ja, ist das naechste Feld begehbar?
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
+		
 		spielflaeche.setFocusable(true);
 		spielflaeche.requestFocusInWindow();
 		this.requestFocus();
+
 		
 		if(mausX*10>=(mausX1*10+5))
 			mausX1+=1;
@@ -701,7 +709,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					m = testspieler.angriffsMonster();
 					if(monsterda==1){
 						
-						m.changeHealth(-BOX / 8);
+						m.changeHealth(-BOX / (monsterstaerke*mult));
 
 
 					}	else {
@@ -752,7 +760,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					m = testspieler.angriffsMonster();
 					if(monsterda==1){
 						
-						m.changeHealth(-BOX / 8);
+						m.changeHealth(-BOX / (monsterstaerke*mult));
 			
 
 					}	else {
@@ -802,7 +810,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 	
 				}	else {
 
@@ -849,7 +857,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 		
 
 				}	else {
@@ -879,15 +887,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		spielende=false;
 		spielflaeche.anfangszustand=0;
 
-		
-//			try {
-//				Thread.sleep(100);		
-//		
-//		testspieler.setFenster(this);
-//			} catch (InterruptedException e2) {
-//				// TODO Auto-generated catch block
-//				e2.printStackTrace();
-//			}		
 
 
 		try {
@@ -974,7 +973,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
 
 				if (!verloren && !spielerInHighscore) {
-					getHighscore().addSpielerToHighScore(benoetigteZeit);
+					getHighscore().addSpielerToHighScore(benoetigteZeit, anmeldung.benutzername);
 					getHighscore().repaint();
 					try {
 						Thread.sleep(1000);
@@ -1007,6 +1006,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void nextLevel() {
+
 		spielflaeche.anfangszustand=0;
 		if(Level.getLevelID() == -1){
 		System.out.println("Level wird angefordert!");
