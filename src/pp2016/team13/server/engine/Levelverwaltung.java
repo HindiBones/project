@@ -12,12 +12,13 @@ import pp2016.team13.shared.Spielelemente.Heiltrank;
  * verwaltet das Spielarray auf Serverseite beinhaltet ebenfalls die
  * Nachrichtenverwaltung
  * 
- * @author Marius
+ * @author <Fiehn, Marius, 6024602>
  *
  */
 public class Levelverwaltung {
 	/**
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param levelID:
 	 *            Identifikationszahl des Levels
 	 * @param spielerListe:
@@ -73,7 +74,9 @@ public class Levelverwaltung {
 	static Chat chat;
 
 	/**
-	 * @author Marius
+	 * Setzt einen Konstruktor, der das Level auf der Server Seite verwaltet
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param levelID:
 	 *            Identifikationszahl des Levels
@@ -90,11 +93,7 @@ public class Levelverwaltung {
 	 *            Legt die Groesse des Spielfelds fest
 	 * @param anzLevel:
 	 *            Legt die Anzahl der Level fest
-	 * 
-	 *            Setzt einen Konstruktor, der das Level auf der Server Seite
-	 *            verwaltet
 	 */
-	// Konstruktor Levelverwaltung ; Spielwelt
 	public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke,
 			int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException {
 		Levelverwaltung.levelID = levelID;
@@ -165,32 +164,27 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 *
 	 * Getter Methoden die Spieler Liste
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public Spieler[] getSpielerListe() {
 		return spielerListe;
 	}
 
 	/**
-	 * 
-	 * 
 	 * Getter Methode fuer die Gegner Liste
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public Monster[] getGegnerListe() {
 		return gegnerListe;
 	}
 
 	/**
-	 * 
-	 * 
 	 * Getter Methode fuer die Trank Liste
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public Heiltrank[] getTrankListe() {
 		return trankListe;
@@ -199,7 +193,8 @@ public class Levelverwaltung {
 	/**
 	 * setter-Methode, um bestimmte Felder im Level zu veraendern
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param levelID:
 	 *            Identifikationszahl des Levels
 	 * @param x:
@@ -264,7 +259,8 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param spieler:
 	 *            Identifikationszahl des Spielers
 	 * 
@@ -283,7 +279,8 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param spielerID:
 	 *            Identifikationszahl des Spielers
 	 * 
@@ -298,7 +295,8 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param Nachricht:
 	 *            Die vom Client empfangene Nachricht
 	 * @param spiel:
@@ -350,21 +348,24 @@ public class Levelverwaltung {
 	 * Abwicklung der Cheats ueber den Client
 	 * Auswirkungen der Cheats werden ueber andere Nachrichten versendet
 	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param nachricht
 	 */
 	private static void behandleCheat(Nachricht nachricht) {
 	}
 
 	/**
-	 * @author Marius
+	 * Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
+	 * diese Position gehen darf. danach wird seine Position geaendert
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param Spielerbewegung:
 	 *            Die vom Client empfangene Nachricht, die eine Spielerbewegung
 	 *            beinhaltet
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
-	 *diese Position gehen darf. danach wird seine Position geaendert
 	 */
 	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -392,16 +393,16 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * Nachrichten Behandler fuer die Aufnhame eines Trankes zunaechst wird ueberprueft, ob der Trank aufgenommen werden
+	 * darf danach wird er zum Inventar hinzugefuegt
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param trankAufnahme:
 	 *            Die vom Client empfangene Nachricht, die eine Trank Aufnahme
 	 *            beinhaltet
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Nachrichten Behandler fuer die Aufnhame eines Trankes
-	 *            zunaechst wird ueberprueft, ob der Trank aufgenommen werden
-	 *            darf danach wird er zum Inventar hinzugefuegt
 	 */
 	public static boolean behandleTrankaufnahme(Nachricht trankAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -425,16 +426,15 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * Nachrichten Behandler fuer das beendete Level zunaechst Ueberpruefung, ob der Schluessel aufgehoben wurde und ob der
+	 * Spieler bei der Tuer ist danach wird true zurueck gegeben und das naechste Level kann gestartet werden.
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param spielerID:
 	 *            Identifikationszahl des Spielers
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Nachrichten Behandler fuer das beendete Level zunaechst
-	 *            Ueberpruefung, ob der Schluessel aufgehoben wurde und ob der
-	 *            Spieler bei der Tuer ist danach wird true zurueck gegeben und
-	 *            das naechste Level kann gestartet werden.
 	 */
 	public static boolean behandleLevelGeschafft(int spielerID, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -455,16 +455,16 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * Nachrichtenbehandler fuer einen aufgehobenen Schluessel zunaechst wird ueberprueft, ob er aufgehoben werden kann
+	 * anschliessend wird der schluesselstatus auf wahr gesetzt
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param schluesselAufnahme:
 	 *            Die vom Client empfangene Nachricht, die eine Schluessel
 	 *            Aufnahme beinhaltet
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Nachrichtenbehandler fuer einen aufgehobenen Schluessel
-	 *            zunaechst wird ueberprueft, ob er aufgehoben werden kann
-	 *            anschliessend wird der schluesselstatus auf wahr gesetzt
 	 */
 	public static boolean behandleschluesselaufgehoben(Nachricht schluesselAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
@@ -479,13 +479,12 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * Nachrichtenbehandler fuer das Uebersprungene Level Der Spieler wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Nachrichtenbehandler fuer das Uebersprungene Level Der Spieler
-	 *            wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel
-	 *            uebergeben
 	 */
 	public static boolean behandleLevelUebersprungen(Levelverwaltung spiel) {
 		Levelverwaltung.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0].getYPos()] = 1;
@@ -499,15 +498,14 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * @author Marius
+	 * Nachrichtenbehandler fuer Kampfnachrichten Je Nachdem wer angegriffen wird werden die Lebenspunkte veraendert
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
 	 * @param Nachricht:
 	 *            Eine Nachricht, die vom Server kommt ; Beinhaltet eine
 	 *            Kampfnachricht
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Nachrichtenbehandler fuer Kampfnachrichten Je Nachdem wer
-	 *            angegriffen wird werden die Lebenspunkte veraendert
 	 */
 	public static boolean behandleKampfnachrichten(KampfNachricht Nachricht, Levelverwaltung spiel) {
 		if (Nachricht.angegriffen) {
