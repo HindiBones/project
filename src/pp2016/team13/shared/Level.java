@@ -16,8 +16,11 @@ public class Level {
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param id die ID des Levels, das erstellt werden soll als int
-	 * @param level der Inhalt des zu erstellenden Levels als zweidimensionales int Array
+	 * @param id
+	 *            die ID des Levels, das erstellt werden soll als int
+	 * @param level
+	 *            der Inhalt des zu erstellenden Levels als zweidimensionales
+	 *            int Array
 	 */
 	public Level(int id, int[][] level) {
 		levelID = id;
@@ -121,7 +124,8 @@ public class Level {
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @return gibt den Inhalt des Levels als zweidimensionales int Array zurueck
+	 * @return gibt den Inhalt des Levels als zweidimensionales int Array
+	 *         zurueck
 	 */
 	public int[][] getlevelInhalt() {
 		return levelInhalt;

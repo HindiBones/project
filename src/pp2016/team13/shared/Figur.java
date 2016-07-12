@@ -61,7 +61,7 @@ public abstract class Figur {
 	public int getXPos() {
 		return xPos;
 	}
-	
+
 	public void setYPos(int y) {
 		yPos = y;
 	}
@@ -69,13 +69,15 @@ public abstract class Figur {
 	public void setXPos(int x) {
 		xPos = x;
 	}
-	
-	public void setID(int id){
+
+	public void setID(int id) {
 		this.id = id;
 	}
-	public int getID(){
+
+	public int getID() {
 		return id;
 	}
+
 	public void hoch() {
 		yPos--;
 	}
