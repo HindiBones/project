@@ -1,3 +1,10 @@
 81	klaus
 87	Julius
 120	null120
+170	spieler1
+1000	Anonym
+1000	Anonym
+1000	Anonym
+1000	Anonym
+1000	Anonym
+1000	Anonym

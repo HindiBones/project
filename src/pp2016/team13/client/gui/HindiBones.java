@@ -304,7 +304,19 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	int monsterda=0;
+	int monsterstaerke=4;
+	int mult=1;
 	public void keyPressed(KeyEvent e) {
+		if(Level.getLevelID()==0){
+			mult=1;
+		}else if (Level.getLevelID()==1){
+			mult=2;
+		}	else if (Level.getLevelID()==2){
+			mult=3;
+		}else if (Level.getLevelID()==3){
+			mult=4;
+		}
+		
 		// Methoden der Schnittstelle KeyListener
 		// Aktuelle Position des Spielers
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
@@ -350,7 +362,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 					
 
 				}	else {
@@ -411,7 +423,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 				}	else {
 
 
@@ -472,7 +484,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
 
@@ -534,7 +546,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 8);
+					m.changeHealth(-BOX / (monsterstaerke*mult));
 					
 				}	else {
 					
