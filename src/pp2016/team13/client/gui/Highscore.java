@@ -169,7 +169,7 @@ public class Highscore extends JPanel {
 		String name;
 		int zeit;
 
-	/*
+	/**
 	 * @author <unbekannt>
 	 *
 	 */
