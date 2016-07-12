@@ -304,9 +304,9 @@ public class Levelverwaltung {
 		switch (Nachricht.getTyp()) {
 		case 0:
 			if (Nachricht.getLoginTyp() == 0)
-				return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort);
+				return Einloggen.logIn(Nachricht.benutzername, Nachricht.passwort);
 			else
-				return Einloggen.RegIn(Nachricht.benutzername, Nachricht.passwort);// Login
+				return Einloggen.regIn(Nachricht.benutzername, Nachricht.passwort);// Login
 		case 1:
 			return behandleSpielerbewegung(Nachricht, spiel);// Spielerbewegung
 		case 2:
