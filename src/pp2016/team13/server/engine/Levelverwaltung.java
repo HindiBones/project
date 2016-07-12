@@ -9,7 +9,8 @@ import pp2016.team13.shared.Nachrichten.Nachricht;
 import pp2016.team13.shared.Spielelemente.Heiltrank;
 
 /**
- * verwaltet das Spielarray auf Serverseite; beinhaltet ebenfalls die Nachrichtenverwaltung
+ * verwaltet das Spielarray auf Serverseite; beinhaltet ebenfalls die
+ * Nachrichtenverwaltung
  * 
  * @author <Fiehn, Marius, 6024602>
  */
@@ -17,32 +18,32 @@ public class Levelverwaltung {
 	/**
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param levelID:
-	 *            Identifikationszahl des Levels
-	 * @param spielerListe:
-	 *            speichert alle Spieler, inkl. ihrer Eigenschaften; Zugriff
+	 * @param levelID
+	 *            : Identifikationszahl des Levels
+	 * @param spielerListe
+	 *            : speichert alle Spieler, inkl. ihrer Eigenschaften; Zugriff
 	 *            ueber spielerID
-	 * @param gegnerListe:
-	 *            speichert alle Gegner, inkl. ihrer Eigenschaften; Zugriff
+	 * @param gegnerListe
+	 *            : speichert alle Gegner, inkl. ihrer Eigenschaften; Zugriff
 	 *            ueber gegnerID
-	 * @param trankListe:
-	 *            speichert alle Traenke; Zugriff ueber TrankID
-	 * @param levelInhalt:
-	 *            Speichert alle Zellen des Levels
-	 * @param anzahlLevel:
-	 *            Die Anzahl der Level wird festgelegt
-	 * @param groesse:
-	 *            Die Groesse der Level wird festgelegt
-	 * @param levelSpeicherort:
-	 *            Initialisierung des Speicherortes fuer alle Level
-	 * @param SchluesselX:
-	 *            X-Koordinate des Schluessels
-	 * @param SchluesselY:
-	 *            Y-Koordinate des Schluessels
-	 * @param tuerX:
-	 *            X-Koordinate der Tuer
-	 * @param tuerY:
-	 *            Y-Koordinate der Tuer
+	 * @param trankListe
+	 *            : speichert alle Traenke; Zugriff ueber TrankID
+	 * @param levelInhalt
+	 *            : Speichert alle Zellen des Levels
+	 * @param anzahlLevel
+	 *            : Die Anzahl der Level wird festgelegt
+	 * @param groesse
+	 *            : Die Groesse der Level wird festgelegt
+	 * @param levelSpeicherort
+	 *            : Initialisierung des Speicherortes fuer alle Level
+	 * @param SchluesselX
+	 *            : X-Koordinate des Schluessels
+	 * @param SchluesselY
+	 *            : Y-Koordinate des Schluessels
+	 * @param tuerX
+	 *            : X-Koordinate der Tuer
+	 * @param tuerY
+	 *            : Y-Koordinate der Tuer
 	 */
 	// Level ID
 	public static int levelID;
@@ -76,24 +77,26 @@ public class Levelverwaltung {
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param levelID:
-	 *            Identifikationszahl des Levels
-	 * @param charakterLebenspunkte:
-	 *            setzt die Anzahl der Lebenspunkte, die der Charakter am Anfang
-	 *            hat
-	 * @param charakterSchaden:
-	 *            setzt den Schaden, den der Spieler pro Angriff verursacht
-	 * @param monsterLebenspunkte:setzt
-	 *            die Standard Lebenspunkte der Monster
-	 * @param monsterSchaden:
-	 *            setzt den Standard Schaden der Monster
-	 * @param groesse:
-	 *            Legt die Groesse des Spielfelds fest
-	 * @param anzLevel:
-	 *            Legt die Anzahl der Level fest
+	 * @param levelID
+	 *            : Identifikationszahl des Levels
+	 * @param charakterLebenspunkte
+	 *            : setzt die Anzahl der Lebenspunkte, die der Charakter am
+	 *            Anfang hat
+	 * @param charakterSchaden
+	 *            : setzt den Schaden, den der Spieler pro Angriff verursacht
+	 * @param monsterLebenspunkte
+	 *            :setzt die Standard Lebenspunkte der Monster
+	 * @param monsterSchaden
+	 *            : setzt den Standard Schaden der Monster
+	 * @param groesse
+	 *            : Legt die Groesse des Spielfelds fest
+	 * @param anzLevel
+	 *            : Legt die Anzahl der Level fest
 	 */
-	public Levelverwaltung(int levelID, int charakterLebenspunkte, int charakterSchaden, int charakterTraenke,
-			int monsterLebenspunkte, int monsterSchaden, int groesse, int anzLevel) throws IOException {
+	public Levelverwaltung(int levelID, int charakterLebenspunkte,
+			int charakterSchaden, int charakterTraenke,
+			int monsterLebenspunkte, int monsterSchaden, int groesse,
+			int anzLevel) throws IOException {
 		Levelverwaltung.levelID = levelID;
 		chat = new Chat();
 		anzahlLevel = anzLevel;
@@ -139,7 +142,8 @@ public class Levelverwaltung {
 				} else if (levelInhalt[i][j] == 3) {
 					// Monster zu finden und ihnen eine ID zuzuordnen ;
 					// festlegen, ob Monster Trank traegt
-					Monster gegner = new Monster(monsterID, monsterLebenspunkte, monsterSchaden, false, j, i);
+					Monster gegner = new Monster(monsterID,
+							monsterLebenspunkte, monsterSchaden, false, j, i);
 					gegnerListe[monsterID] = gegner;
 					monsterID++;
 				} else if (levelInhalt[i][j] == 4) {
@@ -149,7 +153,8 @@ public class Levelverwaltung {
 					trankID++;
 				} else if (levelInhalt[i][j] == 5) {
 					// Schluessel zu finden und die Koordinaten zu speichern
-					Monster gegner = new Monster(monsterID, monsterLebenspunkte, monsterSchaden, true, j, i);
+					Monster gegner = new Monster(monsterID,
+							monsterLebenspunkte, monsterSchaden, true, j, i);
 					gegnerListe[monsterID] = gegner;
 					monsterID++;
 				} else if (levelInhalt[i][j] == 6) {
@@ -193,21 +198,22 @@ public class Levelverwaltung {
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param levelID:
-	 *            Identifikationszahl des Levels
-	 * @param x:
-	 *            x-Koordinate fuer die Position im Level
-	 * @param y:
-	 *            y-Koordinate fuer die Position im Level
-	 * @param inhalt:
-	 *            Zelle, die an diesem Punkt im Labyrinth ist (Wand = 0, Boden =
-	 *            1, ...)
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param levelID
+	 *            : Identifikationszahl des Levels
+	 * @param x
+	 *            : x-Koordinate fuer die Position im Level
+	 * @param y
+	 *            : y-Koordinate fuer die Position im Level
+	 * @param inhalt
+	 *            : Zelle, die an diesem Punkt im Labyrinth ist (Wand = 0, Boden
+	 *            = 1, ...)
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 * 
 	 * 
 	 */
-	public void setLevelInhalt(int levelID, int x, int y, int inhalt, Levelverwaltung spiel) {
+	public void setLevelInhalt(int levelID, int x, int y, int inhalt,
+			Levelverwaltung spiel) {
 		levelInhalt[x][y] = inhalt;
 		// Wenn es um den Charakter geht ; der inhalt = 2 ist, dann
 		if (inhalt == 2) {
@@ -221,10 +227,12 @@ public class Levelverwaltung {
 			boolean gefunden = false;
 			int gegnerID = 0;
 			while (!gefunden) {
-				if (Levelverwaltung.levelInhalt[x][y] != 0 && gegnerListe[gegnerID].getPosX() == x
+				if (Levelverwaltung.levelInhalt[x][y] != 0
+						&& gegnerListe[gegnerID].getPosX() == x
 						&& gegnerListe[gegnerID].getPosY() == y) {
 					gefunden = true;
-					Levelverwaltung.levelInhalt[gegnerListe[gegnerID].getPosX()][gegnerListe[gegnerID].getPosY()] = 1;
+					Levelverwaltung.levelInhalt[gegnerListe[gegnerID].getPosX()][gegnerListe[gegnerID]
+							.getPosY()] = 1;
 					spiel.gegnerListe[gegnerID].setPosX(x);
 					spiel.gegnerListe[gegnerID].setPosY(y);
 				} else {
@@ -240,7 +248,8 @@ public class Levelverwaltung {
 			boolean gefunden = false;
 			int trankID = 0;
 			while (!gefunden) {
-				if (trankListe[trankID].getPosX() == x && trankListe[trankID].getPosY() == y) {
+				if (trankListe[trankID].getPosX() == x
+						&& trankListe[trankID].getPosY() == y) {
 					gefunden = true;
 					trankListe[trankID].setPosX(x);
 					trankListe[trankID].setPosY(y);
@@ -257,12 +266,13 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * ueberprueft, ob der Spieler mit der SpielerID einen Trank benutzen kann wird ueberprueft, indem die Anzahl der Traenke ueberprueft wird
+	 * ueberprueft, ob der Spieler mit der SpielerID einen Trank benutzen kann
+	 * wird ueberprueft, indem die Anzahl der Traenke ueberprueft wird
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param spieler:
-	 *            Identifikationszahl des Spielers
+	 * @param spieler
+	 *            : Identifikationszahl des Spielers
 	 */
 	public boolean trankBenutzbar(int spielerID) {
 		boolean funktioniert;
@@ -275,44 +285,53 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * void Methode, um einen Trank zu benutzen. Hierbei werden die Lebenspunkte des Spielers wieder aufgefuellt
+	 * void Methode, um einen Trank zu benutzen. Hierbei werden die Lebenspunkte
+	 * des Spielers wieder aufgefuellt
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param spielerID:
-	 *            Identifikationszahl des Spielers
+	 * @param spielerID
+	 *            : Identifikationszahl des Spielers
 	 */
 	public void benutzeTrank(int spielerID) {
 		if (trankBenutzbar(spielerID)) {
-			spielerListe[spielerID].setAnzahlHeiltraenke(spielerListe[spielerID].getAnzahlHeiltraenke() - 1);
+			spielerListe[spielerID]
+					.setAnzahlHeiltraenke(spielerListe[spielerID]
+							.getAnzahlHeiltraenke() - 1);
 			spielerListe[spielerID].setLebenspunkte(10);
 		}
 	}
 
 	/**
-	 * Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt, so wird sie zum jeweiligen Nachrichten
-	 * Behandler weiter geleitet. Dieser gibt dann einen Boolean zurueck. Je nachdem wird eine bestimmte Aussage ausgegeben
+	 * Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt,
+	 * so wird sie zum jeweiligen Nachrichten Behandler weiter geleitet. Dieser
+	 * gibt dann einen Boolean zurueck. Je nachdem wird eine bestimmte Aussage
+	 * ausgegeben
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param Nachricht:
-	 *            Die vom Client empfangene Nachricht
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param Nachricht
+	 *            : Die vom Client empfangene Nachricht
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception {
+	public static boolean verarbeiteClientNachricht(Nachricht Nachricht,
+			Levelverwaltung spiel) throws Exception {
 		switch (Nachricht.getTyp()) {
 		case 0:
 			if (Nachricht.getLoginTyp() == 0)
-				return Einloggen.logIn(Nachricht.benutzername, Nachricht.passwort);
+				return Einloggen.logIn(Nachricht.benutzername,
+						Nachricht.passwort);
 			else
-				return Einloggen.regIn(Nachricht.benutzername, Nachricht.passwort);// Login
+				return Einloggen.regIn(Nachricht.benutzername,
+						Nachricht.passwort);// Login
 		case 1:
 			return behandleSpielerbewegung(Nachricht, spiel);// Spielerbewegung
 		case 2:
 			return behandleTrankaufnahme(Nachricht, spiel); // Trankaufnahme
 		case 3:
-			return behandleLevelGeschafft(Nachricht.getID(), spiel); // Level geschafft																
+			return behandleLevelGeschafft(Nachricht.getID(), spiel); // Level
+																		// geschafft
 		case 4:
 			return behandleschluesselaufgehoben(Nachricht, spiel);// Schluesselaufnahme
 		case 5:
@@ -321,9 +340,11 @@ public class Levelverwaltung {
 		case 6:
 			return true;// Level empfangen
 		case 7:
-			return behandleLevelUebersprungen(spiel);// Spieler ueberspringt Level
+			return behandleLevelUebersprungen(spiel);// Spieler ueberspringt
+														// Level
 		case 8:
-			return chat.nachrichtEmpfangen(Nachricht.nachricht);// Chat Nachricht																
+			return chat.nachrichtEmpfangen(Nachricht.nachricht);// Chat
+																// Nachricht
 		case 9:
 			return behandleKampfnachrichten((KampfNachricht) Nachricht, spiel);// Kampnachricht
 		case 13:
@@ -333,8 +354,8 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Abwicklung der Cheats ueber den Client
-	 * Auswirkungen der Cheats werden ueber andere Nachrichten versendet
+	 * Abwicklung der Cheats ueber den Client Auswirkungen der Cheats werden
+	 * ueber andere Nachrichten versendet
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
@@ -344,69 +365,87 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst wird ueberprueft, ob der Spieler an
-	 * diese Position gehen darf. danach wird seine Position geaendert
+	 * Behandelt die Nachrichten, die eine Spielerbewegung beinhalten. Zunaechst
+	 * wird ueberprueft, ob der Spieler an diese Position gehen darf. danach
+	 * wird seine Position geaendert
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param Spielerbewegung:
-	 *            Die vom Client empfangene Nachricht, die eine Spielerbewegung
-	 *            beinhaltet
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param Spielerbewegung
+	 *            : Die vom Client empfangene Nachricht, die eine
+	 *            Spielerbewegung beinhaltet
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung, Levelverwaltung spiel) {
+	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung,
+			Levelverwaltung spiel) {
 		boolean moeglich;
 		System.out.print("Spielerbewegung");
-		if (Levelverwaltung.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung.getyKoo()] != 0
-				&& ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung.getID()].getXPos())
-						&& (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() + 1))
-						|| (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getYPos() - 1)))
-				|| ((Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung.getID()].getYPos())
-						&& (((Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getXPos() + 1))
-								|| (Spielerbewegung
-										.getxKoo() == (spiel.spielerListe[Spielerbewegung.getID()].getXPos() - 1)))))) {
+		if (Levelverwaltung.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung
+				.getyKoo()] != 0
+				&& ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung
+						.getID()].getXPos())
+						&& (Spielerbewegung.getyKoo() == (spiel.spielerListe[Spielerbewegung
+								.getID()].getYPos() + 1)) || (Spielerbewegung
+						.getyKoo() == (spiel.spielerListe[Spielerbewegung
+						.getID()].getYPos() - 1)))
+				|| ((Spielerbewegung.getyKoo() == spiel.spielerListe[Spielerbewegung
+						.getID()].getYPos()) && (((Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung
+						.getID()].getXPos() + 1)) || (Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung
+						.getID()].getXPos() - 1)))))) {
 
 			System.out.println("erlaubt");
-			spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(), Spielerbewegung.getyKoo(), 2, spiel);
+			spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(),
+					Spielerbewegung.getyKoo(), 2, spiel);
 			moeglich = true;
 		} else {
 			System.out.println("verboten");
-			System.out.println("Spielerposition" + spiel.spielerListe[Spielerbewegung.getID()].getXPos() + " "
+			System.out.println("Spielerposition"
+					+ spiel.spielerListe[Spielerbewegung.getID()].getXPos()
+					+ " "
 					+ spiel.spielerListe[Spielerbewegung.getID()].getYPos());
-			System.out.println("Nachrichtenbewegung" + Spielerbewegung.getxKoo() + " " + Spielerbewegung.getyKoo());
+			System.out.println("Nachrichtenbewegung"
+					+ Spielerbewegung.getxKoo() + " "
+					+ Spielerbewegung.getyKoo());
 			moeglich = false;
 		}
 		return moeglich;
 	}
 
 	/**
-	 * Nachrichten Behandler fuer die Aufnhame eines Trankes zunaechst wird ueberprueft, ob der Trank aufgenommen werden
-	 * darf danach wird er zum Inventar hinzugefuegt
+	 * Nachrichten Behandler fuer die Aufnhame eines Trankes zunaechst wird
+	 * ueberprueft, ob der Trank aufgenommen werden darf danach wird er zum
+	 * Inventar hinzugefuegt
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param trankAufnahme:
-	 *            Die vom Client empfangene Nachricht, die eine Trank Aufnahme
+	 * @param trankAufnahme
+	 *            : Die vom Client empfangene Nachricht, die eine Trank Aufnahme
 	 *            beinhaltet
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean behandleTrankaufnahme(Nachricht trankAufnahme, Levelverwaltung spiel) {
+	public static boolean behandleTrankaufnahme(Nachricht trankAufnahme,
+			Levelverwaltung spiel) {
 		boolean moeglich;
 		if (!(spiel.trankListe[trankAufnahme.trankID].aufgehoben)
-				&& spiel.trankListe[trankAufnahme.trankID].getPosX() == spiel.spielerListe[trankAufnahme.getID()]
-						.getXPos()
-				&& spiel.trankListe[trankAufnahme.trankID].getPosY() == spiel.spielerListe[trankAufnahme.getID()]
-						.getYPos()) {
+				&& spiel.trankListe[trankAufnahme.trankID].getPosX() == spiel.spielerListe[trankAufnahme
+						.getID()].getXPos()
+				&& spiel.trankListe[trankAufnahme.trankID].getPosY() == spiel.spielerListe[trankAufnahme
+						.getID()].getYPos()) {
 			spiel.trankListe[0].aufgehoben = true;
 			spiel.spielerListe[trankAufnahme.getID()]
-					.setAnzahlHeiltraenke(spiel.spielerListe[trankAufnahme.getID()].getAnzahlHeiltraenke() + 1);
+					.setAnzahlHeiltraenke(spiel.spielerListe[trankAufnahme
+							.getID()].getAnzahlHeiltraenke() + 1);
 			moeglich = true;
 		} else {
-			System.out.println(spiel.trankListe[trankAufnahme.trankID].getPosX() + " "
+			System.out.println(spiel.trankListe[trankAufnahme.trankID]
+					.getPosX()
+					+ " "
 					+ spiel.trankListe[trankAufnahme.trankID].getPosY());
-			System.out.println(spiel.spielerListe[trankAufnahme.getID()].getXPos() + " "
+			System.out.println(spiel.spielerListe[trankAufnahme.getID()]
+					.getXPos()
+					+ " "
 					+ spiel.spielerListe[trankAufnahme.getID()].getYPos());
 			moeglich = false;
 		}
@@ -414,19 +453,23 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Nachrichten Behandler fuer das beendete Level zunaechst Ueberpruefung, ob der Schluessel aufgehoben wurde und ob der
-	 * Spieler bei der Tuer ist danach wird true zurueck gegeben und das naechste Level kann gestartet werden.
+	 * Nachrichten Behandler fuer das beendete Level zunaechst Ueberpruefung, ob
+	 * der Schluessel aufgehoben wurde und ob der Spieler bei der Tuer ist
+	 * danach wird true zurueck gegeben und das naechste Level kann gestartet
+	 * werden.
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param spielerID:
-	 *            Identifikationszahl des Spielers
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param spielerID
+	 *            : Identifikationszahl des Spielers
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean behandleLevelGeschafft(int spielerID, Levelverwaltung spiel) {
+	public static boolean behandleLevelGeschafft(int spielerID,
+			Levelverwaltung spiel) {
 		boolean moeglich;
-		if (spiel.spielerListe[spielerID].hatSchluessel() && spiel.spielerListe[spielerID].getXPos() == tuerX
+		if (spiel.spielerListe[spielerID].hatSchluessel()
+				&& spiel.spielerListe[spielerID].getXPos() == tuerX
 				&& spiel.spielerListe[spielerID].getYPos() == tuerY) {
 			// Level wechseln
 			moeglich = true;
@@ -443,18 +486,20 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Nachrichtenbehandler fuer einen aufgehobenen Schluessel zunaechst wird ueberprueft, ob er aufgehoben werden kann
-	 * anschliessend wird der schluesselstatus auf wahr gesetzt
+	 * Nachrichtenbehandler fuer einen aufgehobenen Schluessel zunaechst wird
+	 * ueberprueft, ob er aufgehoben werden kann anschliessend wird der
+	 * schluesselstatus auf wahr gesetzt
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param schluesselAufnahme:
-	 *            Die vom Client empfangene Nachricht, die eine Schluessel
+	 * @param schluesselAufnahme
+	 *            : Die vom Client empfangene Nachricht, die eine Schluessel
 	 *            Aufnahme beinhaltet
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean behandleschluesselaufgehoben(Nachricht schluesselAufnahme, Levelverwaltung spiel) {
+	public static boolean behandleschluesselaufgehoben(
+			Nachricht schluesselAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
 		if (spiel.spielerListe[schluesselAufnahme.getID()].getXPos() == schluesselX
 				&& spiel.spielerListe[schluesselAufnahme.getID()].getYPos() == schluesselY) {
@@ -467,15 +512,17 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Nachrichtenbehandler fuer das Uebersprungene Level Der Spieler wird dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
+	 * Nachrichtenbehandler fuer das Uebersprungene Level Der Spieler wird
+	 * dafuer auf die Tuer gesetzt und ihm wird der Schluessel uebergeben
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
 	public static boolean behandleLevelUebersprungen(Levelverwaltung spiel) {
-		Levelverwaltung.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0].getYPos()] = 1;
+		Levelverwaltung.levelInhalt[spiel.spielerListe[0].getXPos()][spiel.spielerListe[0]
+				.getYPos()] = 1;
 		Levelverwaltung.levelInhalt[tuerX][tuerY] = 2;
 		spiel.spielerListe[0].setXPos(tuerX);
 		spiel.spielerListe[0].setYPos(tuerY);
@@ -486,22 +533,26 @@ public class Levelverwaltung {
 	}
 
 	/**
-	 * Nachrichtenbehandler fuer Kampfnachrichten Je Nachdem wer angegriffen wird werden die Lebenspunkte veraendert
+	 * Nachrichtenbehandler fuer Kampfnachrichten Je Nachdem wer angegriffen
+	 * wird werden die Lebenspunkte veraendert
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
-	 * @param Nachricht:
-	 *            Eine Nachricht, die vom Server kommt ; Beinhaltet eine
+	 * @param Nachricht
+	 *            : Eine Nachricht, die vom Server kommt ; Beinhaltet eine
 	 *            Kampfnachricht
-	 * @param spiel:
-	 *            Die zu verwaltende Levelverwaltung
+	 * @param spiel
+	 *            : Die zu verwaltende Levelverwaltung
 	 */
-	public static boolean behandleKampfnachrichten(KampfNachricht Nachricht, Levelverwaltung spiel) {
+	public static boolean behandleKampfnachrichten(KampfNachricht Nachricht,
+			Levelverwaltung spiel) {
 		if (Nachricht.angegriffen) {
 			spiel.spielerListe[Nachricht.getID()]
-					.setLebenspunkte(spiel.spielerListe[Nachricht.getID()].getLebenspunkte() - 1);
+					.setLebenspunkte(spiel.spielerListe[Nachricht.getID()]
+							.getLebenspunkte() - 1);
 		} else {
 			spiel.gegnerListe[Nachricht.monsterID]
-					.setLebenspunkte(spiel.gegnerListe[Nachricht.monsterID].getLebenspunkte() - 1);
+					.setLebenspunkte(spiel.gegnerListe[Nachricht.monsterID]
+							.getLebenspunkte() - 1);
 		}
 		return true;
 	}

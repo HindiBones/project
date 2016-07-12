@@ -154,7 +154,7 @@ public class Spieler extends Figur {
 	}
 	
 	@Override
-	public void changeHealth(int change) {
+	public void lebenAendern(int change) {
 		if(!unverwundbar)
 		lp = Math.min(lp + change, getMaxHealth());
 	}

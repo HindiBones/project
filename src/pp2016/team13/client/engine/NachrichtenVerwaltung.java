@@ -170,7 +170,8 @@ public class NachrichtenVerwaltung {
 		case 0:
 			/*
 			 * Testet, ob eine Bewegung in die angegebene Richtung moeglich ist.
-			 * Fuehrt die Bewegung aus und sendet eine entsprechende Nachricht an den Server
+			 * Fuehrt die Bewegung aus und sendet eine entsprechende Nachricht
+			 * an den Server
 			 */
 			if (spieler.getYPos() < aktuellesLevel.getLaengeY() - 1
 					&& fenster.Level.getBestimmtenLevelInhalt(
@@ -234,9 +235,9 @@ public class NachrichtenVerwaltung {
 		// Heilungseffekt wird verbessert, falls der Spieler
 		// den Schluessel aufgesammelt hat
 		if (spieler.hatSchluessel())
-			spieler.changeHealth((int) (aenderung * 1.5));
+			spieler.lebenAendern((int) (aenderung * 1.5));
 		else
-			spieler.changeHealth((int) (aenderung * 0.5));
+			spieler.lebenAendern((int) (aenderung * 0.5));
 	}
 
 	/**
@@ -356,7 +357,8 @@ public class NachrichtenVerwaltung {
 		if (nachricht.istCheat()) {
 			serverAntwort = sende(new Cheat(nachricht.getCheat()));
 		} else {
-			// Wenn es kein Cheat war, wird die Nachricht als Chatnachricht weiterverarbeitet
+			// Wenn es kein Cheat war, wird die Nachricht als Chatnachricht
+			// weiterverarbeitet
 			serverAntwort = sende(nachricht);
 		}
 		// Verarbeitet die Serverantwort
@@ -373,7 +375,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public Level levelWechseln() {
-		// 	Wenn das Level nicht das letzte war, wird das Level um eins erhoeht.
+		// Wenn das Level nicht das letzte war, wird das Level um eins erhoeht.
 		if (fenster.Level.getLevelID() < fenster.MAXLEVEL - 1) {
 			aktuellesLevel = alleLevel[aktuellesLevel.levelID + 1];
 			// Dem Spieler wird der Schluessel abgenommen
@@ -382,7 +384,8 @@ public class NachrichtenVerwaltung {
 			systemnachricht("Level wurde gewechselt!");
 			return aktuellesLevel;
 		} else {
-			// Wenn es das letzte Level war, wird ein Level mit ID = 6 zurueckgegeben, damit 
+			// Wenn es das letzte Level war, wird ein Level mit ID = 6
+			// zurueckgegeben, damit
 			return new Level(6, aktuellesLevel.levelInhalt);
 		}
 	}
@@ -398,7 +401,7 @@ public class NachrichtenVerwaltung {
 	 */
 	public void systemnachricht(String Text) {
 		// Gibt die Systemnachricht im Chat aus
-		fenster.getMinimap().getChatFenster().textumfeld.append("<System>: "
-				+ Text + "\n");
+		fenster.getSeitenleiste().getChatFenster().textumfeld
+				.append("<System>: " + Text + "\n");
 	}
 }

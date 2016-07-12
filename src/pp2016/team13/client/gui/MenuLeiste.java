@@ -1,5 +1,6 @@
 package pp2016.team13.client.gui;
-import java.awt.event.ActionEvent; 
+
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
@@ -9,7 +10,6 @@ import javax.swing.JMenuItem;
 import pp2016.team13.client.comm.Paket;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Nachrichten.AusloggenNachricht;
-
 
 public class MenuLeiste extends JMenuBar implements ActionListener {
 
@@ -27,7 +27,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	private JMenuItem steuerung;
 
 	private HindiBones fenster;
-	boolean anmelde= false;
+	boolean anmelde = false;
 
 	public MenuLeiste(HindiBones fenster) {
 		this.fenster = fenster;
@@ -35,15 +35,15 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		spiel = new JMenu("Spiel");
 		anzeige = new JMenu("Anzeige");
 		hilfe = new JMenu("Hilfe");
-		ausloggen=new JMenuItem("Ausloggen");
+		ausloggen = new JMenuItem("Ausloggen");
 
 		neuesSpiel = new JMenuItem("Neues Spiel starten");
 		highscore = new JMenuItem("Highscore anzeigen");
 		beenden = new JMenuItem("Beenden");
 		karteaufdecken = new JMenuItem("Karte aufdecken");
 		steuerung = new JMenuItem("Steuerung");
-		
-		//Einbinden Elemente an ActionListener
+
+		// Einbinden Elemente an ActionListener
 		neuesSpiel.addActionListener(this);
 		highscore.addActionListener(this);
 		beenden.addActionListener(this);
@@ -58,15 +58,15 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		anzeige.add(karteaufdecken);
 		hilfe.add(steuerung);
 
-		
 		this.add(spiel);
 		this.add(anzeige);
 		this.add(hilfe);
 		this.add(ausloggen);
 	}
-	
+
 	/**
 	 * Ergaenzt um Auslogg Item
+	 * 
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -85,50 +85,51 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			}
 		} else if (e.getSource() == steuerung) {
 			if (fenster.steuerungAngezeigt) {
-//				fenster.zeigeSpielfeld();
+				// fenster.zeigeSpielfeld();
 				karteaufdecken.setText("Karte aufdecken");
 			} else {
-				
+
 				fenster.zeigeSteuerung();
 				karteaufdecken.setText("Spielfeld anzeigen");
 
 			}
 
 		} else if (e.getSource() == karteaufdecken) {
-			if(karteaufdecken.getText().equals("Spielfeld anzeigen"))
+			if (karteaufdecken.getText().equals("Spielfeld anzeigen"))
 				fenster.zeigeSpielfeld();
-			else {if (fenster.nebelAn) {
-				fenster.nebelAn = false;
-				karteaufdecken.setText("Karte verdecken");
-			} else {
-				fenster.nebelAn = true;
-				karteaufdecken.setText("Karte aufdecken");
-			}}
-			
-		
+			else {
+				if (fenster.nebelAn) {
+					fenster.nebelAn = false;
+					karteaufdecken.setText("Karte verdecken");
+				} else {
+					fenster.nebelAn = true;
+					karteaufdecken.setText("Karte aufdecken");
+				}
+			}
+
 		} else if (e.getSource() == beenden) {
-			fenster.client.socket.sendeLogout(new Paket(new AusloggenNachricht()));
+			fenster.client.socket.sendeLogout(new Paket(
+					new AusloggenNachricht()));
 			System.exit(0);
-		
-			
-		}else if (e.getSource()== ausloggen){
-			fenster.spielfeldSichtbar = false; 
-			
-			
+
+		} else if (e.getSource() == ausloggen) {
+			fenster.spielfeldSichtbar = false;
+
 			try {
-				
+
 				Thread.sleep(100);
 				fenster.Level = new Level(-1, null);
-				fenster.getMinimap().getChatFenster().textumfeld.setText("");
+				fenster.getSeitenleiste().getChatFenster().textumfeld
+						.setText("");
 				fenster.spielZuruecksetzen();
 				fenster.zeigeAnmeldung();
-				
+
 			} catch (InterruptedException e1) {
-			
+
 				e1.printStackTrace();
-			
-			}	 	
-			
+
+			}
+
 		}
 	}
 
@@ -136,6 +137,4 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		return highscore;
 	}
 
-	
-	
 }
