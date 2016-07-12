@@ -1,5 +1,4 @@
 1	-
-<<<<<<< HEAD
 293	julius
 1000	-
 1000	-
@@ -9,7 +8,6 @@
 1000	Ich habe keine Lust mehr
 1000	Komisch
 1000	Letztes Problem
-=======
 34	Peace
 37	1
 44	null
@@ -19,4 +17,3 @@
 212	Peace
 254	zweiter runde
 369	geschaft
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
