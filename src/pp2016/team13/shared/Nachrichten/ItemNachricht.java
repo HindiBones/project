@@ -1,7 +1,8 @@
 package pp2016.team13.shared.Nachrichten;
 
 /**
- * Item-Nachricht, wird verschickt, wenn ein Item (Heiltrank, Trank, Schluessel) aufgehoben oder benutzt wird
+ * Item-Nachricht, wird verschickt, wenn ein Item (Heiltrank, Trank, Schluessel)
+ * aufgehoben oder benutzt wird
  * 
  * @author <Braun, Jan Julius, 6000100>
  *
@@ -24,7 +25,7 @@ public class ItemNachricht extends Nachricht {
 	 * @param item
 	 *            : Art der Item-Nachricht. 2 = Trank aufgehoben, 4 = Schluessel
 	 *            aufgehoben, 12 = Trank benutzt
-	 *            
+	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 * 
 	 */

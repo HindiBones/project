@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 public class Einloggen {
 	static String[] passworte;
 	static String[] benutzer;
-	static String Pwt;
+	static String pwt;
 
 	/**
 	 * Login Methode liest die in der externen Datei gespeicherten Nutzerdaten
@@ -32,7 +32,7 @@ public class Einloggen {
 	 * @throws Exception,
 	 *             falls die Datei nicht eingelesen werden kann
 	 */
-	public static boolean LogIn(String benutzername, String passwort) throws Exception {
+	public static boolean logIn(String benutzername, String passwort) throws Exception {
 		Verschluesselung Ver = new Verschluesselung();
 		boolean fertig = false;
 		try {
@@ -48,8 +48,8 @@ public class Einloggen {
 				Nutzerdaten[i] = rLine;
 				String[] a = Nutzerdaten[i].split(" ");
 				passworte[i] = a[1];
-				Pwt = passworte[i];
-				if (Ver.verschluesseln(passwort, benutzername).equals(Pwt)) {
+				pwt = passworte[i];
+				if (Ver.verschluesseln(passwort, benutzername).equals(pwt)) {
 					System.out.println("Willkommen zurueck");
 					fertig = true;
 					break;
@@ -83,7 +83,7 @@ public class Einloggen {
 	 * 
 	 * @return je nachdem, ob es erfolgreich war, wird ein Boolean zurueck gegeben
 	 */
-	public static boolean RegIn(String Benutzername, String Passwort) {
+	public static boolean regIn(String Benutzername, String Passwort) {
 		boolean fertig = false;
 		try {
 			FileInputStream fileinptstrm = new FileInputStream("./src/pp2016/team13/server/engine/NutzerDaten.txt");

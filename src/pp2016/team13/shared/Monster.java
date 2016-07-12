@@ -92,13 +92,13 @@ public class Monster extends Figur {
 
 		if (spielerImRadius && kannAngreifen && !spieler.istUnverwundbar() &&spieler.getLebenspunkte() > 0) {
 			lastAttack = System.currentTimeMillis();
-			spieler.changeHealth(-getSchaden());
+			spieler.lebenAendern(-getSchaden());
 		}
 		return spielerImRadius;
 	}
 
-	public void changeHealth(int change) {
-		super.changeHealth(change);
+	public void lebenAendern(int change) {
+		super.lebenAendern(change);
 		if (getLebenspunkte() <= 0) {
 			if(hatSchluessel)
 			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 8);

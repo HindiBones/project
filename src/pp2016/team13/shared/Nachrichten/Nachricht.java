@@ -3,7 +3,8 @@ package pp2016.team13.shared.Nachrichten;
 import java.io.Serializable;
 
 /**
- * Oberklasse aller Nachrichten-Klassen. Enthaelt alle noetigen Attribute und Methoden der Nachrichten
+ * Oberklasse aller Nachrichten-Klassen. Enthaelt alle noetigen Attribute und
+ * Methoden der Nachrichten
  * 
  * @author <Braun, Jan Julius, 6000100>
  *
@@ -18,26 +19,20 @@ public class Nachricht implements Serializable {
 	public int[][][] leveldaten;
 
 	/*
-	 * Typen von Messages: 
-	 * type 0 : Login-Message 
-	 * type 1 : Spielerbewegung 
-	 * type 2 : Heiltrank aufnehmen
-	 * type 5 : Fehlermeldung
-	 * type 6 : Levelnachricht
-	 * type 7 : Kampfnachricht 
-	 * type 8 : ChatNachricht
-	 * type 10: LevelAnfordernNachricht
-	 * type 11: AntwortNachricht
-	 * type 12: Schutztrank aufnehmen
-	 * type 13: Cheat
-	 * type 15: AusloggenNachricht
+	 * Typen von Messages: type 0 : Login-Message type 1 : Spielerbewegung type
+	 * 2 : Heiltrank aufnehmen type 5 : Fehlermeldung type 6 : Levelnachricht
+	 * type 7 : Kampfnachricht type 8 : ChatNachricht type 10:
+	 * LevelAnfordernNachricht type 11: AntwortNachricht type 12: Schutztrank
+	 * aufnehmen type 13: Cheat type 15: AusloggenNachricht
 	 */
 
 	/**
-	 * Erstellt eine Nachricht, die von Client-Engine und Server-Engine verarbeitet werden kann
+	 * Erstellt eine Nachricht, die von Client-Engine und Server-Engine
+	 * verarbeitet werden kann
 	 * 
 	 * @param typ
-	 * 			  : Setzt den Typ der Nachricht fest, damit Client und Server entsprechend reagieren koennen
+	 *            : Setzt den Typ der Nachricht fest, damit Client und Server
+	 *            entsprechend reagieren koennen
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 * 
@@ -77,12 +72,12 @@ public class Nachricht implements Serializable {
 	/**
 	 * @return: Gibt die gespeicherte Y-Koordinate zurueck.
 	 * 
-	 * author <Braun, Jan Julius, 6000100>
+	 *          author <Braun, Jan Julius, 6000100>
 	 */
 	public int getyKoo() {
 		return this.yKoo;
 	}
-	
+
 	/**
 	 * @return: Gibt den gespeicherten Logintypen zurueck.
 	 * 

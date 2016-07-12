@@ -29,7 +29,7 @@ public abstract class Figur {
 		return schaden;
 	}
 
-	public void changeHealth(int change) {
+	public void lebenAendern(int change) {
 		lp = Math.min(lp + change, getMaxHealth());
 	}
 

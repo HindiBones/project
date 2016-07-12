@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  * 
- * @author Cigdem
+ * @author <Akbulut, Cigdem, 5382718>
  * @param groesse:
  *            Spielfeldgroesse
  * @param karte:
@@ -42,7 +42,7 @@ public class FloodFill {
 	/**
 	 * FloodFill ruft sich selber auf und geht in die jeweilige Richtung
 	 * 
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @param size:
 	 *            legt die Groesse des Labyrinths fest
 	 */
@@ -67,7 +67,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @return: gibt die Groesse des Feldes zurueck
 	 */
 	public int getKartenGroesse() {
@@ -75,7 +75,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @return: gibt den Startpunkt zurueck
 	 */
 	public Point getStartpunkt() {
@@ -83,7 +83,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @return: gibt den Zielpunkt zurueck
 	 */
 	public Point getZielpunkt() {
@@ -91,7 +91,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @return: gibt die jetzige Position zurueck
 	 */
 	public Point getJetzigePosition() {
@@ -99,7 +99,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * @param x
 	 *            x Koordinate
 	 * @param y
@@ -111,7 +111,7 @@ public class FloodFill {
 	}
 
 	/**
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * 
 	 * @param p
 	 *            Punkt p
@@ -125,10 +125,9 @@ public class FloodFill {
 	/**
 	 * setzt die Richtung
 	 * 
-	 * @param p:aktuelle
-	 *            Punkt
-	 * @param richtung:gesetzte
-	 *            Richtung
+	 * @param p: aktuelle Punkt
+	 *            
+	 * @param richtung: gesetzte Richtung
 	 * 
 	 */
 	public Point setzeRichtung(Point p, int richtung) {
@@ -149,8 +148,8 @@ public class FloodFill {
 	/**
 	 * Geht zufaellig in eine Richtung bis der Zielpunkt erreicht ist
 	 * 
-	 * @param punkt
-	 * @param zufall
+	 * @param punkt: Zielpunkt
+	 * @param zufall: Richtung
 	 */
 	private void floodFill(Point punkt, Random zufall) {
 		int zufall1, zufall2, zufall3, zufall4;
