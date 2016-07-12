@@ -15,7 +15,8 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  * 
  * Klasse Client: Stellt die Verbindung zum Server da und sendet Nachrichten
  * 
- * @author Kirthika Jeyakumar
+ * @author <Jeyakumar, Kirthika, 7302822>
+ *  
  * @param cs
  *            : Socket
  * @param binAmLeben
@@ -27,7 +28,7 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  *
  */
 public class Client extends Paket {
-	// Liste wird genriert f�r die Nachrichten
+	// Liste wird genriert fuer die Nachrichten
 	LinkedList<Paket> clientListe = new LinkedList<Paket>();
 	// einzelne Streams werden erzeugt
 	InputStream is;
@@ -47,7 +48,7 @@ public class Client extends Paket {
 	/**
 	 * Nachricht wird an Server gesendet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param msg
 	 *            Message, das gesendet wird
 	 * @return Serverantwort wird zurueckgegeben
@@ -76,7 +77,7 @@ public class Client extends Paket {
 	}
 
 	/**
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param msg
 	 *            : Sendepaket
 	 */
