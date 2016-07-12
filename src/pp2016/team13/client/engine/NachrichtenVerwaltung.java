@@ -24,7 +24,6 @@ public class NachrichtenVerwaltung {
 
 	public Client socket;
 	HindiBones fenster;
-	int id;
 	public Spieler spieler;
 	public Level aktuellesLevel;
 	public Level[] alleLevel = new Level[5];

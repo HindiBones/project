@@ -2,7 +2,6 @@ package pp2016.team13.server.engine;
 
 import java.io.IOException;
 
-import pp2016.team13.client.engine.*;
 import pp2016.team13.server.map.Labyrinth;
 import pp2016.team13.shared.*;
 import pp2016.team13.shared.Nachrichten.KampfNachricht;
