@@ -2,19 +2,20 @@ package pp2016.team13.server.map;
 
 import pp2016.team13.server.map.Labyrinth;
 /**
- * Groesse der Map festlegen
+ * Groesse der Karte festlegen
  * @author Cigdem
  * 
  */
 public class Labyrinth {
-	private int size = 19;
-	public int [][] map = new int [size][size];
+	private int groesse = 19;
+	public int [][] karte = new int [groesse][groesse];
 	static Koordinaten [] bodenplatten;
 
 /**
  * 
- * bestimmt Anzahl Heiltr�nke, Schutztr�nke und Monster.
- * Anzahl Monster werden zuf�llig bestimmt zwischen 1 und 5.
+ * bestimmt Anzahl Heiltraenke, Schutztraenke und Monster.
+ * Anzahl Monster werden zufaellig bestimmt zwischen 1 und 5.
+ * 
  * @author Cigdem
  * 
  */
@@ -22,28 +23,29 @@ public class Labyrinth {
 		int AnzHeiltrank = 2;
 		int AnzSchutztrank = 1;
 		int AnzMonster = (int)((Math.random()) * 2 * levelnummer + 1);
-		bodenplatten = new Koordinaten [size*size];
+		bodenplatten = new Koordinaten [groesse*groesse];
 /**
  * 
- * FloodFill f�llt die map auf
+ * FloodFill fuellt die map auf
  * @author Cigdem
  */
-		FloodFill auffuellen = new FloodFill(size);
-		for (int i = 0; i < size-1 ; i++){
-			for (int j = 0 ; j< size-1 ; j++){
-				this.map [i][j] = auffuellen.map[i][j];
+		FloodFill auffuellen = new FloodFill(groesse);
+		for (int i = 0; i < groesse-1 ; i++){
+			for (int j = 0 ; j< groesse-1 ; j++){
+				this.karte [i][j] = auffuellen.karte[i][j];
 			}
 		}
 /**
  * 
  * speichere alle Bodenelemente in bodenplatten
+ * 
  * @author Cigdem
  */
 		// Speichere alle Felder die Boden sind in bodenplatten
 		int zaehler = 0;
-		for (int i = 0; i< size ; i++){
-			for (int j = 0 ; j< size ; j++){
-				if (map[i][j] == 1){
+		for (int i = 0; i< groesse ; i++){
+			for (int j = 0 ; j< groesse ; j++){
+				if (karte[i][j] == 1){
 					bodenplatten[zaehler] = new Koordinaten (i, j);
 					zaehler++;
 				}
@@ -51,22 +53,22 @@ public class Labyrinth {
 		}
 /**
  * 
- * finde Zuf�llige Position f�r Spieler, Tuer, Heiltraenke,Schutztraenke, Monster und ein Schlessel
- *@author Cigdem
+ * finde zufaellige Position fuer Spieler, Tuer, Heiltraenke,Schutztraenke, Monster und Schlessel
+ * 
+ * @author Cigdem
  */
-		// Zufaellige Position f�r den Charakter
+		// Zufaellige Position fuer den Charakter
 		double zufallsZahl = (Math.random()*zaehler)-1;
 		int zz1 = (int) zufallsZahl;
-		map[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
+		karte[bodenplatten[zz1].xKoordinate][bodenplatten[zz1].yKoordinate]= 2;
 
 		// Position  Tuer
-//		zufallsZahl = (Math.random()*zaehler)-1;
 		int zz2 = (int) zufallsZahl;
 		while (zz2 == zz1){
 			zufallsZahl = (Math.random()*zaehler)-1;
 			zz2 = (int) zufallsZahl;
 		}
-		map[bodenplatten[zz2].xKoordinate][bodenplatten[zz2].yKoordinate]= 6;
+		karte[bodenplatten[zz2].xKoordinate][bodenplatten[zz2].yKoordinate]= 6;
 				
 		// 	Zufaellige Position der Heiltraenke
 		int zz3 = (int) zufallsZahl;
@@ -76,7 +78,7 @@ public class Labyrinth {
 					zufallsZahl = (Math.random()*zaehler)-1;
 					zz3 = (int) zufallsZahl;
 				}
-		map[bodenplatten[zz3].xKoordinate][bodenplatten[zz3].yKoordinate]= 4;
+		karte[bodenplatten[zz3].xKoordinate][bodenplatten[zz3].yKoordinate]= 4;
 			}
 	
 		//	Zufaellige Position der Schutztraenke
@@ -86,7 +88,7 @@ public class Labyrinth {
 				while (zz4 == zz1 ||zz4 == zz2 || zz4 == zz3){
 					zufallsZahl = (Math.random()*zaehler)-1;
 				}
-		map[bodenplatten[zz4].xKoordinate][bodenplatten[zz4].yKoordinate]= 7;
+		karte[bodenplatten[zz4].xKoordinate][bodenplatten[zz4].yKoordinate]= 7;
 			}
 				
 		// 	Zufaellige Position der Monster
@@ -96,7 +98,7 @@ public class Labyrinth {
 				while (zz5 == zz1 ||zz5 == zz2 || zz5 == zz3|| zz5 == zz4){
 					zufallsZahl = (Math.random()*zaehler)-1;
 				}
-			map[bodenplatten[zz5].xKoordinate][bodenplatten[zz5].yKoordinate]= 3;
+			karte[bodenplatten[zz5].xKoordinate][bodenplatten[zz5].yKoordinate]= 3;
 			}
 					
 
@@ -108,7 +110,7 @@ public class Labyrinth {
 						zz6 = (int) ((Math.random()*zaehler)-1);
 						}
 					
-				map[bodenplatten[zz6].xKoordinate][bodenplatten[zz6].yKoordinate]= 5;
+				karte[bodenplatten[zz6].xKoordinate][bodenplatten[zz6].yKoordinate]= 5;
 							
 		
 		

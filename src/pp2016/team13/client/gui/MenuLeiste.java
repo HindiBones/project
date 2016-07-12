@@ -66,7 +66,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	}
 	
 	/**
-	 * Ergänzt um Auslogg Item
+	 * Ergaenzt um Auslogg Item
 	 * @author Seyma Keser
 	 */
 	public void actionPerformed(ActionEvent e) {

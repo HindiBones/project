@@ -50,7 +50,7 @@ public class Einloggen {
 				passworte[i] = a[1];
 				Pwt = passworte[i];
 				if (Ver.verschluesseln(passwort, benutzername).equals(Pwt)) {
-					System.out.println("Willkommen zur�ck");
+					System.out.println("Willkommen zurueck");
 					fertig = true;
 					break;
 				} else {
