@@ -887,15 +887,6 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		spielende=false;
 		spielflaeche.anfangszustand=0;
 
-		
-//			try {
-//				Thread.sleep(100);		
-//		
-//		testspieler.setFenster(this);
-//			} catch (InterruptedException e2) {
-//				// TODO Auto-generated catch block
-//				e2.printStackTrace();
-//			}		
 
 
 		try {
