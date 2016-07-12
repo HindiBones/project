@@ -40,6 +40,8 @@ public class FloodFill {
 		}
 	}
 	/**
+	 * FloodFill ruft sich selber auf und geht in die jeweilige Richtung
+	 * 
 	 * @author Cigdem
 	 * @param size: legt die Groesse des Labyrinths fest 
 	 */
@@ -67,8 +69,9 @@ public class FloodFill {
 		currentPosition = startingPoint;
 	}
 	/**
+	 *  
 	 * @author Cigdem
-	 * @return
+	 * @return: gibt an ob der Punkt im Feld liegt
 	 */
 	public int getMapSize() { return size; }
 	public Point getStartingPoint() { return startingPoint; }
@@ -79,6 +82,13 @@ public class FloodFill {
 	private boolean onMap(Point p) {
 		return p.x >= 0 && p.x < size && p.y >= 0 && p.y < size;
 	}
+	/**
+	 * setzt die Richtung
+	 * 
+	 * @param p:aktuelle Punkt
+	 * @param direction:gesetzte Richtung
+	 * 
+	 */
 
 	public Point addDir(Point p, int direction) {
 		switch(direction) {
@@ -95,6 +105,11 @@ public class FloodFill {
 		}
 	}
 	
+	/**
+	 * Geht zufaellig in eine Richtung bis der Zielpunkt erreicht ist  
+	 * @param point
+	 * @param random
+	 */
 	private void floodFill(Point point, Random random) {
 		int zufall1, zufall2, zufall3, zufall4;
 		zufall1 = random.nextInt(4);
