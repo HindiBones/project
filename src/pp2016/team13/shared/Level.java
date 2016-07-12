@@ -3,7 +3,7 @@ package pp2016.team13.shared;
 /**
  * Level Klasse, die das gerade benutzte Level abspeichert
  * 
- * @author Marius
+ * @author <Fiehn, Marius, 6024602>
  *
  */
 public class Level {
@@ -14,10 +14,10 @@ public class Level {
 	/**
 	 * Konstruktor, der ein Level erstellt
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param id
-	 * @param level
+	 * @param id die ID des Levels, das erstellt werden soll als int
+	 * @param level der Inhalt des zu erstellenden Levels als zweidimensionales int Array
 	 */
 	public Level(int id, int[][] level) {
 		levelID = id;
@@ -30,7 +30,7 @@ public class Level {
 	/**
 	 * getter-Methode fuer die Level-ID
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @return gibt die levelID als Integer zurueck
 	 */
@@ -41,7 +41,7 @@ public class Level {
 	/**
 	 * setter-Methode, um bestimmte Felder im Level zu veraendern
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param x
 	 *            x Koordinate des zu veraendernden Level-Inhalts
@@ -57,7 +57,7 @@ public class Level {
 	/**
 	 * getter-Methode, um das gesamte Level auszulesen
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @return gibt den Level-Inhalt als zweidimensionales int-Array zurueck
 	 */
@@ -68,7 +68,7 @@ public class Level {
 	/**
 	 * getter-Methode, um ein bestimmtes Feld auszulesen
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param x
 	 *            die x-Koordinate auf die zugegriffen werden soll
@@ -83,7 +83,7 @@ public class Level {
 	/**
 	 * Methode, um Level auf der Konsole auszugeben
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 */
 	public void ausgabe() {
 		for (int i = 0; i < levelInhalt.length; i++) {
@@ -95,46 +95,9 @@ public class Level {
 	}
 
 	/**
-	 * getter Methode fuer alle x-Werte
-	 * 
-	 * @author Marius
-	 * 
-	 * @param yKoordinate
-	 *            y Koordinate fuer die die x-Werte ausgegeben werden sollen
-	 * @return gibt den Inhalt der x-Werte als eindimensionales Integer Array
-	 *         zurueck
-	 */
-	@SuppressWarnings("null")
-	public int[] getAlleXWerte(int yKoordinate) {
-		int[] xWerte = null;
-		for (int i = 0; i <= levelInhalt.length; i++) {
-			xWerte[i] = levelInhalt[i][yKoordinate];
-		}
-		return xWerte;
-	}
-
-	/**
-	 * getter Methode fuer alle y-Werte
-	 * 
-	 * @author Marius
-	 * 
-	 * @param xKoordinate
-	 *            x Koordinate fuer die die x-Werte ausgegeben werden sollen
-	 * @return
-	 */
-	@SuppressWarnings("null")
-	public int[] getAlleYWerte(int xKoordinate) {
-		int[] yWerte = null;
-		for (int i = 0; i <= levelInhalt.length; i++) {
-			yWerte[i] = levelInhalt[i][xKoordinate];
-		}
-		return yWerte;
-	}
-
-	/**
 	 * Laenge des Arrays in x-Richtung bestimmen
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @return gibt die Laenge als int zurueck
 	 */
@@ -145,7 +108,7 @@ public class Level {
 	/**
 	 * Laenge des Arrays in y-Richtung bestimmen
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @return gibt die Laenge als int zurueck
 	 */
@@ -156,7 +119,7 @@ public class Level {
 	/**
 	 * Methode, die den Inhalt des kompletten Levels zurueck gibt
 	 * 
-	 * @author Marius
+	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @return gibt den Inhalt des Levels als zweidimensionales int Array zurueck
 	 */

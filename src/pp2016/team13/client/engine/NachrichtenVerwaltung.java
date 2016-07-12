@@ -24,7 +24,6 @@ public class NachrichtenVerwaltung {
 
 	public Client socket;
 	HindiBones fenster;
-	int id;
 	public Spieler spieler;
 	public Level aktuellesLevel;
 	public Level[] alleLevel = new Level[5];
@@ -67,45 +66,47 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public void auslesen(Paket empfPaket) {
-		Nachricht m = empfPaket.getMessage();
-		switch (m.getTyp()) {
+		Nachricht empfNachricht = empfPaket.getMessage();
+		switch (empfNachricht.getTyp()) {
 		case 0:
 			systemnachricht("Einloggen erfolgreich!");
 			break;
 		case 1:
-			systemnachricht("Position des Spielers: " + m.getxKoo() + ", "
-					+ m.getyKoo());
+			systemnachricht("Position des Spielers: " + empfNachricht.getxKoo()
+					+ ", " + empfNachricht.getyKoo());
 			break;
 		case 2:
-			systemnachricht("Der Trank an der Position " + m.getxKoo() + ", "
-					+ m.getyKoo() + " wurde aufgenommen");
+			systemnachricht("Der Trank an der Position "
+					+ empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
+					+ " wurde aufgenommen");
 			break;
 		case 3:
 			systemnachricht("Das Level wurde abgeschlossen!");
 			break;
 		case 4:
-			systemnachricht("Der Schluessel an der Stelle " + m.getxKoo()
-					+ ", " + m.getyKoo() + " wurde aufgenommen");
+			systemnachricht("Der Schluessel an der Stelle "
+					+ empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
+					+ " wurde aufgenommen");
 			break;
 		case 5:
-			systemnachricht(m.fehlermeldung);
+			systemnachricht(empfNachricht.fehlermeldung);
 			break;
 		case 6: {
-			for (int i = 0; i < m.leveldaten.length; i++) {
-				alleLevel[i] = new Level(i, m.leveldaten[i]);
+			for (int i = 0; i < empfNachricht.leveldaten.length; i++) {
+				alleLevel[i] = new Level(i, empfNachricht.leveldaten[i]);
 			}
 
 		}
 			break;
 		case 11: {
-			if (m.inOrdnung)
+			if (empfNachricht.inOrdnung)
 				systemnachricht("Anfrage akzeptiert!");
 			else
 				systemnachricht("Anfrage wurde abgelehnt!");
 		}
 			break;
 		case 13:
-			behandleCheat(m);
+			behandleCheat(empfNachricht);
 			break;
 		}
 	}
@@ -167,6 +168,10 @@ public class NachrichtenVerwaltung {
 		spieler = fenster.spieler;
 		switch (richtung) {
 		case 0:
+			/*
+			 * Testet, ob eine Bewegung in die angegebene Richtung moeglich ist.
+			 * Fuehrt die Bewegung aus und sendet eine entsprechende Nachricht an den Server
+			 */
 			if (spieler.getYPos() < aktuellesLevel.getLaengeY() - 1
 					&& fenster.Level.getBestimmtenLevelInhalt(
 							spieler.getXPos(), spieler.getYPos() + 1) != 0) {
@@ -177,6 +182,9 @@ public class NachrichtenVerwaltung {
 			break;
 
 		case 1:
+			/*
+			 * Analog zu case 0
+			 */
 			if (spieler.getYPos() > 0
 					&& fenster.Level.getBestimmtenLevelInhalt(
 							spieler.getXPos(), spieler.getYPos() - 1) != 0) {
@@ -187,6 +195,9 @@ public class NachrichtenVerwaltung {
 			break;
 
 		case 2:
+			/*
+			 * Analog zu case 0
+			 */
 			if (spieler.getXPos() > 0
 					&& fenster.Level.getBestimmtenLevelInhalt(
 							spieler.getXPos() - 1, spieler.getYPos()) != 0) {
@@ -197,6 +208,9 @@ public class NachrichtenVerwaltung {
 			break;
 
 		case 3:
+			/*
+			 * Analog zu case 0
+			 */
 			if (spieler.getXPos() < aktuellesLevel.getLaengeX() - 1
 					&& fenster.Level.getBestimmtenLevelInhalt(
 							spieler.getXPos() + 1, spieler.getYPos()) != 0) {
@@ -216,14 +230,13 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public void benutzeHeiltrank() {
-		int change = spieler.benutzeHeiltrank();
-		// Heilungseffekt wird verbessert, falls neue Monster durch das
-		// Aufheben des Schluessels ausgeloesst wurden
+		int aenderung = spieler.benutzeHeiltrank();
+		// Heilungseffekt wird verbessert, falls der Spieler
+		// den Schluessel aufgesammelt hat
 		if (spieler.hatSchluessel())
-			spieler.changeHealth((int) (change * 1.5));
+			spieler.changeHealth((int) (aenderung * 1.5));
 		else
-			spieler.changeHealth((int) (change * 0.5));
-		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 8));
+			spieler.changeHealth((int) (aenderung * 0.5));
 	}
 
 	/**
@@ -234,6 +247,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public void nimmSchluessel() {
+		// Spieler nimmt den Schluessel auf
 		spieler = fenster.spieler;
 		spieler.nimmSchluessel();
 
@@ -248,6 +262,7 @@ public class NachrichtenVerwaltung {
 	 * 
 	 */
 	public void nimmHeiltrank() {
+		// Spieler nimmt den Heiltrank auf
 		spieler = fenster.spieler;
 		spieler.nimmHeiltrank();
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 2));
@@ -260,6 +275,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public void nimmTrank() {
+		// Spieler nimmt den Schutztrank auf
 		spieler = fenster.spieler;
 		spieler.nimmtrank();
 		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 12));
@@ -277,7 +293,6 @@ public class NachrichtenVerwaltung {
 			fenster.Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(),
 					7);
 			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
-			sende(new Nachricht(3));
 			spieler.entferneSchluessel();
 		}
 	}
@@ -337,11 +352,14 @@ public class NachrichtenVerwaltung {
 	public boolean chatte(ChatNachricht nachricht) {
 		Paket serverAntwort = new Paket(new FehlerNachricht(
 				"Konnte keine Nachricht senden!"));
+		// Wenn die Chatnachricht ein Cheat ist, wird dieser ausgefuehrt
 		if (nachricht.istCheat()) {
 			serverAntwort = sende(new Cheat(nachricht.getCheat()));
 		} else {
+			// Wenn es kein Cheat war, wird die Nachricht als Chatnachricht weiterverarbeitet
 			serverAntwort = sende(nachricht);
 		}
+		// Verarbeitet die Serverantwort
 		auslesen(serverAntwort);
 
 		return serverAntwort.getMessage().inOrdnung;
@@ -355,15 +373,16 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public Level levelWechseln() {
+		// 	Wenn das Level nicht das letzte war, wird das Level um eins erhoeht.
 		if (fenster.Level.getLevelID() < fenster.MAXLEVEL - 1) {
 			aktuellesLevel = alleLevel[aktuellesLevel.levelID + 1];
+			// Dem Spieler wird der Schluessel abgenommen
 			fenster.spieler.entferneSchluessel();
-			aktuellesLevel.ausgabe();
 			fenster.levelnummer = aktuellesLevel.levelID;
 			systemnachricht("Level wurde gewechselt!");
 			return aktuellesLevel;
 		} else {
-			sende(new Nachricht(3));
+			// Wenn es das letzte Level war, wird ein Level mit ID = 6 zurueckgegeben, damit 
 			return new Level(6, aktuellesLevel.levelInhalt);
 		}
 	}
@@ -378,7 +397,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public void systemnachricht(String Text) {
-
+		// Gibt die Systemnachricht im Chat aus
 		fenster.getMinimap().getChatFenster().textumfeld.append("<System>: "
 				+ Text + "\n");
 	}

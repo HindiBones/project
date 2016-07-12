@@ -1,6 +1,6 @@
 package pp2016.team13.shared.Spielelemente;
 
-public class Trank2 {
+public class Schutztrank {
 		private int wirkung;
 		
 		//Fuer die Server Engine ; fuer die Trankliste
@@ -10,12 +10,12 @@ public class Trank2 {
 		 public static boolean gedroppt;
 		 public int trankID;
 
-		public Trank2(int wirkung) {
+		public Schutztrank(int wirkung) {
 			this.wirkung = wirkung;
 		}
 
 		//Konstruktor fuer die Server Engine
-			public Trank2(int trankID, int j, int i) {
+			public Schutztrank(int trankID, int j, int i) {
 				this.trankID = trankID;
 				setGedroppt(false);
 				setAufgehoben(false);

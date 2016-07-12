@@ -8,26 +8,24 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Klasse Monster, die sowohl auf Server, als auch auf Client Seite alle Informationen speichert
+ * 
+ * @author <Fiehn, Marius, 6024602>
+ *
+ */
 public class Monster extends Figur {
 
-	private long lastAttack;
-	private long lastStep;
-	private int cooldownAttack;
-	private int cooldownWalk;
-	private int id;
-	public int lebenspunkte;
-	public int monsterSchaden;
+	private long lastAttack, lastStep;
+	private int cooldownAttack,cooldownWalk,id;
+	public int lebenspunkte, monsterSchaden, posX, posY;
 	private boolean hatSchluessel;
-	public int posX;
-	private int posY;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
 	private int typ; // Von Beginn an anwesend: 0, Erscheint spaeter: 
-	
 	private HindiBones fenster;
 	private Spieler spieler;
 
 	public Monster(int x, int y, HindiBones fenster, int typ) {
-		
 		if(typ == 0){
 			hatSchluessel = false;
 		}
@@ -45,14 +43,11 @@ public class Monster extends Figur {
 		lastStep = System.currentTimeMillis();
 		cooldownAttack = 500 - 10 * fenster.levelnummer; // ms
 		cooldownWalk = 1000;
-
 		setSchaden(5 + fenster.levelnummer * 2);
 		Random r = new Random();
 		changeDir();
-
 		// Bild fuer das Monster laden
 		int i = r.nextInt(3) + 1;
-
 		try {
 			setImage(ImageIO.read(new File("img//drache" + i + ".png")));
 		} catch (IOException e) {
@@ -61,14 +56,25 @@ public class Monster extends Figur {
 		}
 	}
 	
-	public Monster(int id, int anfangsLebenspunkte, int anfangsSchaden, boolean schluessel, int anfangsX, int anfangsY) throws IOException {
+	/**
+	 * Monster Konstruktor fuer die Server Seite
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param id speichert die Monster ID in einem Integer
+	 * @param anfangsLebenspunkte speichert die anfaenglichen Lebenspunkte des Monsters
+	 * @param anfangsSchaden speichert den anfaenglichen Schaden des Monsters
+	 * @param schluessel speichert, ob das Monster einen Schluessel traegt
+	 * @param anfangsX speichert die anfangs x-Koordinate
+	 * @param anfangsY speichert die anfangs y-Koordinate
+	 */
+	public Monster(int id, int anfangsLebenspunkte, int anfangsSchaden, boolean schluessel, int anfangsX, int anfangsY){
 		 this.id = id;
 		 this.lebenspunkte=anfangsLebenspunkte;
 		 this.monsterSchaden=anfangsSchaden;
 		 hatSchluessel=schluessel;
 		 posX=anfangsX;
-		 posY=anfangsY;
-		 
+		 posY=anfangsY;		 
 	 }
 
 	public boolean attackiereSpieler(boolean hatSchluessel) {
@@ -169,33 +175,81 @@ public class Monster extends Figur {
 			return false;
 	}
 
+	//Serverseitige Setter und Getter
 	
+	/**
+	 * setter Methode fuer die Monster ID
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param id speichert die uebergebene id als Monster ID
+	 */
 	public void setID(int id)
 	{
 		this.id = id;
 	}
 	
+	/**
+	 * Getter Methode fuer die Monster ID
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 */
 	public int getID(){
 		return id;
 	}
 
+	/**
+	 * Getter Methode fuer die gespeicherte y Koordinate
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt die y Position als int zurueck
+	 */
 	public int getPosY() {
 		return posY;
 	}
 
+	/**
+	 * Getter Methode fuer die gespeicherte x Koordinate
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt die x Koordinate des Monsters zurueck
+	 */
 	public int getPosX() {
-		return posY;
+		return posX;
 	}
 
+	/**
+	 * Setter Methode fuer die einzuspeichernde x Koordinate
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param x die einzuspeichernde x Koordinate
+	 */
 	public void setPosX(int x) {
 		posX = x;
 		
 	}
 
+	/**
+	 * Setter Methode fuer die einzuspeichernde y Koordinate
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param y die einzuspeichernde y Koordinate
+	 */
 	public void setPosY(int y) {
 		posY = y;
 	}
 	
+	/**
+	 * Getter Methode fuer den Schluessel
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt einen boolean zurueck, der beinhaltet, ob das Monster den Schluessel hat oder nicht
+	 */
 	public boolean hatSchluessel(){
 		return hatSchluessel;
 	}

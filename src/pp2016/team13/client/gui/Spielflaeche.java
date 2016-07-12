@@ -26,8 +26,8 @@ public class Spielflaeche extends JPanel {
   
 	/**
 	 *
-	 * 
 	 * Erzeugt ein Panel auf dem die Spielflaeche gezeichnet wird
+	 * 
 	 * @author Seyma 
 	 * @param fenster : Fenster wird festgelegt fuer das Panel
 	 */
@@ -64,13 +64,10 @@ public class Spielflaeche extends JPanel {
 	/**
 	 * 
 	 *  
-	 * 
-	 *  
-	 *  
 	 * (Mitscrollend)
 	 * Meine Figur Zentriert 
-	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
-	 * Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
+	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu 
+	 * gezeichnet. Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
 	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an)
@@ -124,8 +121,8 @@ public class Spielflaeche extends JPanel {
 	/**
 	 * 
 	 * Die Position der Offenen Tuer bei 2 wird als Start Position des Spielers gesetzt
-	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die Monster und Spieler nicht immer auf der Selben
-	 * Position gezeichnet werden durch Repaint())
+	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die Monster und 
+	 * Spieler nicht immer auf der Selben Position gezeichnet werden durch Repaint())
 	 * 
 	 * @author Seyma
 	 * 
@@ -146,17 +143,19 @@ public class Spielflaeche extends JPanel {
 	 * 
 	 * 
 	 *Meine Felder Generieren sich im ersten Schritt um meinen Spieler
-	 *Grund: Mein Spieler wird in die Mitte gesetzt (d.h Pos X= 3 Pos Y=3 Aber Bezogen auf die Sichtbare Flaeche)
+	 *Grund: Mein Spieler wird in die Mitte gesetzt (d.h Pos X= 3 Pos Y=3 Aber Bezogen auf die 
+	 *		Sichtbare Flaeche).
 	 *		Da sich die Grenzpunkte immer einen Schritt von dem Spieler entfernt befinden
 	 *		Wird bei jedem Schritt mein Spielfeld um 1 Verschoben und die Stelle neu gezeichnet.
 	 *
-	 *Rest ist die Generierung der Spielflaeche durch abfrage ueber den Client welcher inhalt sich auf welcher Koordinate
-	 *Befindet, wird ein Bild gezeichnet. (Grundgeruest vom urspruenglichen Spiel Code)
+	 *Rest ist die Generierung der Spielflaeche durch abfrage ueber den Client welcher inhalt sich
+	 *auf welcher Koordinate befindet, wird ein Bild gezeichnet. (Grundgeruest vom urspruenglichen
+	 *Spiel Code)
 	 *
 	 * (Mitscrollend)
 	 * Meine Figur Zentriert 
-	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu gezeichnet
-	 * Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
+	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu 
+	 * gezeichnet. Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
 	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an) 
