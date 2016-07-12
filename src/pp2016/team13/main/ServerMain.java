@@ -1,7 +1,7 @@
-package pp2016.team13.client.comm;
+package pp2016.team13.main;
 
 
-import pp2016.team13.client.comm.Server;
+import pp2016.team13.server.comm.Server;
 /**
  * ServerMain
  * @author Kirthika Jeyakumar

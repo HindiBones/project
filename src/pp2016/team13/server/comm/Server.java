@@ -1,4 +1,4 @@
-package pp2016.team13.client.comm;
+package pp2016.team13.server.comm;
 
 /**
  * Server wird erzeugt, Verbindungen werden verarbeitet
@@ -10,6 +10,7 @@ import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
 
+import pp2016.team13.client.comm.Paket;
 import pp2016.team13.server.engine.Levelverwaltung;
 import pp2016.team13.shared.Nachrichten.AntwortNachricht;
 import pp2016.team13.shared.Nachrichten.Cheat;
