@@ -31,12 +31,14 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 
 	public MenuLeiste(HindiBones fenster) {
 		this.fenster = fenster;
-
+		// Menue Elemente
 		spiel = new JMenu("Spiel");
 		anzeige = new JMenu("Anzeige");
 		hilfe = new JMenu("Hilfe");
+		ausloggen=new JMenuItem("Ausloggen");
+		
+		//Unter Punkte der Menue Elemente
 		ausloggen = new JMenuItem("Ausloggen");
-
 		neuesSpiel = new JMenuItem("Neues Spiel starten");
 		highscore = new JMenuItem("Highscore anzeigen");
 		beenden = new JMenuItem("Beenden");
@@ -65,9 +67,12 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * Ergaenzt um Auslogg Item
+	 * Ergaenzt um Auslog Item
+	 * Einige Elemente ausgelagert
 	 * 
-	 * @author Seyma Keser
+	 * 
+	 * @author <Keser, Seyma, 5979919> 
+	 * @author <unbekannt>
 	 */
 	public void actionPerformed(ActionEvent e) {
 
@@ -85,7 +90,9 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			}
 		} else if (e.getSource() == steuerung) {
 			if (fenster.steuerungAngezeigt) {
+
 				// fenster.zeigeSpielfeld();
+
 				karteaufdecken.setText("Karte aufdecken");
 			} else {
 
@@ -93,7 +100,6 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 				karteaufdecken.setText("Spielfeld anzeigen");
 
 			}
-
 		} else if (e.getSource() == karteaufdecken) {
 			if (karteaufdecken.getText().equals("Spielfeld anzeigen"))
 				fenster.zeigeSpielfeld();
@@ -132,7 +138,12 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 
 		}
 	}
-
+	/**
+	 * Vorgegebene 
+	 * 
+	 * @author <unbekannt>
+	 * @return highsore
+	 */
 	public JMenuItem getHighscore() {
 		return highscore;
 	}

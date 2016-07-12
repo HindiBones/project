@@ -103,6 +103,16 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
 		this.anmeldung = new Anmeldung(this);
+<<<<<<< HEAD
+		
+		// Es wird die gewuenschte Groesse angegeben			
+		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
+		minimap.setPreferredSize(new Dimension(width/3+4, BOX)); //Groessee der Seitenleiste
+		steuerung.setPreferredSize(new Dimension(width+50, height-50));
+		highscore.setPreferredSize(new Dimension(width+50, height-50));
+		anmeldung.setPreferredSize(new Dimension(640,400));
+=======
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 		// Es wird die gewuenschte Groesse angegeben
 		spielflaeche.setPreferredSize(new Dimension(width + 5, height + 5));

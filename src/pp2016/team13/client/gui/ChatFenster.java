@@ -23,34 +23,35 @@ import pp2016.team13.shared.Nachrichten.ChatNachricht;
  * 
  * Ein Panel Chat Fenster wird in die Seitenleiste eingebaut
  * 
- * @author Keser, Seyma, 5979919
+ * @author <Keser, Seyma, 5979919>
  *
  */
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
-
+	
 	private static final long serialVersionUID = 1L;
+	
+	//Elemente des Chatfenster
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
 	public String benutzername= null;
 	Button senden;
 	Button loeschen;
+	
 	int i =1;
-	
-	
-
 	SeitenLeiste m;
 	
 	/**
 	 * Chatfenster wird konstruiert
 	 * 
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 * @param s: Text eingabe 
 	 * @param m: Um das Panel an die Seitenleiste anzubinden
 	 */
 	ChatFenster(String s, SeitenLeiste m ) {
 			this.m= m;
 			
+			//Panel Einstellungen
 			this.setLayout(new BorderLayout());
 			this.setPreferredSize(new Dimension(170,132));
 	
@@ -121,7 +122,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 	}
 	
 	/**
-	 * Die Chat Fenster Funktion zum absenden von Nachrichten
+	 * Die Chat Fenster Funktion zum absenden von Nachrichten ueber Enter Taste
 	 * 
 	 * @author <Keser, Seyma, 5979919>
 	 */

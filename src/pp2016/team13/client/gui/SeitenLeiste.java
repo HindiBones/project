@@ -11,19 +11,57 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+<<<<<<< HEAD
+
+/**
+ * Seitenleiste beeinhaltet, die Minimap, die Statusleiste und das Chatfenster das von einer 
+ * anderen Klasse geaddet wird
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
+=======
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 public class SeitenLeiste extends JPanel {
 
 	JTextField ChatText;
 
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
+	
+	//Bild Elemente werden erstellt
+	private Image boden2, wand2, tuerOffen2, tuerZu2, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
+=======
 
 	private Image boden2, wand2, tuerOffen2, tuerZu2, heiltrank2, schluessel2,
 			john, sblase, hintergrund1, heiltrankblau;
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 	ChatFenster p;
 	HindiBones fenster;
+<<<<<<< HEAD
+	
+	/**
+	 * Wird an das Haupfenster gebunden
+	 * Zeichnet groeßtenteils nur
+	 * 
+	 * @author <Keser, Seyma, 5979919>
+	 * @param fenster: Wird im HindiBones fenster erstellt
+	 */
+=======
 
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 	public SeitenLeiste(HindiBones fenster) {
 		this.fenster = fenster;
+<<<<<<< HEAD
+		 //Benutzer Name Eingabe Feld
+		 ChatText = new JTextField(); //Erzeugen eines Textfeldes fuer Nicknamen
+		p= new ChatFenster("Chat", this);
+		
+		this.setLayout(new BorderLayout());
+		this.add(p,BorderLayout.SOUTH);
+		 
+		 //Bilder werden geladen
+=======
 		// Benutzer Name Eingabe Feld
 		ChatText = new JTextField(); // Erzeugen eines Textfeldes fuer Nicknamen
 		p = new ChatFenster("Chat", this);
@@ -31,6 +69,7 @@ public class SeitenLeiste extends JPanel {
 		this.setLayout(new BorderLayout());
 		this.add(p, BorderLayout.SOUTH);
 
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		try {
 			sblase = ImageIO.read(new File("img//sprechblase.png"));
 			hintergrund1 = ImageIO.read(new File("img/wall1.png"));
@@ -48,24 +87,55 @@ public class SeitenLeiste extends JPanel {
 					.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
 
+<<<<<<< HEAD
+		//Standardeinstellung
+=======
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		this.setVisible(true);
 
 	}
+<<<<<<< HEAD
+	
+	/**
+	 * Getter Klasse fuer Chatfenster 
+	 * @author <Keser, Seyma, 5979919>
+	 * @return Chatfenster
+	 */
+	public ChatFenster getChatFenster(){
+=======
 
 	public ChatFenster getChatFenster() {
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		return p;
 	}
 
 	/**
+	 * Zeichnet die Einzelnen Elemente der Seitenleiste
 	 * 
-	 * @author Seyma Keser
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void paint(Graphics g) {
+<<<<<<< HEAD
+		
+		this.setLayout(new BorderLayout());
+	
+		g.fillRect(0, 0, 180, 180 );
+=======
 		// Zeichnen der Seitenleiste
 		this.setLayout(new BorderLayout());
 
 		g.fillRect(0, 0, 180, 180);
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		g.setColor(Color.GRAY);
+<<<<<<< HEAD
+		
+		// Zeichnen der Minimap
+		if(true){
+		// Male die einzelnen Felder 
+		for (int i = 0; i < fenster.WIDTH; i++) {
+			for (int j = 0; j < fenster.HEIGHT; j++) {
+				//if (inRange(i, j)) {
+=======
 
 		if (true) {
 
@@ -73,53 +143,141 @@ public class SeitenLeiste extends JPanel {
 			for (int i = 0; i < fenster.WIDTH; i++) {
 				for (int j = 0; j < fenster.HEIGHT; j++) {
 					// if (inRange(i, j)) {
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 0) {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
+<<<<<<< HEAD
+					}
+					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1  || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 || fenster.Level.getBestimmtenLevelInhalt(i, j)==7) {
+						// Die Begehbaren Elemente 
+=======
 
 					} else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1
 							|| fenster.Level.getBestimmtenLevelInhalt(i, j) == 5
 							|| fenster.Level.getBestimmtenLevelInhalt(i, j) == 4
 							|| fenster.Level.getBestimmtenLevelInhalt(i, j) == 7) {
 						// Dieses Feld ist begehbar
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
+<<<<<<< HEAD
+					} 
+=======
 					}
 
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
+<<<<<<< HEAD
+						// Auf Monster Pos. kommen Boden Elemente
+=======
 						// Hier ist die Tuer
 
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
+<<<<<<< HEAD
+					}
+					if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+						//Anfangs Punkt + wird eine offene Tuer gesetzt
+=======
 
 					}
 					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) {
 						// System.out.println("Sollte Offene Tuere zeichnen");
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
+<<<<<<< HEAD
+								null);	
+						g.drawImage(tuerOffen2, i * (fenster.BOX2) , j
+									* (fenster.BOX2), null);
+					}
+					if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+						//Geschlossene Tuer gesetzt
+=======
 								null);
 						g.drawImage(tuerOffen2, i * (fenster.BOX2), j
 								* (fenster.BOX2), null);
 					}
 					if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 6) {
 						// System.out.println("Sollte Offene Tuere zeichnen");
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);
 						g.drawImage(tuerZu2, i * (fenster.BOX2), j
+<<<<<<< HEAD
+									* (fenster.BOX2), null);
+					}		
+=======
 								* (fenster.BOX2), null);
 					}
 				}
 
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 			}
 
+<<<<<<< HEAD
+	}
+		
+		//Roter Punkt- fuer Hindi Bones
+		g.drawImage(fenster.spieler2.getImage(), fenster.spieler.getXPos()
+				* fenster.BOX2, fenster.spieler.getYPos() * fenster.BOX2, null);
+=======
 			// Roter Punkt- fuer Hindi Bones
 			g.drawImage(fenster.spieler2.getImage(), fenster.spieler.getXPos()
 					* fenster.BOX2, fenster.spieler.getYPos() * fenster.BOX2,
 					null);
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 			// Alles unter der Statusleiste
 			g.setColor(Color.LIGHT_GRAY);
 
+<<<<<<< HEAD
+		 
+		
+		try {
+			Thread.sleep(50);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Standarteinstellung
+		this.setVisible(true);
+	
+		
+		//Hier beginnt der des Statuspanels
+		//Hintergrund wird gesetzt
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 180, 180, 180);
+		int Hintergrundpixel= 192;
+		for (int i = 0; i < fenster.WIDTH; i++) {
+			for(int j=0; j<8;j++){
+			g.drawImage(hintergrund1, i * Hintergrundpixel, 170+j*Hintergrundpixel, null);
+
+		}
+		}
+		
+		int itemKy= 210;
+		int itemKx= 10;
+		int Luecke=60;
+		
+		//Item Hintergrund Kaestchen 3x (Falls spaeter noch ein Item hinzugefuegt wird)
+		g.setColor(Color.GRAY);
+		g.fillRect(itemKx, itemKy,40, 40);
+		g.setColor(Color.BLACK);
+		g.drawRect(itemKx, itemKy,40, 40);
+		g.setColor(Color.GRAY);
+		g.fillRect(itemKx+55, itemKy,40, 40);
+		g.setColor(Color.BLACK);
+		g.drawRect(itemKx+55, itemKy,40, 40);
+		g.setColor(Color.GRAY);
+		g.fillRect(itemKx+55+55, itemKy,40, 40);
+		g.setColor(Color.BLACK);
+		g.drawRect(itemKx+55+55, itemKy,40, 40);
+=======
 			try {
 				Thread.sleep(50);
 
@@ -127,7 +285,27 @@ public class SeitenLeiste extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
+<<<<<<< HEAD
+		//Mini John neben Lebensleiste wird gezeichnet
+		g.drawImage(john,20,itemKy+60 , fenster.BOX3,
+				fenster.BOX3 , null);
+		//Schluessel Element wird gezeichnet
+		if (fenster.spieler.hatSchluessel()) {
+			g.drawImage(schluessel2, itemKx+3+Luecke*2-15, itemKy, null);
+			
+		}
+		
+		g.setColor(Color.WHITE);
+		//Zeit und Level Anzeige wird gezeichnet
+		g.drawString(fenster.spieler.getName(), fenster.BOX + 2, itemKy+75);
+		g.drawString("Zeit: "
+				+ (System.currentTimeMillis() - fenster.startZeit) / 1000,
+				10, 190);
+		g.drawString("Level " + (fenster.levelnummer+1) + "/" + fenster.MAXLEVEL,
+				 100, 190);
+=======
 			this.setVisible(true);
 
 			// Hier beginnt der des Statuspanels
@@ -140,12 +318,36 @@ public class SeitenLeiste extends JPanel {
 							* Hintergrundpixel, null);
 
 				}
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 			}
 
+<<<<<<< HEAD
+		
+		//Sprechblase + Text bei Aktionen
+		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
+		g.setColor(Color.BLACK);
+		if (feld == 8) {
+			g.drawImage(sblase,0,itemKy*2-130,null);
+			g.drawString(" Nimm den Schluessel", itemKx, itemKy*2-130+40);
+		} else if (feld == 6) {
+			
+				if (fenster.spieler.hatSchluessel()){
+					g.drawImage(sblase,0,itemKy*2-130,null);
+					g.drawString("Oeffne die Tuer",itemKx, itemKy*2-130+40);}
+				else{
+				
+					g.drawImage(sblase,0,itemKy*2-130,null);
+					g.drawString("Tuer ist verschlossen!", itemKx, itemKy*2-130+40);}
+		} else if (feld == 4 || feld ==7) {
+			g.drawImage(sblase,0,itemKy*2-130,null);
+			g.drawString(" Ein Trank !", itemKx,itemKy*2-130+40);
+		}
+=======
 			int itemKy = 210;
 			int itemKx = 10;
 			int Luecke = 60;
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 			// Item Hintergrund Kaestchen 3x (Falls spaeter noch ein Item
 			// hinzugefuegt wird)
@@ -162,8 +364,18 @@ public class SeitenLeiste extends JPanel {
 			g.setColor(Color.BLACK);
 			g.drawRect(itemKx + 55 + 55, itemKy, 40, 40);
 
+<<<<<<< HEAD
+		
+		//Positionierung des Chat panels
+		this.add(ChatText);
+		 ChatText.setBounds(0,410,210,35);//Groesse+Koord. wird festgelegt 
+		 ChatText.setFocusable(true);
+		 this.setVisible(true);
+		 
+=======
 			// Mini John neben Lebensleiste
 			g.drawImage(john, 20, itemKy + 60, fenster.BOX3, fenster.BOX3, null);
+>>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
 			if (fenster.spieler.hatSchluessel()) {
 				g.drawImage(schluessel2, itemKx + 3 + Luecke * 2 - 15, itemKy,

@@ -6,14 +6,18 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import pp2016.team13.shared.Monster;
 import pp2016.team13.shared.Spieler;
 
-
+/**
+ * Spielflaeche wird erstellt
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
 public class Spielflaeche extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +32,7 @@ public class Spielflaeche extends JPanel {
 	 *
 	 * Erzeugt ein Panel auf dem die Spielflaeche gezeichnet wird
 	 * 
-	 * @author Seyma 
+	 * @author <Keser, Seyma, 5979919>
 	 * @param fenster : Fenster wird festgelegt fuer das Panel
 	 */
 	public Spielflaeche(HindiBones fenster) {
@@ -47,8 +51,6 @@ public class Spielflaeche extends JPanel {
 			heiltrank = ImageIO.read(new File("img//heiltrank.png"));
 			feuerball = ImageIO.read(new File("img//feuerball.png"));
 			trank=ImageIO.read(new File("img//heiltrankblau.png"));
-
-
 			
 		} catch (IOException e) {
 			System.err.println("Ein Bild konnte nicht geladen werden.");
@@ -60,20 +62,6 @@ public class Spielflaeche extends JPanel {
 	//der GrenzPunkteX/Y kommt, dann wird das ganze aktuelle Bild neu 
 	//gezeichnet. Da sich das Bild immer mitbewegt wird durch verschiebenx /y
 	//Das richtige Bild Zentriert
-	
-	/**
-	 * 
-	 *  
-	 * (Mitscrollend)
-	 * Meine Figur Zentriert 
-	 * Bei jeder Bewegung und Beruehrung der Grenzpunkt Koordinaten wird das Spielfeld neu 
-	 * gezeichnet. Die Grenzpunkte befinden sich jeweils an allen Seiten von meiner Spieler Figur
-	 * Durch die Variable verschieben wird die der Hintergrund immer richtig verschoben
-	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
-	 * meine Variablen, sie passen sich meiner Spieler Figur an)
-	 * 
-	 * @author Seyma Keser
-	 */
 	int verschiebenx=0;
 	int verschiebeny=0;
 	int grenzPunktX=4;
@@ -95,9 +83,10 @@ public class Spielflaeche extends JPanel {
 	 * Setzt ueberall im Labirinth wo eine 3 ist ein Monster Objekt in die die monsterliste 
 	 * (die monsterliste wird dann bei spaeter aufgerufen um die Monster zu zeichnen)
 	 * 
-	 * @author Seyma 
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void genMonster(){
+		//Monsterlister wird geloescht vor jedem Neuen Level
 		if(fenster.monsterListe.isEmpty()==false){
 		for (int l=0; l<= fenster.monsterListe.size(); l++){
 		fenster.monsterListe.remove();
@@ -124,7 +113,7 @@ public class Spielflaeche extends JPanel {
 	 * (muss wie genMonster() ausserhalb der paint Methode passieren, damit die Monster und 
 	 * Spieler nicht immer auf der Selben Position gezeichnet werden durch Repaint())
 	 * 
-	 * @author Seyma
+	 * @author <Keser, Seyma, 5979919>
 	 * 
 	 */
 	public void posSpieler(){
@@ -160,7 +149,7 @@ public class Spielflaeche extends JPanel {
 	 * (Da mein Spieler die Koordinaten bzw. Spielfeld Pos. immer steigend ist, steigen auch 
 	 * meine Variablen, sie passen sich meiner Spieler Figur an) 
 	 * 
-	 * @author Seyma 
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void paint(Graphics g) {
 		if (anfangszustand==0){
@@ -177,6 +166,7 @@ public class Spielflaeche extends JPanel {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
 				if (inRange(i, j)) {
 
+					//Mitscorllend
 					if(fenster.spieler.getXPos()>=grenzPunktX ){
 						verschiebenx+=1;
 						grenzPunktX+=1;
@@ -215,7 +205,6 @@ public class Spielflaeche extends JPanel {
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
 								null);
 
-						//Monster werden vor der Paint-Methode in genMonster in eine Lister Getzt ueberall wo Monster==3 ist
 					} 
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 2) { //Offene Tuere == 2
 						g.drawImage(boden, i * fenster.BOX-verschiebenx*fenster.BOX, j * fenster.BOX-verschiebeny*fenster.BOX,
@@ -297,7 +286,7 @@ public class Spielflaeche extends JPanel {
 		// Male den Spieler an seiner Position
 		g.drawImage(fenster.spieler.getImage(), fenster.spieler.getXPos()
 				* fenster.BOX-verschiebenx*fenster.BOX, fenster.spieler.getYPos() * fenster.BOX-verschiebeny*fenster.BOX, null);
-
+		//Game Over Schriftzug wird gezeichnet
 		if (fenster.verloren) {
 			g.setColor(Color.WHITE);
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
@@ -305,7 +294,7 @@ public class Spielflaeche extends JPanel {
 			for(int l=0; l<=fenster.monsterListe.size(); l++){
 			fenster.monsterListe.remove();	
 			}
-			
+			//Gewonnen Schriftzug wird gezeichnet
 		} else {
 			if (fenster.spielende) {
 				g.setColor(Color.WHITE);
@@ -322,7 +311,8 @@ public class Spielflaeche extends JPanel {
 	 * scrollenden Bildschirm
 	 * 
 	 * 
-	 * @author Seyma Keser + (unbekannt)
+	 * @author <Keser, Seyma, 5979919>
+	 * @author <unbekannt >
 	 */
 	private void drawMonster(Graphics g, Monster m) {
 		// Monster Health Points
@@ -339,7 +329,7 @@ public class Spielflaeche extends JPanel {
 	 * 
 	 * Methode uebernommen nichts veraendert
 	 * 
-	 * @author Unbekannt 
+	 * @author <unbekannt>
 	 * 
 	 */
 	private boolean inRange(int i, int j) {	
