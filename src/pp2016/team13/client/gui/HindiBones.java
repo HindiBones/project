@@ -7,10 +7,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.accessibility.Accessible;
-import javax.swing.*; 
+import javax.swing.*;
+
+import pp2016.team13.client.comm.Paket;
+import pp2016.team13.client.engine.AusloggenNachricht;
 import pp2016.team13.client.engine.NachrichtenVerwaltung;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Monster;
@@ -123,7 +129,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		this.setResizable(false);
 		this.setTitle(title);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.addWindowListener(exitListener);
 		
 		
 		
@@ -157,6 +163,17 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 	
 	}
+	WindowListener exitListener = new WindowAdapter() {
+
+	    @Override
+	    public void windowClosing(WindowEvent e) {
+	    	if(client.socket.cs.isBound())
+	    	{
+	    		client.socket.SendeLogout(new Paket(new AusloggenNachricht()));
+	    	}
+	        System.exit(0);
+	    }
+	};
 	
 
 	/**

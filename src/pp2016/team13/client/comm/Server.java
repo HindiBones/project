@@ -7,7 +7,6 @@ package pp2016.team13.client.comm;
 
 import java.io.*;  
 import java.net.*;
-import java.util.Date;
 import java.util.LinkedList;
 import pp2016.team13.client.engine.AntwortNachricht;
 import pp2016.team13.client.engine.Cheat;

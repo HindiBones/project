@@ -94,7 +94,6 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 passwortfeld.addKeyListener(this);
 		 //Standardaeinstellung
 		 setVisible(true);
-
 		
 		
 		JLabel bildLabel = new JLabel(); 
