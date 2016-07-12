@@ -17,11 +17,9 @@ public class Paket implements Serializable{
 		protected long zeit;
 		public Nachricht inhalt;
 		public Paket(){
-			//this.time=System.currentTimeMillis();
 			this.zeit = 0;
 		}
 		public Paket(Nachricht n){
-			//this.time=System.currentTimeMillis();
 			this.zeit = 0;
 			this.inhalt = n;
 		}
