@@ -350,11 +350,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
-					System.out.println("Links");
+					m.changeHealth(-BOX / 8);
+					
 
 				}	else {
-					System.out.println("Rechts");
+					
 
 					client.SpielerBewegung(1);
 				}
@@ -411,11 +411,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
-					System.out.println("Links");
-//					client.SpielerBewegung(2);
+					m.changeHealth(-BOX / 8);
 				}	else {
-					System.out.println("Rechts");
+
 
 					client.SpielerBewegung(0);
 				}
@@ -474,15 +472,14 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
+					m.changeHealth(-BOX / 8);
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				System.out.println("bleibe Rechts");
-//					client.SpielerBewegung(3);
+
 				}	else {
 				client.spieler = spieler;
 				client.aktuellesLevel = Level;
-				System.out.println("gehe Links");
+				
 				client.SpielerBewegung(2);	
 				testspieler = null;
 								
@@ -537,11 +534,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
-					System.out.println("Links");
-//					client.SpielerBewegung(2);
+					m.changeHealth(-BOX / 8);
+					
 				}	else {
-					System.out.println("Rechts");
+					
 				client.SpielerBewegung(3);
 				}
 					
@@ -674,11 +670,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					m = testspieler.angriffsMonster();
 					if(monsterda==1){
 						
-						m.changeHealth(-BOX / 4);
-						System.out.println("Links");
+						m.changeHealth(-BOX / 8);
+
 
 					}	else {
-						System.out.println("Rechts");
+					
 
 						client.SpielerBewegung(1);
 					}
@@ -725,11 +721,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					m = testspieler.angriffsMonster();
 					if(monsterda==1){
 						
-						m.changeHealth(-BOX / 4);
-						System.out.println("Links");
+						m.changeHealth(-BOX / 8);
+			
 
 					}	else {
-						System.out.println("Rechts");
+	
 
 						client.SpielerBewegung(0);
 					}
@@ -775,11 +771,9 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
-					System.out.println("Links");
-
+					m.changeHealth(-BOX / 8);
+	
 				}	else {
-					System.out.println("Rechts");
 
 					client.SpielerBewegung(2);
 				}
@@ -824,11 +818,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				m = testspieler.angriffsMonster();
 				if(monsterda==1){
 					
-					m.changeHealth(-BOX / 4);
-					System.out.println("Links");
+					m.changeHealth(-BOX / 8);
+		
 
 				}	else {
-					System.out.println("Rechts");
+			
 
 					client.SpielerBewegung(3);
 				}
