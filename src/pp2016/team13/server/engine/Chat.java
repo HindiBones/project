@@ -29,7 +29,6 @@ public class Chat {
 	public boolean nachrichtEmpfangen(String nachricht) {
 		chat.add(nachricht);
 		return true;
-
 	}
 
 	/**
@@ -53,5 +52,4 @@ public class Chat {
 		anzahlNachrichten = i;
 
 	}
-
 }
