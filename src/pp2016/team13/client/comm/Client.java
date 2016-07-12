@@ -28,11 +28,10 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  *
  */
 public class Client extends Paket {
-<<<<<<< HEAD
-=======
+
 
 	private static final long serialVersionUID = 1L;
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
+
 	// Liste wird genriert fuer die Nachrichten
 	LinkedList<Paket> clientListe = new LinkedList<Paket>();
 	// einzelne Streams werden erzeugt
@@ -43,6 +42,14 @@ public class Client extends Paket {
 	public Socket cs;
 	boolean binAmLeben;
 
+	/**
+	 * Verbindungsstelle zum Server
+	 * 
+	 * <Jeyakumar, Kirthika, 7302822>
+	 * 
+	 * @param host
+	 * @param port
+	 */
 	public Client(String host, int port) {
 		try {
 			cs = new Socket(host, port);
