@@ -423,18 +423,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 					//0= Bewegung nach unten
 					client.SpielerBewegung(0);
 				}
-					
-					
-					
-
 			
-
-				
 			
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				monsterda=0;
-					//Mein John seite img//JohnSeite.png
 				
 				
 				if(zahl==0){ 
