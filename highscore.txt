@@ -1,10 +1,10 @@
 1	-
-34	Peace
-37	1
-44	null
-67	Peace
-71	Peace
-78	Peace
-212	Peace
-254	zweiter runde
-369	geschaft
+5	2
+5	2
+11	2
+12	2
+48	null
+104	null
+293	julius
+1000	-
+1000	-

@@ -1,4 +1,4 @@
-package Anmeldungen;
+package pp2016.team13.main;
 
 import pp2016.team13.client.gui.HindiBones;
 

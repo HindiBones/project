@@ -7,8 +7,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import pp2016.team13.client.comm.Paket;
-import pp2016.team13.client.engine.AusloggenNachricht;
 import pp2016.team13.shared.Level;
+import pp2016.team13.shared.Nachrichten.AusloggenNachricht;
 
 
 public class MenuLeiste extends JMenuBar implements ActionListener {

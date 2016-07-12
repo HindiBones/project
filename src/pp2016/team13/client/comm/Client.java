@@ -13,8 +13,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.LinkedList;
 
-import pp2016.team13.client.engine.FehlerNachricht;
-import pp2016.team13.client.engine.ZeitNachricht;
+import pp2016.team13.shared.Nachrichten.FehlerNachricht;
 
 /**
  * 

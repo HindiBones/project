@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import pp2016.team13.client.engine.LoginNachricht;
+import pp2016.team13.shared.Nachrichten.LoginNachricht;
 
 /**
  * Das Panel für die Anmeldung und die Startseite des Spiels
