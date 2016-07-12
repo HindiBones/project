@@ -31,7 +31,7 @@ public class Labyrinth {
 		FloodFill auffuellen = new FloodFill(size);
 		for (int i = 0; i < size-1 ; i++){
 			for (int j = 0 ; j< size-1 ; j++){
-				this.map [i][j] = auffuellen.map[i][j];
+				this.map [i][j] = auffuellen.karte[i][j];
 			}
 		}
 /**
