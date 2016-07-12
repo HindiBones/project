@@ -60,7 +60,7 @@ public class Einloggen {
 					fertig = false;
 				}
 			}
-			if(!fertig){
+			if (!fertig) {
 				System.out.println("Falsche eingabe");
 			}
 			buffreader.close();
@@ -81,7 +81,8 @@ public class Einloggen {
 	 * @param passwort:
 	 *            String mti dem Passwort als Inhalt
 	 * 
-	 * @return je nachdem, ob es erfolgreich war, wird ein Boolean zurueck gegeben
+	 * @return je nachdem, ob es erfolgreich war, wird ein Boolean zurueck
+	 *         gegeben
 	 */
 	public static boolean regIn(String Benutzername, String Passwort) {
 		boolean fertig = false;
