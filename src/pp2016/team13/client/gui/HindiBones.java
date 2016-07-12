@@ -604,7 +604,26 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
 					if (spieler.hatSchluessel()) {
 						System.out.println("Spieler hat den Schluessel benutzt!");
+						benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
+						if(Level.getLevelID()==4){
+							getHighscore().addSpielerToHighScore(benoetigteZeit);
+							
+							getHighscore().repaint();
+							try {
+								Thread.sleep(1000);
+								this.zeigeHighscore();
+								for (int n=0; n<=monsterListe.size();n++ ){
+									this.monsterListe.remove();
+								}
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						
+
+						}else{
 						nextLevel();
+						}
 					}
 				}
 			}else if(e.getKeyCode() == KeyEvent.VK_ENTER){
@@ -857,6 +876,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void spielZuruecksetzen() {
+		spielende=false;
 		spielflaeche.anfangszustand=0;
 
 		
@@ -907,6 +927,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 */
 	// Spielschleife
 	public void starteNeuesSpiel() {
+		spielende=false;
 		spielflaeche.anfangszustand=0;
 		try {
 			Thread.sleep(100);
@@ -955,10 +976,24 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 				if (!verloren && !spielerInHighscore) {
 					getHighscore().addSpielerToHighScore(benoetigteZeit);
 					getHighscore().repaint();
+					try {
+						Thread.sleep(1000);
+						this.zeigeHighscore();
+						for (int n=0; n<=monsterListe.size();n++ ){
+							this.monsterListe.remove();
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					this.spielZuruecksetzen();
+					
 					spielerInHighscore = true;
 				} else {
-//					getSpielflaeche().repaint();
-//					getMinimap().repaint();
+					
+					getSpielflaeche().repaint();
+					getMinimap().repaint();
 				}
 			}
 
@@ -991,8 +1026,10 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 			System.out.println();
 			Level = client.levelWechseln();
 		}
-		if(Level.getLevelID() == 6)
+		if(Level.getLevelID() == 6 ){
+			System.out.println("LevelID ist 6");
 			spielende = true;
+		}
 		System.out.println("Level geladen!");
 	}
 
