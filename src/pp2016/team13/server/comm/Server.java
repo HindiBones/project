@@ -1,12 +1,8 @@
 package pp2016.team13.server.comm;
 
-/**
- * Server wird erzeugt, Verbindungen werden verarbeitet
- * @author Kirthika Jeyakumar
- * 
- */
 
-import java.io.*;
+
+import java.io.*; 
 import java.net.*;
 import java.util.LinkedList;
 
@@ -18,6 +14,12 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
 import pp2016.team13.shared.Nachrichten.LevelNachricht;
 import pp2016.team13.shared.Nachrichten.Nachricht;
 
+/**
+ * Server wird erzeugt, Verbindungen werden verarbeitet 
+ * 
+ * @author <Jeyakumar, Kirthika, 7302822>
+ * 
+ */
 public class Server implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +39,7 @@ public class Server implements Serializable {
 	/**
 	 * Server wird gestartet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param port
 	 */
 	public Server(int port) {
@@ -69,7 +71,7 @@ public class Server implements Serializable {
 	/**
 	 * Server laeuft und wendet die Methode handleconnection an
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * 
 	 */
 
@@ -83,7 +85,7 @@ public class Server implements Serializable {
 	/**
 	 * Verbindung wird verarbeitet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 */
 	// eingehende Verbindung wird verarbeitet
 	public void handleconnection() {
@@ -102,10 +104,10 @@ public class Server implements Serializable {
 	/**
 	 * Nachricht wird verarbeitet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param n
 	 *            : Nachricht
-	 * @return gibt die Antwort zurück
+	 * @return gibt die Antwort zurueck
 	 */
 
 	@SuppressWarnings("static-access")

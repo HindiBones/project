@@ -6,7 +6,7 @@ import pp2016.team13.shared.Nachrichten.Nachricht;
 /**
  * Paket, das gesendet wird
  * 
- * @author Kirthika Jeyakumar
+ * @author <Jeyakumar, Kirthika, 7302822>
  * 
  */
 public class Paket implements Serializable {
