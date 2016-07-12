@@ -4,8 +4,7 @@ package pp2016.team13.shared.Nachrichten;
  * LevelAnfordernNachricht wird beim Einloggen verschickt, um 5 Level vom Server
  * anzufordern
  * 
- * @author Julius
- *
+ * @author <Braun, Jan Julius, 6000100>
  */
 public class LevelAnfordernNachricht extends Nachricht {
 

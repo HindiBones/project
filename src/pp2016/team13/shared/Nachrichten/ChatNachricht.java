@@ -1,5 +1,12 @@
 package pp2016.team13.shared.Nachrichten;
 
+/**
+ * Nachrichten-Objekt, das eine Nachricht in Textform enthaelt, die im Chat
+ * gesendet wurde
+ * 
+ * @author <Braun, Jan Julius, 6000100>
+ *
+ */
 public class ChatNachricht extends Nachricht {
 
 	private static final long serialVersionUID = 1L;
