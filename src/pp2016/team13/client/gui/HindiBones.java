@@ -626,6 +626,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener, Ac
 	}
 
 	/**
+	 * Bewegung ueber Maus ist moeglich
 	 * 
 	 * @author Seyma Keser
 	 */
