@@ -125,9 +125,11 @@ public class FloodFill {
 	/**
 	 * setzt die Richtung
 	 * 
-	 * @param p: aktuelle Punkt
-	 *            
-	 * @param richtung: gesetzte Richtung
+	 * @param p:
+	 *            aktuelle Punkt
+	 * 
+	 * @param richtung:
+	 *            gesetzte Richtung
 	 * 
 	 */
 	public Point setzeRichtung(Point p, int richtung) {
@@ -148,8 +150,10 @@ public class FloodFill {
 	/**
 	 * Geht zufaellig in eine Richtung bis der Zielpunkt erreicht ist
 	 * 
-	 * @param punkt: Zielpunkt
-	 * @param zufall: Richtung
+	 * @param punkt:
+	 *            Zielpunkt
+	 * @param zufall:
+	 *            Richtung
 	 */
 	private void floodFill(Point punkt, Random zufall) {
 		int zufall1, zufall2, zufall3, zufall4;

@@ -23,13 +23,13 @@ import pp2016.team13.shared.Spieler;
 import pp2016.team13.shared.Nachrichten.AusloggenNachricht;
 
 /**
- * Hindi Bones Fenster auf dem das ganze Spiel laueft plus die Hauptschnittstelle zum Client
+ * Hindi Bones Fenster auf dem das ganze Spiel laueft plus die
+ * Hauptschnittstelle zum Client
  * 
  * @author <Keser, Seyma, 5979919>
  *
  */
-public class HindiBones extends JFrame implements KeyListener, MouseListener,
-		Accessible {
+public class HindiBones extends JFrame implements KeyListener, MouseListener, Accessible {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	public Spieler testspieler;
 	public Monster monster;
 
-	public Level Level;
+	public Level level;
 	public NachrichtenVerwaltung client;
 	public int levelnummer = 0;
 	public boolean spielende = false;
@@ -63,7 +63,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	public boolean levelNeustarten = false;
 
 	public final int MAXLEVEL = 5;
-	public final int WIDTH = 19; // Labirinth grosse
+	public final int WIDTH = 19; // Labyrinth grosse
 	public final int HEIGHT = 19;
 	public final int BOX = 72; // Grosse der Bild Elemente
 	public final int BOX2 = 9;
@@ -71,20 +71,23 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	public int zahl = 0;
 	public int timer = 0;
 
-	String Bn;
-	String Pw;
+	String bn;
+	String pw;
 
 	/**
-	 * Das Spiel Fenster  wird erzeugt 
+	 * Das Spiel Fenster wird erzeugt
 	 * 
 	 * @author Keser, Seyma, 5979919
-	 * @param width  : Die Breite des Fensters
-	 * @param height : Die Hoehe des Fensters
-	 * @param title: Name des Fensters
+	 * @param dicke
+	 *            : Die Breite des Fensters
+	 * @param hoehe
+	 *            : Die Hoehe des Fensters
+	 * @param titel:
+	 *            Name des Fensters
 	 */
-	public HindiBones(int width, int height, String title) {
+	public HindiBones(int dicke, int hoehe, String titel) {
 
-		initialisiereJFrame(width, height, title);
+		initialisiereJFrame(dicke, hoehe, titel);
 		// Verbindung zum Client
 		client = new NachrichtenVerwaltung(this);
 		client.spieler = spieler;
@@ -99,17 +102,17 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	 * 
 	 * @author Keser, Seyma, 5979919
 	 * @author <unbekannt>
-	 * @param width
+	 * @param dicke
 	 *            : Die Breite des Fensters
-	 * @param height
+	 * @param hoehe
 	 *            : Die Hoehe des Fensters
-	 * @param title
+	 * @param titel
 	 *            : Name des Fensters
 	 */
-	public void initialisiereJFrame(int width, int height, String title) {
+	public void initialisiereJFrame(int dicke, int hoehe, String titel) {
 
 		this.setLayout(new BorderLayout());
-		Level = new Level(-1, null);
+		level = new Level(-1, null);
 		this.spielflaeche = new Spielflaeche(this);
 		this.seitenleiste = new SeitenLeiste(this);
 		this.steuerung = new Steuerung();
@@ -117,22 +120,23 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 		// Erzeuge Menuleiste
 		this.menuLeiste = new MenuLeiste(this);
 		this.anmeldung = new Anmeldung(this);
-		
-		// Es wird die gewuenschte Groesse angegeben			
-		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
-		seitenleiste.setPreferredSize(new Dimension(width/3+4, BOX)); //Groessee der Seitenleiste
-		steuerung.setPreferredSize(new Dimension(width+50, height-50));
-		highscore.setPreferredSize(new Dimension(width+50, height-50));
-		anmeldung.setPreferredSize(new Dimension(640,400));
-
 
 		// Es wird die gewuenschte Groesse angegeben
-		spielflaeche.setPreferredSize(new Dimension(width + 5, height + 5));
-		seitenleiste.setPreferredSize(new Dimension(width / 3 + 4, BOX)); // Groesse
+		spielflaeche.setPreferredSize(new Dimension(dicke + 5, hoehe + 5));
+		seitenleiste.setPreferredSize(new Dimension(dicke / 3 + 4, BOX)); // Groessee
+																			// der
+																			// Seitenleiste
+		steuerung.setPreferredSize(new Dimension(dicke + 50, hoehe - 50));
+		highscore.setPreferredSize(new Dimension(dicke + 50, hoehe - 50));
+		anmeldung.setPreferredSize(new Dimension(640, 400));
+
+		// Es wird die gewuenschte Groesse angegeben
+		spielflaeche.setPreferredSize(new Dimension(dicke + 5, hoehe + 5));
+		seitenleiste.setPreferredSize(new Dimension(dicke / 3 + 4, BOX)); // Groesse
 																			// meiner
 																			// Seitenleiste
-		steuerung.setPreferredSize(new Dimension(width + 50, height - 50));
-		highscore.setPreferredSize(new Dimension(width + 50, height - 50));
+		steuerung.setPreferredSize(new Dimension(dicke + 50, hoehe - 50));
+		highscore.setPreferredSize(new Dimension(dicke + 50, hoehe - 50));
 		anmeldung.setPreferredSize(new Dimension(640, 400));
 
 		// Das Startfenster soll die Anmeldung sein
@@ -140,27 +144,28 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 		// Zentriere das Fenster auf dem Bildschirm
 		final Dimension d = this.getToolkit().getScreenSize();
-		this.setLocation((int) ((d.getWidth() - this.getWidth()) / 2),
-				(int) ((d.getHeight() - this.getHeight()) / 2)); // Setzt die
-																	// Position
-																	// auf dem
-																	// Bildschirm
-																	// fest
+		this.setLocation((int) ((d.getWidth() - this.getWidth()) / 2), (int) ((d.getHeight() - this.getHeight()) / 2)); // Setzt
+																														// die
+																														// Position
+																														// auf
+																														// dem
+																														// Bildschirm
+																														// fest
 
 		// Anbindung an Listener
 		this.addKeyListener(this);
 		spielflaeche.addMouseListener(this);
 		// Standardsetup
 		this.setResizable(false);
-		this.setTitle(title);
+		this.setTitle(titel);
 		this.setVisible(true);
 		this.addWindowListener(exitListener);
 
 	}
 
 	/**
-	 * Ergaenzt / Verbessert durch mein Seitentool(Minimap) entfernen von
-	 * frueherer Statusleiste
+	 * Ergaenzt / Verbessert durch mein Seitentool(Minimap) entfernen der
+	 * vorherigen Statusleiste
 	 * 
 	 * @author Keser, Seyma, 5979919
 	 */
@@ -236,7 +241,6 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 		this.remove(seitenleiste);
 		this.remove(spielflaeche);
 		this.remove(highscore);
-		// this.remove(statusleiste);
 
 		// erstelle die Steuerungsanzeige
 		this.add(steuerung, BorderLayout.CENTER);
@@ -313,15 +317,15 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 	public void keyPressed(KeyEvent e) {
 		// Soll die Monster pro Level staerker werden
-		if (Level.getLevelID() == 0) {
+		if (level.getLevelID() == 0) {
 			mult = 1;
-		} else if (Level.getLevelID() == 1) {
+		} else if (level.getLevelID() == 1) {
 			mult = 2;
-		} else if (Level.getLevelID() == 2) {
+		} else if (level.getLevelID() == 2) {
 			mult = 3;
-		} else if (Level.getLevelID() == 3) {
+		} else if (level.getLevelID() == 3) {
 			mult = 4;
-		} else if (Level.getLevelID() == 4) {
+		} else if (level.getLevelID() == 4) {
 			mult = 5;
 		}
 		// Methoden der Schnittstelle KeyListener
@@ -365,10 +369,9 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				} else {
 					monsterda = 0;
 				}
-
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
@@ -376,14 +379,13 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 					// 1= Bewegung nach Oben
-					client.SpielerBewegung(1);
+					client.spielerBewegung(1);
 				}
 
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 
 				if (zahl == 0) {
 					zahl = 1;
-
 					try {
 						// Wechselt zum den Blauen Spielfigur bildern wenn
 						// unzerstoerber
@@ -400,8 +402,8 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					zahl = 0;
 
 					try {
-						// Wechselt zum den Blauen Spielfigur bildern wenn
-						// unzerstoerber
+						// Wechselt zu den Bildern der blauen Spielfigur, wenn
+						// unzerstoerbar
 						if (spieler.istUnverwundbar()) {
 							spieler.setImage("img//Johnblauvor2.png");
 						} else {
@@ -431,21 +433,19 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					monsterda = 0;
 				}
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
 					m.lebenAendern(-BOX / (monsterstaerke * mult));
 				} else {
-
 					// 0= Bewegung nach unten
-					client.SpielerBewegung(0);
+					client.spielerBewegung(0);
 				}
 
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				monsterda = 0;
-
 				if (zahl == 0) {
 					zahl = 1;
 					try {
@@ -458,12 +458,10 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 							spieler.setImage("img//JohnLinks.png");
 						}
 					} catch (IOException en) {
-
 						en.printStackTrace();
 					}
 				} else if (zahl == 1) {
 					zahl = 0;
-
 					try {
 						if (spieler.istUnverwundbar()) {
 							// Wechselt zum den Blauen Spielfigur bildern wenn
@@ -474,7 +472,6 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 							spieler.setImage("img//JohnLinks2.png");
 						}
 					} catch (IOException en) {
-
 						en.printStackTrace();
 					}
 
@@ -490,7 +487,6 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null) {
-
 					monsterda = 1;
 				} else {
 					monsterda = 0;
@@ -501,19 +497,17 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
 					m.lebenAendern(-BOX / (monsterstaerke * mult));
 					client.spieler = spieler;
-					client.aktuellesLevel = Level;
-
+					client.aktuellesLevel = level;
 				} else {
 					client.spieler = spieler;
-					client.aktuellesLevel = Level;
+					client.aktuellesLevel = level;
 					// 2= Bewegung nach Links
-					client.SpielerBewegung(2);
+					client.spielerBewegung(2);
 					testspieler = null;
 
 				}
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				monsterda = 0;
-
 				if (zahl == 0) {
 					zahl = 1;
 					try {
@@ -563,8 +557,8 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					monsterda = 0;
 				}
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
@@ -572,7 +566,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 					// 3= Bewegung nach rechts
-					client.SpielerBewegung(3);
+					client.spielerBewegung(3);
 				}
 
 			} else
@@ -598,30 +592,23 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				// Schluessel aufnehmen
-				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),
-						spieler.getYPos()) == 8) {
+				if (level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 8) {
 					client.nimmSchluessel();
-					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(),
-							1);
+					level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Heiltrank aufnehmen
-				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),
-						spieler.getYPos()) == 4) {
+				else if (level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 4) {
 					client.nimmHeiltrank();
-					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(),
-							1);
+					level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 				// Blauentrank aufnehmen
-				else if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),
-						spieler.getYPos()) == 7) {
+				else if (level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 7) {
 					client.nimmTrank();
-					Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(),
-							1);
+					level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 1);
 				}
 
 				// Schluessel benutzen
-				if (Level.getBestimmtenLevelInhalt(spieler.getXPos(),
-						spieler.getYPos()) == 6) {
+				if (level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos()) == 6) {
 					if (spieler.hatSchluessel()) {
 						benoetigteZeit = (int) ((System.currentTimeMillis() - startZeit) / 1000);
 
@@ -651,8 +638,8 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 		int mausY1 = e.getY() / 72;
 		// Frage Tastatureingaben auf den Pfeiltasten ab.
 		// Es wird geprueft, ob der naechste Schritt zulaessig ist.
-		// Bleibt die Figur innerhalb der Grenzen des Arrays?
-		// Wenn ja, ist das naechste Feld begehbar?
+		// Bleibt die Figur innerhalb der Grenzen des Arrays
+		// Wenn ja, ist das naechste Feld begehbar
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
 
 		spielflaeche.setFocusable(true);
@@ -703,8 +690,8 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 						monsterda = 0;
 					}
 					client.spieler = spieler;
-					client.aktuellesLevel = Level;
-					Level = client.aktuellesLevel;
+					client.aktuellesLevel = level;
+					level = client.aktuellesLevel;
 					m = testspieler.angriffsMonster();
 					if (monsterda == 1) {
 						// Schaden am Monster hinterer Teil Regulierung der
@@ -713,7 +700,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 					} else {
 
-						client.SpielerBewegung(1);
+						client.spielerBewegung(1);
 					}
 
 				}
@@ -759,14 +746,14 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				testspieler.setYPos(spieler.getYPos() + 1);
 				Monster m = testspieler.angriffsMonster();
 				if (m != null) {
-					System.out.println("vordir ist ein monster");
+					System.out.println("vor Dir ist ein monster");
 					monsterda = 1;
 				} else {
 					monsterda = 0;
 				}
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
@@ -774,7 +761,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 
-					client.SpielerBewegung(0);
+					client.spielerBewegung(0);
 				}
 
 			} else if (mausX1 < xKoos) {
@@ -807,8 +794,8 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					} catch (IOException en) {
 						en.printStackTrace();
 					}
-
 				}
+				
 				// testspieler auf dem der zumachende Schritt vorgespeichert
 				// werde
 				// soll um zu schauen ob ein Monster auf dem Feld ist
@@ -819,28 +806,26 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				testspieler.setYPos(spieler.getYPos());
 				Monster m = testspieler.angriffsMonster();
 				if (m != null) {
-
 					monsterda = 1;
 				} else {
 					monsterda = 0;
 				}
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
 					m.lebenAendern(-BOX / (monsterstaerke * mult));
 
 				} else {
-
-					client.SpielerBewegung(2);
+					client.spielerBewegung(2);
 				}
 			} else if (mausX1 > xKoos) {
 				if (zahl == 0) {
 					zahl = 1;
 					try {
-						// Wechselt zum den Blauen Spielfigur bildern wenn
+						// Wechselt zum den Blauen Spielfigur Bildern wenn
 						// unzerstoerber
 						if (spieler.istUnverwundbar()) {
 							spieler.setImage("img//JohnblauRe1.png");
@@ -883,22 +868,18 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					monsterda = 0;
 				}
 				client.spieler = spieler;
-				client.aktuellesLevel = Level;
-				Level = client.aktuellesLevel;
+				client.aktuellesLevel = level;
+				level = client.aktuellesLevel;
 				m = testspieler.angriffsMonster();
 				if (monsterda == 1) {
 					// Schaden am Monster hinterer Teil Regulierung der Staerke
 					m.lebenAendern(-BOX / (monsterstaerke * mult));
 
 				} else {
-
-					//
-					client.SpielerBewegung(3);
+					client.spielerBewegung(3);
 				}
 			}
-
 		}
-
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -969,14 +950,12 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 			if (!spielende) {
 				// Hier wird alle 50ms neu gezeichnet
 				try {
-
 					Thread.sleep(100);
 					// Spieleflaeche und Seitenleiste
 					getSpielflaeche().repaint();
 					getSeitenleiste().repaint();
 
-					if (!(client.socket.cs.getPort() == 13000 || client.socket.cs
-							.getPort() == 13001)) {
+					if (!(client.socket.cs.getPort() == 13000 || client.socket.cs.getPort() == 13001)) {
 						System.exit(0);
 					}
 
@@ -1001,13 +980,12 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				if (!verloren && !spielerInHighscore) {
 					// Das Hinzufuegen des Spielers in die Highscore Liste
-					getHighscore().addSpielerToHighScore(benoetigteZeit,
-							anmeldung.benutzername);
+					getHighscore().addSpielerToHighScore(benoetigteZeit, anmeldung.benutzername);
 					getHighscore().repaint();
 					try {
 						Thread.sleep(1000);
 						this.zeigeHighscore();
-						// Loechen der Monster Liste
+						// Loeschen der Monster Liste
 						for (int n = 0; n <= monsterListe.size(); n++) {
 							this.monsterListe.remove();
 						}
@@ -1037,18 +1015,18 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	 */
 	public void nextLevel() {
 		spielflaeche.anfangszustand = 0;
-		if (Level.getLevelID() == -1) {
+		if (level.getLevelID() == -1) {
 			client.levelAnfordern();
-			Level = client.aktuellesLevel;
+			level = client.aktuellesLevel;
 		} else if (levelNeustarten) {
-			Level = client.alleLevel[0];
+			level = client.alleLevel[0];
 			levelnummer = 0;
 			levelNeustarten = false;
 		} else {
-			Level = client.levelWechseln();
+			level = client.levelWechseln();
 		}
 		// 6 = Ende der level
-		if (Level.getLevelID() == 6) {
+		if (level.getLevelID() == 6) {
 			spielende = true;
 		}
 

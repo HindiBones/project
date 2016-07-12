@@ -1,11 +1,5 @@
 package pp2016.team13.server.comm;
 
-/**
- * Server wird erzeugt, Verbindungen werden verarbeitet
- * @author Kirthika Jeyakumar
- * 
- */
-
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
@@ -18,12 +12,18 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
 import pp2016.team13.shared.Nachrichten.LevelNachricht;
 import pp2016.team13.shared.Nachrichten.Nachricht;
 
+/**
+ * Server wird erzeugt, Verbindungen werden verarbeitet
+ * 
+ * @author <Jeyakumar, Kirthika, 7302822>
+ * 
+ */
 public class Server implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// die einzelnen Streams werden definiert
 	public ServerSocket serverS;
-	public Socket S;
+	public Socket s;
 	boolean einloggenErfolgreich = false;
 	boolean serverOffen;
 	ObjectOutputStream oos = null;
@@ -33,11 +33,10 @@ public class Server implements Serializable {
 	LinkedList<Paket> serverListe = new LinkedList<Paket>();
 	Levelverwaltung spiel;
 
-	// Server wird gestartet - Verbindung wird hergestellt
 	/**
 	 * Server wird gestartet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param port
 	 */
 	public Server(int port) {
@@ -52,7 +51,7 @@ public class Server implements Serializable {
 
 			try {
 				// Server wartet auf eingehende Verbindungen
-				S = serverS.accept();
+				s = serverS.accept();
 				serverS.setSoTimeout(1);
 
 				// eingehende Verbindung wird verarbeitet
@@ -69,7 +68,7 @@ public class Server implements Serializable {
 	/**
 	 * Server laeuft und wendet die Methode handleconnection an
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * 
 	 */
 
@@ -83,14 +82,14 @@ public class Server implements Serializable {
 	/**
 	 * Verbindung wird verarbeitet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 */
 	// eingehende Verbindung wird verarbeitet
 	public void handleconnection() {
 		try {
-			oos = new ObjectOutputStream(S.getOutputStream());
+			oos = new ObjectOutputStream(s.getOutputStream());
 			Paket n = new Paket();
-			ois = new ObjectInputStream(S.getInputStream());
+			ois = new ObjectInputStream(s.getInputStream());
 			n = (Paket) ois.readObject();
 			Paket antwort = verarbeiteNachricht(n.getMessage());
 			oos.writeObject(antwort);
@@ -102,10 +101,10 @@ public class Server implements Serializable {
 	/**
 	 * Nachricht wird verarbeitet
 	 * 
-	 * @author Kirthika Jeyakumar
+	 * @author <Jeyakumar, Kirthika, 7302822>
 	 * @param n
 	 *            : Nachricht
-	 * @return gibt die Antwort zurück
+	 * @return gibt die Antwort zurueck
 	 */
 
 	@SuppressWarnings("static-access")
@@ -115,49 +114,38 @@ public class Server implements Serializable {
 			switch (n.getTyp()) {
 
 			case 0:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				einloggenErfolgreich = true;
 				break;
 			case 1:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 2:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 3:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 4:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 5:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 6:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 7:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 8:
-				antwortNachricht = new AntwortNachricht(
-						spiel.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(spiel.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 9:
-				antwortNachricht = new AntwortNachricht(
-						Levelverwaltung.verarbeiteClientNachricht(n, spiel));
+				antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));
 				break;
 			case 10:
-				antwortNachricht = new LevelNachricht(
-						Levelverwaltung.levelSpeicherort);
+				antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort);
 				break;
 			case 13:
 				Levelverwaltung.verarbeiteClientNachricht(n, spiel);
@@ -175,10 +163,8 @@ public class Server implements Serializable {
 			e.printStackTrace();
 			return new Paket(new FehlerNachricht("NullPointerException!"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new Paket(new FehlerNachricht("Exception!"));
 		}
 	}
-
 }

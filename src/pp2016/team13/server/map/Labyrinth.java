@@ -15,8 +15,8 @@ public class Labyrinth {
 
 	/**
 	 * 
-	 * bestimmt Anzahl Heiltraenke, Schutztraenke und Monster. 
-	 * Anzahl Monster werden zufaellig bestimmt zwischen 1 und 5.
+	 * bestimmt Anzahl Heiltraenke, Schutztraenke und Monster. Anzahl Monster
+	 * werden zufaellig bestimmt zwischen 1 und 5.
 	 * 
 	 * @author <Akbulut, Cigdem, 5382718>
 	 * 
@@ -46,7 +46,6 @@ public class Labyrinth {
 		 * 
 		 * @author <Akbulut, Cigdem, 5382718>
 		 */
-		// Speichere alle Felder, die Boden sind in bodenplatten
 		int zaehler = 0;
 		for (int i = 0; i < groesse; i++) {
 			for (int j = 0; j < groesse; j++) {
@@ -56,6 +55,7 @@ public class Labyrinth {
 				}
 			}
 		}
+		
 		/**
 		 * 
 		 * finde zufaellige Positionen fuer Spieler, Tuer,

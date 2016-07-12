@@ -101,7 +101,7 @@ public class Monster extends Figur {
 		super.lebenAendern(change);
 		if (getLebenspunkte() <= 0) {
 			if(hatSchluessel)
-			fenster.Level.setLevelInhalt(getXPos(), getYPos(), 8);
+			fenster.level.setLevelInhalt(getXPos(), getYPos(), 8);
 			fenster.monsterListe.remove(this);
 		}
 	}
@@ -152,25 +152,25 @@ public class Monster extends Figur {
 			return true;
 
 		if (dir == 0 && getYPos() - 1 > 0) {
-			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 0)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 6)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 7)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 4);
+			return !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 0)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 6)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 7)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()-1) == 4);
 		} else if (dir == 1 && getXPos() + 1 < fenster.WIDTH) {
-			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 0)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 6)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 7)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 4);
+			return !(fenster.level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 0)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 6)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 7)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()+1, getYPos()) == 4);
 		} else if (dir == 2 && getYPos() + 1 < fenster.HEIGHT) {
-			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 0)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 6)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 7)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 4);
+			return !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 0)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 6)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 7)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos(), getYPos()+1) == 4);
 		} else if (dir == 3 && getXPos() -1 > 0) {
-			return !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 0)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 6)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 7)
-					&& !(fenster.Level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 4);
+			return !(fenster.level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 0)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 6)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 7)
+					&& !(fenster.level.getBestimmtenLevelInhalt(getXPos()-1, getYPos()) == 4);
 		} else
 			return false;
 	}
