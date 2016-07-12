@@ -19,12 +19,15 @@ import javax.swing.JPanel;
 
 import pp2016.team13.shared.Nachrichten.ChatNachricht;
 
-
+/**
+ * 
+ * Ein Panel Chat Fenster wird in die Seitenleiste eingebaut
+ * 
+ * @author Keser, Seyma, 5979919
+ *
+ */
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public TextArea textumfeld=null;
 	public TextField textfeld=null;
@@ -37,6 +40,14 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 
 	SeitenLeiste m;
 	
+	/**
+	 * Chatfenster wird konstruiert
+	 * 
+	 * 
+	 * @author Keser, Seyma, 5979919
+	 * @param s: Text eingabe 
+	 * @param m: Um das Panel an die Seitenleiste anzubinden
+	 */
 	ChatFenster(String s, SeitenLeiste m ) {
 			this.m= m;
 			
@@ -108,15 +119,23 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	/**
+	 * Die Chat Fenster Funktion zum absenden von Nachrichten
+	 * 
+	 * @author <Keser, Seyma, 5979919>
+	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+			
 			String Text= this.textfeld.getText();
+			//Verbindung zum Client
 			ChatNachricht nachricht = new ChatNachricht(Text);
 			boolean funktioniert = this.m.fenster.client.chatte(nachricht);
-				
+			
+			//Prüfen von Cheats 
 			if(funktioniert && !nachricht.istCheat()) {
 				textumfeld.append(Text+"\n");
 				textfeld.setText(null);	
@@ -127,10 +146,12 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			textumfeld.setCaretPosition(i);
 			this.disable();
 			
+			//Focus Aenderung zurueck auf das Spielfeld
 			m.fenster.spielflaeche.setFocusable(true);
 			m.fenster.spielflaeche.requestFocusInWindow();
 			m.fenster.requestFocus();
-
+			
+			//Standardeinstellung
 			textfeld.setText("Cheats/ Text eingeben");
 		}
 	}

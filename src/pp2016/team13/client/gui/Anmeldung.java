@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;  
+import java.awt.Color;   
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -16,12 +16,16 @@ import javax.swing.JTextField;
 
 import pp2016.team13.shared.Nachrichten.LoginNachricht;
 
-
+/**
+ * Das Panel für die Anmeldung und die Startseite des Spiels
+ * 
+ * @author Keser, Seyma, 5979919
+ * 
+ *
+ */
 public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	public JButton anmeldeButton;
@@ -40,8 +44,10 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 	/**
 	 * 
-	 * 
 	 * Erstellt das Panel mit ihren Buttons, Textfeldern, Hintergrund und macht die Buttons Benutzbar
+	 * 
+	 * @author Keser, Seyma, 5979919
+	 * @param fenster: Setzt das fenster fest, auf dem das Panel gezeichnet wird
 	 * 
 	 * @author Seyma 
 	 * @param fenster: Setzt das fenster fest, auf dem das Panel gezeichnet wird
@@ -58,7 +64,11 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 
 		 //Benutzer Name Eingabe Feld
 		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fuer Nicknamen
+
+		 textBenutzer.setBounds(370,200,230,35);//Grosse+Koord. wird festgelegt 
+
 		 textBenutzer.setBounds(370,200,230,35);//Groesse+Koord. wird festgelegt 
+
 		 this.add(textBenutzer);
 		 
 		 //Label /Beschriftungen
@@ -119,7 +129,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
 	 * 
 	 * 
-	 * @author Seyma Keser
+	 * @author Keser, Seyma, 5979919
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -144,7 +154,13 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		}
 		
 	}
-
+	 /**
+	  * 
+	  * Anmeldung auch über Enter möglich 
+	  * 
+	  * @author Seyma Keser
+	  * 
+	  */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// Hier soll spaeter mit Enter eingeloggt werden koennen
@@ -166,6 +182,12 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	
+	/**
+	 * 
+	 * Anmelde Verbindung zum Client wird erzeugt von der Eingabe (passwort, benutzername)
+	 * 
+	 * @author Keser, Seyma, 5979919
+	 */
 	public void anmelden(){
 		String nickname=textBenutzer.getText();
 		@SuppressWarnings("deprecation")
@@ -178,10 +200,11 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		// TODO Auto-generated catch block
 		e2.printStackTrace();
 	}
-				
-				
+	
+	
 	if(einloggen==true){
 		try {
+			//Systemnachricht wird versendet
 			Thread.sleep(100);
 			fenster.zeigeSpielfeld();
 			fenster.client.systemnachricht("Einloggen erfolgreich!");

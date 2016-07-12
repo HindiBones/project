@@ -27,7 +27,7 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  */
 public class Client extends Paket {
  // Liste wird genriert f�r die Nachrichten
- LinkedList<Paket> ClientList = new LinkedList<Paket>();
+ LinkedList<Paket> clientListe = new LinkedList<Paket>();
  // einzelne Streams werden erzeugt
  InputStream is;
  OutputStream os;
@@ -54,21 +54,17 @@ public class Client extends Paket {
   * @param msg Message, das gesendet wird
   * @return Serverantwort wird zurueckgegeben
   */
- public Paket SendeAnServer(Paket msg){
+ public Paket sendeAnServer(Paket msg){
 
   Paket serverAntwort = new Paket();
   try{
    oos = new ObjectOutputStream(cs.getOutputStream());
-   System.out.println("ObjectStream steht");
    oos.writeObject(msg);
    System.out.println(msg.inhalt.getTyp());
    oos.flush();
-   System.out.println("Client sendet an Server");
    serverAntwort = new Paket();
    ois=new ObjectInputStream(cs.getInputStream());
-   System.out.println("ObjectInputStream steht");
    serverAntwort=(Paket)ois.readObject();
-   //ClientList.addLast(serverAntwort);
   }catch(SocketException se){
    serverAntwort = new Paket(new FehlerNachricht("Server antwortet nicht!"));
   }
@@ -86,10 +82,9 @@ public class Client extends Paket {
  * @author Kirthika Jeyakumar
  * @param msg: Sendepaket
  */
-		public void SendeLogout(Paket msg) {
+		public void sendeLogout(Paket msg) {
 			try{
 				oos = new ObjectOutputStream(cs.getOutputStream());
-				System.out.println("ObjectStream steht");
 				oos.writeObject(msg);
 				System.out.println(msg.inhalt.getTyp());
 				oos.flush();

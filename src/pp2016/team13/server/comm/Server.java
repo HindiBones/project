@@ -23,15 +23,15 @@ public class Server implements Serializable{
  
  private static final long serialVersionUID = 1L;
  //die einzelnen Streams werden definiert
- public ServerSocket ServerS;
+ public ServerSocket serverS;
  public Socket S;
- boolean login = false;
- boolean openServer;
+ boolean einloggenErfolgreich = false;
+ boolean serverOffen;
  ObjectOutputStream oos=null;
  ObjectInputStream ois=null;
  OutputStreamWriter osw=null;
  InputStreamReader isw=null;
- LinkedList<Paket> ServerList = new LinkedList<Paket>();
+ LinkedList<Paket> serverListe = new LinkedList<Paket>();
  Levelverwaltung spiel;
  
  //Server wird gestartet - Verbindung wird hergestellt
@@ -43,7 +43,7 @@ public class Server implements Serializable{
 public Server(int port){
  System.out.println("Starte Server");
  try {
-  ServerS = new ServerSocket(port);
+  serverS = new ServerSocket(port);
   spiel = new Levelverwaltung(0, 10, 1, 0, 5, 1, 20, 5);
  } catch (IOException e1) {
   System.out.println("FEHLER");
@@ -53,8 +53,8 @@ public Server(int port){
    
    try {
    //Server wartet auf eingehende Verbindungen
-   S = ServerS.accept();
-   ServerS.setSoTimeout(1);
+   S = serverS.accept();
+   serverS.setSoTimeout(1);
 
 		
 		// eingehende Verbindung wird verarbeitet
@@ -62,7 +62,7 @@ public Server(int port){
    System.out.println("Starte Server");
 //   S = ServerS.accept();
 //   System.out.println("Starte Server");
-   run();
+   laufen();
    
   }catch(IOException e){
    System.out.println("Funkt nicht");
@@ -76,10 +76,9 @@ public Server(int port){
  * 
  */
   
-  public void run() throws IOException{
-   System.out.println("Laeuft");
-   this.openServer = true;
-   while (this.openServer) {
+  public void laufen() throws IOException{
+   this.serverOffen = true;
+   while (this.serverOffen) {
     handleconnection();
    }
   }
@@ -92,27 +91,12 @@ public Server(int port){
   public void handleconnection(){
    try {
     oos = new ObjectOutputStream(S.getOutputStream());
-
     Paket n = new Paket();
-
-    System.out.println("eine neue message wird erzeugt");
-
     ois = new ObjectInputStream(S.getInputStream());
-    System.out.println("Nachricht kommt an");
-
-    //System.out.println("Server versucht message vom Client zu verarbeiten");
     n = (Paket)ois.readObject();
-    //ServerList.add(n);
-    System.out.println("Server empfaengt message vom Client und versucht zu empfangen");
-    System.out.println("Server versucht message vom Client zu verarbeiten");
     Paket antwort = verarbeiteNachricht(n.getMessage());
-    System.out.println("Server hat die Message verarbeitet");
-    oos.writeObject(antwort);
-    
+    oos.writeObject(antwort); 
     oos.flush();
-
-    System.out.println("Server hat eine message zurueckgeschickt");
-
    } catch (IOException | ClassNotFoundException e) {
    }
   }
@@ -130,7 +114,7 @@ public Server(int port){
    Nachricht antwortNachricht = new FehlerNachricht("Fehler!");
    switch(n.getTyp()){
    
-   case 0: System.out.println("Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));login = true; break;
+   case 0: System.out.println("Spieler Login");antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));einloggenErfolgreich = true; break;
    case 1: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
    case 2: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
    case 3: antwortNachricht = new AntwortNachricht(Levelverwaltung.verarbeiteClientNachricht(n, spiel));break;
@@ -143,7 +127,6 @@ public Server(int port){
    case 10: antwortNachricht = new LevelNachricht(Levelverwaltung.levelSpeicherort); break;
    case 13: Levelverwaltung.verarbeiteClientNachricht(n, spiel);antwortNachricht = new Cheat(n.cheattyp);break;
    case 15: System.out.println("Spieler Logout");System.out.println("Server Beendet");System.exit(0);break;
-
    }
    Paket antwort = new Paket(antwortNachricht);
     System.out.println(antwort.getMessage().getTyp());

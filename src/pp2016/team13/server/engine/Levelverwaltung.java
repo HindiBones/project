@@ -64,8 +64,8 @@ public class Levelverwaltung {
 	// Initialisierung des Speicherortes fuer alle Level
 	public static int[][][] levelSpeicherort;
 	// Koordinaten des Schluessels
-	static int SchluesselX;
-	static int SchluesselY;
+	static int schluesselX;
+	static int schluesselY;
 	// Koordinaten der Tuer
 	static int tuerX;
 	static int tuerY;
@@ -304,9 +304,9 @@ public class Levelverwaltung {
 		switch (Nachricht.getTyp()) {
 		case 0:
 			if (Nachricht.getLoginTyp() == 0)
-				return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort);
+				return Einloggen.logIn(Nachricht.benutzername, Nachricht.passwort);
 			else
-				return Einloggen.RegIn(Nachricht.benutzername, Nachricht.passwort);// Login
+				return Einloggen.regIn(Nachricht.benutzername, Nachricht.passwort);// Login
 		case 1:
 			return behandleSpielerbewegung(Nachricht, spiel);// Spielerbewegung
 		case 2:
@@ -456,8 +456,8 @@ public class Levelverwaltung {
 	 */
 	public static boolean behandleschluesselaufgehoben(Nachricht schluesselAufnahme, Levelverwaltung spiel) {
 		boolean moeglich;
-		if (spiel.spielerListe[schluesselAufnahme.getID()].getXPos() == SchluesselX
-				&& spiel.spielerListe[schluesselAufnahme.getID()].getYPos() == SchluesselY) {
+		if (spiel.spielerListe[schluesselAufnahme.getID()].getXPos() == schluesselX
+				&& spiel.spielerListe[schluesselAufnahme.getID()].getYPos() == schluesselY) {
 			spiel.spielerListe[schluesselAufnahme.getID()].nimmSchluessel();
 			moeglich = true;
 		} else {
