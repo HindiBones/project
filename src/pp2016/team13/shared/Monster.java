@@ -16,23 +16,16 @@ import javax.imageio.ImageIO;
  */
 public class Monster extends Figur {
 
-	private long lastAttack;
-	private long lastStep;
-	private int cooldownAttack;
-	private int cooldownWalk;
-	private int id;
-	public int lebenspunkte;
-	public int monsterSchaden;
+	private long lastAttack, lastStep;
+	private int cooldownAttack,cooldownWalk,id;
+	public int lebenspunkte, monsterSchaden, posX, posY;
 	private boolean hatSchluessel;
-	public int posX;
-	private int posY;
 	private int dir; // Laufrichtung: 0 Nord, 1 Ost, 2 Sued, 3 West
 	private int typ; // Von Beginn an anwesend: 0, Erscheint spaeter: 
 	private HindiBones fenster;
 	private Spieler spieler;
 
 	public Monster(int x, int y, HindiBones fenster, int typ) {
-		
 		if(typ == 0){
 			hatSchluessel = false;
 		}
@@ -50,14 +43,11 @@ public class Monster extends Figur {
 		lastStep = System.currentTimeMillis();
 		cooldownAttack = 500 - 10 * fenster.levelnummer; // ms
 		cooldownWalk = 1000;
-
 		setSchaden(5 + fenster.levelnummer * 2);
 		Random r = new Random();
 		changeDir();
-
 		// Bild fuer das Monster laden
 		int i = r.nextInt(3) + 1;
-
 		try {
 			setImage(ImageIO.read(new File("img//drache" + i + ".png")));
 		} catch (IOException e) {
@@ -84,8 +74,7 @@ public class Monster extends Figur {
 		 this.monsterSchaden=anfangsSchaden;
 		 hatSchluessel=schluessel;
 		 posX=anfangsX;
-		 posY=anfangsY;
-		 
+		 posY=anfangsY;		 
 	 }
 
 	public boolean attackiereSpieler(boolean hatSchluessel) {

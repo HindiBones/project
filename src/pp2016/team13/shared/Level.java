@@ -16,8 +16,8 @@ public class Level {
 	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
-	 * @param id
-	 * @param level
+	 * @param id die ID des Levels, das erstellt werden soll als int
+	 * @param level der Inhalt des zu erstellenden Levels als zweidimensionales int Array
 	 */
 	public Level(int id, int[][] level) {
 		levelID = id;
@@ -92,43 +92,6 @@ public class Level {
 			}
 			System.out.println();
 		}
-	}
-
-	/**
-	 * getter Methode fuer alle x-Werte
-	 * 
-	 * @author <Fiehn, Marius, 6024602>
-	 * 
-	 * @param yKoordinate
-	 *            y Koordinate fuer die die x-Werte ausgegeben werden sollen
-	 * @return gibt den Inhalt der x-Werte als eindimensionales Integer Array
-	 *         zurueck
-	 */
-	@SuppressWarnings("null")
-	public int[] getAlleXWerte(int yKoordinate) {
-		int[] xWerte = null;
-		for (int i = 0; i <= levelInhalt.length; i++) {
-			xWerte[i] = levelInhalt[i][yKoordinate];
-		}
-		return xWerte;
-	}
-
-	/**
-	 * getter Methode fuer alle y-Werte
-	 * 
-	 * @author <Fiehn, Marius, 6024602>
-	 * 
-	 * @param xKoordinate
-	 *            x Koordinate fuer die die x-Werte ausgegeben werden sollen
-	 * @return
-	 */
-	@SuppressWarnings("null")
-	public int[] getAlleYWerte(int xKoordinate) {
-		int[] yWerte = null;
-		for (int i = 0; i <= levelInhalt.length; i++) {
-			yWerte[i] = levelInhalt[i][xKoordinate];
-		}
-		return yWerte;
 	}
 
 	/**
