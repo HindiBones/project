@@ -107,8 +107,8 @@ public class Levelverwaltung {
 			Labyrinth map = new Labyrinth(levelZaehler);
 			for (int i = 0; i < groesse - 1; i++) {
 				for (int j = 0; j < groesse - 1; j++) {
-					levelSpeicherort[levelZaehler - 1][i][j] = map.map[i][j];
-					levelInhalt[i][j] = map.map[i][j];
+					levelSpeicherort[levelZaehler - 1][i][j] = map.karte[i][j];
+					levelInhalt[i][j] = map.karte[i][j];
 				}
 			}
 			levelZaehler++;
