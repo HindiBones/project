@@ -72,20 +72,17 @@ public class NachrichtenVerwaltung {
 			systemnachricht("Einloggen erfolgreich!");
 			break;
 		case 1:
-			systemnachricht("Position des Spielers: " + empfNachricht.getxKoo()
-					+ ", " + empfNachricht.getyKoo());
+			systemnachricht("Position des Spielers: " + empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo());
 			break;
 		case 2:
-			systemnachricht("Der Trank an der Position "
-					+ empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
+			systemnachricht("Der Trank an der Position " + empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
 					+ " wurde aufgenommen");
 			break;
 		case 3:
 			systemnachricht("Das Level wurde abgeschlossen!");
 			break;
 		case 4:
-			systemnachricht("Der Schluessel an der Stelle "
-					+ empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
+			systemnachricht("Der Schluessel an der Stelle " + empfNachricht.getxKoo() + ", " + empfNachricht.getyKoo()
 					+ " wurde aufgenommen");
 			break;
 		case 5:
@@ -135,21 +132,19 @@ public class NachrichtenVerwaltung {
 			break;
 		case 3:
 			fenster.nextLevel();
-			systemnachricht("Level \u00fcbersprungen!");
+			systemnachricht("Level uebersprungen!");
 			break;
 		case 4:
-			fenster.spieler.setAnzahlHeiltraenke(fenster.spieler
-					.getAnzahlHeiltraenke() + 10);
-			systemnachricht("10 Heiltr\u00e4nke!");
+			fenster.spieler.setAnzahlHeiltraenke(fenster.spieler.getAnzahlHeiltraenke() + 10);
+			systemnachricht("10 Heiltraenke!");
 			break;
 		case 5:
-			fenster.spieler
-					.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10);
-			systemnachricht("10 Tr\u00e4nke!");
+			fenster.spieler.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10);
+			systemnachricht("10 Schutztraenke!");
 			break;
 		case 6:
 			this.nimmSchluessel();
-			systemnachricht("Schl\u00fcssel erhalten!");
+			systemnachricht("Schluecssel erhalten!");
 			break;
 		}
 	}
@@ -164,7 +159,7 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
-	public void SpielerBewegung(int richtung) {
+	public void spielerBewegung(int richtung) {
 		spieler = fenster.spieler;
 		switch (richtung) {
 		case 0:
@@ -174,11 +169,9 @@ public class NachrichtenVerwaltung {
 			 * an den Server
 			 */
 			if (spieler.getYPos() < aktuellesLevel.getLaengeY() - 1
-					&& fenster.Level.getBestimmtenLevelInhalt(
-							spieler.getXPos(), spieler.getYPos() + 1) != 0) {
+					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() + 1) != 0) {
 				spieler.runter();
-				sende(new BewegungsNachricht(spieler.getID(),
-						spieler.getXPos(), spieler.getYPos()));
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
 			break;
 
@@ -187,11 +180,9 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getYPos() > 0
-					&& fenster.Level.getBestimmtenLevelInhalt(
-							spieler.getXPos(), spieler.getYPos() - 1) != 0) {
+					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos(), spieler.getYPos() - 1) != 0) {
 				spieler.hoch();
-				sende(new BewegungsNachricht(spieler.getID(),
-						spieler.getXPos(), spieler.getYPos()));
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
 			break;
 
@@ -200,11 +191,9 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getXPos() > 0
-					&& fenster.Level.getBestimmtenLevelInhalt(
-							spieler.getXPos() - 1, spieler.getYPos()) != 0) {
+					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos() - 1, spieler.getYPos()) != 0) {
 				spieler.links();
-				sende(new BewegungsNachricht(spieler.getID(),
-						spieler.getXPos(), spieler.getYPos()));
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
 			break;
 
@@ -213,11 +202,9 @@ public class NachrichtenVerwaltung {
 			 * Analog zu case 0
 			 */
 			if (spieler.getXPos() < aktuellesLevel.getLaengeX() - 1
-					&& fenster.Level.getBestimmtenLevelInhalt(
-							spieler.getXPos() + 1, spieler.getYPos()) != 0) {
+					&& fenster.Level.getBestimmtenLevelInhalt(spieler.getXPos() + 1, spieler.getYPos()) != 0) {
 				spieler.rechts();
-				sende(new BewegungsNachricht(spieler.getID(),
-						spieler.getXPos(), spieler.getYPos()));
+				sende(new BewegungsNachricht(spieler.getID(), spieler.getXPos(), spieler.getYPos()));
 			}
 			break;
 
@@ -291,8 +278,7 @@ public class NachrichtenVerwaltung {
 	public void benutzeSchluessel() {
 		spieler = fenster.spieler;
 		if (spieler.hatSchluessel()) {
-			fenster.Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(),
-					7);
+			fenster.Level.setLevelInhalt(spieler.getXPos(), spieler.getYPos(), 7);
 			// Nach dem Oeffnen der Tuer ist der Schluessel wieder weg
 			spieler.entferneSchluessel();
 		}
@@ -349,8 +335,7 @@ public class NachrichtenVerwaltung {
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public boolean chatte(ChatNachricht nachricht) {
-		Paket serverAntwort = new Paket(new FehlerNachricht(
-				"Konnte keine Nachricht senden!"));
+		Paket serverAntwort = new Paket(new FehlerNachricht("Konnte keine Nachricht senden!"));
 		// Wenn die Chatnachricht ein Cheat ist, wird dieser ausgefuehrt
 		if (nachricht.istCheat()) {
 			serverAntwort = sende(new Cheat(nachricht.getCheat()));
@@ -399,7 +384,6 @@ public class NachrichtenVerwaltung {
 	 */
 	public void systemnachricht(String Text) {
 		// Gibt die Systemnachricht im Chat aus
-		fenster.getSeitenleiste().getChatFenster().textumfeld
-				.append("<System>: " + Text + "\n");
+		fenster.getSeitenleiste().getChatFenster().textumfeld.append("<System>: " + Text + "\n");
 	}
 }

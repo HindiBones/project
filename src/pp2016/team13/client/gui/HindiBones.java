@@ -376,7 +376,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 					// 1= Bewegung nach Oben
-					client.SpielerBewegung(1);
+					client.spielerBewegung(1);
 				}
 
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -440,7 +440,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				} else {
 
 					// 0= Bewegung nach unten
-					client.SpielerBewegung(0);
+					client.spielerBewegung(0);
 				}
 
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -507,7 +507,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 					client.spieler = spieler;
 					client.aktuellesLevel = Level;
 					// 2= Bewegung nach Links
-					client.SpielerBewegung(2);
+					client.spielerBewegung(2);
 					testspieler = null;
 
 				}
@@ -572,7 +572,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 					// 3= Bewegung nach rechts
-					client.SpielerBewegung(3);
+					client.spielerBewegung(3);
 				}
 
 			} else
@@ -713,7 +713,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 					} else {
 
-						client.SpielerBewegung(1);
+						client.spielerBewegung(1);
 					}
 
 				}
@@ -774,7 +774,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 
-					client.SpielerBewegung(0);
+					client.spielerBewegung(0);
 				}
 
 			} else if (mausX1 < xKoos) {
@@ -834,7 +834,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 
 				} else {
 
-					client.SpielerBewegung(2);
+					client.spielerBewegung(2);
 				}
 			} else if (mausX1 > xKoos) {
 				if (zahl == 0) {
@@ -893,7 +893,7 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 				} else {
 
 					//
-					client.SpielerBewegung(3);
+					client.spielerBewegung(3);
 				}
 			}
 
