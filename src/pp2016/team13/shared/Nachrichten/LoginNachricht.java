@@ -1,7 +1,8 @@
 package pp2016.team13.shared.Nachrichten;
 
 /**
- * LoginNachricht wird beim Einloggen des Benutzers verschickt, um diesen anzumelden oder zu registrieren.
+ * LoginNachricht wird beim Einloggen des Benutzers verschickt, um diesen
+ * anzumelden oder zu registrieren.
  * 
  * @author <Braun, Jan Julius, 6000100>
  *
@@ -10,19 +11,20 @@ public class LoginNachricht extends Nachricht {
 
 	private static final long serialVersionUID = 1L;
 
-	// Einlognachricht, sendet eingegebenen Benutzernamen und Passwort an den
+	// Loginnachricht, sendet eingegebenen Benutzernamen und Passwort an den
 	// Server, um zu testen, ob der User mit dem Passwort existiert
 	/**
-	 * Erstellt eine LoginNachricht (Typ 0), die Benutzername und Passwort enthalten.
+	 * Erstellt eine LoginNachricht (Typ 0), die Benutzername und Passwort
+	 * enthaelt.
 	 * 
 	 * @param name
 	 *            : Benutzername
 	 * @param pw
 	 *            : Passwort
 	 * @param typ
-	 * 			  : Logintyp (0 für Einloggen, 1 für Registrieren)   
-	 *         
-	 * @author <Braun, Jan Julius, 6000100>           
+	 *            : Logintyp (0 für Einloggen, 1 für Registrieren)
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public LoginNachricht(String name, String pw, int typ) {
 		super(0);

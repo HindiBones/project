@@ -21,7 +21,7 @@ public class BewegungsNachricht extends Nachricht {
 	 *            : Spieler x-Koordinate
 	 * @param y
 	 *            : Spieler y-Koordinate
-	 *            
+	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public BewegungsNachricht(int p, int x, int y) {

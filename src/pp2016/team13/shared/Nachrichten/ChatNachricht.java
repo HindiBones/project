@@ -19,6 +19,7 @@ public class ChatNachricht extends Nachricht {
 
 	/**
 	 * Testet, ob die Nachricht ein Cheat ist oder nicht
+	 * 
 	 * @return: Gibt zurueck, ob die Nachricht ein Cheat ist
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>
@@ -53,6 +54,7 @@ public class ChatNachricht extends Nachricht {
 
 	/**
 	 * Testet, welcher Cheat die Nachricht ist
+	 * 
 	 * @return: Gibt den Cheattyp im Integer zurueck
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>

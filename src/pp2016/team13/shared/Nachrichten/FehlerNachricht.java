@@ -11,7 +11,7 @@ public class FehlerNachricht extends Nachricht {
 	 * Erstellt ein FehlerNachricht-Objekt. Enthaelt eine Fehlermeldung in
 	 * Textform.
 	 * 
-	 * @author Julius
+	 * @author <Braun, Jan Julius, 6000100>
 	 * @param fehler
 	 *            : Fehlermeldung in Textform
 	 */
