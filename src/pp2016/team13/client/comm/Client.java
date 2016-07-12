@@ -27,7 +27,7 @@ import pp2016.team13.shared.Nachrichten.FehlerNachricht;
  *
  */
 public class Client extends Paket {
-	// Liste wird genriert f�r die Nachrichten
+	// Liste wird genriert fuer die Nachrichten
 	LinkedList<Paket> clientListe = new LinkedList<Paket>();
 	// einzelne Streams werden erzeugt
 	InputStream is;
@@ -63,8 +63,7 @@ public class Client extends Paket {
 			ois = new ObjectInputStream(cs.getInputStream());
 			serverAntwort = (Paket) ois.readObject();
 		} catch (SocketException se) {
-			serverAntwort = new Paket(new FehlerNachricht(
-					"Server antwortet nicht!"));
+			serverAntwort = new Paket(new FehlerNachricht("Server antwortet nicht!"));
 		} catch (IOException e) {
 			serverAntwort = new Paket(new FehlerNachricht(e.getMessage()));
 			e.printStackTrace();

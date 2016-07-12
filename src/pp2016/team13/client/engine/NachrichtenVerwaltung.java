@@ -135,21 +135,21 @@ public class NachrichtenVerwaltung {
 			break;
 		case 3:
 			fenster.nextLevel();
-			systemnachricht("Level \u00fcbersprungen!");
+			systemnachricht("Level uebersprungen!");
 			break;
 		case 4:
 			fenster.spieler.setAnzahlHeiltraenke(fenster.spieler
 					.getAnzahlHeiltraenke() + 10);
-			systemnachricht("10 Heiltr\u00e4nke!");
+			systemnachricht("10 Heiltraenke!");
 			break;
 		case 5:
 			fenster.spieler
 					.setAnzahlTrank(fenster.spieler.getAnzahlTrank() + 10);
-			systemnachricht("10 Tr\u00e4nke!");
+			systemnachricht("10 Schutztraenke!");
 			break;
 		case 6:
 			this.nimmSchluessel();
-			systemnachricht("Schl\u00fcssel erhalten!");
+			systemnachricht("Schluecssel erhalten!");
 			break;
 		}
 	}
@@ -164,7 +164,7 @@ public class NachrichtenVerwaltung {
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 */
-	public void SpielerBewegung(int richtung) {
+	public void spielerBewegung(int richtung) {
 		spieler = fenster.spieler;
 		switch (richtung) {
 		case 0:
