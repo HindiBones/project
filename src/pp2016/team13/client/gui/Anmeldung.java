@@ -28,17 +28,14 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 
 	private static final long serialVersionUID = 1L;
 
+	//Anmelde Elemente
 	public JButton anmeldeButton;
-
 	JTextField textBenutzer;
 	JPasswordField passwortfeld;
 	JButton registrierButton;
 	JLabel benutzernameL;
 	JLabel passwortL;
 	boolean einloggen= false;
-	
-	String Bn;
-	String Pw;
 	public String benutzername;
 	
 
@@ -107,14 +104,12 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 //Standardaeinstellung
 		 setVisible(true);
 		
-		
+		//Hintergrund Bild wird gesetzt
 		JLabel bildLabel = new JLabel(); 
 		 bildLabel.setIcon(new ImageIcon("img/Bild.png")); 
 		 bildLabel.setBounds(0, 0, 640, 400); 
 		 this.add(bildLabel); 
 		 
-		 
-	 	 
 	}
 
 	
@@ -129,7 +124,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	 * mit den im Nutzertext aufgelisteten Passwoertern und Nutzernamen.
 	 * 
 	 * 
-	 * @author Keser, Seyma, 5979919
+	 * @author <Keser, Seyma, 5979919>
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -200,7 +195,6 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		// TODO Auto-generated catch block
 		e2.printStackTrace();
 	}
-	
 	
 	if(einloggen==true){
 		try {
