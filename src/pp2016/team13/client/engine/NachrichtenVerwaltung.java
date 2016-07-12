@@ -59,11 +59,11 @@ public class NachrichtenVerwaltung {
 				 * !Die hier angegebenen Reaktionen auf die Messages sind nur zu Testzwecken und werden bei der Integration der anderen Komponenten ausgebessert!
 				 */
 					case 0: systemnachricht("Einloggen erfolgreich!"); break;
-					case 1: System.out.println("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
-					case 2: System.out.println("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
-					case 3: System.out.println("Das Level wurde abgeschlossen!");break;
-					case 4: System.out.println("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
-					case 5: System.out.println(m.fehlermeldung);System.out.println(m.getTyp());break;
+					case 1: systemnachricht("Position des Spielers: " + m.getxKoo()+ ", " + m.getyKoo());break;
+					case 2: systemnachricht("Der Trank an der Position " + m.getxKoo() + ", " + m.getyKoo() + " wurde aufgenommen");break;
+					case 3: systemnachricht("Das Level wurde abgeschlossen!");break;
+					case 4: systemnachricht("Der Schluessel an der Stelle "+m.getxKoo()+", "+m.getyKoo()+" wurde aufgenommen");break;
+					case 5: systemnachricht(m.fehlermeldung);break;
 					case 6: 
 					{				
 							for(int i = 0; i < m.leveldaten.length; i++){
@@ -75,7 +75,7 @@ public class NachrichtenVerwaltung {
 						if(m.inOrdnung)
 							System.out.println("Anfrage akzeptiert!");
 						else
-							System.err.println("Anfrage wurde abgelehnt!");
+							systemnachricht("Anfrage wurde abgelehnt!");
 					}break;
 					case 13: behandleCheat(m);break;
 				}
@@ -94,7 +94,7 @@ public class NachrichtenVerwaltung {
 	private void behandleCheat(Nachricht cheat) {
 		// TODO Auto-generated method stub
 		switch(cheat.cheattyp){
-			case 0: System.err.println("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
+			case 0: systemnachricht("Fehler! Eingegebener Cheat wurde nicht erkannt!");break;
 			case 1: fenster.spieler.setUnverwundbar(true);fenster.spieler.bildWechseln();systemnachricht("Spieler ist unverwundbar!");break;
 			case 2: fenster.nebelAn = false;systemnachricht("Nebel gelichtet!");break;
 			case 3: fenster.nextLevel();systemnachricht("Level \u00fcbersprungen!"); break;
