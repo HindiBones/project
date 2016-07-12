@@ -8,7 +8,7 @@ public class ChatNachricht extends Nachricht{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Nachrichten-Objekt, das eine Nachricht in Textform enthält, die im Chat gesendet wurde
+	 * Nachrichten-Objekt, das eine Nachricht in Textform enthï¿½lt, die im Chat gesendet wurde
 	 * @author Julius
 	 * @param Nachricht: Nachricht in Textform, die gesendet werden soll
 	 */

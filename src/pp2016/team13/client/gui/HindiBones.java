@@ -652,9 +652,11 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		// Bleibt die Figur innerhalb der Grenzen des Arrays?
 		// Wenn ja, ist das naechste Feld begehbar?
 		// Falls beides "wahr" ist, dann gehe den naechsten Schritt
+		
 		spielflaeche.setFocusable(true);
 		spielflaeche.requestFocusInWindow();
 		this.requestFocus();
+
 		
 		if(mausX*10>=(mausX1*10+5))
 			mausX1+=1;
@@ -1007,6 +1009,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 	 * @author Seyma Keser
 	 */
 	public void nextLevel() {
+
 		spielflaeche.anfangszustand=0;
 		if(Level.getLevelID() == -1){
 		System.out.println("Level wird angefordert!");

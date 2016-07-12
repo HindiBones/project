@@ -101,6 +101,11 @@ public class Spielflaeche extends JPanel {
 	 * @author Seyma 
 	 */
 	public void genMonster(){
+		if(fenster.monsterListe.isEmpty()==false){
+		for (int l=0; l<= fenster.monsterListe.size(); l++){
+		fenster.monsterListe.remove();
+		}
+		}
 		for (int i =wechselX ; i <fenster.WIDTH ; i++) {
 			for (int j = wechselY; j < fenster.HEIGHT; j++) {
 				if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
@@ -298,6 +303,10 @@ public class Spielflaeche extends JPanel {
 			g.setColor(Color.WHITE);
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 			g.drawString("GAME OVER", getWidth() / 2 - 120, getHeight() / 2);
+			for(int l=0; l<=fenster.monsterListe.size(); l++){
+			fenster.monsterListe.remove();	
+			}
+			
 		} else {
 			if (fenster.spielende) {
 				g.setColor(Color.WHITE);
