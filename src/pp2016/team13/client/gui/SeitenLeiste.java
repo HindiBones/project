@@ -148,14 +148,14 @@ public class SeitenLeiste extends JPanel {
 		int Hintergrundpixel= 192;
 		for (int i = 0; i < fenster.WIDTH; i++) {
 			for(int j=0; j<8;j++){
-			g.drawImage(hintergrund1, i * Hintergrundpixel, 180+j*Hintergrundpixel, null);
+			g.drawImage(hintergrund1, i * Hintergrundpixel, 170+j*Hintergrundpixel, null);
 
 		}
 			
 			
 			}
 		
-		int itemKy= 220;
+		int itemKy= 210;
 		int itemKx= 10;
 		int Luecke=60;
 		
@@ -186,9 +186,9 @@ public class SeitenLeiste extends JPanel {
 		g.drawString(fenster.spieler.getName(), fenster.BOX + 2, itemKy+75);
 		g.drawString("Zeit: "
 				+ (System.currentTimeMillis() - fenster.startZeit) / 1000,
-				10, 200);
+				10, 190);
 		g.drawString("Level " + (fenster.levelnummer+1) + "/" + fenster.MAXLEVEL,
-				 100, 200);
+				 100, 190);
 
 		// Heiltrankanzeige
 		int anzahlTrank=fenster.spieler.getAnzahlTrank();
@@ -242,7 +242,7 @@ public class SeitenLeiste extends JPanel {
 
 		
 		this.add(ChatText);
-		 ChatText.setBounds(0,410,230,35);//Gr��e+Koord. wird festgelegt 
+		 ChatText.setBounds(0,410,210,35);//Gr��e+Koord. wird festgelegt 
 		 ChatText.setFocusable(true);
 		 this.setVisible(true);
 		 

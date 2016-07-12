@@ -41,7 +41,7 @@ public class ChatFenster extends JPanel implements  MouseListener, KeyListener,A
 			this.m= m;
 			
 			this.setLayout(new BorderLayout());
-			this.setPreferredSize(new Dimension(170,112));
+			this.setPreferredSize(new Dimension(170,132));
 	
 			textumfeld=new TextArea();
 
