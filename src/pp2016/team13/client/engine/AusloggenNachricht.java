@@ -7,7 +7,7 @@ public class AusloggenNachricht extends Nachricht {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AusloggenNachricht(){
+	public AusloggenNachricht() {
 		super(15);
 	}
 }

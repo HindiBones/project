@@ -1,19 +1,10 @@
 1	-
+5	2
+5	2
+11	2
+12	2
+48	null
+104	null
 293	julius
 1000	-
 1000	-
-1000	Hallo Welt
-1000	John
-1000	John 3
-1000	Ich habe keine Lust mehr
-1000	Komisch
-1000	Letztes Problem
-34	Peace
-37	1
-44	null
-67	Peace
-71	Peace
-78	Peace
-212	Peace
-254	zweiter runde
-369	geschaft
