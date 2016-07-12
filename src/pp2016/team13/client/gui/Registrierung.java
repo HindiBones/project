@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-import pp2016.team13.client.engine.LoginNachricht;
+import pp2016.team13.shared.Nachrichten.LoginNachricht;
 
 import java.awt.event.*;
 

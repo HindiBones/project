@@ -1,6 +1,7 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 import java.io.Serializable;
+
 import pp2016.team13.shared.Level;
 
 /**

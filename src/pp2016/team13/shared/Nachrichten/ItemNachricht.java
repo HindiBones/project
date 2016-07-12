@@ -1,4 +1,4 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 /**
  * Item-Nachricht, wird verschickt, wenn ein Item (Heiltrank, Trank, Schluessel) aufgehoben oder benutzt wird

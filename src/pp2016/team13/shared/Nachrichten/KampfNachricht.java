@@ -1,4 +1,4 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 /**
  * Kampf-Nachricht wird verschickt, wenn ein Spieler ein Monster angreift

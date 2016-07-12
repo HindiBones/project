@@ -1,4 +1,4 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 /**
  * LoginNachricht wird beim Einloggen des Benutzers verschickt, um diesen anzumelden oder zu registrieren.

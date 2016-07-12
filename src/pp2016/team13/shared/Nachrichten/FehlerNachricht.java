@@ -1,4 +1,4 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 // Fehlermeldung, String enthaelt die Fehlermeldung in Textform
 public class FehlerNachricht extends Nachricht {

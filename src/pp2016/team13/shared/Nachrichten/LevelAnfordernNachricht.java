@@ -1,4 +1,4 @@
-package pp2016.team13.client.engine;
+package pp2016.team13.shared.Nachrichten;
 
 /**
  * LevelAnfordernNachricht wird beim Einloggen verschickt, um 5 Level vom Server anzufordern
