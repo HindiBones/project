@@ -8,6 +8,15 @@ import javax.imageio.ImageIO;
 
 import pp2016.team13.client.gui.*;
 
+/**
+ * Spieler-Klasse, die alle Merkmale des Charakters enthaelt
+ * Vorlage war gegeben.
+ * 
+ * @author <unbekannt>
+ * @author <Braun, Jan Julius, 6000100>
+ * @author Keser, Seyma, 5979919
+ *
+ */
 public class Spieler extends Figur {
 
 	private String name;
@@ -44,14 +53,35 @@ public class Spieler extends Figur {
 		hatSchluessel = false;
 	}
 	
-	public void setUnverwundbar(boolean trank){
-		this.unverwundbar = trank;
+	/**
+	 * Macht einen Spieler (un-)verwundbar
+	 * 
+	 * @param zustand
+	 * 				: true, wenn Spieler unverwundbar werden soll,
+	 * 				  false, wenn nicht
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
+	public void setUnverwundbar(boolean zustand){
+		this.unverwundbar = zustand;
 	}
 
+	/**
+	 * Gibt zurueck, ob der Spieler unverwundbar ist
+	 * @return: Gibt zurueck, ob der Spieler unverwundbar ist
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
 	public boolean istUnverwundbar(){
 		return this.unverwundbar;
 	}
 	
+	/**
+	 * Benutzt einen Schutztrank
+	 * @return: Zeit, zu der der Trank benutzt wurde
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
 	public long benutzeTrank(){
 		if(anzahlTrank > 0){
 			this.setUnverwundbar(true);
@@ -73,6 +103,12 @@ public class Spieler extends Figur {
 		anzahlHeiltraenke++;
 	}
 	
+	/**
+	 * Gibt dem Spieler einen Schutztrank
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 * 
+	 */
 	public void nimmtrank() {
 		anzahlTrank++;
 	}
@@ -82,6 +118,16 @@ public class Spieler extends Figur {
 		if (anzahl >= 0)
 			anzahlHeiltraenke = anzahl;
 	}
+	
+	/**
+	 * Legt die Anzahl der Schutztraenke des Spielers fest
+	 * 
+	 * @param anzahl2
+	 * 				  : Die neue Anzahl an Schutztraenken
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 * 
+	 */
 	public void setAnzahlTrank(int anzahl2){
 		if(anzahl2>=0){
 			anzahlTrank=anzahl2;
@@ -92,6 +138,14 @@ public class Spieler extends Figur {
 	public int getAnzahlHeiltraenke() {
 		return anzahlHeiltraenke;
 	}
+	/**
+	 * Gibt die Anzahl der Schutztraenke zurueck
+	 * 
+	 * @return: Anzahl der Schutztraenke des Spielers
+	 
+	 * @author <Braun, Jan Julius, 6000100>
+	 * 
+	 */
 	public int getAnzahlTrank(){
 		return anzahlTrank;
 	}
@@ -123,6 +177,13 @@ public class Spieler extends Figur {
 		return null;
 	}
 	
+	/**
+	 * Legt das Fenster, auf dem der Spieler spielt, fest
+	 * @param f
+	 * 			: Das HindiBones-Objekt, auf dem der Spieler spielt
+	 * 
+	 * @author Keser, Seyma, 5979919
+	 */
 	public void setFenster(HindiBones f){
 		this.fenster = f;
 		String imgDatei ;
@@ -170,7 +231,11 @@ public class Spieler extends Figur {
 			image = image.getScaledInstance(72,72, Image.SCALE_DEFAULT);
 	}
 
-
+	/**
+	 * Wechselt die Bilder der Spielfigur von normal zu blau und umgekehrt
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
 	public void bildWechseln() {
 		
 		try{
