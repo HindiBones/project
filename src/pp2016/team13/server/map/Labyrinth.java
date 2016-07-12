@@ -5,7 +5,7 @@ import pp2016.team13.server.map.Labyrinth;
 /**
  * Groesse der Karte festlegen
  * 
- * @author Cigdem
+ * @author <Akbulut, Cigdem, 5382718>
  * 
  */
 public class Labyrinth {
@@ -15,10 +15,10 @@ public class Labyrinth {
 
 	/**
 	 * 
-	 * bestimmt Anzahl Heiltraenke, Schutztraenke und Monster. Anzahl Monster
-	 * werden zufaellig bestimmt zwischen 1 und 5.
+	 * bestimmt Anzahl Heiltraenke, Schutztraenke und Monster. 
+	 * Anzahl Monster werden zufaellig bestimmt zwischen 1 und 5.
 	 * 
-	 * @author Cigdem
+	 * @author <Akbulut, Cigdem, 5382718>
 	 * 
 	 */
 	public Labyrinth(int levelnummer) {
@@ -28,9 +28,9 @@ public class Labyrinth {
 		bodenplatten = new Koordinaten[groesse * groesse];
 		/**
 		 * 
-		 * FloodFill fuellt die karte auf
+		 * FloodFill fuellt die Karte auf
 		 * 
-		 * @author Cigdem
+		 * @author <Akbulut, Cigdem, 5382718>
 		 */
 
 		FloodFill auffuellen = new FloodFill(groesse);
@@ -44,7 +44,7 @@ public class Labyrinth {
 		 * 
 		 * speichere alle Bodenelemente in bodenplatten
 		 * 
-		 * @author Cigdem
+		 * @author <Akbulut, Cigdem, 5382718>
 		 */
 		// Speichere alle Felder, die Boden sind in bodenplatten
 		int zaehler = 0;
@@ -61,7 +61,7 @@ public class Labyrinth {
 		 * finde zufaellige Positionen fuer Spieler, Tuer,
 		 * Heiltraenke,Schutztraenke, Monster und Schlessel
 		 * 
-		 * @author Cigdem
+		 * @author <Akbulut, Cigdem, 5382718>
 		 */
 		// Zufaellige Position fuer den Charakter
 		double zufallsZahl = (Math.random() * zaehler) - 1;
