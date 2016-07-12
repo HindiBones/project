@@ -24,7 +24,7 @@ public class HindiBonesMain {
 	
 	public static void main(String[] args) {
 		try {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 			new HindiBones(BOX * WIDTH, BOX * HEIGHT, "Hindi Bones");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

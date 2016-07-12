@@ -99,7 +99,7 @@ public class HindiBones extends JFrame implements KeyListener,MouseListener,Acce
 		
 		// Es wird die gewuenschte Groesse angegeben			
 		spielflaeche.setPreferredSize(new Dimension(width+5, height+5));	
-		minimap.setPreferredSize(new Dimension(width/3+8, BOX)); //Gr��e meiner Minimap
+		minimap.setPreferredSize(new Dimension(width/3+4, BOX)); //Gr��e meiner Minimap
 		steuerung.setPreferredSize(new Dimension(width+50, height-50));
 		highscore.setPreferredSize(new Dimension(width+50, height-50));
 		anmeldung.setPreferredSize(new Dimension(640,400));
