@@ -127,7 +127,7 @@ public class FloodFill {
 	 * 
 	 * @param p:aktuelle
 	 *            Punkt
-	 * @param direction:gesetzte
+	 * @param richtung:gesetzte
 	 *            Richtung
 	 * 
 	 */
