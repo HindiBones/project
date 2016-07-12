@@ -237,7 +237,6 @@ public class NachrichtenVerwaltung {
 			spieler.changeHealth((int) (aenderung * 1.5));
 		else
 			spieler.changeHealth((int) (aenderung * 0.5));
-		sende(new ItemNachricht(spieler.getXPos(), spieler.getYPos(), 8));
 	}
 
 	/**

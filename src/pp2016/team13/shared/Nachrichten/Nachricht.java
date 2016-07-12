@@ -2,8 +2,6 @@ package pp2016.team13.shared.Nachrichten;
 
 import java.io.Serializable;
 
-import pp2016.team13.shared.Level;
-
 /**
  * Oberklasse aller Nachrichten-Klassen. Enthaelt alle noetigen Attribute und Methoden der Nachrichten
  * 
@@ -12,25 +10,27 @@ import pp2016.team13.shared.Level;
  */
 public class Nachricht implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int typ, logintyp;
+	int typ, logintyp, xKoo, yKoo;
 	public long zeit;
-	public int cheattyp = 0, punktzahl;
-	public boolean aufgenommen, angegriffen;
+	public int cheattyp, punktzahl, spielerID, monsterID, trankID;
+	public boolean aufgenommen, angegriffen, inOrdnung;
 	public String fehlermeldung, benutzername, passwort, nachricht;
-	public Level[] Levels = new Level[5];
 	public int[][][] leveldaten;
-	int xKoo;
-	int yKoo;
-	public int spielerID, monsterID, trankID;
-	public boolean inOrdnung;
 
 	/*
-	 * Typen von Messages: type 0 : Login-Message type 1 : Spielerbewegung type
-	 * 2 : Trankaufnahme -- Itemaufnahme type 3 : Level geschafft type 4 :
-	 * Schluesselaufnahme -- Fehler (z.B. falsche Login-Daten, inkonsistente
-	 * Bewegungen, usw) type 5 : Fehlermeldung -- Level geladen type 6 : Level
-	 * empfangen -- Kampfnachricht type 7 : Spieler �berspringt Level type 8 :
-	 * Chat Nachricht
+	 * Typen von Messages: 
+	 * type 0 : Login-Message 
+	 * type 1 : Spielerbewegung 
+	 * type 2 : Heiltrank aufnehmen
+	 * type 5 : Fehlermeldung
+	 * type 6 : Levelnachricht
+	 * type 7 : Kampfnachricht 
+	 * type 8 : ChatNachricht
+	 * type 10: LevelAnfordernNachricht
+	 * type 11: AntwortNachricht
+	 * type 12: Schutztrank aufnehmen
+	 * type 13: Cheat
+	 * type 15: AusloggenNachricht
 	 */
 
 	/**
