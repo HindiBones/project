@@ -380,7 +380,6 @@ public class Levelverwaltung {
 	public static boolean behandleSpielerbewegung(Nachricht Spielerbewegung,
 			Levelverwaltung spiel) {
 		boolean moeglich;
-		System.out.print("Spielerbewegung");
 		if (Levelverwaltung.levelInhalt[Spielerbewegung.getxKoo()][Spielerbewegung
 				.getyKoo()] != 0
 				&& ((Spielerbewegung.getxKoo() == spiel.spielerListe[Spielerbewegung
@@ -394,19 +393,10 @@ public class Levelverwaltung {
 						.getID()].getXPos() + 1)) || (Spielerbewegung.getxKoo() == (spiel.spielerListe[Spielerbewegung
 						.getID()].getXPos() - 1)))))) {
 
-			System.out.println("erlaubt");
 			spiel.setLevelInhalt(0, Spielerbewegung.getxKoo(),
 					Spielerbewegung.getyKoo(), 2, spiel);
 			moeglich = true;
 		} else {
-			System.out.println("verboten");
-			System.out.println("Spielerposition"
-					+ spiel.spielerListe[Spielerbewegung.getID()].getXPos()
-					+ " "
-					+ spiel.spielerListe[Spielerbewegung.getID()].getYPos());
-			System.out.println("Nachrichtenbewegung"
-					+ Spielerbewegung.getxKoo() + " "
-					+ Spielerbewegung.getyKoo());
 			moeglich = false;
 		}
 		return moeglich;
