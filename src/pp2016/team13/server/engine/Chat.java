@@ -9,10 +9,12 @@ public class Chat {
 		chat = new ArrayList<String>();
 	}
 		/**
+		 * 
+		 * 
+		 * Nachricht zum Chat hinzufuegen
+		 * 
 		 * @author Marius
 		 * @param nachricht: ankommende Chat Nachricht
-		 * 
-		 * Nachricht zum Chat hinzufügen
 		 */
 	public  boolean nachrichtEmpfangen(String nachricht){
 		chat.add(nachricht);
@@ -21,18 +23,21 @@ public class Chat {
 	}
 	
 	/**
-	 * @author Marius
+	 *
 	 * 
 	 * Chatverlauf senden
+	 * 
+	 * @author Marius
 	 */
 	public  String [] chat(){
 		return (String[]) chat.toArray();
 	}
 	
 	/**
-	 * @author Marius
 	 * 
 	 * Anzahl der bisher gesendeten Chat Nachrichten wird festgelegt
+	 * 
+	 * @author Marius
 	 */
 	public static  void setAnzahlNachrichten(int i) {
 		anzahlNachrichten = i;

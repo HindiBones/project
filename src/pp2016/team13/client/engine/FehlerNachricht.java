@@ -8,10 +8,10 @@ public class FehlerNachricht extends Nachricht{
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Erstellt ein FehlerNachricht-Objekt. Enthaelt eine Fehlermeldung in Textform.
+	 * 
 	 * @author Julius
 	 * @param fehler: Fehlermeldung in Textform
-	 * 
-	 * Erstellt ein FehlerNachricht-Objekt. Enthaelt eine Fehlermeldung in Textform.
 	 */
 	public FehlerNachricht (String fehler){
 		super(5);

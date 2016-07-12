@@ -15,12 +15,14 @@ public class ItemNachricht extends Nachricht{
 	 * item = 8: Trank benutzt
 	 */
 	/**
-	 * @author Julius
+	 *
+	 * Erstellt eine ItemNachricht. 
+	 * 
+	 *  @author Julius
 	 * @param a: X-Koordinate des Items
 	 * @param b: Y-Koordinate des Items
 	 * @param item: Art der Item-Nachricht. 2 = Trank aufgehoben, 4 = Schluessel aufgehoben, 12 = Trank benutzt
 	 * 
-	 * Erstellt eine ItemNachricht. 
 	 */
 	public ItemNachricht(int a, int b, int item){
 		super(item);
@@ -29,18 +31,20 @@ public class ItemNachricht extends Nachricht{
 	}
 	
 	/**
-	 * @author Julius
 	 * 
 	 * Gibt die X-Koordinate des Items zurück.
+	 * @author Julius
+	 * 
 	 */
 	public int getxKoo(){
 		return this.xKoo;
 	}
 	
 	/**
-	 * @author Julius
 	 * 
-	 * Gibt die Y-Koordinate des Items zurück.
+	 * 
+	 * Gibt die Y-Koordinate des Items zurueck.
+	 * @author Julius
 	 */
 	public int getyKoo(){
 		return this.yKoo;

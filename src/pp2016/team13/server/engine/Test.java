@@ -19,7 +19,7 @@ import java.io.IOException;
 			int monsterSchaden = 1;
 				
 			Levelverwaltung spiel = new Levelverwaltung(0, charakterLebenspunkte, charakterSchaden, charakterTraenke, monsterLebenspunkte, monsterSchaden, size, anzahlLevel);
-			//�bertragen aller Level Beim Start -- Zum Testen ausgeben
+			//uebertragen aller Level Beim Start -- Zum Testen ausgeben
 			for (int k = 0; k<spiel.anzahlLevel ; k++){
 				System.out.println("Level: " + (k+1) );
 				for (int i = 0; i<Levelverwaltung.groesse; i++){
@@ -32,7 +32,7 @@ import java.io.IOException;
 
 			//			System.out.println("Spielerposition in Level 1 "+ (spiel.spielerListe[0].getPosX() + 1) + " "+ (spiel.spielerListe[0].getPosY() + 1));
 
-			//Test: Ver�nderung  einzelner Mapelemente
+			//Test: Veraenderung  einzelner Mapelemente
 			spiel.setLevelInhalt(0, 0, 0, 4, spiel);
 			Levelverwaltung.levelSpeicherort[0][0][0] = Levelverwaltung.levelInhalt[0][0];
 			System.out.println("Veraenderter Ort " + Levelverwaltung.levelSpeicherort[0][0][0]);
@@ -57,7 +57,7 @@ import java.io.IOException;
 			//Nachrichten Behandlung
 			
 			//Login-Message
-			//Externe Textdatei f�r Benutzername und Passwort
+			//Externe Textdatei fuer Benutzername und Passwort
 			//PlayerID wird beim Aufruf vergeben. Hier nicht mehr sinnvoll
 			
 			

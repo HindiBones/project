@@ -17,10 +17,12 @@ public class NachrichtenVerwaltung {
 	public Level[] alleLevel = new Level[5];
 	String benutzername, passwort;
 	/**
-	 * @author Julius
-	 * @param i: ID des Clients
+	 *
 	 * 
 	 * Erstellt ein Client-Objekt mit der ID i
+	 * 
+	 * @author Julius
+	 * @param i: ID des Clients
 	 */
 	public NachrichtenVerwaltung(HindiBones f){
 		this.fenster = f;
@@ -86,7 +88,7 @@ public class NachrichtenVerwaltung {
 	 * 1 - Eigene Position
 	 * 2 - Heiltrankposition
 	 * 3 - Level Abgeschlossen
-	 * 4 - Schl�ssel aufgenommen
+	 * 4 - Schluessel aufgenommen
 	 * 5 - Fehlermeldung
 	 * 6 - Level empfangen
 	 */
@@ -108,7 +110,7 @@ public class NachrichtenVerwaltung {
 	 * @author Julius
 	 * @param richtung: Integer, der die Bewegungsrichtung angibt. 0 = runter, 1 = hoch, 2 = links, 3 = rechts
 	 * 
-	 * Bewegt den Spieler wenn m�glich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
+	 * Bewegt den Spieler wenn moeglich in die vorgegebene Richtung. Sendet eine Bewegungsnachricht an den Server.
 	 */
 	public void SpielerBewegung(int richtung){
 		spieler = fenster.spieler;
@@ -157,7 +159,7 @@ public class NachrichtenVerwaltung {
 	public void benutzeHeiltrank(){
 		int change = spieler.benutzeHeiltrank();
 		// Heilungseffekt wird verbessert, falls neue Monster durch das
-		// Aufheben des Schl�ssels ausgel�st wurden
+		// Aufheben des Schluessels ausgeloesst wurden
 		if (spieler.hatSchluessel())
 			spieler.changeHealth((int) (change * 1.5));
 		else

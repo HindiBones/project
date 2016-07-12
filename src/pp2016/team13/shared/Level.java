@@ -17,14 +17,14 @@ public class Level implements Serializable{
 		 levelInhalt = level;
 	 }
 	
-	//kein Setter f�r die Level-ID ben�tigt, da diese nicht mehr ver�ndert werden soll
+	//kein Setter fuer die Level-ID ben�tigt, da diese nicht mehr veraendert werden soll
 	
-	//getter-Methode f�r die Level-ID
+	//getter-Methode fuer die Level-ID
 	public int getLevelID(){
 		return levelID;
 	}
 	
-	//setter-Methode, um bestimmte Felder im Level zu ver�ndern
+	//setter-Methode, um bestimmte Felder im Level zu veraendern
 	public  void setLevelInhalt(int x, int y, int inhalt){
 		levelInhalt[x][y] = inhalt;
 	}
@@ -50,7 +50,7 @@ public class Level implements Serializable{
 		}
 	}
 	
-	//getter Methode f�r alle x-Werte
+	//getter Methode fuer alle x-Werte
 		@SuppressWarnings("null")
 		public  int[] getAlleXWerte(int yKoordinate){
 			int []xWerte = null;
@@ -60,7 +60,7 @@ public class Level implements Serializable{
 			return xWerte;
 		}
 		
-		//getter Methode f�r alle y-Werte
+		//getter Methode fuer alle y-Werte
 		@SuppressWarnings("null")
 		public  int[] getAlleYWerte(int xKoordinate){
 			int []yWerte = null;
@@ -70,12 +70,12 @@ public class Level implements Serializable{
 			return yWerte;
 		}
 	
-	//L�nge des Arrays in x-Richtung bestimmen
+	//Laenge des Arrays in x-Richtung bestimmen
 	public int getLaengeX(){
 		return levelInhalt.length;
 	}
 	
-	//L�nge des Arrays in y-Richtung bestimmen
+	//Laenge des Arrays in y-Richtung bestimmen
 	public int getLaengeY(){
 		return levelInhalt[0].length;
 	}

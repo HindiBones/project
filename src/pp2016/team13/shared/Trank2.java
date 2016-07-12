@@ -3,7 +3,7 @@ package pp2016.team13.shared;
 public class Trank2 {
 		private int wirkung;
 		
-		//Fuer die Server Engine ; f�r die Trankliste
+		//Fuer die Server Engine ; fuer die Trankliste
 		 public static int posX;
 		 public static int posY;
 		 public static boolean aufgehoben;

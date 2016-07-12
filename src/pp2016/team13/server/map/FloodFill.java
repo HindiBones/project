@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Cigdem
  * @param size: Spielfeldgroesse
  * @param map: speichert integer
- * @param kDirUp, kDirDown, kDirRight, kDirLeft: Integerzuordnungen f�r Vergleiche in welche Richtung
+ * @param kDirUp, kDirDown, kDirRight, kDirLeft: Integerzuordnungen fuer Vergleiche in welche Richtung
  * @param kDirFirst, kDirLast: Erste und Letzte Richtung
  * @param startingPoint: Startpunkt nicht gesetzt
  * @param destinationPoint: Zielpunkt nicht gesetzt
