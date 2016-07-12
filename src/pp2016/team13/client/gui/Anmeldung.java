@@ -35,6 +35,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
 	String Bn;
 	String Pw;
+	public String benutzername;
 	
 
 	/**
@@ -100,6 +101,8 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 bildLabel.setIcon(new ImageIcon("img/Bild.png")); 
 		 bildLabel.setBounds(0, 0, 640, 400); 
 		 this.add(bildLabel); 
+		 
+		 
 	 	 
 	}
 
@@ -121,6 +124,7 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		
 		// TODO Auto-generated method stub
 		if(e.getSource()==anmeldeButton){
+			benutzername=textBenutzer.getText();
 			anmelden();
 			
 		//Oeffnen der Registrierung 	
