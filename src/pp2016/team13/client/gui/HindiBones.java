@@ -22,6 +22,12 @@ import pp2016.team13.shared.Monster;
 import pp2016.team13.shared.Spieler;
 import pp2016.team13.shared.Nachrichten.AusloggenNachricht;
 
+/**
+ * Hindi Bones Fenster auf dem das ganze Spiel laueft plus die Hauptschnittstelle zum Client
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
 public class HindiBones extends JFrame implements KeyListener, MouseListener,
 		Accessible {
 
@@ -68,6 +74,14 @@ public class HindiBones extends JFrame implements KeyListener, MouseListener,
 	String Bn;
 	String Pw;
 
+	/**
+	 * Das Spiel Fenster  wird erzeugt 
+	 * 
+	 * @author Keser, Seyma, 5979919
+	 * @param width  : Die Breite des Fensters
+	 * @param height : Die Hoehe des Fensters
+	 * @param title: Name des Fensters
+	 */
 	public HindiBones(int width, int height, String title) {
 
 		initialisiereJFrame(width, height, title);
