@@ -43,10 +43,6 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 	
 
 	/**
-<<<<<<< HEAD
-=======
-	 * 
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 	 * 
 	 * Erstellt das Panel mit ihren Buttons, Textfeldern, Hintergrund und macht die Buttons Benutzbar
 	 * 
@@ -68,11 +64,11 @@ public class Anmeldung extends JPanel implements ActionListener, KeyListener{
 		 
 		 //Benutzer Name Eingabe Feld
 		 textBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fuer Nicknamen
-<<<<<<< HEAD
+
 		 textBenutzer.setBounds(370,200,230,35);//Grosse+Koord. wird festgelegt 
-=======
+
 		 textBenutzer.setBounds(370,200,230,35);//Groesse+Koord. wird festgelegt 
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
+
 		 this.add(textBenutzer);
 		 
 		 //Label /Beschriftungen
