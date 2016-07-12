@@ -1,4 +1,4 @@
-package pp2016.team13.shared;
+package pp2016.team13.shared.Spielelemente;
 
 public class Tuer extends Spielelement {
 	private boolean offen;

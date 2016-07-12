@@ -11,9 +11,7 @@ import pp2016.team13.client.gui.*;
 public class Spieler extends Figur {
 
 	private String name;
-
-	public String bildpfad;
-	
+	public String bildpfad;	
 	private boolean hatSchluessel, unverwundbar;
 	public boolean trankAktiv;
 	private int anzahlHeiltraenke;

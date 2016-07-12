@@ -12,15 +12,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.LinkedList;
+
 import javax.accessibility.Accessible;
 import javax.swing.*;
 
 import pp2016.team13.client.comm.Paket;
-import pp2016.team13.client.engine.AusloggenNachricht;
 import pp2016.team13.client.engine.NachrichtenVerwaltung;
 import pp2016.team13.shared.Level;
 import pp2016.team13.shared.Monster;
 import pp2016.team13.shared.Spieler;
+import pp2016.team13.shared.Nachrichten.AusloggenNachricht;
 
 
 public class HindiBones extends JFrame implements KeyListener,MouseListener,Accessible {

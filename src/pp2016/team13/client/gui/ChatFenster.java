@@ -17,7 +17,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import pp2016.team13.client.engine.ChatNachricht;
+import pp2016.team13.shared.Nachrichten.ChatNachricht;
 
 
 public class ChatFenster extends JPanel implements  MouseListener, KeyListener,ActionListener {

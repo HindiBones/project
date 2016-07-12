@@ -1,4 +1,4 @@
-package pp2016.team13.client.comm;
+package pp2016.team13.server.comm;
 
 /**
  * Server wird erzeugt, Verbindungen werden verarbeitet
@@ -9,12 +9,14 @@ package pp2016.team13.client.comm;
 import java.io.*;  
 import java.net.*;
 import java.util.LinkedList;
-import pp2016.team13.client.engine.AntwortNachricht;
-import pp2016.team13.client.engine.Cheat;
-import pp2016.team13.client.engine.FehlerNachricht;
-import pp2016.team13.client.engine.LevelNachricht;
+
+import pp2016.team13.client.comm.Paket;
 import pp2016.team13.server.engine.Levelverwaltung;
-import pp2016.team13.client.engine.Nachricht;
+import pp2016.team13.shared.Nachrichten.AntwortNachricht;
+import pp2016.team13.shared.Nachrichten.Cheat;
+import pp2016.team13.shared.Nachrichten.FehlerNachricht;
+import pp2016.team13.shared.Nachrichten.LevelNachricht;
+import pp2016.team13.shared.Nachrichten.Nachricht;
 
 
 public class Server implements Serializable{
