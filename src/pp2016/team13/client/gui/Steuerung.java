@@ -13,7 +13,7 @@ public class Steuerung extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 	Bild fuer Steuerungs Erklaerungen erstellt, wir bei Paint gezeichnet
+	 * 	Bild fuer Steuerungs Erklaerungen erstellt, wird bei Paint gezeichnet
 	 * 
 	 * @author Seyma Keser
 	 */

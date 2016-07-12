@@ -1,86 +1,129 @@
 package pp2016.team13.shared;
 
+/**
+ * Level Klasse, die das gerade benutzte Level abspeichert
+ * 
+ * @author <Fiehn, Marius, 6024602>
+ *
+ */
+public class Level {
 
-import java.io.Serializable;
-
-public class Level implements Serializable{
+	public int levelID;
+	public int[][] levelInhalt;
 
 	/**
+	 * Konstruktor, der ein Level erstellt
 	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param id die ID des Levels, das erstellt werden soll als int
+	 * @param level der Inhalt des zu erstellenden Levels als zweidimensionales int Array
 	 */
-	private static final long serialVersionUID = 1L;
-	public int levelID;
-	public int [][] levelInhalt;
+	public Level(int id, int[][] level) {
+		levelID = id;
+		levelInhalt = level;
+	}
 
-	public Level(int id, int [][]level) {
-		 levelID = id;
-		 levelInhalt = level;
-	 }
-	
-	//kein Setter fuer die Level-ID ben�tigt, da diese nicht mehr veraendert werden soll
-	
-	//getter-Methode fuer die Level-ID
-	public int getLevelID(){
+	// kein Setter fuer die Level-ID benoetigt, da diese nicht mehr veraendert
+	// werden soll
+
+	/**
+	 * getter-Methode fuer die Level-ID
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt die levelID als Integer zurueck
+	 */
+	public int getLevelID() {
 		return levelID;
 	}
-	
-	//setter-Methode, um bestimmte Felder im Level zu veraendern
-	public  void setLevelInhalt(int x, int y, int inhalt){
+
+	/**
+	 * setter-Methode, um bestimmte Felder im Level zu veraendern
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param x
+	 *            x Koordinate des zu veraendernden Level-Inhalts
+	 * @param y
+	 *            y Koordinate des zu veraendernden Level-Inhalts
+	 * @param inhalt
+	 *            Der neue Inhalt des zu veraendernden Ortes
+	 */
+	public void setLevelInhalt(int x, int y, int inhalt) {
 		levelInhalt[x][y] = inhalt;
 	}
-	
-	
-	//getter-Methode, um das gesamte Level auszulesen
-	public  int [][] getKomplettesLevel(){
+
+	/**
+	 * getter-Methode, um das gesamte Level auszulesen
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt den Level-Inhalt als zweidimensionales int-Array zurueck
+	 */
+	public int[][] getKomplettesLevel() {
 		return levelInhalt;
 	}
-	
-	//getter-Methode, um ein bestimmtes Feld auszulesen
-	public  int getBestimmtenLevelInhalt(int x, int y){
+
+	/**
+	 * getter-Methode, um ein bestimmtes Feld auszulesen
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @param x
+	 *            die x-Koordinate auf die zugegriffen werden soll
+	 * @param y
+	 *            die y-Koorindate auf die zugegriffen werden soll
+	 * @return gibt den Inhalt einer bestimmten Koordinate als int zurueck
+	 */
+	public int getBestimmtenLevelInhalt(int x, int y) {
 		return levelInhalt[x][y];
 	}
-	
-	//Methode um Level auf der Konsole auszugeben
-	public void ausgabe(){
-		for(int i=0;i<levelInhalt.length;i++){
-			for(int j = 0;j<levelInhalt[0].length;j++){
+
+	/**
+	 * Methode, um Level auf der Konsole auszugeben
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 */
+	public void ausgabe() {
+		for (int i = 0; i < levelInhalt.length; i++) {
+			for (int j = 0; j < levelInhalt[0].length; j++) {
 				System.out.print(levelInhalt[j][i]);
 			}
 			System.out.println();
 		}
 	}
-	
-	//getter Methode fuer alle x-Werte
-		@SuppressWarnings("null")
-		public  int[] getAlleXWerte(int yKoordinate){
-			int []xWerte = null;
-			for(int i = 0; i<=levelInhalt.length; i++){
-				xWerte[i]= levelInhalt[i][yKoordinate];
-			}
-			return xWerte;
-		}
-		
-		//getter Methode fuer alle y-Werte
-		@SuppressWarnings("null")
-		public  int[] getAlleYWerte(int xKoordinate){
-			int []yWerte = null;
-			for(int i = 0; i<=levelInhalt.length; i++){
-				yWerte[i]= levelInhalt[i][xKoordinate];
-			}
-			return yWerte;
-		}
-	
-	//Laenge des Arrays in x-Richtung bestimmen
-	public int getLaengeX(){
+
+	/**
+	 * Laenge des Arrays in x-Richtung bestimmen
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt die Laenge als int zurueck
+	 */
+	public int getLaengeX() {
 		return levelInhalt.length;
 	}
-	
-	//Laenge des Arrays in y-Richtung bestimmen
-	public int getLaengeY(){
+
+	/**
+	 * Laenge des Arrays in y-Richtung bestimmen
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt die Laenge als int zurueck
+	 */
+	public int getLaengeY() {
 		return levelInhalt[0].length;
 	}
-	
-	public  int[][] getlevelInhalt (){
+
+	/**
+	 * Methode, die den Inhalt des kompletten Levels zurueck gibt
+	 * 
+	 * @author <Fiehn, Marius, 6024602>
+	 * 
+	 * @return gibt den Inhalt des Levels als zweidimensionales int Array zurueck
+	 */
+	public int[][] getlevelInhalt() {
 		return levelInhalt;
 	}
 }

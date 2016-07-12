@@ -5,7 +5,7 @@ package pp2016.team13.client.comm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import pp2016.team13.client.engine.Nachricht;
+import pp2016.team13.shared.Nachrichten.Nachricht;
 /**
  * Paket, das gesendet wird
  * @author Kirthika Jeyakumar

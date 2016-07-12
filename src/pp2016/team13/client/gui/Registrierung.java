@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-import pp2016.team13.client.engine.LoginNachricht;
+import pp2016.team13.shared.Nachrichten.LoginNachricht;
 
 import java.awt.event.*;
 
@@ -40,20 +40,20 @@ public class Registrierung extends JFrame implements ActionListener{
 	 AnmeldePanel = new JPanel();
 	this.getContentPane().add(AnmeldePanel);
 	
-	 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes l�nge 15
-	 passwortfeld.setBounds(200,150,230,35); //Gr��e + Koord. wird festgelegt
+	 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes Laenge 15
+	 passwortfeld.setBounds(200,150,230,35); //Groesse + Koord. wird festgelegt
 	 AnmeldePanel.add(passwortfeld);
 	 
-	 NeuesPasswortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes l�nge 15
-	 NeuesPasswortfeld.setBounds(200,200,230,35); //Gr��e + Koord. wird festgelegt
+	 NeuesPasswortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes Laenge 15
+	 NeuesPasswortfeld.setBounds(200,200,230,35); //Groesse + Koord. wird festgelegt
 	 AnmeldePanel.add(NeuesPasswortfeld);
 	 
-	 textNBenutzer = new JTextField(15); //Erzeugen eines Textfeldes f�r Nicknamen
-	 textNBenutzer.setBounds(200,100,230,35);//Gr��e+Koord. wird festgelegt 
+	 textNBenutzer = new JTextField(15); //Erzeugen eines Textfeldes fuer Nicknamen
+	 textNBenutzer.setBounds(200,100,230,35);//Groesse+Koord. wird festgelegt 
 	 AnmeldePanel.add(textNBenutzer);
 	 
-	 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels hei�t eines Textes
-	 benutzernameL.setBounds(100,90,100,50); //Gr��e+ Koord. wird festgelegt
+	 benutzernameL = new JLabel("Benutzername: "); //Erzeugen eines Labels heisst eines Textes
+	 benutzernameL.setBounds(100,90,100,50); //Groesse+ Koord. wird festgelegt
 	 AnmeldePanel.add(benutzernameL);
 	 
 	 passwortL = new JLabel("Neues Passwort: ");// " das selbe vorgehen wie mit username "
@@ -66,14 +66,14 @@ public class Registrierung extends JFrame implements ActionListener{
 	 
 
 	 registrierButton = new JButton("Registrieren");//Erzeugen eines Buttons "registrieren"
-	 registrierButton.setBounds(200,250,230,35); //Gr��e+Koord. wird festgelegt 
+	 registrierButton.setBounds(200,250,230,35); //Groesse+Koord. wird festgelegt 
 	 registrierButton.addActionListener(this);
 	 AnmeldePanel.add(registrierButton);
 
 
 
 	 
-	 setSize(640,400); // Gr��e ensprechend an das Bild angepasst
+	 setSize(640,400); // Groesse ensprechend an das Bild angepasst
 	 setLocation(550,320); //Zentrieren 
 	 AnmeldePanel.setLayout (null);
 	  

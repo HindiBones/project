@@ -13,8 +13,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.LinkedList;
 
-import pp2016.team13.client.engine.FehlerNachricht;
-import pp2016.team13.client.engine.ZeitNachricht;
+import pp2016.team13.shared.Nachrichten.FehlerNachricht;
 
 /**
  * 
@@ -22,8 +21,8 @@ import pp2016.team13.client.engine.ZeitNachricht;
  * @author Kirthika Jeyakumar
  * @param cs: Socket
  * @param binAmLeben: Ich bin noch da Nachricht - nicht implementiert
- * @param host: host für die Verbindung
- * @param port: port für die Verbindung
+ * @param host: host fuer die Verbindung
+ * @param port: port fuer die Verbindung
  *
  */
 public class Client extends Paket {
