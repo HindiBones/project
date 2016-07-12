@@ -35,13 +35,10 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		spiel = new JMenu("Spiel");
 		anzeige = new JMenu("Anzeige");
 		hilfe = new JMenu("Hilfe");
-<<<<<<< HEAD
 		ausloggen=new JMenuItem("Ausloggen");
+		
 		//Unter Punkte der Menue Elemente
-=======
 		ausloggen = new JMenuItem("Ausloggen");
-
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		neuesSpiel = new JMenuItem("Neues Spiel starten");
 		highscore = new JMenuItem("Highscore anzeigen");
 		beenden = new JMenuItem("Beenden");
@@ -70,18 +67,12 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Ergaenzt um Auslog Item
 	 * Einige Elemente ausgelagert
 	 * 
 	 * 
 	 * @author <Keser, Seyma, 5979919> 
 	 * @author <unbekannt>
-=======
-	 * Ergaenzt um Auslogg Item
-	 * 
-	 * @author Seyma Keser
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 	 */
 	public void actionPerformed(ActionEvent e) {
 
@@ -99,11 +90,9 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 			}
 		} else if (e.getSource() == steuerung) {
 			if (fenster.steuerungAngezeigt) {
-<<<<<<< HEAD
 
-=======
 				// fenster.zeigeSpielfeld();
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
+
 				karteaufdecken.setText("Karte aufdecken");
 			} else {
 

@@ -1,6 +1,6 @@
 package pp2016.team13.client.gui;
 
-import java.awt.Color;
+import java.awt.Color;   
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 /**
  * Highscore Liste wird erstellt
  * 
- * Wurde grossenteils uebernommen vom urspruenglichen code einige ergaenzungen
+ * Wurde grossenteils uebernommen vom urspruenglichen code einige ergaenzungen 
  * wurden hinzugefuegt
  * 
  * @author <Keser, Seyma, 5979919 >
@@ -25,11 +25,12 @@ import javax.swing.JPanel;
 public class Highscore extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public int letztername = -1;
+	public int letztername=-1;
 	private LinkedList<HighScoreElement> highScore;
 
+	
 	/**
-	 * Liste wird erzeugt mit Highscore elementen
+	 * Liste wird erzeugt mit Highscore elementen 
 	 * 
 	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
@@ -38,7 +39,7 @@ public class Highscore extends JPanel {
 
 		highScore = new LinkedList<HighScoreElement>();
 
-		// Highscore Liste wird erzeugt
+		//Highscore Liste wird erzeugt
 		try {
 			FileReader reader = new FileReader(new File("highscore.txt"));
 			int c;
@@ -66,26 +67,24 @@ public class Highscore extends JPanel {
 		}
 	}
 
+	
 	/**
 	 * Hinzugefuegen des Spielers in die Highscore Liste
 	 * 
-	 * Ergaeunzt um eine Variable letztername die die Position in der Hightscore
-	 * Listte des Letzten Spielers speichern soll
+	 * Ergaeunzt um eine Variable letztername die die Position in 
+	 * der Hightscore Listte des Letzten Spielers speichern soll
 	 * 
 	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
-	 * @param zeit
-	 *            : Zeit sind Punkte des Spielers
-	 * @param name
-	 *            : Benutzername der eingelogt wird, dessen name wird
-	 *            uebernommen
+	 * @param zeit: Zeit sind Punkte des Spielers
+	 * @param name: Benutzername der eingelogt wird, dessen name wird uebernommen
 	 */
-	public void addSpielerToHighScore(int zeit, String name) {
+	public void addSpielerToHighScore(int zeit,String name) {
 
 		for (int i = 0; i < highScore.size(); i++) {
 			if (highScore.get(i).zeit > zeit) {
 				highScore.add(i, new HighScoreElement(zeit, name));
-				letztername = i;
+				letztername=i;
 				i = highScore.size();
 			}
 		}
@@ -97,13 +96,12 @@ public class Highscore extends JPanel {
 						+ highScore.get(i).name + "\n");
 			}
 			writer.close();
-
+			
 		} catch (IOException e) {
 			System.out.println("Highscore konnte nicht geschrieben werden");
 		}
 
 	}
-
 	/**
 	 * @author <unbekannt>
 	 * @return highScore: Highscore Elemente werden ausgegeben
@@ -113,8 +111,8 @@ public class Highscore extends JPanel {
 	}
 
 	/**
-	 * Zeichnet die Ganze Highscore Ansicht Methode wurde nur ergaenzt um einige
-	 * Zeile um den letzten Eintrag Rot zu markieren
+	 * Zeichnet die Ganze Highscore Ansicht 
+	 * Methode wurde nur ergaenzt um einige Zeile um den letzten Eintrag Rot zu markieren
 	 * 
 	 * @author <Keser, Seyma, 5979919>
 	 * @author <unbekannt>
@@ -128,14 +126,8 @@ public class Highscore extends JPanel {
 			boden = ImageIO.read(new File("img/highscore.jpg"));
 
 		} catch (IOException e) {
-<<<<<<< HEAD
 		} 
 		g.drawImage(boden, 0,0, null);
-=======
-		}
-
-		g.drawImage(boden, 0, 0, null);
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 		g.drawImage(img, 20, 0, null);
 		g.setColor(Color.WHITE);
 
@@ -145,47 +137,33 @@ public class Highscore extends JPanel {
 			int zeit = highScore.get(i).zeit;
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-<<<<<<< HEAD
 			//markiert letzten Namen Rot
 			if(letztername>0){
 				if(letztername==i){
 				g.setColor(Color.RED);
 				g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
 				g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
-=======
-			// markiert letzten namen Rot
-			if (letztername > 0) {
-				if (letztername == i) {
-					g.setColor(Color.RED);
-					g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
-					g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 
-<<<<<<< HEAD
 				}else{
-=======
-				} else {
->>>>>>> branch 'master' of https://github.com/HindiBones/project.git
 					g.setColor(Color.WHITE);
 					g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
 					g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
 				}
-
-			} else {
-				g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
-				g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
+				
+			}else {
+			g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
+			g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
 			}
 		}
 	}
 }
-
-/**
- * @author <unbekannt>
- *
- */
-class HighScoreElement {
-	String name;
-	int zeit;
+	/**
+	 * @author <unbekannt>
+	 *
+	 */
+	class HighScoreElement {
+		String name;
+		int zeit;
 
 	/**
 	 * @author <unbekannt>
