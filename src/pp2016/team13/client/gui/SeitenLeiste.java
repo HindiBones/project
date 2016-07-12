@@ -13,19 +13,31 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-
-
-
-
+/**
+ * Seitenleiste beeinhaltet, die Minimap, die Statusleiste und das Chatfenster das von einer 
+ * anderen Klasse geaddet wird
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
 public class SeitenLeiste extends JPanel {
 	
 	JTextField ChatText;
 
 	private static final long serialVersionUID = 1L;
-
+	
+	//Bild Elemente werden erstellt
 	private Image boden2, wand2, tuerOffen2, tuerZu2, heiltrank2, schluessel2, john, sblase, hintergrund1, heiltrankblau ;
 	ChatFenster p;
 	HindiBones fenster;
+	
+	/**
+	 * Wird an das Haupfenster gebunden
+	 * Zeichnet groeßtenteils nur
+	 * 
+	 * @author <Keser, Seyma, 5979919>
+	 * @param fenster: Wird im HindiBones fenster erstellt
+	 */
 	public SeitenLeiste(HindiBones fenster) {
 		this.fenster = fenster;
 		 //Benutzer Name Eingabe Feld
@@ -35,11 +47,7 @@ public class SeitenLeiste extends JPanel {
 		this.setLayout(new BorderLayout());
 		this.add(p,BorderLayout.SOUTH);
 		 
-		 
-	 
-
-		 
-
+		 //Bilder werden geladen
 		try {
 			sblase= ImageIO.read(new File("img//sprechblase.png"));
 			hintergrund1= ImageIO.read(new File("img/wall1.png"));
@@ -57,29 +65,34 @@ public class SeitenLeiste extends JPanel {
 			System.err.println("Ein Bild konnte nicht geladen werden.Hier Spechblase!");
 		}
 
-		
+		//Standardeinstellung
 		this.setVisible(true);
 
 	}
 	
+	/**
+	 * Getter Klasse fuer Chatfenster 
+	 * @author <Keser, Seyma, 5979919>
+	 * @return Chatfenster
+	 */
 	public ChatFenster getChatFenster(){
 		return p;
 	}
 	
 	/**
+	 * Zeichnet die Einzelnen Elemente der Seitenleiste
 	 * 
-	 * @author Seyma Keser
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void paint(Graphics g) {
-		// Zeichnen der Minimap
-		this.setLayout(new BorderLayout());
 		
-
+		this.setLayout(new BorderLayout());
+	
 		g.fillRect(0, 0, 180, 180 );
 		g.setColor(Color.GRAY);
 		
+		// Zeichnen der Minimap
 		if(true){
-		
 		// Male die einzelnen Felder 
 		for (int i = 0; i < fenster.WIDTH; i++) {
 			for (int j = 0; j < fenster.HEIGHT; j++) {
@@ -88,37 +101,34 @@ public class SeitenLeiste extends JPanel {
 						// Hier kommt eine Wand hin
 						g.drawImage(wand2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
-
 					}
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 1  || fenster.Level.getBestimmtenLevelInhalt(i, j) == 5 || fenster.Level.getBestimmtenLevelInhalt(i, j) == 4 || fenster.Level.getBestimmtenLevelInhalt(i, j)==7) {
-						// Dieses Feld ist begehbar
+						// Die Begehbaren Elemente 
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
 					} 
-	
 					else if (fenster.Level.getBestimmtenLevelInhalt(i, j) == 3) {
-						// Hier ist die Tuer
-						
+						// Auf Monster Pos. kommen Boden Elemente
 						g.drawImage(boden2, i * fenster.BOX2, j * fenster.BOX2,
 								null);
-						
-						
-					}if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
-						//System.out.println("Sollte Offene Tuere zeichnen");
+					}
+					if ( fenster.Level.getBestimmtenLevelInhalt(i, j) == 2 ){
+						//Anfangs Punkt + wird eine offene Tuer gesetzt
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerOffen2, i * (fenster.BOX2) , j
 									* (fenster.BOX2), null);
-					} if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
-						//System.out.println("Sollte Offene Tuere zeichnen");
+					}
+					if(fenster.Level.getBestimmtenLevelInhalt(i, j) == 6){
+						//Geschlossene Tuer gesetzt
 						g.drawImage(boden2, i * fenster.BOX, j * fenster.BOX,
 								null);	
 						g.drawImage(tuerZu2, i * (fenster.BOX2), j
 									* (fenster.BOX2), null);
-			}		
+					}		
 			}
 
-		}
+	}
 		
 		//Roter Punkt- fuer Hindi Bones
 		g.drawImage(fenster.spieler2.getImage(), fenster.spieler.getXPos()
@@ -131,19 +141,18 @@ public class SeitenLeiste extends JPanel {
 		
 		try {
 			Thread.sleep(50);
-
 			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
+		//Standarteinstellung
 		this.setVisible(true);
 	
 		
 		//Hier beginnt der des Statuspanels
+		//Hintergrund wird gesetzt
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 180, 180, 180);
 		int Hintergrundpixel= 192;
@@ -152,9 +161,7 @@ public class SeitenLeiste extends JPanel {
 			g.drawImage(hintergrund1, i * Hintergrundpixel, 170+j*Hintergrundpixel, null);
 
 		}
-			
-			
-			}
+		}
 		
 		int itemKy= 210;
 		int itemKx= 10;
@@ -174,16 +181,17 @@ public class SeitenLeiste extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawRect(itemKx+55+55, itemKy,40, 40);
 
-		//Mini John neben Lebensleiste
+		//Mini John neben Lebensleiste wird gezeichnet
 		g.drawImage(john,20,itemKy+60 , fenster.BOX3,
 				fenster.BOX3 , null);
-
+		//Schluessel Element wird gezeichnet
 		if (fenster.spieler.hatSchluessel()) {
 			g.drawImage(schluessel2, itemKx+3+Luecke*2-15, itemKy, null);
 			
 		}
-
+		
 		g.setColor(Color.WHITE);
+		//Zeit und Level Anzeige wird gezeichnet
 		g.drawString(fenster.spieler.getName(), fenster.BOX + 2, itemKy+75);
 		g.drawString("Zeit: "
 				+ (System.currentTimeMillis() - fenster.startZeit) / 1000,
@@ -213,18 +221,19 @@ public class SeitenLeiste extends JPanel {
 		g.drawImage(heiltrankblau, itemKx-7+Luecke,itemKy, null);
 
 		
-		//Sprechblase + Text
+		//Sprechblase + Text bei Aktionen
 		int feld = fenster.Level.getBestimmtenLevelInhalt(fenster.spieler.getXPos(),fenster.spieler.getYPos());
 		g.setColor(Color.BLACK);
 		if (feld == 8) {
-			
 			g.drawImage(sblase,0,itemKy*2-130,null);
 			g.drawString(" Nimm den Schluessel", itemKx, itemKy*2-130+40);
 		} else if (feld == 6) {
+			
 				if (fenster.spieler.hatSchluessel()){
 					g.drawImage(sblase,0,itemKy*2-130,null);
 					g.drawString("Oeffne die Tuer",itemKx, itemKy*2-130+40);}
 				else{
+				
 					g.drawImage(sblase,0,itemKy*2-130,null);
 					g.drawString("Tuer ist verschlossen!", itemKx, itemKy*2-130+40);}
 		} else if (feld == 4 || feld ==7) {
@@ -242,6 +251,7 @@ public class SeitenLeiste extends JPanel {
 				fenster.spieler.getLebenspunkte(), 5);
 
 		
+		//Positionierung des Chat panels
 		this.add(ChatText);
 		 ChatText.setBounds(0,410,210,35);//Groesse+Koord. wird festgelegt 
 		 ChatText.setFocusable(true);

@@ -1,23 +1,23 @@
 package pp2016.team13.client.gui;
 
-
-
 import java.awt.Color; 
 import java.awt.event.ActionEvent;
-
 import javax.swing.*;
-
 import pp2016.team13.shared.Nachrichten.LoginNachricht;
-
 import java.awt.event.*;
 
-
+/**
+ * Getrenntes Fenster fuer die Registrierung 
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
 public class Registrierung extends JFrame implements ActionListener{
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
+	
+	//Fenster Elemente
 	public JButton anmeldeButton;
 	JPanel AnmeldePanel;
 	JTextField textNBenutzer;
@@ -40,6 +40,7 @@ public class Registrierung extends JFrame implements ActionListener{
 	 AnmeldePanel = new JPanel();
 	this.getContentPane().add(AnmeldePanel);
 	
+	//Einstellungen zu den Elementen
 	 passwortfeld=new JPasswordField(15); //Erzeugen eines Passwortfeldes Laenge 15
 	 passwortfeld.setBounds(200,150,230,35); //Groesse + Koord. wird festgelegt
 	 AnmeldePanel.add(passwortfeld);
@@ -105,12 +106,13 @@ public class Registrierung extends JFrame implements ActionListener{
 	 * Funktioniert im Grunde wie bei der Anmeldung. Unterschied: Fuer die 
 	 * Sicherheit, wird das Passwort 2 mal abgefragt (Wahl eines Passwort und Wiederholung
 	 * 
-	 * @author Seyma Keser
+	 * @author <Keser, Seyma, 5979919>
 	 */
 	public void actionPerformed(ActionEvent e) {
 		//Eingaben sollen spaeter im Client gepspeichert werden
 		//Registrierung vergleich Passwort und Wiederholtes Psw
 		//auf gleichheit und das ueberhaupt ein Passwort eingegeben wurde
+		
 		
 		Verschluesselung verschluesseln= new Verschluesselung();
 		if(e.getSource()==registrierButton){
@@ -120,6 +122,7 @@ public class Registrierung extends JFrame implements ActionListener{
 			@SuppressWarnings("deprecation")
 			String wpwd= NeuesPasswortfeld.getText();
 			
+			//Verschluesseln der Passwort Eingabe
 			try {
 				pwd=verschluesseln.verschluesseln(pwd, nickname);
 				System.out.println(pwd+" "+nickname);

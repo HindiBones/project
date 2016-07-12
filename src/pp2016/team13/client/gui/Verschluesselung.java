@@ -8,12 +8,23 @@ import javax.crypto.spec.SecretKeySpec;
  
 import sun.misc.BASE64Encoder;
  
-
+/**
+ * Verschluesselung fuer Passwoerter extern 
+ * 
+ * @author <Keser, Seyma, 5979919>
+ *
+ */
 public class Verschluesselung {
-	    // Das Passwort bzw der Schluesseltext hier kommt der Benutzername rein
 
 	
-
+	/**
+	 * Verschluesselt alle Passwoerter mit dem AES Algorithmen 
+	 * 
+	 * @param passwort: Passwoerter wird uebergeben und verschluesselt zurueck gegeben
+	 * @param benutzername: fungiert als Schluessel zum Verschluesseln
+	 * @return das verschluesselte Passwort
+	 * @throws Exception
+	 */
 	    public String verschluesseln(String passwort, String benutzername)throws Exception{
 	    	//mein schluessel zum entschluesseln 
 	    	String keyStr = benutzername;
