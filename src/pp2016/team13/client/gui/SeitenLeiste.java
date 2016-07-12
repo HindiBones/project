@@ -264,9 +264,6 @@ public class SeitenLeiste extends JPanel {
 	
 	}
 	
-	
-
-	
 
 }
 
