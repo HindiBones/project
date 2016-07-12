@@ -2,13 +2,10 @@ package pp2016.team13.shared.Nachrichten;
 
 public class ChatNachricht extends Nachricht {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Nachrichten-Objekt, das eine Nachricht in Textform enth�lt, die im Chat
+	 * Nachrichten-Objekt, das eine Nachricht in Textform enthaelt, die im Chat
 	 * gesendet wurde
 	 * 
 	 * @author Julius
@@ -20,6 +17,12 @@ public class ChatNachricht extends Nachricht {
 		this.nachricht = Nachricht;
 	}
 
+	/**
+	 * Testet, ob die Nachricht ein Cheat ist oder nicht
+	 * @return: Gibt zurueck, ob die Nachricht ein Cheat ist
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
 	public boolean istCheat() {
 		boolean istCheat = false;
 
@@ -48,6 +51,12 @@ public class ChatNachricht extends Nachricht {
 		return istCheat;
 	}
 
+	/**
+	 * Testet, welcher Cheat die Nachricht ist
+	 * @return: Gibt den Cheattyp im Integer zurueck
+	 * 
+	 * @author <Braun, Jan Julius, 6000100>
+	 */
 	public int getCheat() {
 		int ergebnis = 0;
 		if (this.istCheat()) {
