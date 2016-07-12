@@ -1,5 +1,10 @@
 package pp2016.team13.shared.Spielelemente;
-
+/**
+ *  War gegeben
+ *  
+ * @author <unbekannt>
+ *
+ */
 public class Tuer extends Spielelement {
 	private boolean offen;
 
