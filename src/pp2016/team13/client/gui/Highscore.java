@@ -127,8 +127,6 @@ public class Highscore extends JPanel {
 
 		} catch (IOException e) {
 		} 
-
-
 		g.drawImage(boden, 0,0, null);
 		g.drawImage(img, 20, 0, null);
 		g.setColor(Color.WHITE);
@@ -139,14 +137,13 @@ public class Highscore extends JPanel {
 			int zeit = highScore.get(i).zeit;
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-			//markiert letzten namen Rot
+			//markiert letzten Namen Rot
 			if(letztername>0){
 				if(letztername==i){
 				g.setColor(Color.RED);
 				g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
 				g.drawString("" + zeit, 400, 130 + 30 * (i + 1));
 
-				
 				}else{
 					g.setColor(Color.WHITE);
 					g.drawString((i + 1) + ".  " + name, 80, 130 + 30 * (i + 1));
