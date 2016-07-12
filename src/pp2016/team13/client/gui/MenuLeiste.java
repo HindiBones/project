@@ -139,7 +139,7 @@ public class MenuLeiste extends JMenuBar implements ActionListener {
 		}
 	}
 	/**
-	 * Vorgegebene 
+	 * Vorgegebenen Code uebernommen
 	 * 
 	 * @author <unbekannt>
 	 * @return highsore
