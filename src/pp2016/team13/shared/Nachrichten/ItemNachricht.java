@@ -11,10 +11,6 @@ public class ItemNachricht extends Nachricht {
 
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * item = 2: Trank aufgehoben item = 4: Schluessel aufgehoben item = 8:
-	 * Trank benutzt
-	 */
 	/**
 	 * Erstellt eine ItemNachricht.
 	 * 
@@ -23,8 +19,7 @@ public class ItemNachricht extends Nachricht {
 	 * @param b
 	 *            : Y-Koordinate des Items
 	 * @param item
-	 *            : Art der Item-Nachricht. 2 = Trank aufgehoben, 4 = Schluessel
-	 *            aufgehoben, 12 = Trank benutzt
+	 *            : Art der Item-Nachricht
 	 * 
 	 * @author <Braun, Jan Julius, 6000100>
 	 * 
@@ -39,7 +34,7 @@ public class ItemNachricht extends Nachricht {
 	 * 
 	 * Gibt die X-Koordinate des Items zurück.
 	 * 
-	 * @author Julius
+	 * @author <Braun, Jan Julius, 6000100>
 	 * 
 	 */
 	public int getxKoo() {
@@ -51,7 +46,7 @@ public class ItemNachricht extends Nachricht {
 	 * 
 	 * Gibt die Y-Koordinate des Items zurueck.
 	 * 
-	 * @author Julius
+	 * @author <Braun, Jan Julius, 6000100>
 	 */
 	public int getyKoo() {
 		return this.yKoo;

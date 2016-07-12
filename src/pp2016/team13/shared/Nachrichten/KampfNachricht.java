@@ -8,9 +8,6 @@ package pp2016.team13.shared.Nachrichten;
  */
 public class KampfNachricht extends Nachricht {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
