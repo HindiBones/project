@@ -9,11 +9,9 @@ import pp2016.team13.shared.Nachrichten.Nachricht;
 import pp2016.team13.shared.Spielelemente.Heiltrank;
 
 /**
- * verwaltet das Spielarray auf Serverseite beinhaltet ebenfalls die
- * Nachrichtenverwaltung
+ * verwaltet das Spielarray auf Serverseite; beinhaltet ebenfalls die Nachrichtenverwaltung
  * 
  * @author <Fiehn, Marius, 6024602>
- *
  */
 public class Levelverwaltung {
 	/**
@@ -259,14 +257,12 @@ public class Levelverwaltung {
 	}
 
 	/**
+	 * ueberprueft, ob der Spieler mit der SpielerID einen Trank benutzen kann wird ueberprueft, indem die Anzahl der Traenke ueberprueft wird
+	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param spieler:
 	 *            Identifikationszahl des Spielers
-	 * 
-	 *            ueberprueft, ob der Spieler mit der SpielerID einen Trank
-	 *            benutzen kann wird ueberprueft, indem die Anzahl der Traenke
-	 *            ueberprueft wird
 	 */
 	public boolean trankBenutzbar(int spielerID) {
 		boolean funktioniert;
@@ -279,13 +275,12 @@ public class Levelverwaltung {
 	}
 
 	/**
+	 * void Methode, um einen Trank zu benutzen. Hierbei werden die Lebenspunkte des Spielers wieder aufgefuellt
+	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param spielerID:
 	 *            Identifikationszahl des Spielers
-	 * 
-	 *            void Methode, um einen Trank zu benutzen. Hierbei werden die
-	 *            Lebenspunkte des Spielers wieder aufgefuellt
 	 */
 	public void benutzeTrank(int spielerID) {
 		if (trankBenutzbar(spielerID)) {
@@ -295,25 +290,18 @@ public class Levelverwaltung {
 	}
 
 	/**
+	 * Einordnung der Nachrichten. Je nachdem welche Art von Nachricht ankommt, so wird sie zum jeweiligen Nachrichten
+	 * Behandler weiter geleitet. Dieser gibt dann einen Boolean zurueck. Je nachdem wird eine bestimmte Aussage ausgegeben
+	 * 
 	 * @author <Fiehn, Marius, 6024602>
 	 * 
 	 * @param Nachricht:
 	 *            Die vom Client empfangene Nachricht
 	 * @param spiel:
 	 *            Die zu verwaltende Levelverwaltung
-	 * 
-	 *            Einordnung der Nachrichten. Je nachdem welche Art von
-	 *            Nachricht ankommt, so wird sie zum jeweiligen Nachrichten
-	 *            Behandler weiter geleitet. Dieser gibt dann einen Boolean
-	 *            zur�ck. Je nachdem wird eine bestimmte Aussage ausgegeben
 	 */
 	public static boolean verarbeiteClientNachricht(Nachricht Nachricht, Levelverwaltung spiel) throws Exception {
 		switch (Nachricht.getTyp()) {
-		/*
-		 * !Die hier angegebenen Reaktionen auf die Nachrichten sind nur zu
-		 * Testzwecken und werden bei der Integration der anderen Komponenten
-		 * ausgebessert!
-		 */
 		case 0:
 			if (Nachricht.getLoginTyp() == 0)
 				return Einloggen.LogIn(Nachricht.benutzername, Nachricht.passwort);

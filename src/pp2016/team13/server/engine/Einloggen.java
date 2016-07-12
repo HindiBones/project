@@ -12,12 +12,10 @@ import java.io.InputStreamReader;
  * Klasse, die den einlogprozess auf serverseite verwaltet
  * 
  * @author <Fiehn, Marius, 6024602>
- *
  */
 public class Einloggen {
 	static String[] passworte;
 	static String[] benutzer;
-
 	static String Pwt;
 
 	/**
@@ -46,7 +44,7 @@ public class Einloggen {
 			String[] Nutzerdaten = new String[10];
 			passworte = new String[10];
 			benutzer = new String[10];
-			while (rLine != null) { // Passwort und Bentzername wird getrennt
+			while (rLine != null) { // Passwort und Benutzername wird getrennt
 				Nutzerdaten[i] = rLine;
 				String[] a = Nutzerdaten[i].split(" ");
 				passworte[i] = a[1];
@@ -83,7 +81,7 @@ public class Einloggen {
 	 * @param passwort:
 	 *            String mti dem Passwort als Inhalt
 	 * 
-	 * @return je nachdem, ob es erfolgreich war gibt es einen boolean zurück
+	 * @return je nachdem, ob es erfolgreich war, wird ein Boolean zurueck gegeben
 	 */
 	public static boolean RegIn(String Benutzername, String Passwort) {
 		boolean fertig = false;

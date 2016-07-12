@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class Chat {
 	static int anzahlNachrichten = 0;
 	ArrayList<String> chat;
-
 	public Chat() {
 		chat = new ArrayList<String>();
 	}
@@ -45,6 +44,5 @@ public class Chat {
 	 */
 	public static void setAnzahlNachrichten(int i) {
 		anzahlNachrichten = i;
-
 	}
 }
